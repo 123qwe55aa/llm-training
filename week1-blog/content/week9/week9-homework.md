@@ -53,7 +53,10 @@ Implement the transduce method for the SM class. It is given an
 input sequence (a list) and returns an output sequence (a list) of the
 outputs of the state machine on the input sequence. Assume self.transition_fn and self.output_fn are defined.
 
-12345678class SM: start_state = None def transduce(self, input_seq): '''input_seq: a list of inputs to feed into SM returns: a list of outputs of SM''' pass # Your code hereXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+class SM: start_state = None 
+def transduce(self, input_seq): '''input_seq: a list of inputs to feed into SM returns: a list of outputs of SM''' pass # Your code here
+```
 
 1.2) Binary Addition
 
@@ -69,7 +72,11 @@ sm = Binary_Addition()
 # Output should = [0, 0, 1]
 output = sm.transduce([(1, 1), (1, 0), (0, 0)])
 
-1234567891011class Binary_Addition(SM): start_state = None # Change def transition_fn(self, s, x): # Your code here pass def output_fn(self, s): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+class Binary_Addition(SM): start_state = None # Change 
+def transition_fn(self, s, x): # Your code here pass 
+def output_fn(self, s): # Your code here pass
+```
 
 1.3) Reverser
 
@@ -86,7 +93,11 @@ sm = Binary_Addition()
 # Output should = [None, None, None, 'bar', ' ', 'foo', None, None, None]
 output = sm.transduce(['foo', ' ', 'bar'] + ['end'] + list(range(5)))
 
-1234567891011class Reverser(SM): start_state = None # Change def transition_fn(self, s, x): # Your code here pass def output_fn(self, s): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+class Reverser(SM): start_state = None # Change 
+def transition_fn(self, s, x): # Your code here pass 
+def output_fn(self, s): # Your code here pass
+```
 
 1.4) RNN
 
@@ -112,7 +123,12 @@ where $f_1$ and $f_2$ are two activation functions, such as linear, softmax, or 
 
 Note that each input i below has dimension l x 1. Implement the corresponding state machine, where the weights are given in __init__. Make sure to set an appropriate start_state.
 
-1234567891011class RNN(SM): def __init__(self, Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2): # Your code here pass def transition_fn(self, s, x): # Your code here pass def output_fn(self, s): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+class RNN(SM): 
+def __init__(self, Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2): # Your code here pass 
+def transition_fn(self, s, x): # Your code here pass 
+def output_fn(self, s): # Your code here pass
+```
 
 1.5) Accumulator Sign RNN
 
@@ -125,7 +141,9 @@ inputs and outputs are 1x1.
 
 Hint: np.tanh may be useful. Remember to convert your python lists to np.array.
 
-123456789Wsx = # Your code hereWss = # Your code hereWo = # Your code hereWss_0 = # Your code hereWo_0 = # Your code heref1 = # Your code here, e.g. lambda x : xf2 = # Your code hereacc_sign = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+Wsx = # Your code hereWss = # Your code hereWo = # Your code hereWss_0 = # Your code hereWo_0 = # Your code heref1 = # Your code here, e.g. lambda x : xf2 = # Your code hereacc_sign = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)
+```
 
 1.6) Autoregressive RNN
 
@@ -145,7 +163,9 @@ that the initial value for $x$ will be provided , e.g., $x_1 = 5$ in the lab exa
 and that each successive $x_t = y_{t-1}$ is also provided to
 the transduce method.
 
-123456789Wsx = # Your code hereWss = # Your code hereWo = # Your code hereWss_0 = # Your code hereWo_0 = # Your code heref1 = # Your code heref2 = # Your code hereauto = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+Wsx = # Your code hereWss = # Your code hereWo = # Your code hereWss_0 = # Your code hereWo_0 = # Your code heref1 = # Your code heref2 = # Your code hereauto = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)
+```
 
 2) MDP
 

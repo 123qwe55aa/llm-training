@@ -224,4 +224,28 @@ detailed set of outputs to check your implementation. Trying to debug directly o
 not be a good experience; intermediate tests
 for each method are available ONLY in the code file/colab.
 
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667class Module: def sgd_step(self, lrate): pass # For modules w/o weightsclass Linear(Module): def __init__(self, m, n): self.m, self.n = (m, n) # (in size, out size) self.W0 = np.zeros([self.n, 1]) # (n x 1) self.W = np.random.normal(0, 1.0 * m ** (-.5), [m, n]) # (m x n) def forward(self, A): self.A = A # (m x b) Hint: make sure you understand what b stands for return None # Your code (n x b) def backward(self, dLdZ): # dLdZ is (n x b), uses stored self.A self.dLdW = None # Your code self.dLdW0 = None # Your code return None # Your code: return dLdA (m x b) def sgd_step(self, lrate): # Gradient descent step self.W = None # Your code self.W0 = None # Your codeclass Tanh(Module): # Layer activation def forward(self, Z): self.A = np.tanh(Z) return self.A def backward(self, dLdA): # Uses stored self.A return None # Your code: return dLdZclass ReLU(Module): # Layer activation def forward(self, Z): self.A = None # Your code return self.A def backward(self, dLdA): # uses stored self.A return None # Your code: return dLdZclass SoftMax(Module): # Output activation def forward(self, Z): return None # Your code def backward(self, dLdZ): # Assume that dLdZ is passed in return dLdZ def class_fun(self, Ypred): # Return class indices return None # Your codeclass NLL(Module): # Loss def forward(self, Ypred, Y): self.Ypred = Ypred self.Y = Y return None # Your code def backward(self): # Use stored self.Ypred, self.Y return None # Your codeclass Sequential: def __init__(self, modules, loss): # List of modules, loss module self.modules = modules self.loss = lossXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+class Module: 
+def sgd_step(self, lrate): pass # For modules w/o weights
+class Linear(Module): 
+def __init__(self, m, n): self.m, self.n = (m, n) # (in size, out size) self.W0 = np.zeros([self.n, 1]) # (n x 1) self.W = np.random.normal(0, 1.0 * m ** (-.5), [m, n]) # (m x n) 
+def forward(self, A): self.A = A # (m x b) Hint: make sure you understand what b stands for return None # Your code (n x b) 
+def backward(self, dLdZ): # dLdZ is (n x b), uses stored self.A self.dLdW = None # Your code self.dLdW0 = None # Your code return None # Your code: return dLdA (m x b) 
+def sgd_step(self, lrate): # Gradient descent step self.W = None # Your code self.W0 = None # Your code
+class Tanh(Module): # Layer activation 
+def forward(self, Z): self.A = np.tanh(Z) return self.A 
+def backward(self, dLdA): # Uses stored self.A return None # Your code: return dLdZ
+class ReLU(Module): # Layer activation 
+def forward(self, Z): self.A = None # Your code return self.A 
+def backward(self, dLdA): # uses stored self.A return None # Your code: return dLdZ
+class SoftMax(Module): # Output activation 
+def forward(self, Z): return None # Your code 
+def backward(self, dLdZ): # Assume that dLdZ is passed in return dLdZ 
+def class_fun(self, Ypred): # Return 
+class indices return None # Your code
+class NLL(Module): # Loss 
+def forward(self, Ypred, Y): self.Ypred = Ypred self.Y = Y return None # Your code 
+def backward(self): # Use stored self.Ypred, self.Y return None # Your code
+class Sequential: 
+def __init__(self, modules, loss): # List of modules, loss module self.modules = modules self.loss = loss
+```

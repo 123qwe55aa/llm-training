@@ -4,7 +4,7 @@ In the second part of the assignment, we will experiment with these
 strategies in the context of realistic data sets. Please make sure your read the lecture
 notes covering feature representations for this assignment.
 
-Feature Transformations
+## Feature Transformations
 
 A code file that is required for this assignment can be found
 here, and a colab notebook here.
@@ -113,7 +113,10 @@ Write a function one_hot that takes as input $x$, a single feature value (betwee
 
 For example, one_hot(3,7) should return a column vector of length $7$ with the entry at index $2$ taking value $1$ (indices start at $0$) and other entries taking value $0$.
 
-12345import numpy as npdef one_hot(x, k): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def one_hot(x, k): pass
+```
 
 2E)
 What happens if we use one-hot encoding on the data set part 2A) above, and put it into the perceptron? Recall that for a classifier $h(x)$, the prediction is $+1$ if $h(x) > 0$ and $-1$ otherwise. Further note that the perceptron algorithm makes an update whenever $y^{(i)}(\theta^Tx^{(i)}+\theta_0)\le 0$.
@@ -186,7 +189,7 @@ The separators are displayed when the code runs; it's instructive to watch them 
 
 Enter a Python list of integers indicating the smallest polynomial order for which a separator exists for each of the four datasets in the code file (in order).
 
-Experiments
+## Experiments
 
 A code and data folder that will be necessary for doing this homework can
 be found at the top of the page. In the file code_for_hw3_part2.py, include your

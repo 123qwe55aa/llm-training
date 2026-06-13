@@ -412,7 +412,9 @@ following, no imports should be used.
 
 (Q21) Implement add_two_lists below.
 
-123def add_two_lists(a, b): pass return [x + y for x, y in zip(a, b)]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def add_two_lists(a, b): pass return [x + y for x, y in zip(a, b)]
+```
 
 Run Code
 Submit
@@ -446,7 +448,9 @@ vectors, each represented as a list of numbers.
 
 (Q22) Implement dot below.
 
-123def dot(v1, v2): pass return sum(x * y for x, y in zip(v1, v2))XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def dot(v1, v2): pass return sum(x * y for x, y in zip(v1, v2))
+```
 
 Run Code
 Submit
@@ -498,7 +502,10 @@ For example, add_n(10)([1, 5, 3]) should return [11, 15, 13].
 
 (Q23) Implement add_n below.
 
-1234def add_n(n): def add_to_vector(v): return [x + n for x in v] return add_to_vectorXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def add_n(n): 
+def add_to_vector(v): return [x + n for x in v] return add_to_vector
+```
 
 Run Code
 Submit
@@ -559,7 +566,9 @@ rows, as discussed earlier. For example,
 
 (Q24) Implemement array_mult below.
 
-123456789def array_mult(A, B): pass return [ [ sum(A[i][k] * B[k][j] for k in range(len(B))) for j in range(len(B[0])) ] for i in range(len(A)) ]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def array_mult(A, B): pass return [ [ sum(A[i][k] * B[k][j] for k in range(len(B))) for j in range(len(B[0])) ] for i in range(len(A)) ]
+```
 
 Run Code
 Submit

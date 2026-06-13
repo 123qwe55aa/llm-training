@@ -173,7 +173,7 @@ For a fixed [mathjaxinline]\alpha[/mathjaxinline], we can find a [mathjaxinline]
 Create a sequence of trees by successively removing the bottom-level split that minimizes the increase in overall error, until the root is reached.
 Return the [mathjaxinline]T[/mathjaxinline] in the sequence that minimizes the criterion.
 We can choose an appropriate [mathjaxinline]\alpha[/mathjaxinline] using cross validation.
-Classification
+## Classification
 The strategy for building and pruning classification trees is very similar to the strategy for regression trees.
 Given a region [mathjaxinline]R_ m[/mathjaxinline] corresponding to a leaf of the tree, we would pick the output class [mathjaxinline]y[/mathjaxinline] to be the value that exists most frequently (the
 majority value

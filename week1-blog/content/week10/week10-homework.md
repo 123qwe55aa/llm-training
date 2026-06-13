@@ -203,7 +203,9 @@ Here is an example of how to test update:
 >>> q.get(2, 'c')
 15.0
 
-123def update(self, data, lr): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def update(self, data, lr): # Your code here pass
+```
 
 2.2) Q_learn
 
@@ -279,7 +281,9 @@ return list(qf.q.items())
 >>> testQ()
 [((0, 'a'), 0.6649739221724159), ((0, 'b'), 0.1712369526453748), ((1, 'a'), 0.7732751316011999), ((1, 'b'), 1.2034912054227331), ((2, 'a'), 0.37197205380133874), ((2, 'b'), 0.45929063274463033), ((3, 'a'), 1.5156163024818292), ((3, 'b'), 0.8776852768653631), ((4, 'a'), 0.0), ((4, 'b'), 0.0)]
 
-123456def Q_learn(mdp, q, lr=.1, iters=100, eps = 0.5, interactive_fn=None): # Your code here for i in range(iters): # include this line in the iteration, where i is the iteration number if interactive_fn: interactive_fn(q, i) passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def Q_learn(mdp, q, lr=.1, iters=100, eps = 0.5, interactive_fn=None): # Your code here for i in range(iters): # include this line in the iteration, where i is the iteration number if interactive_fn: interactive_fn(q, i) pass
+```
 
 Below, assume this update method has been defined.
 
@@ -373,7 +377,9 @@ return list(qf.q.items())
 >>> testBatchQ()
 [((0, 'a'), 4.7566600197286535), ((0, 'b'), 3.993296047838986), ((1, 'a'), 5.292467934685342), ((1, 'b'), 5.364014782870985), ((2, 'a'), 4.139537149779127), ((2, 'b'), 4.155347555640753), ((3, 'a'), 4.076532544818926), ((3, 'b'), 4.551442974149778), ((4, 'a'), 0.0), ((4, 'b'), 0.0)]
 
-12345678def Q_learn_batch(mdp, q, lr=.1, iters=100, eps=0.5, episode_length=10, n_episodes=2, interactive_fn=None): # Your code here for i in range(iters): # include this line in the iteration, where i is the iteration number if interactive_fn: interactive_fn(q, i) passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def Q_learn_batch(mdp, q, lr=.1, iters=100, eps=0.5, episode_length=10, n_episodes=2, interactive_fn=None): # Your code here for i in range(iters): # include this line in the iteration, where i is the iteration number if interactive_fn: interactive_fn(q, i) pass
+```
 
 3) NNQ: Using neural networks to store the Q function
 
@@ -489,7 +495,12 @@ return [q.get(s,a) for s in q.states for a in q.actions]
 >>> test_NNQ([(0,'a',0.3),(1,'a',0.1),(0,'a',0.1),(1,'a',0.5)])
 [array([[-0.07211456]]), array([[-0.19553234]]), array([[-0.21926211]]), array([[0.01699455]]), array([[-0.26390356]]), array([[0.06374809]]), array([[0.0340214]]), array([[-0.18334733]]), array([[-0.438375]]), array([[-0.13844737]])]
 
-12345678910111213class NNQ: def __init__(self, states, actions, state2vec, num_layers, num_units, epochs=1): self.actions = actions self.states = states self.epochs = epochs self.state2vec = state2vec self.models = None # Your code here def get(self, s, a): # Your code here pass def update(self, data, lr, epochs=1): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+class NNQ: 
+def __init__(self, states, actions, state2vec, num_layers, num_units, epochs=1): self.actions = actions self.states = states self.epochs = epochs self.state2vec = state2vec self.models = None # Your code here 
+def get(self, s, a): # Your code here pass 
+def update(self, data, lr, epochs=1): # Your code here pass
+```
 
 4) No Exit
 

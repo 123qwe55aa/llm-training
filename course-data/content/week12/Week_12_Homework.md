@@ -233,7 +233,9 @@ Now, write the function update_U(data, vs_from_u, x, k, lam)
 The function should update the entries in x corresponding to the u vectors and the b_u entries. It should also return x, so the Tutor can check it.
 Note that if there are no ratings from a particular user, we don't want to update that user's entries.
 
-12345def update_U(data, vs_from_u, x, k, lam): (u, b_u, v, b_v) = x # Your code here return xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def update_U(data, vs_from_u, x, k, lam): (u, b_u, v, b_v) = x # Your code here return x
+```
 
 Run Code
 Submit

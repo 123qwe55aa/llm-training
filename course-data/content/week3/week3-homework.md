@@ -4,7 +4,7 @@ In the second part of the assignment, we will experiment with these
 strategies in the context of realistic data sets. Please make sure your read the lecture
 notes covering feature representations for this assignment.
 
-Feature Transformations
+## Feature Transformations
 
 A code file that is required for this assignment can be found
 here, and a colab notebook here.
@@ -168,7 +168,10 @@ Write a function one_hot that takes as input $x$, a single feature value (betwee
 
 For example, one_hot(3,7) should return a column vector of length $7$ with the entry at index $2$ taking value $1$ (indices start at $0$) and other entries taking value $0$.
 
-12345import numpy as npdef one_hot(x, k): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def one_hot(x, k): pass
+```
 
 Run Code
 Submit
@@ -287,7 +290,7 @@ View Answer Ask for Help
 
 You have infinitely many submissions remaining.
 
-Experiments
+## Experiments
 
 A code and data folder that will be necessary for doing this homework can
 be found at the top of the page. In the file code_for_hw3_part2.py, include your

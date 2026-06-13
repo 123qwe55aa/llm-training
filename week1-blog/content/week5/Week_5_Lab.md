@@ -110,7 +110,9 @@ To answer 1A and 1B below, you should try to answer the
 questions first without running t1, and then run t1 to match with
 your expectations.
 
-123def run(): return t1(order=1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t1(order=1)
+```
 
 1A) Consider the solution with the 0th-order basis (the
 regression polynomial described by only $\theta_0$). What is the shape
@@ -178,7 +180,9 @@ $\lambda$. Look at the detailed results after submitting your code,
 paying attition to the visualization of the polynomial that was fit
 using your chosen $\lambda.$
 
-123def run(): return t2(order=9, lam = 1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t2(order=9, lam = 1)
+```
 
 2A) What happens to both $J_{\it ridge}(\theta, \theta_0)$ and
 the learned regression line, with very large (e.g., infinite) and very
@@ -222,7 +226,9 @@ solution diverges and when the solution converges very quickly.)
 Click 'Show/Hide Detailed Results' after submitting your code to view
 the convergence plot generated.
 
-123def run(): return t3(order=2, lam=0, step_size= 0.3, max_iter = 1000)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t3(order=2, lam=0, step_size= 0.3, max_iter = 1000)
+```
 
 3A) With \texttt{max_iter = 1000} in the code snippet above,
 what step sizes were needed to match the analytic solution almost

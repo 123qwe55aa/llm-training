@@ -121,13 +121,18 @@ Note that in Python, np.dot(a, b) is the matrix product a@b, not the dot product
 
 Provide an expression that sets A to be a $2 \times 3$ numpy array ($2$ rows by $3$ columns), containing any values you wish.
 
-123import numpy as npA = 0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as npA = 0
+```
 
 2.2) Transpose
 
 Write a procedure that takes an array and returns the transpose of the array. You can use 'np.transpose' or the '.T', but you may not use a loop.
 
-1234import numpy as npdef tp(A): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def tp(A): pass
+```
 
 2.3) Shapes
 
@@ -169,31 +174,46 @@ A[:,1:2]
 
 Write a procedure that takes a list of numbers and returns a 2D numpy array representing a row vector containing those numbers.
 
-1234import numpy as npdef rv(value_list): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def rv(value_list): pass
+```
 
 2.5) Column vector
 
 Write a procedure that takes a list of numbers and returns a 2D numpy array representing a column vector containing those numbers. You can use the rv procedure.
 
-1234import numpy as npdef cv(value_list): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def cv(value_list): pass
+```
 
 2.6) length
 
 Write a procedure that takes a column vector and returns the vector's Euclidean length (or equivalently, its magnitude) as a scalar. You may not use np.linalg.norm, and you may not use a loop.
 
-1234import numpy as npdef length(col_v): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def length(col_v): pass
+```
 
 2.7) normalize
 
 Write a procedure that takes a column vector and returns a unit vector in the same direction. You may not use a for loop. Use your length procedure from above (you do not need to define it again).
 
-1234import numpy as npdef normalize(col_v): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def normalize(col_v): pass
+```
 
 2.8) indexing
 
 Write a procedure that takes a 2D array and returns the final column as a two dimensional array. You may not use a for loop.
 
-1234import numpy as npdef index_final_col(A): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def index_final_col(A): pass
+```
 
 2.9) Representing data
 
@@ -211,7 +231,9 @@ She wants to put this into a numpy array such that each row represents
 one individual's height and weight in the order listed. Write code to
 set data equal to the appropriate numpy array:
 
-123import numpy as npdata = 0 #your code hereXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as npdata = 0 #your code here
+```
 
 Now she wants to compute the sum of each person's height and weight as
 a column vector by multiplying data by another numpy array. She has
@@ -220,7 +242,10 @@ fix it:
 
 2.10) Matrix multiplication
 
-1234import numpy as npdef transform(data): return (np.dot(np.array([1, 1]), data))XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def transform(data): return (np.dot(np.array([1, 1]), data))
+```
 
 <img src="data:image/gif;base64,R0lGODlhEAAQAPIGAMLCwkJCQgAAAGJiYoKCgpKSkv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAGACwAAAAAEAAQAAADMmi63P4wyklrAyEA[Truncated]
 
@@ -349,13 +374,18 @@ Note that in Python, np.dot(a, b) is the matrix product a@b, not the dot product
 
 Provide an expression that sets A to be a $2 \times 3$ numpy array ($2$ rows by $3$ columns), containing any values you wish.
 
-123import numpy as npA = 0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as npA = 0
+```
 
 2.2) Transpose
 
 Write a procedure that takes an array and returns the transpose of the array. You can use 'np.transpose' or the '.T', but you may not use a loop.
 
-1234import numpy as npdef tp(A): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def tp(A): pass
+```
 
 2.3) Shapes
 
@@ -397,31 +427,46 @@ A[:,1:2]
 
 Write a procedure that takes a list of numbers and returns a 2D numpy array representing a row vector containing those numbers.
 
-1234import numpy as npdef rv(value_list): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def rv(value_list): pass
+```
 
 2.5) Column vector
 
 Write a procedure that takes a list of numbers and returns a 2D numpy array representing a column vector containing those numbers. You can use the rv procedure.
 
-1234import numpy as npdef cv(value_list): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def cv(value_list): pass
+```
 
 2.6) length
 
 Write a procedure that takes a column vector and returns the vector's Euclidean length (or equivalently, its magnitude) as a scalar. You may not use np.linalg.norm, and you may not use a loop.
 
-1234import numpy as npdef length(col_v): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def length(col_v): pass
+```
 
 2.7) normalize
 
 Write a procedure that takes a column vector and returns a unit vector in the same direction. You may not use a for loop. Use your length procedure from above (you do not need to define it again).
 
-1234import numpy as npdef normalize(col_v): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def normalize(col_v): pass
+```
 
 2.8) indexing
 
 Write a procedure that takes a 2D array and returns the final column as a two dimensional array. You may not use a for loop.
 
-1234import numpy as npdef index_final_col(A): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def index_final_col(A): pass
+```
 
 2.9) Representing data
 
@@ -439,7 +484,9 @@ She wants to put this into a numpy array such that each row represents
 one individual's height and weight in the order listed. Write code to
 set data equal to the appropriate numpy array:
 
-123import numpy as npdata = 0 #your code hereXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as npdata = 0 #your code here
+```
 
 Now she wants to compute the sum of each person's height and weight as
 a column vector by multiplying data by another numpy array. She has
@@ -448,4 +495,7 @@ fix it:
 
 2.10) Matrix multiplication
 
-1234import numpy as npdef transform(data): return (np.dot(np.array([1, 1]), data))XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def transform(data): return (np.dot(np.array([1, 1]), data))
+```

@@ -64,7 +64,9 @@ Write a short program to compute the gradient of the loss function with respect 
 
 It should return a column vector.
 
-123def hinge_loss_grad(x, y, a): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def hinge_loss_grad(x, y, a): pass
+```
 
 1.2) Log loss, sigmoidal activation
 

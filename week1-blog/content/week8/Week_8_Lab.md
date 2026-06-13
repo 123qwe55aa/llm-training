@@ -112,7 +112,10 @@ Executing the code below will convolve one of the filters $f_1, f_2, f_3$ (inclu
 
 3A. Try changing the filters and the bias to get a feeling for what is going on when a CNN learns the weights and biases for the filters. The range of values in the images after filtering is on the order of $\pm 100$; that should help you pick the bias value. Click "Show/Hide Detailed Results" to see the output image.
 
-12345678# Some interesting filters to try:f1 = ((1./8)*np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])).tolist()f2 = ((1./8)*np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])).tolist()f3 = ((1./10)*np.array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]])).tolist()# You will need to change the bias to get nice results... think about the sign.def run(): return filter(weights=f1, bias=0)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+# Some interesting filters to try:f1 = ((1./8)*np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])).tolist()f2 = ((1./8)*np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])).tolist()f3 = ((1./10)*np.array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]])).tolist()# You will need to change the bias to get nice results... think about the sign.
+def run(): return filter(weights=f1, bias=0)
+```
 
 3B.
 Consider these "features":

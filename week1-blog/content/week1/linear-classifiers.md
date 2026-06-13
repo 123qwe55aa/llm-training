@@ -20,7 +20,7 @@ Your browser does not support this video format. Try using a different browser.
 
 ## Classification
 
-Classification
+## Classification
 A binary
 classifier
 is

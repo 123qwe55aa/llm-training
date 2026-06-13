@@ -38,7 +38,9 @@ What is the shape of the separator produced by this network? Explain.
 Are you able to get relatively consistent 100% accuracy with some
 combination of iters and learning rate lr?
 
-123def run(): return t1(iters=100, lr=0.05)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t1(iters=100, lr=0.05)
+```
 
 Run Code
 Submit
@@ -83,7 +85,9 @@ the number of hidden units (pretty please, don't pass in anything
 other than a positive integer!), the number of iterations, and the
 learning rate.
 
-123def run(): return t2(hidden_units=1, iters=1000, lr=0.05)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t2(hidden_units=1, iters=1000, lr=0.05)
+```
 
 Run Code
 Submit
@@ -110,7 +114,9 @@ output unit with NLL loss. In the t3 function below, you can
 specify the number of hidden units in each hidden layer, the number of
 iterations, and the learning rate.
 
-123def run(): return t3(hidden_units=2, iters=100, lr=0.05)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t3(hidden_units=2, iters=100, lr=0.05)
+```
 
 Run Code
 Submit

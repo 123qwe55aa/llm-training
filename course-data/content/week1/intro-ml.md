@@ -92,7 +92,7 @@ Supervised learning
 The idea of
 supervised
 learning is that the learning system is given inputs and told which specific outputs should be associated with them. We divide up supervised learning based on whether the outputs are drawn from a small finite set (classification) or a large finite or continuous set (regression).
-Classification
+## Classification
 Training data [mathjaxinline]{\cal D}_ n[/mathjaxinline] is in the form of a set of pairs [mathjaxinline]\{ (x^{(1)}, y^{(1)}), \ldots , (x^{(n)}, y^{(n)})\}[/mathjaxinline] where [mathjaxinline]x^{(i)}[/mathjaxinline] represents an object to be classified, most typically a [mathjaxinline]d[/mathjaxinline]-dimensional vector of real and/or discrete values, and [mathjaxinline]y^{(i)}[/mathjaxinline] is an element of a discrete
 Many textbooks use [mathjaxinline]x_ i[/mathjaxinline] and [mathjaxinline]t_ i[/mathjaxinline] instead of [mathjaxinline]x^{(i)}[/mathjaxinline] and [mathjaxinline]y^{(i)}[/mathjaxinline]. We find that notation somewhat difficult to manage when [mathjaxinline]x^{(i)}[/mathjaxinline] is itself a vector and we need to talk about its elements. The notation we are using is standard in some other parts of the machine-learning literature.
 set of values.

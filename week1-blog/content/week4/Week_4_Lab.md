@@ -74,7 +74,9 @@ Experiment with the following step sizes: [0.01, 0.1, 0.2, 0.3]. For which one(s
 does $x^{(k)}$ converge without oscillation? For which one(s) does
 $x^{(k)}$ diverge?
 
-123def run(): return t1(step_size= 0.1, init_val = 0)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+def run(): return t1(step_size= 0.1, init_val = 0)
+```
 
 Why do oscillations happen for some values of step_size and not others?
 To gain insight into this behavior (and to understand how gradient descent proceeds),

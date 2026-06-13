@@ -16,7 +16,10 @@ Formula for signed distance:
 
 Write a Python function using numpy operations (no loops!) that takes column vectors ($d$ by 1) x and th (of the same dimension) and scalar th0 and returns the signed perpendicular distance (as a 1 by 1 array) from the hyperplane encoded by (th, th0) to x. Note that you are allowed to use the "length" function defined in previous coding questions (includig week 1 exercises).
 
-1234import numpy as npdef signed_dist(x, th, th0): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def signed_dist(x, th, th0): pass
+```
 
 1.3) Code for side of hyperplane
 
@@ -38,7 +41,10 @@ and returns
 
 The answer should be a 2D array (a 1 by 1). Look at the $\href{https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.sign.html}{sign}$ function. Note that you are allowed to use any functions defined in week 1's exercises.
 
-1234import numpy as npdef positive(x, th, th0): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def positive(x, th, th0): pass
+```
 
 Now, given a hyperplane and a set of data points, we can think about which points are on which side of the hyperplane. This is something we do in many machine-learning algorithms, as we will explore soon. It is also a chance to begin using numpy on larger chunks of data.
 
@@ -56,12 +62,16 @@ You can use (our version) of the length and positive functions; they are already
 *
 A should be a 1 by 5 array of values, either +1, 0 or -1, indicating, for each point in data, whether it is on the positive side of the hyperplane defined by th, th0. Use data, th, th0 as variables in your submission.
 
-123import numpy as npA = 'write your expression here'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as npA = 'write your expression here'
+```
 
 *
 A should be a 1 by 5 array of boolean values, either True or False, indicating for each point in data and corresponding label in labels whether it is correctly classified by hyperplane th = [1, 1], th0 = -2 . That is, return True when the side of the hyperplane (specified by $\theta$, $\theta_0$) that the point is on agrees with the specified label.
 
-123import numpy as npA = 'write your expression here'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as npA = 'write your expression here'
+```
 
 1.5) Score
 
@@ -79,7 +89,10 @@ and returns the number of points for which the label is equal to the output of t
 
 Since numpy treats False as 0 and True as 1, you can take the sum of a collection of Boolean values directly.
 
-1234import numpy as npdef score(data, labels, th, th0): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def score(data, labels, th, th0): pass
+```
 
 1.6) Best separator
 
@@ -104,7 +117,10 @@ The function score that you wrote above was for a single hyperplane separator. T
 
 Note: Look below the answer box for useful numpy functions!
 
-12345import numpy as npdef best_separator(data, labels, ths, th0s): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```python
+import numpy as np
+def best_separator(data, labels, ths, th0s): pass
+```
 
 Reference Material: Handy Numpy Functions and Their Usage
 
