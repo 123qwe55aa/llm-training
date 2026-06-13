@@ -389,7 +389,7 @@ const coursePromise = fetch("content/course.json").then((response) => {
         articles[section.id] = {
           title: section.title,
           kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
-          deck: `${section.video_count} 段视频 · ${section.pdf_count} 份 PDF`,
+          deck: `${section.video_count} 段视频 · ${(section.pdf_count ?? section.pdf_urls?.length ?? 0)} 份 PDF`,
           url: section.article,
           markdown: true,
         };
@@ -412,26 +412,33 @@ const typeLabels = {
 const renderCatalog = (course) => {
   const catalog = document.querySelector("#course-catalog");
   if (!catalog) return;
-  Object.entries(course.stats).forEach(([key, value]) => {
-    const node = document.querySelector(`#stat-${key}`);
-    if (node) node.textContent = String(value).padStart(2, "0");
-  });
+  if (course.stats) {
+    Object.entries(course.stats).forEach(([key, value]) => {
+      const node = document.querySelector(`#stat-${key}`);
+      if (node) node.textContent = String(value).padStart(2, "0");
+    });
+  }
 
-  const chapterHtml = course.chapters.map((chapter) => `
-    <details class="course-chapter" ${chapter.number <= 1 ? "open" : ""}>
+  const chapterHtml = course.chapters.map((chapter, chIdx) => {
+    const chNum = chapter.number ?? (chIdx + 1);
+    return `
+    <details class="course-chapter" ${chNum <= 1 ? "open" : ""}>
       <summary>
-        <span class="chapter-number">${String(chapter.number).padStart(2, "0")}</span>
+        <span class="chapter-number">${String(chNum).padStart(2, "0")}</span>
         <span><strong>${escapeHtml(chapter.title)}</strong><small>${chapter.sections.length} 个章节</small></span>
         <span class="chapter-arrow">展开</span>
       </summary>
       <div class="chapter-sections">
-        ${chapter.sections.map((section) => `
+        ${chapter.sections.map((section) => {
+          const pdfCount = section.pdf_count ?? (section.pdf_urls?.length ?? 0);
+          const secType = section.type || "notes";
+          return `
           <article class="course-section" data-search="${escapeHtml(`${chapter.title} ${section.title} ${(section.activities||[]).map((item) => item.title).join(" ")}`.toLowerCase())}">
             <a class="section-main" href="reader.html?article=${encodeURIComponent(section.id)}">
-              <span class="type-badge ${section.type}">${typeLabels[section.type]}</span>
+              <span class="type-badge ${secType}">${typeLabels[secType]}</span>
               <span class="section-copy">
                 <strong>${escapeHtml(section.title)}</strong>
-                <small>${section.video_count} 段视频 transcript · ${section.pdf_count} 份 PDF 已融合</small>
+                <small>${section.video_count} 段视频 transcript · ${pdfCount} 份 PDF 已融合</small>
               </span>
               <span class="section-open">阅读 →</span>
             </a>
@@ -440,9 +447,10 @@ const renderCatalog = (course) => {
                 <span class="type-badge exercise">Exercise</span>
                 ${escapeHtml(block.replace(/_/g, " "))}
               </a>`).join("")}</div>` : ""}
-          </article>`).join("")}
+          </article>`;
+        }).join("")}
       </div>
-    </details>`).join("");
+    </details>`;}).join("");
   catalog.innerHTML = chapterHtml;
 
   const search = document.querySelector("#course-search");
