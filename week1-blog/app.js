@@ -158,8 +158,10 @@ const activityToMarkdown = (text) => {
   const cleanLines = [];
   // Detect and remove broken Unicode math (each char on its own line)
   // Trigger: a line that's a single surrogate pair (math italic range)
+  // Detect lines that are a single math character (surrogate pair like 𝐸 or BMP like ℎ, ′)
   const mathSurrogate = /^[\uD800-\uDBFF][\uDC00-\uDFFF]$/;
-  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\),;:\d\-−′∙⋅]$/;
+  const bmpMathChar = /^[\u2100-\u214F\u2032]$/; // Planck constant ℎ, prime ′, etc.
+  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\),;:\d\-−′∙⋅+*\/<>^]$/;
   let inMathBlock = false;
 
   for (let i = 0; i < lines.length; i++) {
@@ -170,7 +172,7 @@ const activityToMarkdown = (text) => {
       cleanLines.push(raw);
       continue;
     }
-    if (mathSurrogate.test(trimmed)) {
+    if (mathSurrogate.test(trimmed) || bmpMathChar.test(trimmed)) {
       inMathBlock = true;
       continue;
     }
@@ -197,7 +199,11 @@ const activityToMarkdown = (text) => {
     out.push(val);
   });
 
-  return out.join("\n");
+  let result = out.join("\n");
+  // Remove spaced-out duplicate tuples e.g. "( 1 , − 1 , 2 , − 3 ) (1,−1,2,−3)" → keep compact only
+  result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
+
+  return result;
 };
 
 const curatedSources = {
