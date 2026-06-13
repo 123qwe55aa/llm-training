@@ -22,13 +22,11 @@ const inline = (value) => escapeHtml(value)
   .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
 const cleanContent = (markdown) => {
-  // 1. Strip video placeholder garbage
   let cleaned = markdown
     .replaceAll("No playable video sources found.", "")
     .replaceAll("Your browser does not support this video format. Try using a different browser.", "")
     .replaceAll("0:00 / 0:00", "");
 
-  // 2. Strip duplicate heading text: heading text repeated verbatim up to 3 times after heading
   const lines = cleaned.replace(/\r/g, "").split("\n");
   let headingText = null;
   let headingRepeatBudget = 0;
@@ -47,7 +45,6 @@ const cleanContent = (markdown) => {
     return true;
   });
 
-  // 3. Convert mathjax tags to proper LaTeX delimiters
   return filtered.join("\n")
     .replace(/\[mathjaxinline\](.*?)\[\/mathjaxinline\]/gs, (_, inner) => {
       inner = inner.trim();
@@ -59,7 +56,6 @@ const cleanContent = (markdown) => {
       if (/^\$\$.+\$\$$/.test(inner)) return inner;
       return `$$${inner}$$`;
     })
-    // 4. Clean up excessive blank lines (collapse 3+ to 2)
     .replace(/\n{4,}/g, "\n\n\n");
 };
 
@@ -141,46 +137,95 @@ const renderMarkdown = (markdown) => {
   return html.join("\n");
 };
 
+// --- Unicode box-drawing matrix to LaTeX bmatrix converter ---
+const matrixBracketOpen = /[\u23A1\u23A3]/;
+const matrixBracketClose = /[\u23A4\u23A6]/;
+const matrixDecor = /^[\u23A0-\u23B3\u2500\u2502]$/;
+
+const detectMatrixBlock = (lines, startIdx) => {
+  const firstLine = lines[startIdx].trim();
+  if (!matrixBracketOpen.test(firstLine)) return null;
+
+  let endIdx = -1;
+  for (let i = startIdx; i < lines.length; i++) {
+    if (matrixBracketClose.test(lines[i].trim())) {
+      endIdx = i;
+      break;
+    }
+  }
+  if (endIdx === -1) return null;
+
+  const bodyLines = [];
+  let contentStarted = false;
+  let labelBefore = "";
+  for (let i = startIdx + 1; i < endIdx; i++) {
+    const trimmed = lines[i].trim();
+    if (matrixDecor.test(trimmed)) continue;
+    if (!trimmed) continue;
+    const cleanLine = trimmed.replace(/[\t\u200B]+/g, "").trim();
+    if (cleanLine) bodyLines.push(cleanLine);
+  }
+  if (bodyLines.length === 0) return null;
+
+  for (let i = startIdx - 1; i >= Math.max(0, startIdx - 3); i--) {
+    const before = lines[i].trim();
+    const labelMatch = before.match(/^([a-zA-Z_]\w*)\s*=\s*$/);
+    if (labelMatch) {
+      labelBefore = labelMatch[1];
+      break;
+    }
+  }
+  return { startIdx, endIdx, label: labelBefore, rows: bodyLines };
+};
+
+const matrixToLatex = (block) => {
+  let latex = "";
+  if (block.label) latex = `${block.label}=`;
+  latex += "\\begin{bmatrix}\n";
+  latex += block.rows.map((row) => row.replace(/⋮/g, "\\vdots")).join(" \\\\\n");
+  latex += "\n\\end{bmatrix}";
+  return `$$${latex}$$`;
+};
+
 const activityToMarkdown = (text) => {
-  // Strip UI interaction elements
   let cleaned = text
     .replaceAll("Submit View Answer Ask for Help", "")
     .replaceAll("Run Code Submit View Answer Ask for Help", "")
     .replaceAll("Check Syntax Submit View Answer Ask for Help", "")
     .replaceAll("Submit View Answer", "")
     .replaceAll("You have infinitely many submissions remaining.", "");
-  // Strip zero-width spaces, tabs, and carriage returns
   cleaned = cleaned.replace(/[\u200B\t\r]+/g, "");
-  // Collapse excessive blank lines
   cleaned = cleaned.replace(/\n{4,}/g, "\n\n\n");
 
   const lines = cleaned.split("\n");
+
+  // Phase 1: Detect and convert box-drawing matrix blocks to LaTeX
+  const converted = [];
+  let i = 0;
+  while (i < lines.length) {
+    const block = detectMatrixBlock(lines, i);
+    if (block) {
+      converted.push(matrixToLatex(block));
+      i = block.endIdx + 1;
+    } else {
+      converted.push(lines[i]);
+      i++;
+    }
+  }
+
   const cleanLines = [];
-  // Detect and remove broken Unicode math (each char on its own line)
   const mathSurrogate = /^[\uD800-\uDBFF][\uDC00-\uDFFF]$/;
-  const bmpMathChar = /^[\u2100-\u214F\u2032\u23A0-\u23B3\u2200-\u22FF]$/;
-  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\)),;:\d\-−′∙⋅+*\/<>^]$/;
+  const bmpMathChar = /^[\u2100-\u214F\u2032\u23A0-\u23B3\u22EE\u22F0-\u22F1]$/;
+  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\\)),;:\d\-−′∙⋅+*\/<>^]$/;
   let inMathBlock = false;
 
-  for (let i = 0; i < lines.length; i++) {
-    const raw = lines[i];
+  for (const raw of converted) {
     const trimmed = raw.trim();
-    if (!trimmed) {
-      inMathBlock = false;
-      cleanLines.push(raw);
-      continue;
-    }
-    if (mathSurrogate.test(trimmed) || bmpMathChar.test(trimmed)) {
-      inMathBlock = true;
-      continue;
-    }
+    if (!trimmed) { inMathBlock = false; cleanLines.push(raw); continue; }
+    if (mathSurrogate.test(trimmed) || bmpMathChar.test(trimmed)) { inMathBlock = true; continue; }
     if (inMathBlock) {
-      if (singleChar.test(trimmed)) {
-        continue;
-      }
+      if (singleChar.test(trimmed)) continue;
       inMathBlock = false;
-      cleanLines.push(raw);
-      continue;
     }
     cleanLines.push(raw);
   }
@@ -196,11 +241,7 @@ const activityToMarkdown = (text) => {
   });
 
   let result = out.join("\n");
-  // Remove spaced-out duplicate tuples
   result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
-
-  // === Merge continuation lines that start with closing brackets/punctuation ===
-  // DISABLED: reorderParen was stealing ')' from En(θ,θ0) and attaching to next θ,θ0
 
   // Merge orphan closing brackets into previous line
   const merged = [];
@@ -209,8 +250,8 @@ const activityToMarkdown = (text) => {
     const curr = lines3[i];
     const trimmed = curr.trim();
     if (merged.length > 0 && (
-      /^[)\]}.,;:]/.test(trimmed) ||
-      (trimmed.length <= 3 && /^[)\]}.,;:\d]/.test(trimmed))
+      /^[)\]}\.,;:]/.test(trimmed) ||
+      (trimmed.length <= 3 && /^[)\]}\.,;:\d]/.test(trimmed))
     )) {
       merged[merged.length - 1] += curr;
     } else {
@@ -219,63 +260,70 @@ const activityToMarkdown = (text) => {
   }
   result = merged.join("\n");
 
-  // Merge separated letter-digit-pairs across lines: "θ\n0" -> "θ0", "E\nn" -> "En"
+  // Merge separated letter-digit-pairs across lines
   result = result.replace(/([\u00C0-\u024F\u0370-\u03FF\u210E]|[A-Z])[ \n](\d)/g, "$1$2");
   result = result.replace(/\b([A-Z])\n([a-z])(?=[^a-z]|$)/g, "$1$2");
-
-  // Merge blank lines between formula fragments: "En\n\n(θ,θ0)" -> "En (θ,θ0)"
   result = result.replace(/(\w)\n{2,}(?=[(\[⟨])/g, "$1 ");
-  // Merge orphan closing paren across multiple newlines
   result = result.replace(/(\w)\n+\)/g, "$1)");
-  // Remove duplicate opening/closing parens from artifact
   result = result.replace(/\(\s*\(/g, "(");
   result = result.replace(/\)\s*\)/g, ")");
-  // Strip lines that are just spaces after cleanup
   result = result.replace(/^ +$/gm, "");
-  // Remove stray math ellipsis characters (scraper artifacts)
-  result = result.replace(/[⋯⋮⋰⋱]/g, "...");
-  // Collapse remaining blank lines
   result = result.replace(/\n{3,}/g, "\n\n");
 
-  // === Wrap standalone display math in $$...$$ for MathJax ===
+  // Wrap standalone display math
   const lines2 = result.split("\n");
   const mathWrapped = [];
-
   for (let i = 0; i < lines2.length; i++) {
     const raw = lines2[i];
     const trimmed = raw.trim();
-
     const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
     const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That|You|Select|Such|All|We|It|A)/.test(trimmed);
     const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
     const isShort = trimmed.length > 2 && trimmed.length < 50 && trimmed.split(/\s+/).length <= 4;
     const hasEquals = /=/.test(trimmed);
     const startsMath = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ𝒙𝒚𝒛𝑤𝐸ℎ'′′″]/.test(trimmed);
-
     if (!isHeading && !startsWithWord && !isURL && isShort && hasEquals && startsMath) {
       mathWrapped.push(`$$${trimmed}$$`);
     } else {
       mathWrapped.push(raw);
     }
   }
-
   result = mathWrapped.join("\n");
 
-  // === Mark yes/no and input locations with markers ===
-  // Collapse multi-line yes/no patterns: "?\n--\nyes\nno" → "? {RADIO:yes,no}"
+  // === Inline math wrapping for common patterns ===
+  // Vector/matrix bracket notation: "[1 5 -3 2]" -> "$[1\\ 5\\ -3\\ 2]$"
+  result = result.replace(/(?<!\$)\[(\d[\d\s\-.,]*\d)\](?!\w)/g, (m) => {
+    const inner = m.slice(1,-1).trim().replace(/\s+/g, '\\ ');
+    return `$$\\begin{bmatrix}${inner}\\end{bmatrix}$$`;
+  });
+  // Transpose: "[1 5 -3 2]T" or "[1 5 -3 2]^T"
+  result = result.replace(/(?<!\$)\[(\d[\d\s\-.,]*\d)\]\s*[Tt]/g, (m) => {
+    const inner = m.slice(1,-1).replace(/[Tt]$/,'').trim().replace(/\s+/g, '\\ ');
+    return `$$\\begin{bmatrix}${inner}\\end{bmatrix}^T$$`;
+  });
+  // Subscripts: "c_0", "c_i", "c_{n-1}" etc
+  result = result.replace(/\b([A-Za-zθ𝜙ψβαδϵεπμλω])_(?:\{([^}]+)\}|(\d))/g, '$1_{$2$3}');
+  // Superscripts: "c^(1)" -> "c^{(1)}", "a^T" -> "a^{T}"
+  result = result.replace(/\b([A-Za-z])\^\((\d+)\)/g, '$1^{($2)}');
+  result = result.replace(/\b([A-Za-zθ𝜙ψβαδϵ])\^T/g, '$1^{T}');
+  // Greek letters as standalone words
+  result = result.replace(/\btimes\b/g, '\\times');
+  result = result.replace(/\bcdot\b/g, '\\cdot');
+  result = result.replace(/\bdot\b/g, '\\cdot');
+  // Multiplication dot: "a⋅b" -> "a \\cdot b" (within inline math context)
+  // Simple inline math: standalone expressions like "a+b", "n=4", "a⋅b"
+  result = result.replace(
+    /(?<!\$)(^|[^A-Za-z0-9])([A-Za-zθ𝜙ψβαδϵεπμλω]\s*[+\-−∗⋅×/=]\s*[A-Za-zθ𝜙ψβαδϵεπμλω0-9][A-Za-z0-9+\-−∗⋅×=/()]*)(?=[.,;:!?\s]|$)/gm,
+    (m, before, expr) => `${before}\\$${expr.trim()}\\$`
+  );
+
+  // Mark yes/no and input locations
   result = result.replace(/\?\s*\n--\s*\n(yes|no)\s*\n(yes|no)/g, '? {RADIO:$1,$2}');
   result = result.replace(/(does\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
   result = result.replace(/(exists\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
-  // Also handle single-line "? -- yes no"
   result = result.replace(/\? -- (yes|no)(?:\s+(yes|no))?/g, '? {RADIO:$1,$2}');
-  // Handle " =0 -- yes no" or "exists -- yes no" (without preceding ?)
   result = result.replace(/-- (yes|no)\s+(yes|no)/g, '{RADIO:$1,$2}');
-
-  // Convert "Enter a Python list..." to marker
-  result = result.replace(
-    /(Enter a Python list[^:]*:)/g,
-    '$1 {INPUT}'
-  );
+  result = result.replace(/(Enter a Python list[^:]*:)/g, '$1 {INPUT}');
 
   return result;
 };
@@ -315,26 +363,37 @@ const coursePromise = fetch("content/course.json").then((response) => {
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.json();
 }).then((course) => {
-  // Build flat articles map from chapters/sections/activities
   const articles = {};
   course.chapters.forEach((chapter) => {
     chapter.sections.forEach((section) => {
-      articles[section.id] = {
-        title: section.title,
-        kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
-        deck: `${section.video_count} 段视频 · ${section.pdf_count} 份 PDF`,
-        url: section.url,
-        markdown: section.markdown !== false,
-      };
-      section.activities.forEach((activity) => {
-        articles[activity.id] = {
-          title: activity.title,
-          kicker: `${chapter.title} · ${typeLabels[activity.type] || "练习"}`,
-          deck: `${activity.characters} 字符`,
-          url: activity.url,
+      const hasLti = section.lti_blocks && section.lti_blocks.length > 0;
+      if (hasLti) {
+        const blockName = section.lti_blocks[0];
+        articles[section.id] = {
+          title: section.title,
+          kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
+          deck: `${section.characters} 字符`,
+          url: `content/lti/${blockName}.txt`,
           markdown: false,
         };
-      });
+        section.lti_blocks.forEach((block) => {
+          articles[`activity-${block}`] = {
+            title: `${section.title} (${block})`,
+            kicker: `${chapter.title} · Exercise`,
+            deck: "",
+            url: `content/lti/${block}.txt`,
+            markdown: false,
+          };
+        });
+      } else if (section.article) {
+        articles[section.id] = {
+          title: section.title,
+          kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
+          deck: `${section.video_count} 段视频 · ${section.pdf_count} 份 PDF`,
+          url: section.article,
+          markdown: true,
+        };
+      }
     });
   });
   course.articles = articles;
@@ -367,7 +426,7 @@ const renderCatalog = (course) => {
       </summary>
       <div class="chapter-sections">
         ${chapter.sections.map((section) => `
-          <article class="course-section" data-search="${escapeHtml(`${chapter.title} ${section.title} ${section.activities.map((item) => item.title).join(" ")}`.toLowerCase())}">
+          <article class="course-section" data-search="${escapeHtml(`${chapter.title} ${section.title} ${(section.activities||[]).map((item) => item.title).join(" ")}`.toLowerCase())}">
             <a class="section-main" href="reader.html?article=${encodeURIComponent(section.id)}">
               <span class="type-badge ${section.type}">${typeLabels[section.type]}</span>
               <span class="section-copy">
@@ -376,10 +435,10 @@ const renderCatalog = (course) => {
               </span>
               <span class="section-open">阅读 →</span>
             </a>
-            ${section.activities.length ? `<div class="activity-links">${section.activities.map((activity) => `
-              <a href="reader.html?article=${encodeURIComponent(activity.id)}">
-                <span class="type-badge ${activity.type}">${typeLabels[activity.type]}</span>
-                ${escapeHtml(activity.title)}
+            ${(section.lti_blocks||[]).length ? `<div class="activity-links">${section.lti_blocks.map((block) => `
+              <a href="reader.html?article=${encodeURIComponent("activity-" + block)}">
+                <span class="type-badge exercise">Exercise</span>
+                ${escapeHtml(block.replace(/_/g, " "))}
               </a>`).join("")}</div>` : ""}
           </article>`).join("")}
       </div>
@@ -403,10 +462,11 @@ const renderCatalog = (course) => {
 const articleContent = document.querySelector("#article-content");
 if (articleContent) {
   const params = new URLSearchParams(location.search);
-  const requested = params.get("article") || "week1-intro-ml";
+  const requested = params.get("article") || "intro_ml";
   coursePromise
-    .then((course) => curatedSources[requested] || course.articles[requested] || course.articles["week1-intro-ml"])
+    .then((course) => curatedSources[requested] || course.articles[requested] || course.articles["intro_ml"])
     .then((article) => {
+      if (!article) throw new Error("article not found");
       document.title = `${article.title} · MIT 6.036`;
       document.querySelector("#article-title").textContent = article.title;
       document.querySelector("#article-kicker").textContent = article.kicker;
@@ -422,7 +482,6 @@ if (articleContent) {
         : renderMarkdown(activityToMarkdown(text));
       if (!article.markdown) articleContent.classList.add("activity-view");
       articleContent.innerHTML = rendered;
-      // Replace markers with interactive elements (post-render to avoid escapeHtml)
       articleContent.querySelectorAll("p").forEach((p) => {
         p.innerHTML = p.innerHTML.replace(
           /\{RADIO:(\w+),(\w+)\}/g,
@@ -449,7 +508,6 @@ if (articleContent) {
           + '<div class="ex-submissions">You have infinitely many submissions remaining.</div>'
         );
       });
-      // Add "(1.0 points possible)" subtitle after exercise title
       const titleHeader = articleContent.querySelector("h1");
       if (titleHeader && articleContent.classList.contains("activity-view")) {
         const points = document.createElement("div");
@@ -457,7 +515,6 @@ if (articleContent) {
         points.textContent = "(1.0 points possible)";
         titleHeader.after(points);
       }
-      // Style hyperlinks in exercise intro
       const firstP = articleContent.querySelector("p");
       if (firstP) {
         firstP.querySelectorAll("a").forEach((a) => a.classList.add("ex-hyperlinks"));
