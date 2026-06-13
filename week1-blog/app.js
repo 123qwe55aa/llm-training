@@ -25,22 +25,22 @@ const cleanContent = (markdown) => {
     .replaceAll("Your browser does not support this video format. Try using a different browser.", "")
     .replaceAll("0:00 / 0:00", "");
 
-  // 2. Strip duplicate heading text: lines that exactly repeat a preceding heading
+  // 2. Strip duplicate heading text: heading text repeated verbatim up to 3 times after heading
   const lines = cleaned.replace(/\r/g, "").split("\n");
-  let prevHeading = null;
-  const filtered = lines.filter((line, i) => {
+  let headingText = null;
+  let headingRepeatBudget = 0;
+  const filtered = lines.filter((line) => {
     const headingMatch = line.match(/^(#{1,4})\s+(.+)$/);
     if (headingMatch) {
-      prevHeading = headingMatch[2].trim();
+      headingText = headingMatch[2].trim();
+      headingRepeatBudget = 3;
       return true;
     }
-    // If this line is the heading text itself repeated verbatim as body text, skip it
-    if (prevHeading && line.trim() === prevHeading) {
-      // Also skip the second copy that sometimes follows
-      prevHeading = "USED";
+    if (headingText && headingRepeatBudget > 0 && line.trim() === headingText) {
+      headingRepeatBudget--;
       return false;
     }
-    if (line.trim()) prevHeading = null;
+    if (line.trim()) headingText = null;
     return true;
   });
 
