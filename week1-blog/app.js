@@ -130,7 +130,17 @@ const renderMarkdown = (markdown) => {
       html.push(`<tr>${cells}</tr>`);
       return;
     }
-    paragraph.push(line.trim());
+    // Paragraph break: flush if line looks like start of new paragraph
+    const pLine = line.trim();
+    if (paragraph.length > 0) {
+      const lastLine = paragraph[paragraph.length - 1];
+      const endsSentence = /[.?!:]$/.test(lastLine);
+      const startsNew = /^[A-Z"'(]/.test(pLine) || /^\d+\.\d/.test(pLine);
+      if ((endsSentence && startsNew) || /^\d+\.\d+/.test(pLine)) {
+        closeParagraph();
+      }
+    }
+    paragraph.push(pLine);
   });
   closeAll();
   if (inCode) html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
