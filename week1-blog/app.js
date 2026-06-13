@@ -150,7 +150,7 @@ const activityToMarkdown = (text) => {
     .replaceAll("Submit View Answer", "")
     .replaceAll("You have infinitely many submissions remaining.", "");
   // Strip zero-width spaces, tabs, and carriage returns
-  cleaned = cleaned.replace(/[\u200B\t\r]+/g, " ");
+  cleaned = cleaned.replace(/[\u200B\t\r]+/g, "");
   // Collapse excessive blank lines
   cleaned = cleaned.replace(/\n{4,}/g, "\n\n\n");
 
@@ -224,6 +224,22 @@ const activityToMarkdown = (text) => {
     }
   }
   result = merged.join("\n");
+
+  // Merge separated letter-digit-pairs across lines: "θ\n0" -> "θ0", "E\nn" -> "En"
+  result = result.replace(/([\u00C0-\u024F\u0370-\u03FF\u210E]|[A-Z])[ \n](\d)/g, "$1$2");
+  result = result.replace(/\b([A-Z])\n([a-z])(?=[^a-z]|$)/g, "$1$2");
+
+  // Merge blank lines between formula fragments: "En\n\n(θ,θ0)" -> "En (θ,θ0)"
+  result = result.replace(/(\w)\n{2,}(?=[(\[⟨])/g, "$1 ");
+  // Merge orphan closing paren across multiple newlines
+  result = result.replace(/(\w)\n+\)/g, "$1)");
+  // Remove duplicate opening/closing parens from artifact
+  result = result.replace(/\(\s*\(/g, "(");
+  result = result.replace(/\)\s*\)/g, ")");
+  // Strip lines that are just spaces after cleanup
+  result = result.replace(/^ +$/gm, "");
+  // Collapse remaining blank lines
+  result = result.replace(/\n{3,}/g, "\n\n");
 
   // === Wrap standalone display math in $$...$$ for MathJax ===
   const lines2 = result.split("\n");
