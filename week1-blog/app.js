@@ -546,7 +546,15 @@ if (articleContent) {
         if (heading.tagName === "H3") link.style.paddingLeft = "24px";
         toc.appendChild(link);
       });
-      if (window.MathJax?.typesetPromise) MathJax.typesetPromise([articleContent]);
+      if (window.renderMathInElement) {
+        renderMathInElement(articleContent, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
     })
     .catch(() => {
       articleContent.innerHTML = '<div class="loading-error">内容读取失败。请确认本地课程资料与服务器均已启动。</div>';
