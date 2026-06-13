@@ -11,6 +11,8 @@ These warmup exercises are divided into two sections:
 
 We will be using the notion of a hyperplane a great deal. A hyperplane is useful for classification, as discussed in the notes.
 
+![Hyperplane diagram](content/images/example1.png)
+
 ### Notational conventions
 
 - $x$: a point in $d$-dimensional space (represented as a column vector of $d$ real numbers), $\mathbb{R}^d$
@@ -30,6 +32,8 @@ In a $d$-dimensional space, a hyperplane is a $d-1$ dimensional subspace that ca
 ### 1.1) Through origin
 
 In $d$ dimensions, any vector $\theta \in \mathbb{R}^d$ can define a hyperplane. Specifically, the hyperplane through the origin associated with $\theta$ is the set of all vectors $x \in \mathbb{R}^d$ such that $\theta^T x = 0$. Note that this hyperplane includes the origin, since $x = 0$ is in the set.
+
+![Labelled hyperplane diagram](content/images/example1-labelled.png)
 
 **Ex1.1a.** In two dimensions, $\theta = [\theta_1, \theta_2]$ can define a hyperplane. Let $\theta = [1, 2]$. Give a vector that lies on the hyperplane given by the set of all $x \in \mathbb{R}^2$ such that $\theta^T x = 0$:
 
@@ -54,6 +58,8 @@ Formula for unit vector normal to hyperplane: `__________`
 Now, we'll consider hyperplanes defined by $\theta^T x + \theta_0 = 0$, which do not necessarily go through the origin. Distances from points to such general hyperplanes are useful in machine learning models, such as the perceptron ([as described in the notes](https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/courseware/Week2/perceptron/4)).
 
 Define the **positive side** of a hyperplane to be the half-space defined by $\{x \mid \theta^T x + \theta_0 > 0\}$, so $\theta$ points toward the positive side.
+
+![General hyperplane diagram](content/images/example2.png)
 
 **Ex1.2a.** In two dimensions, let $\theta = [3, 4]$ and $\theta_0 = 5$. What is the signed perpendicular distance from the hyperplane to the origin? The distance should be positive if the origin is on the positive side of the hyperplane, 0 on the hyperplane and negative otherwise.
 
