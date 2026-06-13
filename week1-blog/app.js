@@ -158,7 +158,7 @@ const activityToMarkdown = (text) => {
   const cleanLines = [];
   // Detect and remove broken Unicode math (each char on its own line)
   const mathSurrogate = /^[\uD800-\uDBFF][\uDC00-\uDFFF]$/;
-  const bmpMathChar = /^[\u2100-\u214F\u2032\u23A0-\u23B3\u22EE\u22F0-\u22F1]$/;
+  const bmpMathChar = /^[\u2100-\u214F\u2032\u23A0-\u23B3\u2200-\u22FF]$/;
   const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\)),;:\d\-−′∙⋅+*\/<>^]$/;
   let inMathBlock = false;
 
@@ -232,6 +232,8 @@ const activityToMarkdown = (text) => {
   result = result.replace(/\)\s*\)/g, ")");
   // Strip lines that are just spaces after cleanup
   result = result.replace(/^ +$/gm, "");
+  // Remove stray math ellipsis characters (scraper artifacts)
+  result = result.replace(/[⋯⋮⋰⋱]/g, "...");
   // Collapse remaining blank lines
   result = result.replace(/\n{3,}/g, "\n\n");
 
