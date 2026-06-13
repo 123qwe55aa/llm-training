@@ -178,10 +178,10 @@ const curatedSources = {
   },
   exercises: {
     title: "Hyperplanes 与 NumPy",
-    kicker: "WEEK 1 · 原版练习册",
-    deck: "保留原始题目与代码模板，不包含答案。",
-    url: "../downloads/MITx-6.036-Week1-exercises/week1_exercises_questions.txt",
-    markdown: false,
+    kicker: "WEEK 1 · 原版练习册（清理版）",
+    deck: "原始题目与代码模板，已清理为可读 Markdown。可线下用 Python 练习。",
+    url: "../downloads/MITx-6.036-Week1-exercises/week1_exercises.md",
+    markdown: true,
   },
   introduction: {
     title: "Introduction to Machine Learning",
