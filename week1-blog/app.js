@@ -34,7 +34,14 @@ const renderMarkdown = (markdown) => {
   let inTable = false;
 
   const closeParagraph = () => {
-    if (paragraph.length) html.push(`<p>${inline(paragraph.join(" "))}</p>`);
+    if (paragraph.length) {
+      const text = paragraph.join(" ");
+      if (text.startsWith("**Example:**")) {
+        html.push(`<div class="example-block"><p>${inline(text)}</p></div>`);
+      } else {
+        html.push(`<p>${inline(text)}</p>`);
+      }
+    }
     paragraph = [];
   };
   const closeList = () => {
@@ -51,7 +58,7 @@ const renderMarkdown = (markdown) => {
     if (line.startsWith("```")) {
       closeAll();
       if (inCode) {
-        html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
+        html.push(`<pre class="algorithm-box"><code>${escapeHtml(code.join("\n"))}</code></pre>`);
         code = [];
       }
       inCode = !inCode;
@@ -69,7 +76,12 @@ const renderMarkdown = (markdown) => {
     }
     if (line.startsWith("> ")) {
       closeAll();
-      html.push(`<blockquote>${inline(line.slice(2))}</blockquote>`);
+      const content = line.slice(2);
+      if (content.startsWith("**Study Question:**")) {
+        html.push(`<blockquote class="study-question">${inline(content.replace("**Study Question:**", "").trim())}</blockquote>`);
+      } else {
+        html.push(`<blockquote>${inline(content)}</blockquote>`);
+      }
       return;
     }
     const bullet = line.match(/^[-*]\s+(.+)$/);
@@ -97,7 +109,7 @@ const renderMarkdown = (markdown) => {
     paragraph.push(line.trim());
   });
   closeAll();
-  if (inCode) html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
+  if (inCode) html.push(`<pre class="algorithm-box"><code>${escapeHtml(code.join("\n"))}</code></pre>`);
   return html.join("\n");
 };
 

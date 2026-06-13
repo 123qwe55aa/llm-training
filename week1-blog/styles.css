@@ -169,6 +169,69 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
 .article-content p { margin: 0 0 1.35em; }
 .article-content li { margin-bottom: .55em; }
 .article-content blockquote { margin: 36px 0; padding: 20px 28px; color: var(--moss); background: var(--paper-deep); border-left: 3px solid var(--amber); }
+.article-content blockquote.study-question {
+  position: relative;
+  margin: 40px 0;
+  padding: 22px 28px 22px 56px;
+  background: color-mix(in srgb, var(--paper-deep) 75%, transparent);
+  border-left: 4px solid var(--amber);
+  border-radius: 0 4px 4px 0;
+}
+.article-content blockquote.study-question::before {
+  content: "?";
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  font: 700 20px var(--sans);
+  color: var(--amber);
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+}
+.article-content blockquote:not(.study-question) {
+  margin: 28px 0 28px 20px;
+  padding: 12px 22px;
+  font-size: calc(var(--reading-size) - 2px);
+  font-style: italic;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--paper-deep) 55%, transparent);
+  border-left: 2px solid var(--line);
+}
+.article-content .example-block {
+  margin: 36px 0 24px;
+  padding: 20px 24px;
+  background: color-mix(in srgb, var(--paper-deep) 65%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.article-content .example-block p { margin: 0; }
+.article-content pre.algorithm-box {
+  position: relative;
+  margin: 44px 0;
+  padding: 32px 22px 22px;
+  background: #1f2d26;
+  border: 1px solid rgba(202,218,192,.12);
+  border-radius: 4px;
+  box-shadow: 5px 6px 0 rgba(196,132,69,.2);
+  font-size: calc(var(--reading-size) - 4px);
+}
+.article-content pre.algorithm-box::before {
+  content: "Algorithm";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 12px;
+  font: 600 11px var(--sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--amber);
+  border-radius: 4px 0 4px 0;
+}
+.article-content pre.algorithm-box code { font-size: .92em; }
 .article-content code { padding: .12em .35em; font: .88em ui-monospace, SFMono-Regular, monospace; background: var(--paper-deep); border-radius: 3px; }
 .article-content pre { overflow: auto; padding: 22px; color: #dce2cf; background: #26362e; border-radius: 4px; box-shadow: 5px 6px 0 rgba(196,132,69,.22); }
 .article-content pre code { padding: 0; color: inherit; background: none; }
