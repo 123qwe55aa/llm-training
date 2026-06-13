@@ -99,9 +99,7 @@ const renderMarkdown = (markdown) => {
     }
     if (inCode) { code.push(line); return; }
     if (!line.trim()) { closeAll(); return; }
-    // Pass raw HTML through without escaping
-    if (/^\s*<\/?\w+/.test(line.trim()) && />\s*$/.test(line.trim())) { closeAll(); html.push(line.trim()); return; }
-    if (/^---+\s*$/.test(line.trim())) { closeAll(); html.push("<hr>"); return; }
+    if (/^---+$/.test(line.trim())) { closeAll(); html.push("<hr>"); return; }
     const heading = line.match(/^(#{1,4})\s+(.+)$/);
     if (heading) {
       closeAll();
@@ -198,28 +196,27 @@ const activityToMarkdown = (text) => {
   });
 
   let result = out.join("\n");
-  // Remove spaced-out duplicate tuples (each char on its own line due to scraping artifact)
-  result = result.replace(/\(\n[^)]+?\)(?=\n? ?\([^)]+?\))/g, "");
-  // Also remove spaced-out style like "( 1 , -1" where spaces exist inline
+  // Remove spaced-out duplicate tuples
   result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
-  // Merge separated letter-digit across same line and newlines: "θ 0" → "θ0", "E 0" → "E0"
-  result = result.replace(/([\u00C0-\u024F\u0370-\u03FF\u210E]|[A-Z])[ \n](\d)/g, "$1$2");
-  // Merge separated function names: "E\nn" → "En"
-  result = result.replace(/\b([A-Z])\n([a-z])(?=[^a-z]|$)/g, "$1$2");
-  // Remove duplicate opening parens from artifact: "( (x" → "(x"
-  result = result.replace(/\(\s*\(/g, "(");
-  // Remove duplicate closing parens from artifact: "x ) )" → "x )"
-  result = result.replace(/\)\s*\)/g, ")");
-  // Collapse remaining 3+ blank lines to 2
-  result = result.replace(/\n{3,}/g, "\n\n");
-  // Strip lines that are just spaces after cleanup
-  result = result.replace(/^ +$/gm, "");
-  // Merge orphan closing paren across blank lines: "content\n\n)" → "content)"
-  result = result.replace(/(\w)\n+\)/g, "$1)");
-  // Merge orphan opening paren across blank lines: "(\n\ncontent" → "(content"
-  result = result.replace(/\(\n+(\w)/g, "($1");
 
-  // === Post-processing: wrap math in $...$ for MathJax ===
+  // === Merge continuation lines that start with closing brackets/punctuation ===
+  const merged = [];
+  const lines3 = result.split("\n");
+  for (let i = 0; i < lines3.length; i++) {
+    const curr = lines3[i];
+    const trimmed = curr.trim();
+    if (merged.length > 0 && (
+      /^[)\]}.,;:]/.test(trimmed) ||
+      (trimmed.length <= 3 && /^[)\]}.,;:\d]/.test(trimmed))
+    )) {
+      merged[merged.length - 1] += curr;
+    } else {
+      merged.push(curr);
+    }
+  }
+  result = merged.join("\n");
+
+  // === Wrap standalone display math in $$...$$ for MathJax ===
   const lines2 = result.split("\n");
   const mathWrapped = [];
 
@@ -227,67 +224,36 @@ const activityToMarkdown = (text) => {
     const raw = lines2[i];
     const trimmed = raw.trim();
 
-    // Detect display math: standalone equation line (θ=..., h(x;θ)=..., E_n(...)=...)
-    const displayMathRE = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ]*['′]?\s*[=(]\s*.*[)=\d]$/;
-    // But not if it's already a heading, list, or looks like regular text
     const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
-    const hasVerb = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If)/.test(trimmed);
+    const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That|You|Select|Such|All|We|It|A)/.test(trimmed);
     const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
+    const isShort = trimmed.length > 2 && trimmed.length < 50 && trimmed.split(/\s+/).length <= 4;
+    const hasEquals = /=/.test(trimmed);
+    const startsMath = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ𝒙𝒚𝒛𝑤𝐸ℎ'′′″]/.test(trimmed);
 
-    if (!isHeading && !hasVerb && !isURL && trimmed.length > 5 && displayMathRE.test(trimmed)) {
-      // Display math — wrap in $$...$$
+    if (!isHeading && !startsWithWord && !isURL && isShort && hasEquals && startsMath) {
       mathWrapped.push(`$$${trimmed}$$`);
-      continue;
+    } else {
+      mathWrapped.push(raw);
     }
-
-    // For non-heading lines, wrap inline math expressions in $...$
-    // Pattern: Greek letters and function names followed by parenthesized args
-    let processed = raw;
-    if (!isHeading && !trimmed.startsWith("$$")) {
-      // Wrap common inline math patterns:
-      // 1. Greek letters (θ, θ', ℰ(θ,θ₀), ℋ, 𝒙, etc.)
-      // 2. Function calls like h(x;θ), E_n(θ,θ₀), En(θ,θ0)
-      // 3. Math symbols like ℎ, 𝑛, etc.
-      // But NOT numbers, list markers, or text like "yes no"
-      
-      // Inline math: function calls with Greek args
-      processed = processed.replace(
-        /\b([A-Za-z])(?:_\{?(\w+)\}?)?\s*\(([^)]*[θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒ][^)]*)\)/g,
-        (_, fn, sub, args) => {
-          const full = sub ? `${fn}_{${sub}}(${args})` : `${fn}(${args})`;
-          return `$${full}$`;
-        }
-      );
-      // Inline math: expressions that are mostly math like θ=(1,−1,2,−3) within text
-      processed = processed.replace(/\b([θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰ]'?\s*=\s*\([^)]+\))\b/g, "$$$1$$");
-      // Inline math: h(x;θ)=+1, h(x;θ), etc. (function name + parenthesized math args)
-      processed = processed.replace(/\b([a-z])\([^)]*[θ𝜃𝜙𝜓β;=+\-−][^)]*\)/g, (m) => `$${m}$`);
-    }
-
-    mathWrapped.push(processed);
   }
 
   result = mathWrapped.join("\n");
 
-  // === Convert -- yes/no to radio buttons ===
-  // First, normalize multi-line ? -- yes/no to single-line
-  result = result.replace(/\?\n+--\n+(yes)\n+(no)/g, '? -- $1 $2');
-  // Pattern: "Does ...? -- yes no" → radio buttons
-  result = result.replace(
-    /\? -- (yes|no)(?:\s+(yes|no))?/g,
-    (match, first, second) => {
-      if (second) {
-        // Two options: -- yes no
-        return `?\n<div class="exercise-options">\n  <label class="ex-option"><input type="radio" name="ex-${Math.random().toString(36).slice(2, 6)}" value="${first}"> ${first}</label>\n  <label class="ex-option"><input type="radio" name="ex-${Math.random().toString(36).slice(2, 6)}" value="${second}"> ${second}</label>\n</div>`;
-      }
-      return match;
-    }
-  );
+  // === Mark yes/no and input locations with markers ===
+  // Collapse multi-line yes/no patterns: "?\n--\nyes\nno" → "? {RADIO:yes,no}"
+  result = result.replace(/\?\s*\n--\s*\n(yes|no)\s*\n(yes|no)/g, '? {RADIO:$1,$2}');
+  result = result.replace(/(does\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
+  result = result.replace(/(exists\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
+  // Also handle single-line "? -- yes no"
+  result = result.replace(/\? -- (yes|no)(?:\s+(yes|no))?/g, '? {RADIO:$1,$2}');
+  // Handle " =0 -- yes no" or "exists -- yes no" (without preceding ?)
+  result = result.replace(/-- (yes|no)\s+(yes|no)/g, '{RADIO:$1,$2}');
 
-  // === Convert "Enter a Python list..." to text input ===
+  // Convert "Enter a Python list..." to marker
   result = result.replace(
     /(Enter a Python list[^:]*:)/g,
-    '$1\n<div class="exercise-input"><input type="text" class="ex-text-input" placeholder="Type your answer here..."></div>'
+    '$1 {INPUT}'
   );
 
   return result;
@@ -435,6 +401,46 @@ if (articleContent) {
         : renderMarkdown(activityToMarkdown(text));
       if (!article.markdown) articleContent.classList.add("activity-view");
       articleContent.innerHTML = rendered;
+      // Replace markers with interactive elements (post-render to avoid escapeHtml)
+      articleContent.querySelectorAll("p").forEach((p) => {
+        p.innerHTML = p.innerHTML.replace(
+          /\{RADIO:(\w+),(\w+)\}/g,
+          (_, v1, v2) => {
+            const name = "ex-" + Math.random().toString(36).slice(2, 6);
+            return '<div class="exercise-options">'
+              + '<label class="ex-option"><input type="radio" name="' + name + '" value="' + v1 + '"> ' + v1 + '</label>'
+              + '<label class="ex-option"><input type="radio" name="' + name + '" value="' + v2 + '"> ' + v2 + '</label>'
+              + '</div>'
+              + '<div class="ex-buttons">'
+              + '<button class="ex-btn-submit" disabled>Submit</button>'
+              + '<button class="ex-btn-view" disabled>View Answer</button>'
+              + '</div>'
+              + '<div class="ex-submissions">You have infinitely many submissions remaining.</div>';
+          }
+        );
+        p.innerHTML = p.innerHTML.replace(
+          /\{INPUT\}/g,
+          '<div class="exercise-input"><input type="text" class="ex-text-input" placeholder="Type your answer here..."></div>'
+          + '<div class="ex-buttons">'
+          + '<button class="ex-btn-submit" disabled>Submit</button>'
+          + '<button class="ex-btn-view" disabled>View Answer</button>'
+          + '</div>'
+          + '<div class="ex-submissions">You have infinitely many submissions remaining.</div>'
+        );
+      });
+      // Add "(1.0 points possible)" subtitle after exercise title
+      const titleHeader = articleContent.querySelector("h1");
+      if (titleHeader && articleContent.classList.contains("activity-view")) {
+        const points = document.createElement("div");
+        points.className = "ex-points";
+        points.textContent = "(1.0 points possible)";
+        titleHeader.after(points);
+      }
+      // Style hyperlinks in exercise intro
+      const firstP = articleContent.querySelector("p");
+      if (firstP) {
+        firstP.querySelectorAll("a").forEach((a) => a.classList.add("ex-hyperlinks"));
+      }
       const toc = document.querySelector("#toc");
       [...articleContent.querySelectorAll("h2, h3")].forEach((heading, index) => {
         heading.id = `section-${index + 1}`;
