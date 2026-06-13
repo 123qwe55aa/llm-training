@@ -289,22 +289,3 @@ Pick one:
 --
 Perceptron
 Averaged Perceptron
-
-View Answer <button class="btn btn-catsoop" onclick="!queue.get('location') ?
-"Enter Table Number",
-"Please enter your table number:",
-true,
-true).then(function(text) {
-queue.set('location', text);
-queue.add('help', {
-location: queue.get('location'),
-assignment: {
-name: 'q000026',
-page: catsoop.this_path,
-path: catsoop.path_info,
-display_name: 'Tutor Question 7 in Section 4.1',
-},
-})
-
-queue.set('_visible', true);
-}) : (queu[Truncated]

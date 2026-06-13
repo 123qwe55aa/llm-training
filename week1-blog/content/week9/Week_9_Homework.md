@@ -290,5 +290,3 @@ Enter a number:
 If the goal is $10$, $H = \infty$ and $\gamma = 1$, what is $V^*(1)$?
 
 Enter a number:
-
-View Answer <button class="btn btn-catsoop" onclick="!queue.get('location') ?
