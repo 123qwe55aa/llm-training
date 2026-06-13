@@ -14,7 +14,10 @@ const escapeHtml = (value = "") => value
   .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
 const inline = (value) => escapeHtml(value)
-  .replace(/`([^`]+)`/g, "<code>$1</code>")
+  .replace(/`([^`]+)`/g, (_, m) => {
+    if (/^_+$/.test(m)) return `<code class="answer-blank">${m}</code>`;
+    return `<code>${m}</code>`;
+  })
   .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
   .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
@@ -56,9 +59,7 @@ const cleanContent = (markdown) => {
       if (/^\$\$.+\$\$$/.test(inner)) return inner;
       return `$$${inner}$$`;
     })
-    // 4. Handle kramdown-style bold terms: **term:** but not as markdown bold
-    .replace(/\*\*([^*]+?):\*\*\s*/g, "<strong>$1:</strong> ")
-    // 5. Clean up excessive blank lines (collapse 3+ to 2)
+    // 4. Clean up excessive blank lines (collapse 3+ to 2)
     .replace(/\n{4,}/g, "\n\n\n");
 };
 
