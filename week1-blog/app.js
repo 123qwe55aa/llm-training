@@ -149,15 +149,46 @@ const activityToMarkdown = (text) => {
     .replaceAll("Check Syntax Submit View Answer Ask for Help", "")
     .replaceAll("Submit View Answer", "")
     .replaceAll("You have infinitely many submissions remaining.", "");
+  // Strip zero-width spaces, tabs, and carriage returns
+  cleaned = cleaned.replace(/[\u200B\t\r]+/g, " ");
   // Collapse excessive blank lines
   cleaned = cleaned.replace(/\n{4,}/g, "\n\n\n");
 
   const lines = cleaned.split("\n");
+  const cleanLines = [];
+  // Detect and remove broken Unicode math (each char on its own line)
+  // Trigger: a line that's a single surrogate pair (math italic range)
+  const mathSurrogate = /^[\uD800-\uDBFF][\uDC00-\uDFFF]$/;
+  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\),;:\d\-−′∙⋅]$/;
+  let inMathBlock = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i];
+    const trimmed = raw.trim();
+    if (!trimmed) {
+      inMathBlock = false;
+      cleanLines.push(raw);
+      continue;
+    }
+    if (mathSurrogate.test(trimmed)) {
+      inMathBlock = true;
+      continue;
+    }
+    if (inMathBlock) {
+      if (singleChar.test(trimmed)) {
+        continue;
+      }
+      inMathBlock = false;
+      // This line is the compact version — keep it
+      cleanLines.push(raw);
+      continue;
+    }
+    cleanLines.push(raw);
+  }
+
   const out = [];
-
-  lines.forEach((line) => {
+  cleanLines.forEach((line) => {
     const val = line.trimEnd();
-
     // Section headings: "1) Title", "2.3) Title", "Ex2.3a"
     if (/^\d+\)\s+\S/.test(val)) { out.push(`## ${val}`); return; }
     if (/^\d+\.\d+\)\s+\S/.test(val)) { out.push(`### ${val}`); return; }
