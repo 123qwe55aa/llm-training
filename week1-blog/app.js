@@ -212,9 +212,9 @@ const activityToMarkdown = (text) => {
     const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
     const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That)/.test(trimmed);
     const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
-    const looksLikeEquation = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ𝒙𝒚𝒛𝑤𝐸ℎ]/.test(trimmed)
+    const looksLikeEquation = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ𝒙𝒚𝒛𝑤𝐸ℎ'′]/.test(trimmed)
       && /[=()]/.test(trimmed)
-      && !trimmed.includes(" ");
+      && (/\S/.test(trimmed) && trimmed.split(/\s+/).length <= 4);
 
     if (!isHeading && !startsWithWord && !isURL && trimmed.length > 3 && looksLikeEquation) {
       mathWrapped.push(`$$${trimmed}$$`);
@@ -226,6 +226,10 @@ const activityToMarkdown = (text) => {
   result = mathWrapped.join("\n");
 
   // === Convert -- yes/no to radio buttons ===
+  // Handle both single-line "? -- yes no" and multi-line "?\n--\nyes\nno" patterns
+  // First, collapse multi-line yes/no patterns into single-line markers
+  result = result.replace(/\?\s*\n--\s*\n(yes|no)\s*\n(yes|no)/g, '? -- $1 $2');
+  // Then convert to radio buttons
   result = result.replace(
     /\? -- (yes|no)(?:\s+(yes|no))?/g,
     (match, first, second) => {
