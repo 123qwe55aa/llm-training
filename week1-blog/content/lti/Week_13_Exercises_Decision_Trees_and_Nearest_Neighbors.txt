@@ -1,0 +1,583 @@
+For these exercises, you should read the notes on nonparametric methods.
+1) Decision Trees
+
+Consider the following data (shown above), containing two features and a label (either positive or negative):
+
+Negative: (-1, -1) (2, 1) (2, -1)
+Positive: (-2, 1) (-1, 1) (1,-1)
+
+1A) The weighted average entropy of a split is:
+
+
+(fraction of points in left data set) 
+∗
+𝐻
+(
+𝑅
+𝑗
+,
+𝑠
+−
+)
++
+(fraction of points in right data set) 
+∗
+𝐻
+(
+𝑅
+𝑗
+,
+𝑠
++
+)
+(fraction of points in left data set) ∗H(R
+j,s
+−
+	​
+
+)+(fraction of points in right data set) ∗H(R
+j,s
++
+	​
+
+)
+where entropy 
+𝐻
+(
+𝑅
+𝑚
+)
+H(R
+m
+	​
+
+) of data in a region 
+𝑅
+𝑚
+R
+m
+	​
+
+ is given by
+𝐻
+(
+𝑅
+𝑚
+)
+=
+−
+∑
+𝑘
+𝑃
+^
+𝑚
+𝑘
+log
+⁡
+2
+𝑃
+^
+𝑚
+𝑘
+.
+H(R
+m
+	​
+
+)=−
+k
+∑
+	​
+
+P
+^
+mk
+	​
+
+log
+2
+	​
+
+P
+^
+mk
+	​
+
+.
+The 
+𝑃
+^
+𝑚
+𝑘
+P
+^
+mk
+	​
+
+ is the empirical probability, which is in this case the fraction of items in region 
+𝑚
+m that are of class 
+𝑘
+k (see lecture notes for more details).
+
+For this dataset, we will compute the weighted average entropies for the following potential splits of the data, 
+𝑓
+𝑖
+≥
+𝑠
+f
+i
+	​
+
+≥s where 
+𝑠
+s is the split value. The points from the data set 
+𝐷
+D in the "right" side of a split are 
+𝑅
+𝑗
+,
+𝑠
++
+(
+𝐷
+)
+=
+{
+𝑥
+∈
+𝐷
+∣
+𝑥
+𝑗
+≥
+𝑠
+}
+R
+j,s
++
+	​
+
+(D)={x∈D∣x
+j
+	​
+
+≥s}, and similarly similarly the points in the left side of the split are 
+𝑅
+𝑗
+,
+𝑠
+−
+(
+𝐷
+)
+=
+{
+𝑥
+∈
+𝐷
+∣
+𝑥
+𝑗
+&lt;
+𝑠
+}
+R
+j,s
+−
+	​
+
+(D)={x∈D∣x
+j
+	​
+
+<s}.
+
+Feature 
+𝑓
+1
+≥
+1.5
+f
+1
+	​
+
+≥1.5
+Feature 
+𝑓
+1
+≥
+−
+1.5
+f
+1
+	​
+
+≥−1.5
+Feature 
+𝑓
+1
+≥
+0.0
+f
+1
+	​
+
+≥0.0
+Feature 
+𝑓
+2
+≥
+0.0
+f
+2
+	​
+
+≥0.0
+
+We will compute the entropy of the first split 
+𝑓
+1
+≥
+1.5
+f
+1
+	​
+
+≥1.5 as an example:
+
+There are two points in the right split, of which both are the same class, so 
+𝑅
+1
+,
+1.5
++
+(
+𝐷
+)
+=
+−
+(
+log
+⁡
+2
+1
+)
+=
+0
+R
+1,1.5
++
+	​
+
+(D)=−(log
+2
+	​
+
+1)=0. In the left split there are 4 points, where 
+3
+/
+4
+3/4 of the points are positively labeled and 
+1
+/
+4
+1/4 are negatively labeled, so 
+𝑅
+1
+,
+1.5
+−
+=
+−
+(
+3
+4
+log
+⁡
+2
+(
+3
+4
+)
++
+1
+4
+log
+⁡
+2
+(
+1
+4
+)
+)
+≈
+0.8113
+R
+1,1.5
+−
+	​
+
+=−(
+4
+3
+	​
+
+log
+2
+	​
+
+(
+4
+3
+	​
+
+)+
+4
+1
+	​
+
+log
+2
+	​
+
+(
+4
+1
+	​
+
+))≈0.8113. Thus, the weighted average entropy is
+
+4
+6
+𝑅
+1
+,
+1.5
+−
+(
+𝐷
+)
++
+2
+6
+𝑅
+1
+,
+1.5
++
+(
+𝐷
+)
+≈
+0.541
+6
+4
+	​
+
+R
+1,1.5
+−
+	​
+
+(D)+
+6
+2
+	​
+
+R
+1,1.5
++
+	​
+
+(D)≈0.541
+
+Make sure that you use log base 2 in computing entropies.
+
+Compute the entropy for the split 
+𝑓
+1
+≥
+−
+1.5
+f
+1
+	​
+
+≥−1.5, with at least 2 decimal places: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Compute the entropy for the split 
+𝑓
+1
+≥
+0
+f
+1
+	​
+
+≥0, with at least 2 decimal places: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Compute the entropy for the split 
+𝑓
+2
+≥
+0
+f
+2
+	​
+
+≥0, with at least 2 decimal places: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+1B)
+
+Which is the best split to use? 
+--
+f_1 >= 1.5
+f_1 >= -1.5
+f_1 >= 0.0
+f_2 >= 0.0
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Construct a decision tree using a greedy algorithm that picks the next best split, based on picking the split that minimizes the weighted average entropy of that split. Enter the tree as a list of nodes in left-to-right pre-order traversal order. In this representation, each node is either:
+
+a leaf node representing a label, either 1 (for the positive label) or -1 (for the negative label).
+
+a feature test followed by a No node and a Yes node, where the feature test is written as a list containing two elements: a feature index (integer 1 or 2 corresponding to either feature 
+𝑓
+1
+f
+1
+	​
+
+ or feature 
+𝑓
+2
+f
+2
+	​
+
+) and a split value 
+𝑠
+s (floating point). So for instance, [1, 0.5] represents the test "Feature 
+𝑓
+1
+≥
+0.5
+f
+1
+	​
+
+≥0.5". If 
+𝑓
+1
+≥
+0.5
+f
+1
+	​
+
+≥0.5 is False, then the result of the following No node should be output, otherwise the result of the (later appearing) Yes node should be output. We will assume that the split values in these tests are always chosen to be half-way between the feature values in training data points.
+
+Note that the left child of a feature test represents the No branch and the right represents the Yes branch. So an example of a tree (this tree doesn't work for this dataset, we're just showing you an example of the notation) is:
+
+[[2, 0.5], 1, [1, 1.5], -1, 1]
+
+
+This example tree says: if 
+𝑓
+2
+≥
+0.5
+f
+2
+	​
+
+≥0.5 is False, then output label 1. (Or equivalently, if 
+𝑓
+2
+&lt;
+0.5
+f
+2
+	​
+
+<0.5, then output label 1.) Otherwise, if 
+𝑓
+1
+&lt;
+1.5
+f
+1
+	​
+
+<1.5, then output label -1, else output label 1.
+
+Another example is:
+
+[[2, 0.5], [1, 1.5], -1, 1, 1]
+
+In this case, this tree indicates that if 
+𝑓
+2
+&lt;
+0.5
+f
+2
+	​
+
+<0.5, we should return the result of the next node which in this case is another sequence of feature test, No, and Yes nodes; that second node says, if 
+𝑓
+1
+&lt;
+1.5
+f
+1
+	​
+
+<1.5 then return -1 otherwise 1. But if 
+𝑓
+2
+≥
+0.5
+f
+2
+	​
+
+≥0.5 from the first test was Yes, we should ignore the first No branch and instead return the final leaf value 1.
+
+1C) Now it's your turn -- write the tree that results from running the greedy weighted average entropy minimization algorithm for the given dataset!
+
+Enter a tree as a list, as described above: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+You should practice sketching the decision boundary for this decision tree; you can find a picture of it in the explanation (View Answer).
+
+1D) Using this tree, enter a list of predicted labels (1 or -1) for the following points:
+
+(1, 1), (1, 2), (-2, -0.01), (-2, 2), (2, 2), (2, -2), (-2, -2)
+
+Enter a list of 7 labels (-1 or 1): 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2) Nearest Neighbor
+
+For the same data as in the previous question, use the 1-nearest-neighbor method to determine the predicted labels (1 or -1) for the following points:
+
+(1, 1), (1, 2), (-2, -0.01), (-2, 2), (2, 2), (2, -2), (-2, -2)
+
+You should practice sketching the decision boundary for 1-NN on this data; you can find a picture of it in the explanation (after you do View Answer).
+
+2A)
+
+Enter a list of 7 labels (-1 or 1): 
+Submit View Answer
+You have infinitely many submissions remaining.

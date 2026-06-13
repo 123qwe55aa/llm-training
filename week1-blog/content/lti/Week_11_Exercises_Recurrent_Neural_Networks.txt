@@ -1,0 +1,582 @@
+For these exercises, you should read the notes on Recurrent Neural Networks.
+1) Representing sequences
+
+We are interested in making a neural network that can predict the next element in a sequence. For each of the sequences below, indicate all of the following models that could make correct predictions if its weights were set correctly (don't worry about learning). The possible models are:
+
+A bigram model, which is a feedforward network that takes sequence element 
+𝑦
+𝑡
+−
+1
+y
+t−1
+	​
+
+ as input and generates element 
+𝑦
+𝑡
+y
+t
+	​
+
+ as output.
+A trigram model, which is a a feedforward network that takes sequence elements 
+𝑦
+𝑡
+−
+2
+y
+t−2
+	​
+
+ and 
+𝑦
+𝑡
+−
+1
+y
+t−1
+	​
+
+ as input and generates element 
+𝑦
+𝑡
+y
+t
+	​
+
+ as output.
+A simple recurrent model, with a one-dimensional state, governed by the equations: 
+𝑠
+𝑡
+=
+tanh
+⁡
+(
+𝑊
+𝑠
+,
+𝑠
+𝑠
+𝑡
+−
+1
++
+𝑊
+𝑠
+,
+𝑥
+𝑦
+𝑡
+−
+1
+)
+s
+t
+	​
+
+=tanh(W
+s,s
+s
+t−1
+	​
+
++W
+s,x
+y
+t−1
+	​
+
+) and 
+𝑃
+(
+𝑦
+𝑡
+=
+𝑘
+∣
+𝑦
+0
+,
+…
+𝑦
+𝑡
+−
+1
+)
+=
+s
+o
+f
+t
+m
+a
+x
+(
+𝑊
+𝑜
+𝑠
+𝑡
+)
+P(y
+t
+	​
+
+=k∣y
+0
+	​
+
+,…y
+t−1
+	​
+
+)=softmax(W
+o
+s
+t
+	​
+
+).
+
+1A)
+
+1
+,
+1
+,
+−
+1
+,
+1
+,
+1
+,
+−
+1
+,
+1
+,
+1
+,
+−
+1
+,
+…
+1,1,−1,1,1,−1,1,1,−1,…
+	bigram
+	trigram
+	recurrent
+Submit View Answer
+You have 2 submissions remaining.
+
+1B)
+
+1
+,
+−
+1
+,
+1
+,
+−
+1
+,
+1
+,
+−
+1
+,
+…
+1,−1,1,−1,1,−1,…
+	bigram
+	trigram
+	recurrent
+Submit View Answer
+You have 2 submissions remaining.
+
+1C)
+
+1
+,
+1
+,
+1
+,
+−
+1
+,
+1
+,
+1
+,
+1
+,
+−
+1
+,
+…
+1,1,1,−1,1,1,1,−1,…
+	bigram
+	trigram
+	recurrent
+Submit View Answer
+You have 2 submissions remaining.
+
+2) RNN Learning
+
+Consider a very simple RNN, defined by the following equations:
+
+\begin{align} s_t &= w s_{t-1} + x_t \\ p_t &= s_t \end{align}
+There is a single scalar parameter 
+𝑤
+w. Assume that 
+𝑠
+0
+=
+0
+s
+0
+	​
+
+=0. Note that 
+𝑝
+𝑡
+p
+t
+	​
+
+ is the actual output of the RNN at time 
+𝑡
+t, and we want this to equal the corresponding true label 
+𝑦
+𝑡
+y
+t
+	​
+
+.
+
+2A) For an RNN that, given 
+𝑥
+=
+[
+1
+,
+1
+,
+1
+]
+x=[1,1,1] produces 
+𝑝
+=
+[
+1
+,
+2
+,
+3
+]
+p=[1,2,3], what is the value of 
+𝑤
+w?
+
+Enter a number: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2B) Assume that the loss at a single time step is 
+Loss
+(
+𝑝
+𝑡
+,
+𝑦
+𝑡
+)
+=
+1
+2
+(
+𝑝
+𝑡
+−
+𝑦
+𝑡
+)
+2
+Loss(p
+t
+	​
+
+,y
+t
+	​
+
+)=
+2
+1
+	​
+
+(p
+t
+	​
+
+−y
+t
+	​
+
+)
+2
+. Recall 
+𝑝
+𝑡
+p
+t
+	​
+
+ is the actual output and 
+𝑦
+𝑡
+y
+t
+	​
+
+ is the target output. What is 
+𝑑
+Loss
+𝑑
+𝑤
+dw
+dLoss
+	​
+
+ where 
+Loss
+=
+∑
+𝑡
+=
+1
+3
+Loss
+(
+𝑝
+𝑡
+,
+𝑦
+𝑡
+)
+Loss=∑
+t=1
+3
+	​
+
+Loss(p
+t
+	​
+
+,y
+t
+	​
+
+)? Assume 
+𝑠
+0
+=
+0
+s
+0
+	​
+
+=0.
+
+Enter an expression in terms of (only) w, x_1, x_2, x_3, y_1, y_2, y_3. Do not use any of the 
+𝑝
+𝑡
+p
+t
+	​
+
+.
+
+dLoss/dw = 
+Check Syntax Submit View Answer
+You have infinitely many submissions remaining.
+
+3) Weights
+
+Here is the unrolled RNN from the previous problem. Let's call this the single-w model
+
+Consider in addition a related model where instead of a single weight 
+𝑤
+w, at each time step we can use a different weight 
+𝑤
+𝑡
+w
+t
+	​
+
+; call this the multi-w model.
+
+Assume 
+𝑠
+0
+=
+0
+s
+0
+	​
+
+=0 throughout.
+
+3A) Can the single-w model exactly represent a machine that takes 
+𝑥
+=
+[
+1
+,
+1
+,
+1
+]
+x=[1,1,1] and produces 
+𝑦
+=
+[
+1
+,
+2
+,
+4
+]
+y=[1,2,4]? If so, what is the value of 
+𝑤
+w? If not, enter 'None'.
+
+Enter a number or 'None': 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+3B) Can the multi-w model exactly represent a machine that takes 
+𝑥
+=
+[
+1
+,
+1
+,
+1
+]
+x=[1,1,1] and produces 
+𝑦
+=
+[
+1
+,
+2
+,
+4
+]
+y=[1,2,4]? If so, what are the values of 
+[
+𝑤
+1
+,
+𝑤
+2
+,
+𝑤
+3
+]
+[w
+1
+	​
+
+,w
+2
+	​
+
+,w
+3
+	​
+
+] as a Python list? If not, enter 'None'.
+
+Enter a list of 3 numbers or 'None': 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+3C) Which of the following are reasons to prefer the single-w model (over the multi-w model)? Note when we say ``memorize a training sequence 
+[
+𝑥
+1
+,
+𝑥
+2
+,
+…
+,
+𝑥
+𝑛
+]
+[x
+1
+	​
+
+,x
+2
+	​
+
+,…,x
+n
+	​
+
+]" we mean that the model can potentially produce any output sequence 
+[
+𝑦
+1
+,
+𝑦
+2
+,
+…
+,
+𝑦
+𝑛
+]
+∈
+𝑅
+𝑛
+[y
+1
+	​
+
+,y
+2
+	​
+
+,…,y
+n
+	​
+
+]∈R
+n
+ given this input.
+
+Choose all that are true:
+	It can represent a bigger class of sequences.
+	It will generalize better with a small amount of data.
+	It will capture the data's structure as a finite state machine.
+	It can memorize any single training sequence
+Submit View Answer
+You have 5 submissions remaining.
+
+3D) Which of the following are reasons to prefer the multi-w model (over the single-w model)?
+
+Choose all that are true:
+	It can represent a bigger class of sequences.
+	It will generalize better with a small amount of data.
+	It will capture the data's structure as a finite state machine.
+	It can memorize any single training sequence
+Submit View Answer
+You have 5 submissions remaining.

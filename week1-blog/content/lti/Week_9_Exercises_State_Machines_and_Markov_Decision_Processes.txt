@@ -1,0 +1,515 @@
+For these exercises, you should read the notes on State Machines and Markov Decision Processes.
+1) State Machines
+
+State machines are a powerful and pervasive concept in information processing, playing important roles in computer science, signal processing, and control. Fundamentally, you can think of a state machine as a module that maps a sequence of input values 
+𝑥
+1
+,
+…
+,
+𝑥
+𝑇
+x
+1
+	​
+
+,…,x
+T
+	​
+
+ (they could be numbers, words, graphs, or anything) into a sequence of output values (also of any type) 
+𝑦
+1
+,
+…
+,
+𝑦
+𝑇
+y
+1
+	​
+
+,…,y
+T
+	​
+
+.
+
+In the simplest case, we might have a simple functional dependence, so that 
+𝑦
+𝑡
+=
+ℎ
+(
+𝑥
+𝑡
+)
+y
+t
+	​
+
+=h(x
+t
+	​
+
+), but more generally, we are interested in the case where 
+𝑦
+𝑡
+y
+t
+	​
+
+ might potentially depend on all previous input values, so 
+𝑦
+𝑡
+=
+ℎ
+(
+𝑥
+1
+,
+…
+,
+𝑥
+𝑡
+)
+y
+t
+	​
+
+=h(x
+1
+	​
+
+,…,x
+t
+	​
+
+). Generally, describing a functional dependency like this is very difficult, because the function 
+ℎ
+h seems to need a different number of arguments on each time step. However, we can describe a very large class of 
+ℎ
+h functions compactly, as a recursive combination of two functions, 
+𝑓
+f and 
+𝑔
+g, with an intermediate state value capturing the information that flows between applications of these functions. Mathematically, we have
+
+\begin{align} y_t &= g(s_t) \newline s_t &= f(s_{t-1}, x_t) \newline s_0 &= 0 \end{align}
+
+Here is a figure illustrating the process: you can think of it as a circuit with the state fed back into 
+𝑓
+f, but with a one-step delay.
+
+If 
+𝑓
+f and 
+𝑔
+g are linear functions, then this is an LTI (linear time-invariant) system, a popular model in control systems analysis. In general, an LTI system can depend on a finite number of previous input values and a finite number of previous output values; we can model that dependence by allowing 
+𝑠
+𝑡
+s
+t
+	​
+
+ to be a vector, storing as many of these values as we'd like.
+
+If 
+𝑥
+𝑡
+x
+t
+	​
+
+, 
+𝑦
+𝑡
+y
+t
+	​
+
+, and 
+𝑠
+𝑡
+s
+t
+	​
+
+ are all elements of finite sets, then this describes an FSM (finite-state machine), a popular model in computer science and some kinds of discrete control.
+
+For each of the following state machines, provide the output sequence 
+[
+𝑦
+1
+,
+𝑦
+2
+,
+.
+.
+.
+,
+𝑦
+𝑇
+]
+[y
+1
+	​
+
+,y
+2
+	​
+
+,...,y
+T
+	​
+
+] given the input sequence 
+[
+𝑥
+1
+,
+𝑥
+2
+,
+.
+.
+.
+,
+𝑥
+𝑇
+]
+[x
+1
+	​
+
+,x
+2
+	​
+
+,...,x
+T
+	​
+
+]:
+
+1A)
+
+   s_0 = 0
+   f(s, x_i) = max(s, x_i)
+   g(s) = s * 2
+   Input: [0, 1, 2, 1]
+
+Enter a Python list of four numbers: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+1B)
+
+   s_0 = (0, 0)
+   f(s, x_i) = (s[0] + x_i, s[1] + 1)
+   g(s) = s[0] / s[1]
+   Input: [0, 1, 2, 1]
+
+Enter a Python list of four numbers: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2) Tiny Policy Evaluation
+
+Consider an MDP with states (0, 1, 2, 3) and actions ('b', 'c'). The reward function is:
+
+𝑅
+(
+𝑠
+,
+𝑎
+)
+=
+{
+1
+	
+if 
+𝑠
+=
+1
+
+
+2
+	
+if 
+𝑠
+=
+3
+
+
+0
+	
+otherwise
+R(s,a)=
+⎩
+⎪
+⎨
+⎪
+⎧
+	​
+
+1
+2
+0
+	​
+
+if s=1
+if s=3
+otherwise
+	​
+
+You get the reward associated with a state on the step when you exit that state. The transition function for each action is below, where 
+𝑇
+[
+𝑖
+,
+𝑥
+,
+𝑗
+]
+T[i,x,j] is the conditional probability 
+𝑃
+(
+𝑠
+𝑡
++
+1
+=
+𝑗
+∣
+𝑎
+=
+𝑥
+,
+𝑠
+𝑡
+=
+𝑖
+)
+P(s
+t+1
+	​
+
+=j∣a=x,s
+t
+	​
+
+=i). The state transition diagrams are given as well, but you may find it easier to calculate the state values using the transition matrices.
+
+𝑇
+(
+𝑠
+𝑡
+,
+’b’
+,
+𝑠
+𝑡
++
+1
+)
+=
+[
+0.0
+	
+0.9
+	
+0.1
+	
+0.0
+
+
+0.9
+	
+0.1
+	
+0.0
+	
+0.0
+
+
+0.0
+	
+0.0
+	
+0.1
+	
+0.9
+
+
+0.9
+	
+0.0
+	
+0.0
+	
+0.1
+]
+T(s
+t
+	​
+
+,’b’,s
+t+1
+	​
+
+)=
+⎣
+⎢
+⎢
+⎡
+	​
+
+0.0
+0.9
+0.0
+0.9
+	​
+
+0.9
+0.1
+0.0
+0.0
+	​
+
+0.1
+0.0
+0.1
+0.0
+	​
+
+0.0
+0.0
+0.9
+0.1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+
+𝑇
+(
+𝑠
+𝑡
+,
+’c’
+,
+𝑠
+𝑡
++
+1
+)
+=
+[
+0.0
+	
+0.1
+	
+0.9
+	
+0.0
+
+
+0.9
+	
+0.1
+	
+0.0
+	
+0.0
+
+
+0.0
+	
+0.0
+	
+0.1
+	
+0.9
+
+
+0.9
+	
+0.0
+	
+0.0
+	
+0.1
+]
+T(s
+t
+	​
+
+,’c’,s
+t+1
+	​
+
+)=
+⎣
+⎢
+⎢
+⎡
+	​
+
+0.0
+0.9
+0.0
+0.9
+	​
+
+0.1
+0.1
+0.0
+0.0
+	​
+
+0.9
+0.0
+0.1
+0.0
+	​
+
+0.0
+0.0
+0.9
+0.1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+
+Note that the only effect of the action is to change the transition probability from state 0 (the first row of the transition matrix: rows correspond to the input states, and columns correspond to the output states).
+
+We would like to find the value function associated with the policy that always chooses action 'c'.
+
+2A) What are the horizon 0 undiscounted values of the states under this policy?
+
+Enter a Python list of four numbers: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2B) For horizon 1?
+
+Enter a Python list of four numbers: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2C) For horizon 2?
+
+Enter a Python list of four numbers: 
+Submit View Answer
+You have infinitely many submissions remaining.

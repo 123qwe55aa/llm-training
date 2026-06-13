@@ -1,0 +1,2311 @@
+You may find the lecture notes on regression helpful as you do this homework.
+
+1) Intro to linear regression
+
+So far, we have been looking at classification, where predictors are of the form
+
+𝑦
+^
+(
+𝑖
+)
+=
+𝑠
+𝑖
+𝑔
+𝑛
+(
+𝜃
+𝑇
+𝑥
+(
+𝑖
+)
++
+𝜃
+0
+)
+y
+^
+	​
+
+(i)
+=sign(θ
+T
+x
+(i)
++θ
+0
+	​
+
+)
+where 
+𝑦
+^
+(
+𝑖
+)
+y
+^
+	​
+
+(i)
+ is our prediction of the corresponding label 
+𝑦
+(
+𝑖
+)
+y
+(i)
+ making a binary classification as to whether example 
+𝑥
+(
+𝑖
+)
+x
+(i)
+ belongs to the positive or negative class of examples.
+
+In many problems, we want to predict a real value, such as the actual gas mileage of a car, or the concentration of some chemical. Luckily, we can use much of the mechanism we have already developed, and make predictors of the form:
+
+𝑦
+^
+(
+𝑖
+)
+=
+𝜃
+𝑇
+𝑥
+(
+𝑖
+)
++
+𝜃
+0
+.
+y
+^
+	​
+
+(i)
+=θ
+T
+x
+(i)
++θ
+0
+	​
+
+.
+This is called a linear regression model.
+
+We would like to learn a linear regression model from examples. Assume 
+𝑋
+X is a 
+𝑑
+d by 
+𝑛
+n array (as before) but that 
+𝑌
+Y is a 
+1
+1 by 
+𝑛
+n array of floating-point numbers (rather than +1 or -1). Given data 
+(
+𝑋
+,
+𝑌
+)
+(X,Y) we need to find 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+ that does a good job of making predictions on new data drawn from the same source.
+
+We will approach this problem by formulating an objective function. There are many possible reasonable objective functions that implicitly make slightly different assumptions about the data, but they all typically have the form:
+
+𝐽
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝐿
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
++
+𝜆
+𝑅
+(
+𝜃
+,
+𝜃
+0
+)
+J(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+L(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+)+λR(θ,θ
+0
+	​
+
+)
+
+For regression, we most frequently use squared loss, in which
+
+𝐿
+𝑠
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
+=
+(
+𝑦
+^
+(
+𝑖
+)
+−
+𝑦
+(
+𝑖
+)
+)
+2
+=
+(
+𝜃
+𝑇
+𝑥
+(
+𝑖
+)
++
+𝜃
+0
+−
+𝑦
+(
+𝑖
+)
+)
+2
+.
+L
+s
+	​
+
+(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+)=(
+y
+^
+	​
+
+(i)
+−y
+(i)
+)
+2
+=(θ
+T
+x
+(i)
++θ
+0
+	​
+
+−y
+(i)
+)
+2
+.
+
+We might start by simply trying to minimize the average squared loss on the training data; this is called the empirical risk or mean square error:
+
+𝐽
+𝑒
+𝑚
+𝑝
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝐿
+𝑠
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
+.
+J
+emp
+	​
+
+(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+L
+s
+	​
+
+(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+).
+Later, we will add in a regularization term.
+
+We will see later in this assignment that we can find a closed form matrix formula (requiring a matrix inverse) for the optimal 
+𝜃
+θ in a linear regression formula. Being able to solve a machine-learning problem in closed form is very awesome! But inverting a matrix is computationally expensive (a bit less than 
+𝑂
+(
+𝑚
+3
+)
+O(m
+3
+) where 
+𝑚
+m is the dimension of our matrix), and so, as our data sets get larger, we will need to find some more efficient or approximate ways to approach the problem.
+
+For your convenience, we have copied the hands-on section into a colab notebook, which may be found here. You can alternatively fill in these functions in code_for_hw5.py, which is part of this set of files (the other files will be useful for the last part of the homework).
+
+Let's start by thinking about gradient descent to attack this problem:
+
+1A) What is the gradient of the empirical risk with respect to 
+𝜃
+?
+θ? We can see that it is of the form:
+
+∇
+𝜃
+𝐽
+𝑒
+𝑚
+𝑝
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝑔
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+∇
+θ
+	​
+
+J
+emp
+	​
+
+(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+g(x
+(i)
+,y
+(i)
+)
+where 
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+x
+(i)
+,y
+(i)
+ are the 
+𝑖
+𝑡
+ℎ
+i
+th
+ data point and its label.
+
+Write an expression for 
+𝑔
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+g(x
+(i)
+,y
+(i)
+) using the symbols: x_i, y_i, theta and theta_0, where 
+𝑔
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+g(x
+(i)
+,y
+(i)
+) is the derivative of the 
+𝐿
+𝑠
+L
+s
+	​
+
+ function described above with respect to 
+𝜃
+θ. Remember that you can use @ for matrix product, and you can use transpose(v) to transpose a vector. Note that this 
+𝑔
+(
+⋅
+)
+g(⋅) function is just the derivative with respect to a single data point 
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+x
+(i)
+,y
+(i)
+. We'll build up to the gradient of 
+𝐽
+𝑒
+𝑚
+𝑝
+J
+emp
+	​
+
+ in a moment.
+
+𝑔
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+=
+g(x
+(i)
+,y
+(i)
+)= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1B) What is the gradient of the empirical risk now with respect to 
+𝜃
+0
+θ
+0
+	​
+
+? We can see that it is of a similar form:
+
+∇
+𝜃
+0
+𝐽
+𝑒
+𝑚
+𝑝
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝑔
+0
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+.
+∇
+θ
+0
+	​
+
+	​
+
+J
+emp
+	​
+
+(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+g
+0
+	​
+
+(x
+(i)
+,y
+(i)
+).
+
+Write an expression for 
+𝑔
+0
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+g
+0
+	​
+
+(x
+(i)
+,y
+(i)
+) using the symbols: x_i, y_i, theta and theta_0.
+
+𝑔
+0
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+)
+=
+g
+0
+	​
+
+(x
+(i)
+,y
+(i)
+)= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1C) Next we're interested in the gradient of the empirical loss with respect to 
+𝜃
+θ, 
+∇
+𝜃
+𝐽
+𝑒
+𝑚
+𝑝
+∇
+θ
+	​
+
+J
+emp
+	​
+
+, but now for a whole data set 
+𝑋
+X (of dimensions 
+𝑑
+d by 
+𝑛
+n).
+
+Write an expression for 
+∇
+𝜃
+𝐽
+𝑒
+𝑚
+𝑝
+∇
+θ
+	​
+
+J
+emp
+	​
+
+ using the symbols: X and Y for the full set of data, theta, theta_0, and n. Here X has dimensions 
+𝑑
+d by 
+𝑛
+n, and Y has dimensions 1 by 
+𝑛
+n. Remember that you can use @ for matrix product, and you can use transpose(a) to transpose a vector or array.
+
+∇
+𝜃
+𝐽
+𝑒
+𝑚
+𝑝
+=
+∇
+θ
+	​
+
+J
+emp
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+2) Sources of Error
+
+Recall that structural error arises when the hypothesis class cannot represent a hypothesis that performs well on the test data and estimation error arises when the parameters of a hypothesis cannot be estimated well based on the training data. (You can also refer to here in the notes.)
+
+Following is a collection of potential cures for a situation in which your learning algorithm generates a hypothesis with a high test error.
+
+For each one, indicate whether it can can reduce structural error, estimation error, both, or neither.
+
+2A) Penalize 
+∥
+𝜃
+∥
+2
+∥θ∥
+2
+ during training.
+
+Can reduce:
+	structural error
+	estimation error
+	both
+	neither
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2B) Penalize 
+∥
+𝜃
+∥
+2
+∥θ∥
+2
+ during testing.
+
+Can reduce:
+	structural error
+	estimation error
+	both
+	neither
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2C) Increase the amount of training data.
+
+Can reduce:
+	structural error
+	estimation error
+	both
+	neither
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2D) Increase the order of a fixed polynomial basis.
+
+Can reduce:
+	structural error
+	estimation error
+	both
+	neither
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2E) Decrease the order of a fixed polynomial basis.
+
+Can reduce:
+	structural error
+	estimation error
+	both
+	neither
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+3) Minimizing empirical risk
+
+We can also solve regression problems analytically.
+
+Remember the definition of squared loss,
+
+𝐿
+𝑠
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
+=
+(
+𝜃
+𝑇
+𝑥
+(
+𝑖
+)
++
+𝜃
+0
+−
+𝑦
+(
+𝑖
+)
+)
+2
+L
+s
+	​
+
+(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+)=(θ
+T
+x
+(i)
++θ
+0
+	​
+
+−y
+(i)
+)
+2
+and empirical risk:
+𝐽
+𝑒
+𝑚
+𝑝
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝐿
+𝑠
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
+J
+emp
+	​
+
+(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+L
+s
+	​
+
+(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+)
+Later, we will add in a regularization term.
+
+For simplicity in this section, assume that we are handling the constant term, 
+𝜃
+0
+θ
+0
+	​
+
+, by adding a dimension to the input feature vector that always has the value 1. To review why this works, take a look at the introduction to problem 1 in HW2.
+
+Let data matrix 
+𝑍
+=
+𝑋
+𝑇
+Z=X
+T
+ be 
+𝑛
+n by 
+𝑑
+d, let target output vector 
+𝑇
+=
+𝑌
+𝑇
+T=Y
+T
+ be 
+𝑛
+n by 1, and recall that 
+𝜃
+θ is 
+𝑑
+d by 
+1
+1. Then we can write the whole linear regression prediction as 
+𝑍
+𝜃
+Zθ.
+
+3A) 
+𝑇
+T is the 
+𝑛
+n by 
+1
+1 vector of target output values. Write an equation expressing the mean squared loss of 
+𝜃
+θ in terms of 
+𝑍
+Z, 
+𝑇
+T, 
+𝑛
+n, and 
+𝜃
+θ. Hint: note that this loss 
+𝐽
+(
+𝜃
+)
+J(θ) is a scalar, a sum of squared terms divided by 
+𝑛
+n; we can write it as 
+(
+𝑊
+𝑇
+𝑊
+)
+/
+𝑛
+(W
+T
+W)/n for a column vector 
+𝑊
+W.
+
+
+Enter your answer as a Python expression. You can use symbols Z, T, n and theta. Recall that our expression syntax includes transpose(x) for transpose of an array, inverse(x) for the inverse of an array, and x@y to indicate a matrix product of two arrays.
+
+𝐽
+(
+𝜃
+)
+=
+J(θ)= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Now, how can we find the minimizing 
+𝜃
+θ, given 
+𝑍
+Z and 
+𝑇
+T? Take the gradient (yes, even with a matrix expression), set it to zero(s) and solve for 
+𝜃
+θ.
+
+3B) What is 
+∇
+𝜃
+𝐽
+(
+𝜃
+)
+∇
+θ
+	​
+
+J(θ) in terms of 
+𝑍
+Z, 
+𝑇
+T, 
+𝜃
+θ, and 
+𝑛
+n? You can use matrix derivatives or, compute the answer for some individual elements and deduce the matrix form.
+
+∇
+𝜃
+𝐽
+(
+𝜃
+)
+=
+∇
+θ
+	​
+
+J(θ)= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3C) What if you set this equation to 0 and solve for 
+𝜃
+∗
+θ
+∗
+, the optimal 
+𝜃
+θ? Hint: It's ok to ignore the constant scaling factor.
+
+𝜃
+∗
+=
+θ
+∗
+=
+	
+(
+𝑍
+𝑇
+𝑇
+)
+−
+1
+(
+𝑍
+𝑇
+𝑍
+)
+(Z
+T
+T)
+−1
+(Z
+T
+Z)
+	
+(
+𝑍
+𝑇
+𝑍
+)
+−
+1
+𝑍
+𝑇
+𝑇
+(Z
+T
+Z)
+−1
+Z
+T
+T
+	
+(
+𝑍
+𝑍
+𝑇
+)
+−
+1
+𝑍
+𝑇
+𝑇
+(ZZ
+T
+)
+−1
+ZT
+T
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3D) Just converting back to the data matrix format we have been using (not transposed), we have
+
+𝜃
+∗
+=
+θ
+∗
+=
+	
+(
+𝑋
+𝑌
+𝑇
+)
+−
+1
+(
+𝑋
+𝑋
+𝑇
+)
+(XY
+T
+)
+−1
+(XX
+T
+)
+	
+(
+𝑋
+𝑇
+𝑋
+)
+−
+1
+𝑋
+𝑇
+𝑌
+(X
+T
+X)
+−1
+X
+T
+Y
+	
+(
+𝑋
+𝑋
+𝑇
+)
+−
+1
+𝑋
+𝑌
+𝑇
+(XX
+T
+)
+−1
+XY
+T
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3E) Now implement 
+𝜃
+∗
+θ
+∗
+ as found in 3D), using symbols X and Y for the data matrix and outputs, and np.dot, np.transpose, np.linalg.inv.
+
+1
+2
+# Enter an expression to compute and set th to the optimal theta
+th = None
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+4) Adding regularization
+
+Although we don't have the same notion of margin maximization as with the SVM formulation for classification, there is still a good reason to regularize or put pressure on the coefficient vector 
+𝜃
+θ to prevent the model from fitting the training data too closely, especially in cases where we have few data points and many features.
+
+And, as it happens, this same regularization will help address a problem that you might have anticipated when finding the analytical solution for 
+𝜃
+θ, which is that 
+𝑋
+𝑋
+𝑇
+XX
+T
+ might not be invertible (where we are using the definition of 
+𝑋
+X as in problem 3, where each column of 
+𝑋
+X is a 
+𝑑
+d-length vector representing a 
+𝑑
+d-feature sample point and there are 
+𝑛
+n columns in 
+𝑋
+X (or equivalently, there are 
+𝑛
+n training examples)).
+
+Consider this matrix:
+
+X = np.array([[1, 2], [2, 3], [3, 5], [1, 4]])
+
+Is 
+𝑋
+𝑋
+𝑇
+XX
+T
+ invertible? If not, what's the problem? Mark all that are true.
+	It is invertible
+	It is not invertible because 
+𝑋
+X is not square
+	It is not invertible because two columns of 
+𝑋
+X are linearly dependent
+	It is not invertible because the rows of 
+𝑋
+𝑋
+𝑇
+XX
+T
+ are linearly dependent
+	It is not invertible because 
+𝑛
+n is smaller than 
+𝑑
+d
+	We cannot compute the transpose of 
+𝑋
+X
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+5) Evaluation
+
+We have been hired by Buy 'n' Large to deliver a predictor of change in sales volume from last year, for each of their stores. We have a machine-learning algorithm that can be used with regularization parameter 
+𝜆
+λ. Our overall objective is to deliver a predictor that minimizes squared loss on predictions when actually used by the company. We have three data sets: 
+𝐷
+𝑡
+𝑟
+𝑎
+𝑖
+𝑛
+D
+train
+	​
+
+, 
+𝐷
+𝑡
+𝑒
+𝑠
+𝑡
+D
+test
+	​
+
+ and 
+𝐷
+𝑟
+𝑒
+𝑎
+𝑙
+D
+real
+	​
+
+, each of size 
+𝑛
+n. The 
+𝐷
+𝑟
+𝑒
+𝑎
+𝑙
+D
+real
+	​
+
+ is owned by the company.
+
+We will focus on a linear predictor with parameters 
+𝜃
+θ without the offset parameter 
+𝜃
+0
+θ
+0
+	​
+
+ for simplicity and use regularizer 
+𝜆
+∥
+𝜃
+∥
+2
+λ∥θ∥
+2
+, where 
+𝜆
+λ is the regularization parameter. There are several phases of the training process (as represented in problems 5A through 5D below), and we need to select the appropriate objective for each of those tasks. In the problems below, we will have different expressions with different "slots" (A, B, C, D) to fill from, picking among the following options available to us related to
+
+what the minimization is over,
+the dataset used,
+the predictor used, and
+whether regularization is added.
+
+Fill in the slots (A,B,C,D) for each phase by choosing the expressions for the indicated slots. The available expressions are shown below; please enter the index for the expression for each of the slots.
+
+0
+𝜃
+θ
+𝜃
+𝑏
+𝑒
+𝑠
+𝑡
+(
+𝜆
+)
+θ
+best
+	​
+
+(λ),
+𝜃
+∗
+θ
+∗
+,
+𝜆
+λ,
+𝜆
+∗
+λ
+∗
+,
+𝜆
+∥
+𝜃
+∥
+2
+λ∥θ∥
+2
+,
+𝜆
+∗
+∥
+𝜃
+∥
+2
+λ
+∗
+∥θ∥
+2
+,
+𝐷
+𝑡
+𝑟
+𝑎
+𝑖
+𝑛
+D
+train
+	​
+
+,
+𝐷
+𝑡
+𝑒
+𝑠
+𝑡
+D
+test
+	​
+
+,
+𝐷
+𝑡
+𝑟
+𝑎
+𝑖
+𝑛
+∪
+𝐷
+𝑡
+𝑒
+𝑠
+𝑡
+D
+train
+	​
+
+∪D
+test
+	​
+
+,
+𝐷
+𝑟
+𝑒
+𝑎
+𝑙
+D
+real
+	​
+
+
+Note that 
+𝜃
+𝑏
+𝑒
+𝑠
+𝑡
+(
+𝜆
+)
+θ
+best
+	​
+
+(λ) is a value of 
+𝜃
+θ that is a function of 
+𝜆
+λ; 
+𝜃
+∗
+θ
+∗
+, 
+𝜆
+∗
+λ
+∗
+ are specific values found as described below; 
+𝜃
+θ and 
+𝜆
+λ are variables that range over 
+𝑑
+d-dimensional column vectors and positive reals, respectively.
+
+5A) Selecting the best hypothesis (parameters 
+𝜃
+θ) for some fixed value of the regularization parameter 
+𝜆
+λ. Call this 
+𝜃
+𝑏
+𝑒
+𝑠
+𝑡
+(
+𝜆
+)
+θ
+best
+	​
+
+(λ).
+
+𝜃
+𝑏
+𝑒
+𝑠
+𝑡
+(
+𝜆
+)
+=
+arg
+min
+⁡
+𝐴
+1
+∣
+𝐵
+∣
+∑
+(
+𝑥
+,
+𝑦
+)
+∈
+𝐵
+(
+𝐶
+𝑇
+𝑥
+−
+𝑦
+)
+2
+/
+2
++
+𝐷
+θ
+best
+	​
+
+(λ)=arg
+A
+min
+	​
+
+∣B∣
+1
+	​
+
+(x,y)∈B
+∑
+	​
+
+(C
+T
+x−y)
+2
+/2+D
+
+Enter a list of 4 indices for [A, B, C, D]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5B) Selecting the best value of the regularization parameter 
+𝜆
+λ. We will call this best value 
+𝜆
+∗
+λ
+∗
+.
+
+𝜆
+∗
+=
+arg
+min
+⁡
+𝐴
+1
+∣
+𝐵
+∣
+∑
+(
+𝑥
+,
+𝑦
+)
+∈
+𝐵
+(
+𝐶
+𝑇
+𝑥
+−
+𝑦
+)
+2
+/
+2
++
+𝐷
+λ
+∗
+=arg
+A
+min
+	​
+
+∣B∣
+1
+	​
+
+(x,y)∈B
+∑
+	​
+
+(C
+T
+x−y)
+2
+/2+D
+
+Enter a list of 4 indices for [A, B, C, D]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5C) Selecting the hypothesis (parameters 
+𝜃
+θ) to deliver to the company. Call this 
+𝜃
+∗
+θ
+∗
+.
+
+𝜃
+∗
+=
+arg
+min
+⁡
+𝐴
+1
+∣
+𝐵
+∣
+∑
+(
+𝑥
+,
+𝑦
+)
+∈
+𝐵
+(
+𝐶
+𝑇
+𝑥
+−
+𝑦
+)
+2
+/
+2
++
+𝐷
+θ
+∗
+=arg
+A
+min
+	​
+
+∣B∣
+1
+	​
+
+(x,y)∈B
+∑
+	​
+
+(C
+T
+x−y)
+2
+/2+D
+
+Enter a list of 4 indices for [A, B, C, D]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5D) Evaluating the actual on-the-job performance 
+𝜖
+∗
+ϵ
+∗
+ of the selected hypothesis 
+𝜃
+∗
+θ
+∗
+.
+
+𝜖
+∗
+=
+1
+∣
+𝐵
+∣
+∑
+(
+𝑥
+,
+𝑦
+)
+∈
+𝐵
+(
+𝐶
+𝑇
+𝑥
+−
+𝑦
+)
+2
+/
+2
++
+𝐷
+ϵ
+∗
+=
+∣B∣
+1
+	​
+
+(x,y)∈B
+∑
+	​
+
+(C
+T
+x−y)
+2
+/2+D
+
+Enter a list of 3 indices for [B, C, D]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+6) Linear regression - going downhill
+
+We will now write some general Python code to compute the gradient of the squared-loss objective, following the structure of the expression and the rules of calculus. Note that this style of writing the gradient functions maps directly into the chain-rule steps required to compute the gradient, but produces code that is inefficient, because of duplicated computations. It is straightforward to implement more efficient versions if you want to use them for larger problems.
+
+Reminder: For your convenience, we have copied the hands-on section into a colab notebook, which may be found here.. Alternatively, you can work with these functions on your own computer in code_for_hw5.py, contained in this zip file. That file has somewhat longer docstrings and doctests for many of these functions and other basic utiliities, that may be useful to you in debugging your implementations. (The other files therein will be useful in the last part of this homework).
+
+We start by defining some basic functions for computing the mean squared loss. Note that we want these to work for any value of 
+𝑛
+n, that is, x could be a single feature vector (of dimension 
+𝑑
+d by 1) or a full data matrix (of dimension 
+𝑑
+d by 
+𝑛
+n), and similarly for y.
+
+# In all the following definitions:
+# x is d by n : input data
+# y is 1 by n : output regression values
+# th is d by 1 : weights
+# th0 is 1 by 1 or scalar
+
+def lin_reg(x, th, th0):
+    return np.dot(th.T, x) + th0
+
+def square_loss(x, y, th, th0):
+    return (y - lin_reg(x, th, th0))**2
+
+def mean_square_loss(x, y, th, th0):
+    # the axis=1 and keepdims=True are important when x is a full matrix
+    return np.mean(square_loss(x, y, th, th0), axis = 1, keepdims = True)
+
+These functions will already be defined when you are answering the questions below.
+
+Warm up:
+
+6A)
+
+
+If 
+𝑋
+X is 
+𝑑
+d by 
+𝑛
+n and 
+𝑌
+Y is 
+1
+1 by 
+𝑛
+n, what is the dimension of 
+𝜃
+θ? 
+--
+d by n
+1 by d
+d by 1
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+6B)
+
+If 
+𝑋
+X is 
+𝑑
+d by 
+𝑛
+n and 
+𝑌
+Y is 
+1
+1 by 
+𝑛
+n, what is the dimension of 
+∇
+𝜃
+𝐽
+𝑒
+𝑚
+𝑝
+(
+𝜃
+,
+𝜃
+0
+)
+∇
+θ
+	​
+
+J
+emp
+	​
+
+(θ,θ
+0
+	​
+
+)? 
+--
+d by n
+1 by d
+d by 1
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+6C) Now let's compute the gradients with respect to 
+𝜃
+θ, make sure that they work for data matrices and label vectors. You can write one function at a time, some of the checks will apply to each function independently.
+
+In the code below, the following values are used in the test cases:
+
+X = np.array([[1., 2., 3., 4.], [1., 1., 1., 1.]])
+Y = np.array([[1., 2.2, 2.8, 4.1]])
+th = np.array([[1.0],[0.05]])
+th0 = np.array([[0.]])
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Write a function that returns the gradient of lin_reg(x, th, th0)
+# with respect to th
+def d_lin_reg_th(x, th, th0):
+    return None
+    
+# Write a function that returns the gradient of square_loss(x, y, th, th0) with
+# respect to th.  It should be a one-line expression that uses lin_reg and
+# d_lin_reg_th.
+def d_square_loss_th(x, y, th, th0):
+    return None
+# Write a function that returns the gradient of mean_square_loss(x, y, th, th0) with
+# respect to th.  It should be a one-line expression that uses d_square_loss_th.
+def d_mean_square_loss_th(x, y, th, th0):
+    return None
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+6D) Now let's compute the gradients with respect to 
+𝜃
+0
+θ
+0
+	​
+
+, make sure that they work for data matrices and label vectors. You can write one function at a time, some of the checks will apply to each function independently. The test cases will include example variables for X, Y, th, and th0 from 6C above.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Write a function that returns the gradient of lin_reg(x, th, th0)
+# with respect to th0. Hint: Think carefully about what the dimensions of the returned value should be!
+def d_lin_reg_th0(x, th, th0):
+    return None
+    
+# Write a function that returns the gradient of square_loss(x, y, th, th0) with
+# respect to th0.  It should be a one-line expression that uses lin_reg and
+# d_lin_reg_th0.
+def d_square_loss_th0(x, y, th, th0):
+    return None
+# Write a function that returns the gradient of mean_square_loss(x, y, th, th0) with
+# respect to th0.  It should be a one-line expression that uses d_square_loss_th0.
+def d_mean_square_loss_th0(x, y, th, th0):
+    return None
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+7) Going down the ridge
+
+Now, let's add a regularizer. The ridge objective can be implemented as follows:
+
+# In all the following definitions:
+# x is d by n : input data
+# y is 1 by n : output regression values
+# th is d by 1 : weights
+# th0 is 1 by 1 or scalar
+def ridge_obj(x, y, th, th0, lam):
+    return np.mean(square_loss(x, y, th, th0), axis = 1, keepdims = True) + lam * np.linalg.norm(th)**2
+
+
+Let's extend our previous code for the gradient of the mean square loss to compute the gradient of the ridge objective with respect to 
+𝜃
+θ. Our previous solutions for the non-ridge case: d_mean_square_loss_th and d_mean_square_loss_th0 are defined for you and you can call them. The test cases will include example variables for X, Y, th, and th0 from 6C above.
+
+1
+2
+3
+4
+5
+6
+def d_ridge_obj_th(x, y, th, th0, lam):
+    return None
+def d_ridge_obj_th0(x, y, th, th0, lam):
+    return None
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+8) Stochastic gradient
+
+We will now implement stochastic gradient descent in a general way, similar to what we did with gradient descent (gd).
+
+sgd takes the following as input: (Recall that the stochastic part refers to using a randomly selected point and corresponding label from the given dataset to perform an update. Therefore, your objective function for a given step will need to take this into account.)
+
+X: a standard data array (d by n)
+y: a standard labels row vector (1 by n)
+J: a cost function whose input is a data point (a column vector), a label (1 by 1) and a weight vector w (a column vector) (in that order), and which returns a scalar.
+dJ: a cost function gradient (corresponding to J) whose input is a data point (a column vector), a label (1 by 1) and a weight vector w (a column vector) (also in that order), and which returns a column vector.
+w0: an initial value of weight vector 
+𝑤
+w, which is a column vector.
+step_size_fn: a function that is given the (zero-indexed) iteration index (an integer) and returns a step size.
+max_iter: the number of iterations to perform
+
+It returns a tuple (like gd):
+
+w: the value of the weight vector at the final step
+fs: the list of values of 
+𝐽
+J found during all the iterations
+ws: the list of values of 
+𝑤
+w found during all the iterations
+
+Note: w should be the value one gets after applying stochastic gradient descent to w0 for max_iter-1 iterations (we call this the final step). The first element of fs should be the value of J calculated with w0, and fs should have length max_iter; similarly, the first element of ws should be w0, and ws should have length max_iter.
+
+You might find the function np.random.randint(n) useful in your implementation.
+
+Hint: This is a short function; our implementation is around 10 lines.
+
+The test cases are:
+
+def downwards_line():
+    X = np.array([[0.0, 0.1, 0.2, 0.3, 0.42, 0.52, 0.72, 0.78, 0.84, 1.0],
+                  [1.0, 1.0, 1.0, 1.0, 1.0,  1.0,  1.0,  1.0,  1.0,  1.0]])
+    y = np.array([[0.4, 0.6, 1.2, 0.1, 0.22, -0.6, -1.5, -0.5, -0.5, 0.0]])
+    return X, y
+
+X, y = downwards_line()
+
+def J(Xi, yi, w):
+    # translate from (1-augmented X, y, theta) to (separated X, y, th, th0) format
+    return float(ridge_obj(Xi[:-1,:], yi, w[:-1,:], w[-1:,:], 0))
+
+def dJ(Xi, yi, w):
+    def f(w): return J(Xi, yi, w)
+    return num_grad(f)(w)
+
+
+where num_grad is taken from homework from the previous week:
+
+def num_grad(f):
+    def df(x):
+        g = np.zeros(x.shape)
+        delta = 0.001
+        for i in range(x.shape[0]):
+            xi = x[i,0]
+            x[i,0] = xi - delta
+            xm = f(x)
+            x[i,0] = xi + delta
+            xp = f(x)
+            x[i,0] = xi
+            g[i,0] = (xp - xm)/(2*delta)
+        return g
+    return df
+
+
+1
+2
+3
+def sgd(X, y, J, dJ, w0, step_size_fn, max_iter):
+    pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+9) Predicting mpg values
+
+We will now try to synthesize the functions we have written in order to perform ridge regression on the auto-mpg dataset from lab03. Unlike in lab03, we will now try to predict the actual mpg values of the cars, instead of whether they are above or below the median mpg!
+
+As a reminder, the dataset is as follows:
+
+1. mpg:           continuous
+2. cylinders:     multi-valued discrete
+3. displacement:  continuous
+4. horsepower:    continuous
+5. weight:        continuous
+6. acceleration:  continuous
+7. model year:    multi-valued discrete
+8. origin:        multi-valued discrete
+9. car name:      string (many values)
+
+
+For convenience, we will choose to not include model year and car name as features. For the remaining features, we again have the option to keep the raw values, standardize them, or use a one-hot encoding.
+
+9A) What is true about leaving features as raw versus deciding to standardize them, in the context of linear regression without regularization?
+
+	The set of all possible linear regression models learnable on standardized features is smaller than the set of linear regression models learnable on raw features
+	The theoretical minimum value of the loss function is the same both with raw and standardized features
+	SGD will typically perform better on standardized features than on raw features.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+9B) What is true about leaving features as raw versus deciding to standardize them, in the context of ridge regression (i.e., we have a nonzero regularizer)?
+
+	The set of all possible models learnable on standardized features is smaller than the set of models learnable on raw features
+	The theoretical minimum value of the loss function is the same both with raw and standardized features
+	SGD will typically perform better on standardized features than on raw features.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+With this considered, we decide to standardize or one-hot encode all features in this section (we encourage you, though, to try raw features on your own to see how their performance matches your expectations!).
+
+One additional step we perform is to standardize the output values. Note that we did not have to worry about this in a classification context, as all outputs were 
+±
+1
+±1. In a regression context, standardizing the output values can have practical performance gains, again due to better numerical performance of learning algorithms on data that is in a good magnitude range.
+
+The metric we will use to measure the quality of our learned predictors is Root Mean Square Error (RMSE). This is useful metric because it gives a sense of the deviation in the nature units of the predictor. RMSE is defined as follows:
+
+RMSE
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+(
+𝑦
+(
+𝑖
+)
+−
+𝑓
+(
+𝑥
+(
+𝑖
+)
+)
+)
+2
+RMSE=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+(y
+(i)
+−f(x
+(i)
+))
+2
+	​
+
+
+where 
+𝑓
+f is our learned predictor: in this case, 
+𝑓
+(
+𝑥
+)
+=
+𝜃
+⋅
+𝑥
++
+𝜃
+0
+f(x)=θ⋅x+θ
+0
+	​
+
+. This gives a measure of how far away the true values are from the predicted values; we are interested in this value, measured in units of mpg.
+
+Note: One very important thing to keep in mind when employing standardization is that we need to reverse the standardization when we want to report results. If we standardize output values in the training set by subtracting 
+𝜇
+μ and dividing by 
+𝜎
+σ, we need to take care to:
+
+Perform standardization with the same values of 
+𝜇
+μ and 
+𝜎
+σ on the test set (Why?) before predicting outputs using our learned predictor.
+Multiply the RMSE calculated on the test set by a factor of 
+𝜎
+σ to report test error. (Why?)
+
+Given all of this, we now will try using:
+
+Two choices of feature set:
+[cylinders=standard, displacement=standard, horsepower=standard, weight=standard, acceleration=standard, origin=one_hot]
+[cylinders=one_hot, displacement=standard, horsepower=standard, weight=standard, acceleration=standard, origin=one_hot]
+
+Polynomial features (we will construct the polynomial features after having standardized the input data) of orders 1-3
+
+Different choices of the regularization parameter, 
+𝜆
+λ. Although, ideally, you would run a grid search over a large range of 
+𝜆
+λ, we will ask you to look at the choices 
+𝜆
+=
+{
+0.0
+,
+0.01
+,
+0.02
+,
+⋯
+,
+0.1
+}
+λ={0.0,0.01,0.02,⋯,0.1} for polynomial features of orders 
+1
+1 and 
+2
+2, and the choices 
+𝜆
+=
+{
+0
+,
+20
+,
+40
+,
+⋯
+,
+200
+}
+λ={0,20,40,⋯,200} for polynomial features of order 
+3
+3 (as this is approximately where we found the optimal 
+𝜆
+λ to lie).
+
+We will use 
+10
+10-fold cross-validation to try all possible combinations of these feature choices and test which is best. We have attached a code file with some predefined methods that will be useful to you here. Alternatively, a google colab link may be found here. If you choose to use the code file, a more detailed description of the roles of the files is below:
+
+The file code_for_hw5.py contains functions, some of which will need to be filled in with your definitions from this homework. Your functions are then called by ridge_min, defined for you, which takes a dataset 
+(
+𝑋
+,
+𝑦
+)
+(X,y) and a hyperparameter, 
+𝜆
+λ as input and returns 
+𝜃
+θ and 
+𝜃
+0
+θ
+0
+	​
+
+ minimizing the ridge regression objective using SGD (this is the analogue of the svm_min function that you wrote for homework last week). The learning rate and number of iterations are fixed in this function, and should not be modified for the purpose of answering the below questions (although you should feel free to experiment with these if you are interested!). This function will then further be called by xval_learning_alg (also defined for you in the same file), which returns the average RMSE across all (here, 10) splits of your data when performing cross-validation. (Note that this RMSE is reported in standardized y units; to convert this to RMSE in mpg (miles per gallon), you should multiply this by the sigma returned by the hw5.std_y function call.)
+
+The file auto.py will be used to implement the auto data regression. The file contains code for creating the two feature sets that you are asked to work with here. Transforming those features further with make_polynomial_feature_fun, and running the cross-validation function, which uses your implementations in code_for_hw5.py (both from code_for_hw5.py), you should be able to answer the following questions:
+
+9C) What combination minimizes the average cross-validation RMSE?
+
+Enter a tuple of three numbers (feature_set, polynomial_order, lambda): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+9D) What is the cross-validation RMSE value (in mpg) that you obtain using the best combination?
+
+Enter an accuracy value: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+9E) Say that we really wanted to fit an order 3 polynomial model using the first feature set. What value of lambda minimizes the average cross-validation RMSE, and what is the RMSE value at that value of lambda?
+
+Enter a python list of two numbers [lambda, RMSE_value]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

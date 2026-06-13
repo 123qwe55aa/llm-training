@@ -1,0 +1,794 @@
+For these exercises, it will be helpful to review the notes on Regression.
+1) Intro to linear regression
+
+So far, we have been looking at classification, where predictors are of the form
+
+𝑦
+=
+s
+i
+g
+n
+(
+𝜃
+𝑇
+𝑥
++
+𝜃
+0
+)
+y=sign(θ
+T
+x+θ
+0
+	​
+
+)
+making a binary classification as to whether example 
+𝑥
+x belongs to the positive or negative class of examples.
+
+In many problems, we want to predict a real value, such as the actual gas mileage of a car, or the concentration of some chemical. Luckily, we can use most of a mechanism we have already spent building up, and make predictors of the form:
+
+𝑦
+=
+𝜃
+𝑇
+𝑥
++
+𝜃
+0
+.
+y=θ
+T
+x+θ
+0
+	​
+
+.
+This is called a linear regression model.
+
+We would like to learn a linear regression model from examples. Assume 
+𝑋
+X is a 
+𝑑
+d by 
+𝑛
+n array (as before) but that 
+𝑌
+Y is a 
+1
+1 by 
+𝑛
+n array of floating-point numbers (rather than +1 or -1). Given data 
+(
+𝑋
+,
+𝑌
+)
+(X,Y) we need to find 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+ that does a good job of making predictions on new data drawn from the same source.
+
+We will approach this problem by formulating an objective function. There are many possible reasonable objective functions that implicitly make slightly different assumptions about the data, but they all typically have the form:
+
+𝐽
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝐿
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
++
+𝜆
+𝑅
+(
+𝜃
+,
+𝜃
+0
+)
+.
+J(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+L(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+)+λR(θ,θ
+0
+	​
+
+).
+
+For regression, we most frequently use squared loss, in which
+
+𝐿
+𝑠
+(
+𝑥
+,
+𝑦
+,
+𝜃
+,
+𝜃
+0
+)
+=
+(
+𝑦
+−
+𝜃
+𝑇
+𝑥
+−
+𝜃
+0
+)
+2
+.
+L
+s
+	​
+
+(x,y,θ,θ
+0
+	​
+
+)=(y−θ
+T
+x−θ
+0
+	​
+
+)
+2
+.
+
+The term with 
+𝑅
+(
+𝜃
+,
+𝜃
+0
+)
+R(θ,θ
+0
+	​
+
+) is termed the regularizer, and penalizes more complex predictors. We will explore different choices of regularizer later in this set of exercises.
+
+Ex1.1: Which of the following pictures illustrates the squared loss metric? Assume that the dark line is described by 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+, the black dots are the 
+(
+𝑥
+,
+𝑦
+)
+(x,y) data, and the light lines indicate the errors.
+
+  
+A                               B                                C 
+
+
+Select the picture which best illustrates the squared loss metric: 
+--
+A
+B
+C
+Submit View Answer
+You have 2 submissions remaining.
+
+2) Linear Regression
+
+Consider the data set and regression lines in the plot below.
+
+The equation of the blue (lower) line is: 
+𝑦
+=
+𝑥
+y=x
+The equation of the green (upper) line is: 
+𝑦
+=
+𝑥
++
+1
+y=x+1
+The data points (in x, y pairs) are: 
+(
+(
+1
+,
+3
+)
+,
+(
+1
+,
+1
+)
+,
+(
+3
+,
+2
+)
+,
+(
+3
+,
+6
+)
+)
+((1,3),(1,1),(3,2),(3,6))
+
+Ex2.1: What is the squared error of each of the points with respect to the blue line?
+
+
+Provide a Python list of four numbers (in the order of the points given above). 
+Submit View Answer
+You have 20 submissions remaining.
+
+The gradient of the mean squared error regression criterion has the form of a sum over contributions from individual points. The formula for the gradient of the squared error with respect to parameters of a line, 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+ for a single point 
+(
+𝑥
+,
+𝑦
+)
+(x,y) (without regularizer), is:
+
+(
+−
+2
+(
+𝑦
+−
+𝜃
+𝑇
+𝑥
+−
+𝜃
+0
+)
+𝑥
+,
+−
+2
+(
+𝑦
+−
+𝜃
+𝑇
+𝑥
+−
+𝜃
+0
+)
+)
+.
+(−2(y−θ
+T
+x−θ
+0
+	​
+
+)x,−2(y−θ
+T
+x−θ
+0
+	​
+
+)).
+
+Ex2.2: What is the gradient contribution from each point to the parameters of the blue (lower) line?
+
+Provide a list of four pairs of numbers (as tuples, in the order of the points given above). 
+Submit View Answer
+You have 20 submissions remaining.
+
+Ex2.3: What is the squared error of each of the points with respect to the green line?
+
+Provide a list of four numbers (in the order of the points given above). 
+Submit View Answer
+You have 20 submissions remaining.
+
+Ex2.4: What is the gradient contribution from each point to the parameters of the green line?
+
+Provide a list of four pairs of numbers (as tuples, in the order of the points given above). 
+Submit View Answer
+You have 20 submissions remaining.
+
+Ex2.5: Mark all of the following that are true:
+
+	The blue line minimizes mean squared error
+	The green line minimizes mean squared error
+	The mean squared error from all the points to the blue line is 0
+	The mean squared error from all the points to the green line is 0
+	The sum of the gradient contributions from all the points for the blue line is 0
+	The sum of the gradient contributions from all the points for the green line is 0
+	Neither line minimizes mean squared error
+	It is impossible to minimize mean squared error
+	Both lines minimize mean squared error
+Submit View Answer
+You have 6 submissions remaining.
+
+3) Ridge regression
+
+It may be help to review the notes on regularization.
+
+If we add a squared-norm regularizer to the empirical risk, we get the so-called ridge regression objective:
+
+𝐽
+𝑟
+𝑖
+𝑑
+𝑔
+𝑒
+(
+𝜃
+,
+𝜃
+0
+)
+=
+1
+𝑛
+∑
+𝑖
+=
+1
+𝑛
+𝐿
+𝑠
+(
+𝑥
+(
+𝑖
+)
+,
+𝑦
+(
+𝑖
+)
+,
+𝜃
+,
+𝜃
+0
+)
++
+𝜆
+∣
+∣
+𝜃
+∣
+∣
+2
+.
+J
+ridge
+	​
+
+(θ,θ
+0
+	​
+
+)=
+n
+1
+	​
+
+i=1
+∑
+n
+	​
+
+L
+s
+	​
+
+(x
+(i)
+,y
+(i)
+,θ,θ
+0
+	​
+
+)+λ∣∣θ∣∣
+2
+.
+
+It's a bit tricky to solve this analytically, because you can see that the penalty is on 
+𝜃
+θ but not on 
+𝜃
+0
+θ
+0
+	​
+
+.
+
+The figures below plot linear regression results on the basis of only three data points 
+(
+𝑥
+(
+1
+)
+,
+𝑦
+(
+1
+)
+)
+,
+(
+𝑥
+(
+2
+)
+,
+𝑦
+(
+2
+)
+)
+,
+(
+𝑥
+(
+3
+)
+,
+𝑦
+(
+3
+)
+)
+(x
+(1)
+,y
+(1)
+),(x
+(2)
+,y
+(2)
+),(x
+(3)
+,y
+(3)
+).
+We used various types of regularization to obtain the plots (see below) but got confused about which plot corresponds to which regularization method. Please assign each plot to one (and only one) of the following regularization methods.
+
+ 
+A                               B
+
+C                               D
+
+
+Ex3.1:
+
+1
+3
+∑
+𝑖
+=
+1
+3
+(
+𝑦
+𝑖
+−
+𝑤
+𝑥
+𝑖
+−
+𝑤
+0
+)
+2
++
+𝜆
+𝑤
+2
+3
+1
+	​
+
+∑
+i=1
+3
+	​
+
+(y
+i
+−wx
+i
+−w
+0
+	​
+
+)
+2
++λw
+2
+ where 
+𝜆
+=
+1
+λ=1 
+--
+A
+B
+C
+D
+Submit View Answer
+You have 3 submissions remaining.
+
+Ex3.2:
+
+1
+3
+∑
+𝑖
+=
+1
+3
+(
+𝑦
+𝑖
+−
+𝑤
+𝑥
+𝑖
+−
+𝑤
+0
+)
+2
++
+𝜆
+𝑤
+2
+3
+1
+	​
+
+∑
+i=1
+3
+	​
+
+(y
+i
+−wx
+i
+−w
+0
+	​
+
+)
+2
++λw
+2
+ where 
+𝜆
+=
+10
+λ=10 
+--
+A
+B
+C
+D
+Submit View Answer
+You have 3 submissions remaining.
+
+Ex3.3:
+
+1
+3
+∑
+𝑖
+=
+1
+3
+(
+𝑦
+𝑖
+−
+𝑤
+𝑥
+𝑖
+−
+𝑤
+0
+)
+2
++
+𝜆
+(
+𝑤
+2
++
+𝑤
+0
+2
+)
+3
+1
+	​
+
+∑
+i=1
+3
+	​
+
+(y
+i
+−wx
+i
+−w
+0
+	​
+
+)
+2
++λ(w
+2
++w
+0
+2
+	​
+
+) where 
+𝜆
+=
+1
+λ=1 
+--
+A
+B
+C
+D
+Submit View Answer
+You have 2 submissions remaining.
+
+Ex3.4:
+
+1
+3
+∑
+𝑖
+=
+1
+3
+(
+𝑦
+𝑖
+−
+𝑤
+𝑥
+𝑖
+−
+𝑤
+0
+)
+2
++
+𝜆
+(
+𝑤
+2
++
+𝑤
+0
+2
+)
+3
+1
+	​
+
+∑
+i=1
+3
+	​
+
+(y
+i
+−wx
+i
+−w
+0
+	​
+
+)
+2
++λ(w
+2
++w
+0
+2
+	​
+
+) where 
+𝜆
+=
+10
+λ=10 
+--
+A
+B
+C
+D
+Submit View Answer
+You have 2 submissions remaining.

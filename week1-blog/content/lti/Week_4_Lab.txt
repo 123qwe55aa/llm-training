@@ -1,0 +1,655 @@
+Gradient descent
+
+This week's lab and homework explore the concept of machine learning as optimization, building on the lecture and lecture notes on margin maximization and gradient descent.
+
+Group information
+1) Explore gradient descent
+
+We've established that machine learning problems can be posed as optimization problems. We begin by studying general strategies for finding the minimum of a function. In general, unless the function is convex, it may be computationally difficult to find its global minimum.
+
+Note: A function is convex if the line segment between any two points on the graph of the function lies above or on the graph.
+
+We will sometimes study convex objectives, but in other cases we will content ourselves with finding a local minimum (where the gradient is zero) which may not be a global minimum. One method to find a local minimum of a function is called gradient descent (there are better ways, but this one is simple and computationally efficient in high dimensions and with lots of data). The idea is that we start with an initial guess, 
+𝑥
+0
+x
+0
+	​
+
+, and move "downhill" in the direction of the gradient, leading to an update step
+
+𝑥
+(
+1
+)
+=
+𝑥
+(
+0
+)
+−
+𝜂
+∇
+𝑥
+𝑓
+(
+𝑥
+(
+0
+)
+)
+x
+(1)
+=x
+(0)
+−η∇
+x
+	​
+
+f(x
+(0)
+)
+where 
+𝜂
+η is a "step size" parameter with the constraint that 
+𝜂
+&gt;
+0
+η>0. We continue updating until 
+𝑥
+(
+𝑖
++
+1
+)
+x
+(i+1)
+ does not differ too much from 
+𝑥
+(
+𝑖
+)
+x
+(i)
+. This approach is guaranteed to find the minimum if the function is convex and 
+𝜂
+η is sufficiently small.
+
+The questions below are concerned with running gradient descent on the parabola
+
+𝑓
+(
+𝑥
+)
+=
+(
+2
+𝑥
++
+3
+)
+2
+.
+f(x)=(2x+3)
+2
+.
+
+1A) Formulate the update rule that will be executed on every step when performing gradient descent on 
+𝑓
+(
+𝑥
+)
+f(x). You may use eta and x in your Python expression, where eta represents 
+𝜂
+η.
+
+x 
+←
+← 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1B)
+
+What is the optimal value of 
+𝑥
+x that minimizes 
+𝑓
+f? 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1C) This question asks you to explore convergence of gradient descent for our 
+𝑓
+(
+𝑥
+)
+f(x), to see how the step size affects the rate of convergence and whether there are oscillations or lack of convergence.
+
+We implement minimization of 
+𝑓
+(
+𝑥
+)
+f(x) using a function t1, which runs gradient descent for the minimization of 
+𝑓
+(
+𝑥
+)
+f(x). We halt the algorithm when the value of 
+𝑥
+x changes by less than 
+1
+0
+−
+5
+10
+−5
+. In general, we may use some small tolerance such as this to say whether gradient descent has converged. Conversely, divergence is defined as being when 
+𝑥
+x will not converge to a single finite value, even with an infinite number of updates.
+
+When you click Submit, the tutor question generates a plot of 
+𝑓
+(
+𝑥
+)
+f(x) in blue and the history of 
+𝑥
+x values you have tried in red with a blue 'x' at the initial 
+𝑥
+x value. You can change the values for step_size or init_val and click Submit again (all submits get 100%).
+
+Experiment with the following step sizes: [0.01, 0.1, 0.2, 0.3]. For which one(s) does 
+𝑥
+(
+𝑘
+)
+x
+(k)
+ converge without oscillation? For which one(s) does 
+𝑥
+(
+𝑘
+)
+x
+(k)
+ diverge?
+
+1
+2
+3
+def run():
+    return t1(step_size= 0.1, init_val = 0)
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Why do oscillations happen for some values of step_size and not others? To gain insight into this behavior (and to understand how gradient descent proceeds), we note that we can rewrite our update rule:
+
+𝑥
+(
+𝑘
++
+1
+)
+=
+𝑥
+(
+𝑘
+)
+−
+𝜂
+∇
+𝑥
+𝑓
+(
+𝑥
+(
+𝑘
+)
+)
+x
+(k+1)
+=x
+(k)
+−η∇
+x
+	​
+
+f(x
+(k)
+)
+in the form:
+𝑧
+(
+𝑘
++
+1
+)
+=
+𝛼
+𝑧
+(
+𝑘
+)
+z
+(k+1)
+=αz
+(k)
+for some 
+𝑧
+=
+𝑥
+−
+𝐶
+z=x−C, and then consider how or if 
+𝑧
+z approaches 0 for large 
+𝑘
+k (or equivalently, 
+𝑥
+x approaches 
+𝐶
+C for large 
+𝑘
+k). In particular, this formulation will soon be useful for us to analyze how the step-size 
+𝜂
+η affects convergence.
+
+
+
+1D) Show that the gradient descent update rule for our function 
+𝑓
+(
+𝑥
+)
+=
+(
+2
+𝑥
++
+3
+)
+2
+f(x)=(2x+3)
+2
+ can be written in the form:
+
+𝑥
+(
+𝑘
++
+1
+)
++
+3
+/
+2
+=
+(
+1
+−
+8
+𝜂
+)
+(
+𝑥
+(
+𝑘
+)
++
+3
+/
+2
+)
+x
+(k+1)
++3/2=(1−8η)(x
+(k)
++3/2)
+and equivalently in the form
+𝑧
+(
+𝑘
++
+1
+)
+=
+𝛼
+𝑧
+(
+𝑘
+)
+z
+(k+1)
+=αz
+(k)
+by defining 
+𝑧
+(
+𝑘
+)
+z
+(k)
+ and 
+𝛼
+α appropriately. What is 
+𝑧
+(
+𝑘
+)
+z
+(k)
+ in terms of 
+𝑥
+(
+𝑘
+)
+x
+(k)
+? What is 
+𝛼
+α in terms of 
+𝜂
+η?
+
+
+
+Written in this form, we make the following key observation: we can think of our gradient descent step as simply a multiplication of the previous value by 
+𝛼
+α on each step.
+
+Inductively, we can see that the value of 
+𝑧
+z (and 
+𝑥
+x) at step 
+𝑘
+k is related to the initial value as
+
+𝑧
+(
+𝑘
+)
+=
+𝛼
+𝑘
+𝑧
+(
+0
+)
+z
+(k)
+=α
+k
+z
+(0)
+and equivalently
+𝑥
+(
+𝑘
+)
++
+3
+/
+2
+=
+(
+1
+−
+8
+𝜂
+)
+𝑘
+(
+𝑥
+(
+0
+)
++
+3
+/
+2
+)
+.
+x
+(k)
++3/2=(1−8η)
+k
+(x
+(0)
++3/2).
+
+(Note: if this is not clear, please feel free to join the help queue.)
+
+The above equations are useful because they explain the relationship between the initial value of 
+𝑧
+z (or 
+𝑥
+x) and the output of gradient descent as the repeated multiplication by the same factor 
+𝛼
+α on each step. From this, we can identify cases of convergence, oscillation, and divergence by the following values on 
+𝛼
+α:
+
+𝛼
+&gt;
+1
+α>1	Gradient descent diverges without oscillation; 
+𝑧
+→
+∞
+z→∞
+
+𝛼
+=
+1
+α=1	
+𝑧
+(
+𝑘
+)
+=
+𝑧
+(
+0
+)
+z
+(k)
+=z
+(0)
+, so no gradient descent steps occur
+
+1
+&gt;
+𝛼
+≥
+0
+1>α≥0	
+𝛼
+∞
+α
+∞
+ approaches 0, so gradient descent converges; 
+𝑧
+→
+0
+z→0
+
+0
+&gt;
+𝛼
+&gt;
+−
+1
+0>α>−1	
+𝛼
+∞
+α
+∞
+ approaches 0 while changing signs every step, so converges with some oscillation
+
+𝛼
+=
+−
+1
+α=−1	At every step, the sign of 
+𝑧
+z flips. Gradient descent oscillates between 
+𝑧
+(
+0
+)
+z
+(0)
+ and 
+−
+𝑧
+(
+0
+)
+−z
+(0)
+ endlessly
+
+−
+1
+&gt;
+𝛼
+−1>α	Gradient descent diverges with oscillation, since 
+𝑧
+z grows but the sign of 
+𝑧
+z flips at every step
+
+Since our ultimate goal is convergence, we are interested in the cases where 
+∣
+𝛼
+∣
+&lt;
+1
+∣α∣<1.
+
+
+We can use the rules above about 
+𝛼
+α to reason about how 
+𝜂
+η affects convergence, given that 
+𝛼
+=
+1
+−
+8
+𝜂
+α=1−8η.
+
+Answer the following questions algebraically (using the expressions above).
+
+1E)
+
+What is the range of step size, as an interval, that causes 
+𝑥
+x to converge to the global minimum starting from an arbitrary initial value? Use 
+(
+ 
+)
+( ) for open intervals and 
+[
+ 
+]
+[ ] for closed intervals 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Does your algebraic answer agree with your numerical experiments above?
+
+1F)
+
+What is the largest step size that causes 
+𝑥
+x to converge without oscillating? 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+How many iterations are needed for convergence in this case? Run t1 with this value of step size.
+
+1G)
+
+For a step size of 
+0.1
+0.1, is there an initial value of 
+𝑥
+0
+x
+0
+	​
+
+ for which 
+𝑥
+x does not converge to the global minimum? 
+--
+Yes
+No
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1H) What value(s) of step size in the set 
+{
+0.1
+,
+0.11
+,
+0.12
+,
+0.13
+,
+0.14
+,
+0.15
+}
+{0.1,0.11,0.12,0.13,0.14,0.15} makes gradient descent take the most steps before convergence? Find the answer algebraically and enter your value(s) in a Python list. (Hint: think about the magnitude of 
+1
+−
+8
+𝜂
+1−8η and how this might affect the rate of convergence).
+
+Enter your answer as a python list: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Now try running t1 with the above step sizes. Which ones are slowest? Which ones oscillate? Do these behaviors match with your algebraic results?
+
+2) Where to meet?
+
+A group of friends is planning to host a baby shower over the weekend. They want to find a location for the party that minimizes the sum of squared distances from their houses to the location of the party. Assume for now that they can host the party at any location in the town.
+
+Assuming that the friends live in a 1-dimensional town, solve the following problems:
+
+2A) Pose this problem as an (unconstrained) optimization problem. Assume there are 
+𝑛
+n friends and the 
+𝑖
+i-th friend is located at 
+𝑙
+𝑖
+l
+i
+	​
+
+. Denote the location of the party by 
+𝑝
+p. What is the objective as a function of 
+𝑝
+p? Write it down.
+
+2B) Compute the gradient (write down/show your computation). Where is it zero?
+
+2C) Which of the following is true?
+
+	There is necessarily a unique location that minimizes the objective function
+	The optimization problem may have local minima that are not global minima
+	The party can be always be hosted in one of the houses without loss of optimality
+	There is necessarily a choice of step size that makes gradient descent converge with oscillations for this problem
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

@@ -1,0 +1,567 @@
+In this homework, we will explore training methods for neural networks. A code and data folder that will be useful for doing this homework can be found here.
+
+Note that problem 2 (OPTIONAL) has you extend your homework 7 framework for building neural networks. The code for this problem is included in the file code_for_hw8_oop.py and you have to copy in your implementation from homework 7 to complement it.
+
+For the rest of the problems (3-5), we will start using "state of the art" tools (Keras and Tensorflow) for building neural network models, as they are computationally efficient and allow us to easily and rapidly build models of varying complexity. The code for these problems is in the file code_for_hw8_keras.py.
+
+Alternatively, you can use the colab notebook which contains the code for all the problems in the same notebook. (If clicking on the link opens a grey window, try opening it in a new tab.)
+
+1) Batch Normalization
+
+Batch normalization is discussed in the lecture notes as a good way of doing regularization in large networks. The authors of the paper that proposed the batch normalization technique argued that it mitigates the effects of the internal covariate shift issue, which is also discussed in the notes. We encourage you to read that section of the notes before attempting the problem.
+
+Let notation 
+𝑊
+𝑙
+W
+l
+ indicate the matrix of weights at the 
+𝑙
+𝑡
+ℎ
+l
+th
+ layer of our neural network. The 
+𝑙
+𝑡
+ℎ
+l
+th
+ layer takes in 
+𝑛
+𝑙
+−
+1
+n
+l−1
+ activations from the previous layer and produces 
+𝑛
+𝑙
+n
+l
+ outputs. In this problem, we will always use mini-batch gradient descent during training, with a mini-batch size of 
+𝐾
+K.
+
+We now investigate the internal covariate shift problem and how batch normalization generally helps train neural network models.
+
+1A) Based on your reading of the lecture notes, choose the true statements about the internal covariate shift issue and the concept of batch normalization:
+
+Mark all that are True.
+	(1) The internal covariate shift problem can arise at the 
+𝑙
+𝑡
+ℎ
+l
+th
+ layer of a neural network, due to the changing weights in the 
+(
+𝑙
++
+1
+)
+𝑡
+ℎ
+(l+1)
+th
+ layer.
+	(2) The first layer of neurons experiences the the worst internal covariate shift out of all layers, because backpropagation occurs all the way from the final to the first layer.
+	(3) Batch normalization can help prevent outputs of neurons from becoming extremely large or extremely small
+	(4) Batch normalization can be particularly helpful when we are using sigmoid units in the hidden layers.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1B) We now investigate techniques we might use to better train our neural networks, including potentially getting rid of the internal covariate shift issue.
+
+Mark all that are True.
+	Technique 1. Internal covariate shift is no longer a problem if we optimize the weights of our neural network layer by layer, starting from the input layer, and going all the way to the output layer. When updating weights of a layer, all other weights are kept fixed.
+	Technique 2. If technique 1 did not take a lot of time, we would have always used it, because it eliminates internal covariate shift and therefore guarantees that our network will perform well.
+	Technique 3. It would help in training a neural network if we took all 
+𝑛
+𝑙
+−
+1
+n
+l−1
+ x 
+𝐾
+K inputs going to to the 
+𝑙
+𝑡
+ℎ
+l
+th
+ layer, find the mean and variance of this whole set of scalars and normalize them. We could do the same for all layers of the network.
+	Technique 4. It would help in training a neural network if we took all 
+𝐾
+K inputs going to the 
+𝑙
+𝑡
+ℎ
+l
+th
+ layer through one of the 
+𝑛
+𝑙
+−
+1
+n
+l−1
+ input connections, find the mean and variance of this set of scalars and normalize them. We could then do the same for all input connections of all layers of the network.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+For the following questions, we will present some results obtained using neural networks built from our modular framework that we implemented in homework 7. We will analyze those results to draw conclusions later. Any one of our models is trained and tested on the MNIST training and validation data sets. MNIST is a very well-studied data set of 28x28 images of isolated digits (0-9), each pixel value in the range 0-255. There are 60,000 training images and 10,000 validation images. Our networks will take an image as input and try to predict the corresponding digit. Our results are obtained using only images of digits 0 and 1. Later in problem 5, we will look at the complete MNIST problem and we will try to achieve close to state-of-the-art performance on the whole data set.
+
+We use the following core neural network in this problem (using our implementation of modules from homework 7):
+nn_core = Sequential([Linear(A, 32), ReLU(), Linear(32, 4), ReLU(), Linear(4,B), ReLU(), SoftMax()], NLL())
+
+1C) Choose the values of A and B that yield a neural network model with an appropriate number of inputs and outputs for the task at hand, based on the description given above.
+
+Enter a python list of 2 values: [A, B]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+
+In the table below, we summarize the results of some experiments which we already ran for you. We specify our models used, which are nn_core instances, or slight modifications of those, which include batch normalization layers BatchNorm:
+
+nn_bn_1 = Sequential([Linear(A, 32), BatchNorm(32), ReLU(), Linear(32, 4), BatchNorm(4), ReLU(), Linear(4,B), ReLU(), SoftMax()], NLL())
+
+nn_bn_2 = Sequential([Linear(A, 32), ReLU(), BatchNorm(32), Linear(32, 4), ReLU(), BatchNorm(4), Linear(4,B), ReLU(), SoftMax()], NLL())
+
+Note that in the notation above, BatchNorm(k) indicates a batch normalization layer with 
+𝑘
+k input connections into the BatchNorm module, and 
+𝑘
+k output connections to the next module in the Sequential object. If you are interested in implementing batch normalization for the modular framework that we have been developing since homework 7, you can attempt problem 2 which is optional.
+
+We also specify our chosen learning rates in the table. All experiments were done using mini-batch gradient descent during training and the number of number of iterations of backpropagation used was 
+400
+400. The last column gives the accuracies obtained by our models at test time, when evaluated on the MNIST validation set. Based on our discussion in 1A), overflow/undeflow are potential issues we may face if the weights or outputs of our neural networks become too big/small inside numpy arrays. This would prevent us from getting any test accuracy and in those cases, we simply report '--' as the obtained accuracy.
+
+#	Model used	Learning rate	Test accuracy
+1	nn_core	1e-8	0.593
+2	nn_bn_1	1e-8	0.401
+3	nn_bn_2	1e-8	0.423
+4	nn_core	1e-7	0.623
+5	nn_bn_1	1e-7	0.415
+6	nn_bn_2	1e-7	0.434
+7	nn_core	1e-6	0.420
+8	nn_bn_1	1e-6	0.502
+9	nn_bn_2	1e-6	0.531
+10	nn_core	1e-5	--
+11	nn_bn_1	1e-5	0.651
+12	nn_bn_2	1e-5	0.784
+13	nn_core	1e-4	--
+14	nn_bn_1	1e-4	--
+15	nn_bn_2	1e-4	0.997
+16	nn_core	1e-3	--
+17	nn_bn_1	1e-3	--
+18	nn_bn_2	1e-3	--
+
+1D) Choose conclusions that you are able to draw from the experiment results above. Note that these conclusions are specific to this problem instance are may not be generally true.
+
+Mark all that are supported by your findings.
+	(1) BatchNorm layers placed after the ReLU non-linearities allow better accuracies to emerge, versus placing them before the ReLU non-linearities.
+	(2) Based on the results obtained when using a learning rate of 1e-8, we can affirm that BatchNorm layers are useless.
+	(3) BatchNorm layers always seem to improve test performance.
+	(4) BatchNorm allows these neural networks to perform much better at lower learning rates.
+	(5) BatchNorm stabilizes training at higher learning rates by preventing some of the overflow/underflow issues that we encounter when not using it.
+	(6) BatchNorm helps our models reach the highest achievable accuracies much faster than when not using BatchNorm.
+	(7) Thanks to its stabilizing properties, BatchNorm allows any learning rate to be used without any problem.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+2) Implementing Mini-batch Gradient Descent and Batch Normalization (OPTIONAL)
+
+Show optional content
+3) Neural Network Packages
+
+In the following problems, we will get experience with using a well-known neural network package for classification.
+
+Keras and Tensorflow
+
+We will be using Keras to build neural network models. Keras uses Tensorflow as the backend (to actually train the models). You will need to either (a) install both of these on your machine or (b) use the colab notebook, which comes with pre-installed tensorflow and keras, or (c) use the versions we've installed on Athena. All of these are Python-based installations and we will be using Python3 (see instructions on the Resources/Software tab).
+
+You do not need to understand Tensorflow in detail. You should however get used to Keras. You should read some of the documentation, especially the examples. Given the lectures, homeworks and labs so far, you should be able to understand most of what's in the basic documentation, although there may be some different names for some of the concepts.
+
+Make sure that you read: Getting started: 30 seconds to Keras on the Keras Home page and Guide to the Sequential Model and pay careful attention to the examples.
+
+You should read some details in the following pages:
+
+Core Layers, read about Dense, Dropout and Flatten layers
+Convolutional Layers, read about Conv1D and Conv2D
+Pooling Layers, read about MaxPooling2D
+Optimizers read about Adam; we'll use Adam throughout this assignment, this is an adaptive step-size method that is a bit more sophisticated than Adagrad.
+Losses, read about categorical_crossentropy, this is what we call NLL loss
+Datasets, we will be using the MNIST dataset.
+Basics
+
+Note that Keras assumes that each data point is a ROW vector and that a data set X with N points with D features is an NxD matrix. The code we have provided handles this, but you should be aware of this if you want to use the code in the future.
+
+We will be working with two main data sets:
+
+A set of relatively simple datasets in 2D
+A standard dataset of images of hand-drawn digits (the MNIST data set).
+
+These are all classification problems. Neural networks can be used for regression as well but we'll skip looking at that.
+
+In this assignment we will focus on exploring the choice of network architecture, numbers and types of units and layers. In particular, we will explore three classes of network architectures:
+
+No hidden units - this is essentially a linear classifier.
+Fully connected (FC) layer(s) - the standard approach to problems involving heterogeneous data.
+Convolutional layer(s) followed by FC layer(s) - a common approach for image data.
+
+If you look through the Keras documentation you'll see that there are an enormous number of choices that can be made to define a model. We're only going to look at a few, in particular:
+
+number and type of layers
+number and type of units per layer
+number of passes over the data (epochs)
+
+Here are a few choices that we are not going to explore; we'll keep these choices fixed throughout:
+
+We'll use 'ReLU' hidden units
+We'll use softmax activations on the output and categorical_crossentropy as the loss.
+We'll use Adam as the optimizer. This is a version of SGD that adapts the step size (learning rate) somewhat like Adagrad but a bit more sophisticated. We will use Adam's default parameters.
+For (mini)batch_size, we'll use 32 on MNIST and 1 otherwise.
+
+We have provided you a couple of basic functions to experiment with; you mostly have to define layers. We strongly recommend that you do your experiments using the google colab file to keep track of your results. Alternatively, write scripts that can be run to produce your results and save them to a file. Have your script write out the settings for the experiment so that you can remember what they are when you go back to look at them.
+
+For the 2D datasets, we have provided the following function:
+
+run_keras_2d(data_name, layers, epochs, split=0.25, display=True, trials=5)
+
+where:
+
+data_name is a string, such as '1', '2', etc.
+layers is a list of Keras layer definitions for a Sequential model, e.g.
+[Dense(input_dim=2, units=10, activation='relu'), Dense(units=2, activation='softmax')]
+epochs is an integer indicating how many times to go through the data in training
+split is a fraction of the training data to use for validation if a validation set is not defined
+display whether to display result plots
+verbose whether to print loss and accuracy (percent correctly labeled) each epoch
+trials is an integer indicating how many times to perform the training and testing
+2D Data
+
+The two-class datasets have data_names: '1','2','3','4'. Target accuracies (percent correct) on the validation set are (99%, 90.5%, 96%, 94%).
+
+In this problem, try the following 5 architectures, specified by the number of units in the hidden layers:
+
+1: (0), 2: (10), 3: (100), 4: (10, 10), 5: (100, 100))
+
+You may find the archs function in the code file to be helpful here.
+
+Some of these questions ask for the "simplest" architecture; the list above is ordered starting with the simplest.
+
+Use 10 epochs of training for each architecture and re-start the training and testing 5 times (i.e., use trials=5), look at the average accuracy on the validation set (reported as "Avg. validation accuracy" at the end of the run). But, notice the variation in scores across each run.
+
+3A) For each two-class 2D dataset, what is the simplest network architecture that can reach the target accuracy on the validation set?
+
+Enter a list of four indices from 0 to 5, indicating the simplest architecture or 0 if none works. The architectures can be 1-5. 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3B) What is the simplest (single) network architecture that can be used to classify all the of the two-class 2D data sets within 1% of the target validation accuracy.
+
+Enter one of the architecture indices or 0 if none works: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3C) Train with dataset '3' using architecture (200,200) for 100 epochs; it's fine to do just one trial. Make sure that you use display=True so you get the plot of "Epoch val_acc vs. acc". This shows validation accuracy versus training accuracy. Use verbose=True as well, so you can see the actual numbers, including the loss. Which of the following statements describe what you see:
+
+Mark all that are True.
+	The training accuracy has an upward trend as epochs increase.
+	The training loss flattens out or raises slightly as epochs increase.
+	The validation accuracy has an upward trend as epochs increase.
+	The validation accuracy flattens out or drops slightly as epochs increase.
+	The validation loss has a downward trend as epochs increase.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3D) You should be able to find epochs when the training loss is dropping but the training accuracy is constant (and non-zero). What is happening there?
+
+Mark all that are True.
+	The classification boundary has moved toward misclassified points, but has not moved enough to correctly classify them yet.
+	The same percentage of the samples are being correctly classified, but the classifier is more confident on the ones it’s classifying correctly (or less confident on the ones where it’s wrong).
+	The neural network is overfitting to the training data.
+	The predictions are getting closer to their actual 0-1 targets without any changing sides across the 0.5 boundary in the softmax output.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3E) What is the average validation accuracy (using split=0.5) for the three-class data set (data_name=3class), for each of the architectures, using 10 epochs and 5 trials as before.
+(These experiments are incredibly stochastic in nature. If you are having trouble getting the solution checker to accept your solution, have tried rerunning your experiment, and are confident in your method, post on Piazza, as we continue to tune the checker.)
+
+Enter a list of 5 floats (3 decimal places) corresponding to avg. accuracy for each architecture: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3F) The decision boundary for the 3class data, using no hidden units (architecture 1) looks like this:
+
+We can see that the decision boundaries are lines, but what do they correspond to? Let's focus on the decision between class 1 and class 2. Assume that 
+𝑧
+1
+=
+𝑊
+1
+𝑇
+𝑥
++
+𝑊
+01
+z
+1
+	​
+
+=W
+1
+T
+	​
+
+x+W
+01
+	​
+
+ is the first input to the softmax module and 
+𝑧
+2
+=
+𝑊
+2
+𝑇
+𝑥
++
+𝑊
+02
+z
+2
+	​
+
+=W
+2
+T
+	​
+
+x+W
+02
+	​
+
+ is the second input to softmax. Give an expression 
+ℎ
+(
+𝑥
+;
+𝑊
+1
+,
+𝑊
+01
+,
+𝑊
+2
+,
+𝑊
+02
+)
+h(x;W
+1
+	​
+
+,W
+01
+	​
+
+,W
+2
+	​
+
+,W
+02
+	​
+
+), for the decision boundary 
+ℎ
+(
+𝑥
+)
+=
+0
+h(x)=0 between the class 1 and class 2. Remember that you can use @ for matrix product, and you can use transpose(x) to transpose a vector.
+Enter an expression involving x, W_1, W_2, W_01, W_02. Assume all quantities are column vectors.
+h(x) = 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3G) Using the 3class data with no hidden units and running for 1 trial, use layer.get_weights() to get the weights for the trained softmax layer (the one passed to the run_keras_2d function); this will give you a list with a weight matrix 
+𝑊
+W and a bias/offset vector 
+𝑊
+0
+W
+0
+	​
+
+. Use these values to compute each of the 
+𝑧
+z values for the following input points :
+
+[[-1,0], [1,0], [0,-11], [0,1], [-1,-1], [-1,1], [1,1], [1,-1]]
+
+You will need to seed the numpy random number generator to get comparable results to ours. After importing numpy, but before the first keras import, please uncomment np.random.seed(0). Now, use these values to compute the class predictions:
+
+Enter a list of 8 class indices (0, 1, 2): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3H) Here's another decision boundary for the 3class data obtained with lots of hidden units (architecture 5):
+
+Mark all that are true:
+	Increasing the complexity of the network enables fitting more complex training data.
+	Increasing the number of training epochs enables fitting more complex training data.
+	Increasing the complexity of the network and increasing the number of training epochs typically leads to plateuing or decreasing validation performance.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+4) Weight sharing (OPTIONAL)
+
+Show optional content
+5) MNIST (Digit Classification)
+
+In this section, we'll be looking at the MNIST data set seen already in problem 2. This time, we look at the complete MNIST problem where our networks will take an image of any digit from 
+0
+−
+9
+0−9 as input (recall that problem 2 only looked at digits 
+0
+0 and 
+1
+1) and try to predict that digit. Note that in general, an image is described as a two-dimensional array of pixels. Here, the image is a grayscale image, so each pixel is represented by only one integer value, in the range 
+0
+0 to 
+255
+255 (compared to RGB images where each pixel is represented by three integer values, encoding intensity levels in red, green, and blue color channels).
+
+Also, we will now use out-of-the-box neural network implementations using Keras and Tensorflow. State-of-the-art systems have error rates of less that 0.5% percent on this data set (see this list). We'll be happy with an error rate less than 2% since we don't have all year...
+
+You can access the MNIST data for this problem using:
+train, validation = get_MNIST_data()
+
+You can run the fully connected MNIST model, using:
+run_keras_fc_mnist(train, validation, layers, epochs, split=0.1, trials=5)
+
+And, you can run the CNN MNIST test, using:
+run_keras_cnn_mnist(train, validation, layers, epochs, split=0.1, trials=5)
+
+For all following experiments, please run for 5 trials (use trials=5) and report the average accuracy.
+
+A word of warning, if you have a machine with a single core and/or very little RAM, you'll be better off running on an Athena workstation. If your solutions are not being accepted, and you are confident in your approach, please use trials.
+
+You will need to design your own layers to feed to run_keras_fc_mnist and run_keras_cnn_mnist, which will be different than the ones specified by archs(). For instance, layers=[Dense(input_dim=64, units=4, activation="softmax")] defines a single layer with 64 inputs, 4 output units, and softmax activation. Also, we advise you to use the option verbose=True when unsure about the progress made during training of your models.
+
+5A) Look at the code and indicate what the difference is between run_keras_fc_mnist and run_keras_cnn_mnist?
+
+Mark all that are true:
+	The fc version uses images flattened into vectors.
+	The fc version keeps the 2D structure of the images
+	The cnn version keeps the 2D structure of the images
+	The cnn version appends a dimension indicating there is one channel
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5B) Using one epoch of training, what is the accuracy of a network with no hidden units (using the run_keras_fc_mnist method) on this data? Hint: this is expected to be terrible. If it's still not working, run for more trials. Remember to use 10 output units (the network predicts a digit from 0-9) and softmax activation!
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5C) When creating the keras layer, pass in the following argument to Dense: kernel_initializer=VarianceScaling(scale=0.001, mode='fan_in', distribution='normal', seed=None) and repeat the test. What is the accuracy now?
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5D) Now, linearly scale the data so that the pixel values are between 0 and 1 and repeat your test with the original layer (no VarianceScaling). What is the accuracy now?
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5E) What is happening?
+
+Mark all that are true:
+	
+Gradient descent algorithms are sensitive to the scale of the data.
+
+	
+When the scale of the initial weights was based (at least partly) on the scale of the data, performance improved.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Important: Always scale the data like in 5D) for subsequent problems.
+
+5F) Using this same architecture, evaluate validation accuracy for number of training epochs in [5, 10, 15].
+
+Enter a list of three numbers between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5G a) With the validation accuracy that you just saw on per digit basis using 
+15
+15 epochs, and assuming each digit is read independently from the others, what is the probability of reading a 5 digit zip code correctly?
+
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+5G b) Now, assume that the accuracy is 0.9985, what is the probability of reading a zip code correctly?
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+This is why people care about dropping the error rates to very low values.
+
+5H) Using one epoch of training, try a single hidden layer with ReLU and gradually increase the units; specifically, try (128, 256, 512, 1024) units and observe the results. What are the accuracies?
+
+Enter a list of four numbers between 0 and 1, corresponding to 128, 256, 512, 1024 units: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5I) Now, try a network with two layers, again using one epoch, with 512 units in the first hidden layer and and 256 units in the second hidden layer. What is the accuracy?
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5J) Build a convolutional network with the following structure:
+
+A convolutional layer with 32 filters of size 3 × 3, with a ReLU activation
+A max pooling layer with size 2 × 2
+A convolutional layer with 64 filters of size 3 × 3, with ReLU activation
+A max pooling layer with size 2 × 2
+A flatten layer
+A fully connected layer with 128 neurons, with ReLU activation
+A dropout layer with drop probability 0.5
+A fully-connected layer with 10 neurons with softmax
+
+Train it on MNIST for one epoch, using run_keras_cnn_mnist. What is the accuracy on the validation set?
+
+Enter a number between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+If you have time to run the training for more epochs, try it, you should see improvement.
+
+5K) Now, let's compare the performance of a fully connected model and a CNN on data where the characters have been shifted randomly so that they are no longer centered. Below are some examples of the original and shifted characters.
+
+     
+You can build such a data set by calling: train_20, validation_20 = get_MNIST_data(shift=20). Remember to scale it appropriately. Note that each image is now 48x48, so you will need to change your layer definitions. Run your two-hidden-layer FC architecture from above (problem 5I) on this data and then run the CNN architecture from above (problem 5J), both for one epoch. Report your results.
+Enter a list of two numbers between 0 and 1: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5L) Some possible conclusions:
+
+Mark all that are true:
+	Increasing the complexity of the network and training it for many epochs generally enables fitting more complex training data.
+	Increasing the complexity of the network and training it for many epochs generally enables fitting more complex validation data.
+	The convolutional and max pooling layers of the CNN enable it to recognize the presence of a digit anywhere in the image
+	A fully connected network cannot recognize the presence of a digit anywhere in the image.
+	It generally takes more data (compared to a CNN) to train a fully connected network to recognize the presence of a digit anywhere in the image, since each location is essentially a new pattern.
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

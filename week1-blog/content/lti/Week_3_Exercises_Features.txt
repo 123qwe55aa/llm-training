@@ -1,0 +1,181 @@
+For these exercises, it will be helpful to review the notes on Linear Classifiers
+1) Feature representation
+
+For the following feature, pick what might be the best encoding for linear classification. The assumption is that there are other features in the data set.
+
+The point of this question is to think about alternatives; there are many options, many not mentioned here.
+
+Car make, e.g. Chevy, Ford, Toyota, VW, for predicting gas mileage (lo, hi). 
+--
+An integer valued feature: 1, 2, 3, 4
+Two binary valued features: 00, 01, 10, 11
+4 unary features (one-hot): 1000, 0100, 0010, 0001
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2) Feature mapping
+
+Consider the following, one-dimensional, data set. It is not linearly separable in its original form.
+
+𝑥
+(
+1
+)
+=
+−
+1
+,
+𝑦
+(
+1
+)
+=
++
+1
+x
+(1)
+=−1,y
+(1)
+=+1
+𝑥
+(
+2
+)
+=
+0
+,
+𝑦
+(
+2
+)
+=
+−
+1
+x
+(2)
+=0,y
+(2)
+=−1
+𝑥
+(
+3
+)
+=
+1
+,
+𝑦
+(
+3
+)
+=
++
+1
+x
+(3)
+=1,y
+(3)
+=+1
+
+Ex2.a.: Which of these feature transformations leads to a separable problem?
+
+
+𝜙
+(
+𝑥
+)
+=
+0.5
+∗
+𝑥
+ϕ(x)=0.5∗x
+𝜙
+(
+𝑥
+)
+=
+∣
+𝑥
+∣
+ϕ(x)=∣x∣
+𝜙
+(
+𝑥
+)
+=
+𝑥
+3
+ϕ(x)=x
+3
+𝜙
+(
+𝑥
+)
+=
+𝑥
+4
+ϕ(x)=x
+4
+𝜙
+(
+𝑥
+)
+=
+𝑥
+2
+𝑘
+ϕ(x)=x
+2k
+ for any positive integer 
+𝑘
+k
+
+Enter a Python list with a subset of the numbers 1, 2, 3, 4, 5.
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Ex2.b.: Your friend Kernelius uses feature transformation 
+𝜙
+(
+𝑥
+)
+=
+(
+𝑥
+,
+𝑥
+2
+)
+ϕ(x)=(x,x
+2
+) on the data above. In the new space, the linear classifier with 
+𝜃
+=
+(
+0
+,
+1
+)
+θ=(0,1) and 
+𝜃
+0
+=
+−
+0.25
+θ
+0
+	​
+
+=−0.25 achieves perfect accuracy. What points from the original space 
+𝑅
+R map to this linear classifier in 
+𝑅
+2
+R
+2
+? (It may be helpful to find the equation of the separator.)
+
+Enter a Python list with all values of 
+𝑥
+x which constitute this separator.
+Submit View Answer
+You have infinitely many submissions remaining.
