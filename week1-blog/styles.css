@@ -165,6 +165,7 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
 .article-content h1 { display: none; }
 .article-content h2 { margin: 90px 0 24px; color: var(--moss-deep); font: 800 34px/1.35 var(--serif); letter-spacing: -.03em; }
 .article-content h2::before { content: "§"; margin-right: 12px; color: var(--amber); font-weight: 400; }
+.article-content.activity-view h2::before { content: none; }
 .article-content h3 { margin: 46px 0 15px; font: 700 23px/1.4 var(--serif); }
 .article-content p { margin: 0 0 1.35em; }
 .article-content li { margin-bottom: .55em; }
