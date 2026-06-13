@@ -75,7 +75,7 @@ START question t2
 123defrun():returnt2(order=9, lam=1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.END question t2 2A) What happens to both $J_{\it ridge}(\theta, \theta_0)$ and the learned regression line, with very large (e.g., infinite) and very small (0) values of $\lambda$?
-2B) If our goal is to solely minimize $\frac{1}{n} \sum_{i = 1}^n L(x^{(i)}, y^{(i)}, \theta, \theta_0)$, what would be the best value of $\lambda$?
+2B) If our goal is to solely minimize \frac{1}{n} \sum_{i = 1}^n L(x^{(i)}, y^{(i)}, \theta, \theta_0), what would be the best value of $\lambda$?
 2C) What value of $\lambda$ do you feel will give good performance on new data from the same source?
 2D) When we run leave-one-out cross validation on this data set, using 9th order features, varying $\lambda$ from 0.01 to 0.3, we get the following plot:
 What is the best value of $\lambda$, in terms of generalization performance, based on this data? Does it agree with your previous answer? Is it the same as the best value for performance on the training set?

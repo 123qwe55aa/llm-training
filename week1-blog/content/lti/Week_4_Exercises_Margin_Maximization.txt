@@ -1,7 +1,7 @@
 These exercises will prepare you for understanding how to maximize margins, as discussed in the lecture notes. You may want to review the definition of the margin $\gamma$.
 
 ## 1) Margin definition
-Recall that the signed distance to a point x from a hyperplane $\theta, \theta_0$ is $sd(x, \theta, \theta_0) = \frac{\theta^T x + \theta_0}{\lVert \theta \rVert}$.
+Recall that the signed distance to a point x from a hyperplane $\theta, \theta_0$ is sd(x, \theta, \theta_0) = \frac{\theta^T x + \theta_0}{\lVert \theta \rVert}.
 Ex1a:
 You start with a hyperplane $\theta, \theta_0$ and a point x. Suppose a new separator is given, where $\hat{\theta} = - \theta$ and $\hat{\theta}_0 = - \theta_0$.
 

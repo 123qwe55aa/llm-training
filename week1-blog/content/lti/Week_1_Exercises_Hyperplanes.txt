@@ -62,9 +62,9 @@ Using 2D arrays for matrices is clear enough, but what about column and row vect
 
 $$x = \left[ \begin{array}{c} 1 \\ 5 \\ 3 \\ \end{array} \right],$$
 
-as a $3 \times 1 $ numpy array. This array can be generated with
+as a $3 \times 1$ numpy array. This array can be generated with
 $~~~$`x = np.array([[1],[5],[3]]),`
-or by using the transpose of a $1 \times 3 $ array (a row vector) as in,
+or by using the transpose of a $1 \times 3$ array (a row vector) as in,
 $~~~$`x = np.transpose(np.array([[1,5,3]]),`
 where you should take note of the "double" brackets.
 It is often more convenient to use the array attribute `.T`, as in

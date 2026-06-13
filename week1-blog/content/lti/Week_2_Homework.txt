@@ -82,7 +82,7 @@ $$\theta\cdot x + \theta_0 > 0 \textrm{ when } f(x_1, x_2, x_3) = 1, \textrm{ an
 $$\theta\cdot x + \theta_o \le 0 \textrm{ when } f(x_1, x_2, x_3) = 0.$$
 
 
-4.1a) For each of the combination of values of $(x_1, x_2, x_3)$, that is, $[(0,0,0), (0,0,1), (0,1,0), (0,1,1), (1,0,0),(1,0,1), (1,1,0),(1,1,1)]$ enter the values of $f(x_1,x_2,x_3)$. 
+4.1a) For each of the combination of values of $(x_1, x_2, x_3)$, that is, [(0,0,0), (0,0,1), (0,1,0), (0,1,1), (1,0,0),(1,0,1), (1,1,0),(1,1,1)] enter the values of $f(x_1,x_2,x_3)$. 
 Please enter the values of $f(x_1,x_2,x_3)$ as a Python list.
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 4.1b) Assuming $\theta_0 = 0$ (no offset), enter $\theta$ as a Python list of length 3 or enter `'none'` as a Python string (with quotes) if none exists. 

@@ -81,8 +81,8 @@ Ex3.2:
 $\frac{1}{3}\sum_{i=1}^3 (y^i - w x^i - w_0)^2 + \lambda w^2$ where $\lambda = 10$--ABCD
 Submit View AnswerYou have 3 submissions remaining.
 Ex3.3:
-$\frac{1}{3}\sum_{i=1}^3 (y^i - w x^i - w_0)^2 + \lambda (w^2+w_0^2)$ where $\lambda = 1$--ABCD
+\frac{1}{3}\sum_{i=1}^3 (y^i - w x^i - w_0)^2 + \lambda (w^2+w_0^2) where $\lambda = 1$--ABCD
 Submit View AnswerYou have 2 submissions remaining.
 Ex3.4:
-$\frac{1}{3}\sum_{i=1}^3 (y^i - w x^i - w_0)^2 + \lambda (w^2+w_0^2)$ where $\lambda = 10$--ABCD
+\frac{1}{3}\sum_{i=1}^3 (y^i - w x^i - w_0)^2 + \lambda (w^2+w_0^2) where $\lambda = 10$--ABCD
 Submit View AnswerYou have 2 submissions remaining.

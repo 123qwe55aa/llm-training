@@ -53,7 +53,7 @@ $$\gamma(X, Y, \theta, \theta_0) = \min_i \gamma(x^{(i)}, y^{(i)}, \theta, \thet
 
 As discussed in the notes, an approach to this problem is to specify a value $\gamma_{\it ref}$ for the margin of the data set, and then seek to find a linear separator that maximizes $\gamma_{\it ref}$.
 2A) We can think about a (not necessarily maximal) margin $\gamma_{\it ref}$ for the data set as a value such that: 
-for at least one point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \geq \gamma_{\it ref}$for every point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \geq \gamma_{\it ref}$for at least one point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \leq \gamma_{\it ref}$for every point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \leq \gamma_{\it ref}$
+for at least one point $x^{(i)}, y^{(i)}$, we have \gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \geq \gamma_{\it ref}for every point $x^{(i)}, y^{(i)}$, we have \gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \geq \gamma_{\it ref}for at least one point $x^{(i)}, y^{(i)}$, we have \gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \leq \gamma_{\it ref}for every point $x^{(i)}, y^{(i)}$, we have \gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \leq \gamma_{\it ref}
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 2B) Suppose for our data set we find that the maximum $\gamma_{\it ref}$ across all linear separators is 0. 
 Is our data linearly separable? --YesNo

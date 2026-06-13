@@ -21,7 +21,7 @@ For this dataset, we will compute the weighted average entropies for the followi
 - Feature $f_1 \ge 0.0$
 - Feature $f_2 \ge 0.0$
 We will compute the entropy of the first split $f_1 \geq 1.5$ as an example:
-There are two points in the right split, of which both are the same class, so $R^+_{1,1.5}(D) = -(\log_2 1) = 0$. In the left split there are 4 points, where $3/4$ of the points are positively labeled and $1/4$ are negatively labeled, so $R^-_{1,1.5} = -(\frac{3}{4} \log_2 (\frac{3}{4}) + \frac{1}{4} \log_2 (\frac{1}{4})) \approx 0.8113$. Thus, the weighted average entropy is
+There are two points in the right split, of which both are the same class, so $R^+_{1,1.5}(D) = -(\log_2 1) = 0$. In the left split there are 4 points, where $3/4$ of the points are positively labeled and $1/4$ are negatively labeled, so R^-_{1,1.5} = -(\frac{3}{4} \log_2 (\frac{3}{4}) + \frac{1}{4} \log_2 (\frac{1}{4})) \approx 0.8113. Thus, the weighted average entropy is
 
 
 $$\frac{4}{6} R^-_{1,1.5}(D) + \frac{2}{6} R^+_{1,1.5}(D) \approx 0.541$$
