@@ -99,7 +99,9 @@ const renderMarkdown = (markdown) => {
     }
     if (inCode) { code.push(line); return; }
     if (!line.trim()) { closeAll(); return; }
-    if (/^---+$/.test(line.trim())) { closeAll(); html.push("<hr>"); return; }
+    // Pass raw HTML through without escaping
+    if (/^\s*<\/?\w+/.test(line.trim()) && />\s*$/.test(line.trim())) { closeAll(); html.push(line.trim()); return; }
+    if (/^---+\s*$/.test(line.trim())) { closeAll(); html.push("<hr>"); return; }
     const heading = line.match(/^(#{1,4})\s+(.+)$/);
     if (heading) {
       closeAll();
@@ -196,10 +198,12 @@ const activityToMarkdown = (text) => {
   });
 
   let result = out.join("\n");
-  // Remove spaced-out duplicate tuples
+  // Remove spaced-out duplicate tuples (each char on its own line due to scraping artifact)
+  result = result.replace(/\(\n[^)]+?\)(?=\n? ?\([^)]+?\))/g, "");
+  // Also remove spaced-out style like "( 1 , -1" where spaces exist inline
   result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
 
-  // === Wrap standalone display math in $$...$$ for MathJax ===
+  // === Post-processing: wrap math in $...$ for MathJax ===
   const lines2 = result.split("\n");
   const mathWrapped = [];
 
@@ -207,35 +211,56 @@ const activityToMarkdown = (text) => {
     const raw = lines2[i];
     const trimmed = raw.trim();
 
-    // Display math: a line that is mostly an equation (starts with math identifier, has = or ()
-    // but NOT a heading, list item, or sentence-starting text
+    // Detect display math: standalone equation line (θ=..., h(x;θ)=..., E_n(...)=...)
+    const displayMathRE = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ]*['′]?\s*[=(]\s*.*[)=\d]$/;
+    // But not if it's already a heading, list, or looks like regular text
     const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
-    const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That)/.test(trimmed);
+    const hasVerb = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If)/.test(trimmed);
     const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
-    const looksLikeEquation = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ𝒙𝒚𝒛𝑤𝐸ℎ'′]/.test(trimmed)
-      && /[=()]/.test(trimmed)
-      && (/\S/.test(trimmed) && trimmed.split(/\s+/).length <= 4);
 
-    if (!isHeading && !startsWithWord && !isURL && trimmed.length > 3 && looksLikeEquation) {
+    if (!isHeading && !hasVerb && !isURL && trimmed.length > 5 && displayMathRE.test(trimmed)) {
+      // Display math — wrap in $$...$$
       mathWrapped.push(`$$${trimmed}$$`);
-    } else {
-      mathWrapped.push(raw);
+      continue;
     }
+
+    // For non-heading lines, wrap inline math expressions in $...$
+    // Pattern: Greek letters and function names followed by parenthesized args
+    let processed = raw;
+    if (!isHeading && !trimmed.startsWith("$$")) {
+      // Wrap common inline math patterns:
+      // 1. Greek letters (θ, θ', ℰ(θ,θ₀), ℋ, 𝒙, etc.)
+      // 2. Function calls like h(x;θ), E_n(θ,θ₀), En(θ,θ0)
+      // 3. Math symbols like ℎ, 𝑛, etc.
+      // But NOT numbers, list markers, or text like "yes no"
+      
+      // Inline math: function calls with Greek args
+      processed = processed.replace(
+        /\b([A-Za-z])(?:_\{?(\w+)\}?)?\s*\(([^)]*[θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒ][^)]*)\)/g,
+        (_, fn, sub, args) => {
+          const full = sub ? `${fn}_{${sub}}(${args})` : `${fn}(${args})`;
+          return `$${full}$`;
+        }
+      );
+      // Inline math: expressions that are mostly math like θ=(1,−1,2,−3) within text
+      processed = processed.replace(/\b([θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰ]'?\s*=\s*\([^)]+\))\b/g, "$$$1$$");
+      // Inline math: h(x;θ)=+1, h(x;θ), etc. (function name + parenthesized math args)
+      processed = processed.replace(/\b([a-z])\([^)]*[θ𝜃𝜙𝜓β;=+\-−][^)]*\)/g, (m) => `$${m}$`);
+    }
+
+    mathWrapped.push(processed);
   }
 
   result = mathWrapped.join("\n");
 
   // === Convert -- yes/no to radio buttons ===
-  // Handle both single-line "? -- yes no" and multi-line "?\n--\nyes\nno" patterns
-  // First, collapse multi-line yes/no patterns into single-line markers
-  result = result.replace(/\?\s*\n--\s*\n(yes|no)\s*\n(yes|no)/g, '? -- $1 $2');
-  // Then convert to radio buttons
+  // Pattern: "Does ...? -- yes no" → radio buttons
   result = result.replace(
     /\? -- (yes|no)(?:\s+(yes|no))?/g,
     (match, first, second) => {
       if (second) {
-        const name = "ex-" + Math.random().toString(36).slice(2, 6);
-        return `?\n<div class="exercise-options">\n  <label class="ex-option"><input type="radio" name="${name}" value="${first}"> ${first}</label>\n  <label class="ex-option"><input type="radio" name="${name}" value="${second}"> ${second}</label>\n</div>`;
+        // Two options: -- yes no
+        return `?\n<div class="exercise-options">\n  <label class="ex-option"><input type="radio" name="ex-${Math.random().toString(36).slice(2, 6)}" value="${first}"> ${first}</label>\n  <label class="ex-option"><input type="radio" name="ex-${Math.random().toString(36).slice(2, 6)}" value="${second}"> ${second}</label>\n</div>`;
       }
       return match;
     }
