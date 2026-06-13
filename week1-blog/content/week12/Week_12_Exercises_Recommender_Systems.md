@@ -7,8 +7,8 @@ data matrix $X$ is a product $UV^T$, where $U$ is $n\times k$ and $V$ is $m\time
 1A)
 Let $k = 3$. If we were to take the matrix $U$ and multiply the
 first column by 2, the second column by 3 and the third column by 4,
-to make a new matrix $U&#x27;$, what would we have to do to $V$ to get a
-$V&#x27;$ so that $U&#x27;{V&#x27;}^T = UV^T$?
+to make a new matrix $U'$, what would we have to do to $V$ to get a
+$V'$ so that $U'{V'}^T = UV^T$?
 
 Make sure to remember that $V$ is transposed in the product above!
 

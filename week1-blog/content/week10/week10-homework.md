@@ -17,11 +17,11 @@ $$
 You get the reward associated with a state on the step when you exit that state. The transition function for each action is below, where $T[i,x,j]$ is the $P(s_{t+1}=j | a=x, s_t=i)$.
 
 $$
-T(s_t, \text{&#x27;b&#x27;}, s_{t+1})= \begin{bmatrix} 0.0 & 0.9 & 0.1 & 0.0 \\ 0.9 & 0.1 & 0.0 & 0.0 \\ 0.0 & 0.0 & 0.1 & 0.9 \\ 0.9 & 0.0 & 0.0 & 0.1 \end{bmatrix}
+T(s_t, \text{'b'}, s_{t+1})= \begin{bmatrix} 0.0 & 0.9 & 0.1 & 0.0 \\ 0.9 & 0.1 & 0.0 & 0.0 \\ 0.0 & 0.0 & 0.1 & 0.9 \\ 0.9 & 0.0 & 0.0 & 0.1 \end{bmatrix}
 $$
 
 $$
-T(s_t, \text{&#x27;c&#x27;}, s_{t+1})= \begin{bmatrix} 0.0 & 0.1 & 0.9 & 0.0 \\ 0.9 & 0.1 & 0.0 & 0.0 \\ 0.0 & 0.0 & 0.1 & 0.9 \\ 0.9 & 0.0 & 0.0 & 0.1 \end{bmatrix}
+T(s_t, \text{'c'}, s_{t+1})= \begin{bmatrix} 0.0 & 0.1 & 0.9 & 0.0 \\ 0.9 & 0.1 & 0.0 & 0.0 \\ 0.0 & 0.0 & 0.1 & 0.9 \\ 0.9 & 0.0 & 0.0 & 0.1 \end{bmatrix}
 $$
 
 Note that the only effect of the action is to change the transition probability in state 0 (the first row of the transition matrix).
@@ -426,7 +426,7 @@ To train the network, we will use squared Bellman error as
 the loss function:
 
 $$
-\left(\left[R(s_t, a_t) + \gamma \max_{a&#x27;} Q(s_{t+1}, a&#x27;; \theta)\right] - Q(s_t, a_t;\theta) \right)^2
+\left(\left[R(s_t, a_t) + \gamma \max_{a'} Q(s_{t+1}, a'; \theta)\right] - Q(s_t, a_t;\theta) \right)^2
 $$
 
 where $\theta$ stands for the current weights in the neural network

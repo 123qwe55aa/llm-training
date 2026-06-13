@@ -19,7 +19,7 @@ of this question.
 As a reminder, the Q-learning update formula is the following:
 
 $$
-Q(s,a) = (1-\alpha)Q(s,a) + \alpha(r + \gamma\max_{a&#x27;} Q(s&#x27;,a&#x27;))
+Q(s,a) = (1-\alpha)Q(s,a) + \alpha(r + \gamma\max_{a'} Q(s',a'))
 $$
 
 You are welcome to do this problem by hand, though writing a small
