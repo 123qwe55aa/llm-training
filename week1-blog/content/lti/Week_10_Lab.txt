@@ -1,435 +1,124 @@
 For this, you should be sure to understand the notes on Reinforcement Learning.
 
-1) MDPacMan: The Wind-up Cart Chronicles
-
+## 1) MDPacMan: The Wind-up Cart Chronicles
 During a summer hike with some of the friends you made in 6.036 (or 6.862), you accidentally stumble upon the cavernous lair of a giant Pac-Man who is trying to eat you in retribution for all you have done to him during your childhood.
-
 You can see a layout of the cave below: the light grey squares are impassable terrain. Both the cliffs (red cells, get reward −10 for entering) and the cave exit (green cells, get reward +10 for entering) are terminal states. This means the game is over when you reach a -10 or +10 state (you die or escape).
-
 You jump in a mining cart, denoted by the yellow square, to escape, which has the actions LEFT, RIGHT, UP, DOWN. Unfortunately the steering system has not been used in a while, and thus it will not always take the cart in its originally intended direction. An action will take the cart
 
-In the direction intended with 
-1
-−
-2
-𝜏
-1−2τ probability,
-In one of the two adjacent directions 1 with 
-𝜏
-τ probability each, and
-In the opposite direction with probability 
-0
-0.
-
-If the result of an action would take the cart into a wall or off the grid, it ends up in the same location. There is a constant “cost of living” 
-𝐶
-C incurred on every action you take (i.e., there is a negative reward of magnitude 
-𝐶
-C for each action taken).
-
-This mining cart is no ordinary cart — it does not have a steering wheel! Instead, there are three dials, to control the parameters 
-𝛾
-,
-𝜏
-,
-𝐶
-γ,τ,C, which are used by value iteration to determine the optimal path. The possible paths are the upper (green) path or the lower (red) path in the figure. Suppose the current setting of 
-𝛾
-,
-𝜏
-,
-𝐶
-γ,τ,C yields the lower path by the −10 cliff, and you really would rather take the longer but safer path.
-
-Please note that the variables 
-𝜏
-τ and 
-𝐶
-C are attributes of the environment, and 
-𝛾
-γ is the discount factor used in value iteration.
-
+- In the direction intended with $1−2\tau$ probability,
+- In one of the two adjacent directions 1 with $\tau$ probability each, and
+- In the opposite direction with probability 0.
+If the result of an action would take the cart into a wall or off the grid, it ends up in the same location. There is a constant “cost of living” C incurred on every action you take (i.e., there is a negative reward of magnitude C for each action taken).
+This mining cart is no ordinary cart — it does not have a steering wheel! Instead, there are three dials, to control the parameters $\gamma, \tau, C$, which are used by value iteration to determine the optimal path. The possible paths are the upper (green) path or the lower (red) path in the figure. Suppose the current setting of $\gamma, \tau, C$ yields the lower path by the −10 cliff, and you really would rather take the longer but safer path.
+Please note that the variables $\tau$ and C are attributes of the environment, and $\gamma$ is the discount factor used in value iteration.
 [1]: By "adjacent", we mean the orthogonal directions right next to the intended direction; so for example UP and DOWN are directions adjacent to LEFT or RIGHT, and vice versa.
 
-1.1) Longer path
-How would you change each of the values of 
-𝛾
-,
-𝜏
-,
-𝐶
-γ,τ,C to help your cart learn to take the longer path (the green one)? Assume you are changing one of the variables at any given time, not all three of them together.
 
-1.1A) How do you change 
-𝛾
-γ?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
+### 1.1) Longer path
+How would you change each of the values of $\gamma, \tau, C$ to help your cart learn to take the longer path (the green one)? Assume you are changing one of the variables at any given time, not all three of them together.
+1.1A) How do you change $\gamma$? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 1.1B) How do you change $\tau$? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 1.1C) How do you change the magnitude of C? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
 
-1.1B) How do you change 
-𝜏
-τ?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-1.1C) How do you change the magnitude of 
-𝐶
-C?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-1.2) On-line Q-learning
+### 1.2) On-line Q-learning
 Now, imagine a situation where the cart is going to learn the optimal behavior by executing on-line Q-learning over a single lifetime while moving through the cave. Remember that unlike value iteration, Q-learning doesn't use known transition probabilities. Instead, it learns by interacting with the real world environment without ever constructing any explicit models for transition probabilities.
-
 The cart starts with a Q value table that is empty (filled with 0s and some fixed action selection in case of Q value ties), and it turns out that with such a Q value table and a 0.5-greedy policy, the cart does not take the longer path.
-
-How would you change the 
-𝛾
-,
-𝜏
-γ,τ, or 
-𝐶
-C variable this time such that the cart learns to take the longer path?
-
+How would you change the $\gamma, \tau$, or C variable this time such that the cart learns to take the longer path?
 For your reference, the Q-learning update formula is the following:
 
-𝑄
-(
-𝑠
-,
-𝑎
-)
-=
-(
-1
-−
-𝛼
-)
-𝑄
-(
-𝑠
-,
-𝑎
-)
-+
-𝛼
-(
-𝑟
-+
-𝛾
-max
-⁡
-𝑎
-′
-𝑄
-(
-𝑠
-′
-,
-𝑎
-′
-)
-)
-Q(s,a)=(1−α)Q(s,a)+α(r+γ
-a
-′
-max
-	​
 
-Q(s
-′
-,a
-′
-))
+$$Q(s,a) = (1-\alpha)Q(s,a) + \alpha(r + \gamma\max_{a'} Q(s',a'))$$
 
-1.2A) How do you change 
-𝛾
-γ?
 
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
+1.2A) How do you change $\gamma$? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 1.2B) How do you change $\tau$? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 1.2C) How do you change the magnitude of C? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
 
-1.2B) How do you change 
-𝜏
-τ?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
+### 1.3) Simulating multiple episodes
+After being inspired (or scared) by the result of the previous problem, you decide to change the cart such that it uses a simulation of the cave to run the online Q-learning algorithm for multiple episodes. Then it computes its route in the real world using the values in the learned Q value table and a greedy policy. In this scenario, how would you change the $\gamma, \tau$, or C variable to make the cart take the longer path?
+1.3A) How do you change $\gamma$? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 1.3B) How do you change $\tau$? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 1.3B) How do you change the magnitude of C? 
+--increasedecreasedon't change (no effect)
+Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
-
-1.2C) How do you change the magnitude of 
-𝐶
-C?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-1.3) Simulating multiple episodes
-After being inspired (or scared) by the result of the previous problem, you decide to change the cart such that it uses a simulation of the cave to run the online Q-learning algorithm for multiple episodes. Then it computes its route in the real world using the values in the learned Q value table and a greedy policy. In this scenario, how would you change the 
-𝛾
-,
-𝜏
-γ,τ, or 
-𝐶
-C variable to make the cart take the longer path?
-
-1.3A) How do you change 
-𝛾
-γ?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-1.3B) How do you change 
-𝜏
-τ?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-1.3B) How do you change the magnitude of 
-𝐶
-C?
-
---
-increase
-decrease
-don't change (no effect)
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-2) Q-Learning: Goal vs. SSP
-
+## 2) Q-Learning: Goal vs. SSP
 This problem will explore Q-learning in a simple 2D grid setting (like in last week's lab) with a single goal location. There are two typical ways to set up reward structures for domains with a goal state:
 
-Goal-reward based: Put a positive reward on taking any action from the goal state, and make the goal state a terminal state, from which every action leads to a zero-reward state that can never be escaped. Put zero rewards everywhere else.
-
-Stochastic-shortest-path (SSP) based: Put zero reward on the goal state, and make the goal state a terminal state, from which every action leads to a zero-reward state that can never be escaped. Put -1 rewards everywhere else.
-
+- Goal-reward based: Put a positive reward on taking any action from the goal state, and make the goal state a terminal state, from which every action leads to a zero-reward state that can never be escaped. Put zero rewards everywhere else.
+- Stochastic-shortest-path (SSP) based: Put zero reward on the goal state, and make the goal state a terminal state, from which every action leads to a zero-reward state that can never be escaped. Put -1 rewards everywhere else.
 Some things to note about our implementation:
 
-The agent follows an epsilon-greedy policy with 
-𝜖
-=
-0.1
-ϵ=0.1;
-
-Whenever the agent reaches the goal, we start a new episode on the next iteration by sampling a start state uniformly at random and following the epsilon-greedy policy from then on (until it reaches the goal again, then the process repeats).
-
-In the case of a tie among 
-a
-r
-g
-max
-⁡
-𝑎
-𝑄
-(
-𝑠
-,
-𝑎
-)
-argmax
-a
-	​
-
-Q(s,a) actions, the first action in the action space among the tied values is selected.
-
+- The agent follows an epsilon-greedy policy with $\epsilon = 0.1$;
+- Whenever the agent reaches the goal, we start a new episode on the next iteration by sampling a start state uniformly at random and following the epsilon-greedy policy from then on (until it reaches the goal again, then the process repeats).
+- In the case of a tie among ${\rm arg}\max_a Q(s,a)$ actions, the first action in the action space among the tied values is selected.
 These are plots of the values of the states using the Goal-reward formulation as we run 50,000 iterations of Q-value learning, plotting every 5,000 iterations. Note that the scale of the colors changes across the different plots, per the bar on the right of each plot.
-
-1  2 
-3  4 
-5  6 
-7  8 
-9  10 
-
-
 2A) What is the difference between Q-learning (as in this question) and value iteration (as in question 2 from last week's lab)?
-
 2B) What is going on in the first few graphs here?
-
 2C) What about all those pictures that are purple with one yellow spot?
-
 2D) Why does the Q function suddenly "bloom" out in the last two pictures?
-
 2E) What positive reward value do you think our implementation assigned to taking any action from the goal state?
+2F) Recall that in this implementation, in the case of a tie among ${\rm arg}\max_a Q(s,a)$ actions, the first action in the action space among the tied values is selected. What would change if instead a random action among the tied values were to be selected instead?
 
-2F) Recall that in this implementation, in the case of a tie among 
-a
-r
-g
-max
-⁡
-𝑎
-𝑄
-(
-𝑠
-,
-𝑎
-)
-argmax
-a
-	​
-
-Q(s,a) actions, the first action in the action space among the tied values is selected. What would change if instead a random action among the tied values were to be selected instead?
-
-	Check this box and submit when you have finished questions 2A through 2E.
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-These are plots of the values of the states using the SSP formulation as we run 50,000 iterations of Q-value learning, plotting every 5,000 iterations. Note that the scale of the colors changes across the different plots, per the bar on the right of each plot.
-
-1  2 
-3  4 
-5  6 
-7  8 
-9  10 
-
-
+Check this box and submit when you have finished questions 2A through 2E.
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. These are plots of the values of the states using the SSP formulation as we run 50,000 iterations of Q-value learning, plotting every 5,000 iterations. Note that the scale of the colors changes across the different plots, per the bar on the right of each plot.
 2G) What is going on in the first few graphs here?
-
 2H) Discuss how and why these plots differ from those in the Goal-reward formulation -- especially in the first 6 graphs.
-
 2I) Which formulation (Goal-reward or SSP) of the reward function works better here? Why?
+START question Q2
+Check this box and submit when you have finished question 2.
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining.END question Q2
+## 3) A Wild Epsilon Search
+$\epsilon$ typically denotes an "explore vs. exploit" tradeoff in reinforcement learning, specifically Q-learning algorithm. As a reminder, when a Q-learning algorithm interacts with the environment, it takes a completely random move with probability $\epsilon$ and the best move according to its current Q-table with probability $1-\epsilon$.
+We will try to teach a computer how to play a simple "pong" game with a Q-learning algorithm. We will observe how the learning differs based on different values of $\epsilon$.
 
-	Check this box and submit when you have finished question 2.
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-3) A Wild Epsilon Search
 
-𝜖
-ϵ typically denotes an "explore vs. exploit" tradeoff in reinforcement learning, specifically Q-learning algorithm. As a reminder, when a Q-learning algorithm interacts with the environment, it takes a completely random move with probability 
-𝜖
-ϵ and the best move according to its current Q-table with probability 
-1
-−
-𝜖
-1−ϵ.
-
-We will try to teach a computer how to play a simple "pong" game with a Q-learning algorithm. We will observe how the learning differs based on different values of 
-𝜖
-ϵ.
-
-3.1) Expectations
-Before you move on, write down how you expect the Q-learning algorithm to behave for different values of 
-𝜖
-ϵ in the set 
-{
-0
-,
-0.5
-,
-1
-}
-{0,0.5,1}. Think about how the learned Q-value function with a greedy action selection policy based on that Q-value will evolve for each 
-𝜖
-ϵ.
-
-3.1A) Which of these epsilon values risks never finding the optimal policy?
-
---
-0
-0.5
-1
-none
-Submit View Answer Ask for Help
+### 3.1) Expectations
+Before you move on, write down how you expect the Q-learning algorithm to behave for different values of $\epsilon$ in the set $\{0, 0.5, 1\}$. Think about how the learned Q-value function with a greedy action selection policy based on that Q-value will evolve for each $\epsilon$.
+3.1A) Which of these epsilon values risks never finding the optimal policy? 
+--00.51none
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 3.1B) Which of these epsilon values risks spending way too much time exploring parts of the space that are unlikely to be useful? 
+--00.51none
+Submit View AnswerAsk for Help
+You have infinitely many submissions remaining. 3.1C) Which of these epsilon values is guaranteed to cause optimal behavior during learning? 
+--00.51none
+Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
 
-3.1B) Which of these epsilon values risks spending way too much time exploring parts of the space that are unlikely to be useful?
-
---
-0
-0.5
-1
-none
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-3.1C) Which of these epsilon values is guaranteed to cause optimal behavior during learning?
-
---
-0
-0.5
-1
-none
-Submit View Answer Ask for Help
-You have infinitely many submissions remaining.
-
-3.2) Versus Reality
+### 3.2) Versus Reality
 
 For this part, you will use a colab notebook we have prepared for you. If you have not used colab before, ask your partner or a TA/LA for help. You can find the colab notebook here. To run it, you may need to create a copy of it in your google drive.
-
 Once you run the code wait patiently until you see a yellow and purple square on a teal background (you may need to scroll down from the "score" and "reward" text lines printed out). Ignore everything else for now. Click play in the button right below the square. This is a movie of a policy playing the game No Exit. It’s kind of like Pong: the purple square is the “ball” and the yellow square is your “paddle”. The actions are to move the paddle up, down, or keep it still.
-
 The state is specified by the positions and velocities of the ball and paddle, with a special added “game over” state.
-
 The transition model is a very approximate physics model of the ball reflecting off walls and the paddle, except if the ball gets past the paddle in the positive x direction, the game is over.
-
 The agent gets a reward of +1 on every step it manages to survive.
-
 When watching the game play out, you’ll sometimes see that the purple square gets near the right-hand border and then suddenly it changes to a state with the purple square in the bottom left and the yellow one in the upper right -- this means that the game terminated and then reset to the initial state.
-
 Now we can go back and look at the other output in the notebook:
 
-First, we show a table of what happens during learning: after every 10 iterations of batch Q learning, we take the current greedy policy and run it to see what its average score is. This score represents how long the episode ran before the ball ran off the map, or 100 if it lasted for that long.
-
-Next is a plot of the score as a function of the amount of training.
-
-Finally, we run the greedy policy with respect last Q-value function for 10 games and report the rewards achieved on each game. We also make a movie of these 10 games, which is what we started out looking at.
-
-3.2A) Run the code given on the notebook for values of 
-𝜖
-ϵ in the set 
-0
-,
-0.5
-,
-1
-0,0.5,1. Does your observation of the learning behavior match with what you wrote down?
-
+- First, we show a table of what happens during learning: after every 10 iterations of batch Q learning, we take the current greedy policy and run it to see what its average score is. This score represents how long the episode ran before the ball ran off the map, or 100 if it lasted for that long.
+- Next is a plot of the score as a function of the amount of training.
+- Finally, we run the greedy policy with respect last Q-value function for 10 games and report the rewards achieved on each game. We also make a movie of these 10 games, which is what we started out looking at.
+3.2A) Run the code given on the notebook for values of $\epsilon$ in the set ${0,0.5,1}$. Does your observation of the learning behavior match with what you wrote down?
 Remember that this is a small instance, so sometimes the random noise of the environment might prevent you from seeing any useful information. Run the notebook two or three times if something doesn't line up with your expectation, and then ask for help.
-
-(Optional) Play with the number of iterations in the colab until you get all of the models to converge, and then observe the gameplay of the agents. You might expect the model that learned with 
-𝜖
-=
-1
-ϵ=1 has a more jittery gameplay than the agent that learned with 
-𝜖
-=
-0
-ϵ=0 or 
-0.5
-0.5. Does that hold?
+(Optional) Play with the number of iterations in the colab until you get all of the models to converge, and then observe the gameplay of the agents. You might expect the model that learned with $\epsilon = 1$ has a more jittery gameplay than the agent that learned with $\epsilon=0$ or $0.5$. Does that hold?

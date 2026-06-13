@@ -1,363 +1,61 @@
-These exercises will prepare you for understanding how to maximize margins, as discussed in the lecture notes. You may want to review the definition of the margin 
-𝛾
-γ.
+These exercises will prepare you for understanding how to maximize margins, as discussed in the lecture notes. You may want to review the definition of the margin $\gamma$.
 
-1) Margin definition
-
-Recall that the signed distance to a point 
-𝑥
-x from a hyperplane 
-𝜃
-,
-𝜃
-0
-θ,θ
-0
-	​
-
- is 
-𝑠
-𝑑
-(
-𝑥
-,
-𝜃
-,
-𝜃
-0
-)
-=
-𝜃
-𝑇
-𝑥
-+
-𝜃
-0
-∥
-𝜃
-∥
-sd(x,θ,θ
-0
-	​
-
-)=
-∥θ∥
-θ
-T
-x+θ
-0
-	​
-
-	​
-
-.
-
+## 1) Margin definition
+Recall that the signed distance to a point x from a hyperplane $\theta, \theta_0$ is $sd(x, \theta, \theta_0) = \frac{\theta^T x + \theta_0}{\lVert \theta \rVert}$.
 Ex1a:
+You start with a hyperplane $\theta, \theta_0$ and a point x. Suppose a new separator is given, where $\hat{\theta} = - \theta$ and $\hat{\theta}_0 = - \theta_0$.
 
-You start with a hyperplane 
-𝜃
-,
-𝜃
-0
-θ,θ
-0
-	​
-
- and a point 
-𝑥
-x. Suppose a new separator is given, where 
-𝜃
-^
-=
-−
-𝜃
-θ
-^
-=−θ and 
-𝜃
-^
-0
-=
-−
-𝜃
-0
-θ
-^
-0
-	​
-
-=−θ
-0
-	​
-
-.
-
-Which of the following is true? 
---
-the signed distance changes sign but not magnitude
-the signed distance changes magnitude but not sign
-the signed distance stays the same
-both the sign and the magnitude may change
-Submit View Answer
-You have 3 submissions remaining.
-
+Which of the following is true? --the signed distance changes sign but not magnitudethe signed distance changes magnitude but not signthe signed distance stays the sameboth the sign and the magnitude may change
+Submit View AnswerYou have 3 submissions remaining.
 Ex1b:
+You start with a hyperplane $\theta, \theta_0$ and a point x. Suppose a new separator is given, where $\hat{\theta} = \theta$ and $\hat{\theta}_0 = - \theta_0$.
 
-You start with a hyperplane 
-𝜃
-,
-𝜃
-0
-θ,θ
-0
-	​
-
- and a point 
-𝑥
-x. Suppose a new separator is given, where 
-𝜃
-^
-=
-𝜃
-θ
-^
-=θ and 
-𝜃
-^
-0
-=
-−
-𝜃
-0
-θ
-^
-0
-	​
-
-=−θ
-0
-	​
-
-.
-
-Which of the following is true: 
---
-the signed distance changes sign but not magnitude
-the signed distance changes magnitude but not sign
-the signed distance stays the same
-both the sign and the magnitude may change
-Submit View Answer
-You have 3 submissions remaining.
-
+Which of the following is true: --the signed distance changes sign but not magnitudethe signed distance changes magnitude but not signthe signed distance stays the sameboth the sign and the magnitude may change
+Submit View AnswerYou have 3 submissions remaining.
 Ex1c:
-
-The margin of labeled point 
-𝑥
-,
-𝑦
-x,y with respect to separator 
-𝜃
-,
-𝜃
-0
-θ,θ
-0
-	​
-
- is:
-
-𝛾
-(
-𝑥
-,
-𝑦
-,
-𝜃
-,
-𝜃
-0
-)
-=
-𝑦
-(
-𝜃
-𝑇
-𝑥
-+
-𝜃
-0
-)
-∥
-𝜃
-∥
-γ(x,y,θ,θ
-0
-	​
-
-)=
-∥θ∥
-y(θ
-T
-x+θ
-0
-	​
-
-)
-	​
+The margin of labeled point $x, y$ with respect to separator $\theta, \theta_0$ is:
 
 
-Let sd stand for 
-𝑠
-𝑑
-(
-𝑥
-,
-𝜃
-,
-𝜃
-0
-)
-sd(x,θ,θ
-0
-	​
+$$\gamma(x, y, \theta, \theta_0) = \frac{y (\theta^T x+\theta_0)}{\lVert \theta \rVert}$$
 
-), the signed distance from the separator to 
-𝑥
-x. Define the margin in terms of sd and y, the label of 
-𝑥
-x. Note that both of these are scalars. Provide an expression in Python syntax.
 
-𝛾
-(
-𝑥
-,
-𝑦
-,
-𝜃
-,
-𝜃
-0
-)
-=
-γ(x,y,θ,θ
-0
-	​
+Let sd stand for ${\it sd}(x, \theta, \theta_0)$, the signed distance from the separator to x. Define the margin in terms of sd and y, the label of x. Note that both of these are scalars. Provide an expression in Python syntax.
 
-)= 
-Check Syntax Submit View Answer
+$\gamma(x, y, \theta, \theta_0)=$Check Syntax
+Submit View Answer
 You have infinitely many submissions remaining.
-
 Ex1d:
-
-What is the sign of the signed distance when the prediction is incorrect?
-
-Which of the following is true: 
---
-positive
-negative
-could be either
-Submit View Answer
-You have 2 submissions remaining.
-
+What is the sign of the signed distance when the prediction is incorrect? 
+Which of the following is true: --positivenegativecould be either
+Submit View AnswerYou have 2 submissions remaining.
 Ex1e:
+What is the sign of the margin when the prediction is incorrect? 
+Which of the following is true: --positivenegativecould be either
+Submit View AnswerYou have 2 submissions remaining.
 
-What is the sign of the margin when the prediction is incorrect?
-
-Which of the following is true: 
---
-positive
-negative
-could be either
-Submit View Answer
-You have 2 submissions remaining.
-
-2) Margin practice
-
-What are the margins of the labeled points (x,y) = ((3, 2), +1), ((1, 1), -1), and ((4, 2), -1) with respect to the separator defined by 
-𝜃
-=
-(
-1
-,
-1
-)
-θ=(1,1), 
-𝜃
-0
-=
-−
-4
-θ
-0
-	​
-
-=−4? The situation is illustrated in the figure below.
+## 2) Margin practice
+What are the margins of the labeled points (x,y) = ((3, 2), +1), ((1, 1), -1), and ((4, 2), -1) with respect to the separator defined by $\theta = (1, 1)$, $\theta_0 = -4$? The situation is illustrated in the figure below.
 
 Enter the three margins in order as a Python list of three numbers. Note that you can enter sqrt(x) as x**0.5 in Python.
 Submit View Answer
 You have infinitely many submissions remaining.
 
-3) Max Margin Separator
-
+## 3) Max Margin Separator
 Consider the four points and separator:
-
-data = np.array([[1, 1, 3, 3],[3, 1, 4, 2]])
-labels = np.array([[-1, -1, 1, 1]])
-th = np.array([[0, 1]]).T
-th0 = -3
-
-The situation is shown below:
-
+data = np.array([[1, 1, 3, 3],[3, 1, 4, 2]]) labels = np.array([[-1, -1, 1, 1]]) th = np.array([[0, 1]]).T th0 = -3 The situation is shown below:
 Ex3a:
 
 Enter the four margins in order as a Python list of four numbers. 
 Submit View Answer
 You have infinitely many submissions remaining.
-
 Ex3b:
-
 A maximum margin separator is a separator that maximizes the minimum margin between that separator and all points in the dataset.
 
-Enter 
-𝜃
-θ and 
-𝜃
-0
-θ
-0
-	​
-
- for a maximum margin separator as a Python list of three numbers.
+Enter $\theta$ and $\theta_0$ for a maximum margin separator as a Python list of three numbers.
 Submit View Answer
 You have infinitely many submissions remaining.
-
 Ex3c:
 
-If you scaled this separator by a positive constant 
-𝑘
-k (i.e., replace 
-𝜃
-θ by 
-𝑘
-𝜃
-kθ, and 
-𝜃
-0
-θ
-0
-	​
-
- by 
-𝑘
-𝜃
-0
-kθ
-0
-	​
-
-), would it still be a maximum margin separator? 
---
-Yes
-No
+If you scaled this separator by a positive constant k (i.e., replace $\theta$ by $k\theta$, and $\theta_0$ by $k\theta_0$), would it still be a maximum margin separator? --YesNo
 Submit View Answer
 You have infinitely many submissions remaining.

@@ -1,88 +1,52 @@
 For these exercises, you should review the notes on Convolutional Neural Networks.
-1) Weights
-
-1.A) In a fully-connected feedforward network, the number of weights (including biases) between two adjacent layers each having 100 units is:
-
+## 1) Weights
+1.A) In a fully-connected feedforward network, the number of weights (including biases) between two adjacent layers each having 100 units is: 
 Enter a number: 
 Submit View Answer
 You have infinitely many submissions remaining.
-
 Consider a 1D CNN consisting of an input layer with 100 units, 10 filters each with 5 inputs (i.e., each filter is size 5) having a stride of 1, that produces an output layer (or feature map). Assume zero padding on the borders when applying the filters.
-
-1.B) How many units are there in the output layer (feature map)?
-
+1.B) How many units are there in the output layer (feature map)? 
 Enter a number: 
 Submit View Answer
 You have infinitely many submissions remaining.
-
-1.C) How many weights (including bias) are needed to specify the output layer (feature map)?
-
+1.C) How many weights (including bias) are needed to specify the output layer (feature map)? 
 Enter a number: 
 Submit View Answer
 You have infinitely many submissions remaining.
-
 Now consider a 1D CNN with an input layer having 100 units, followed by a max pooling layer with a pooling filter of size 3 and a stride of 2, producing the output layer.
-
-1.D) How many units are there in the output layer?
-
+1.D) How many units are there in the output layer? 
+Enter a number: 
+Submit View Answer
+You have infinitely many submissions remaining.
+1.E) How many weights (including bias) are needed to specify the max pooling output layer? 
 Enter a number: 
 Submit View Answer
 You have infinitely many submissions remaining.
 
-1.E) How many weights (including bias) are needed to specify the max pooling output layer?
-
-Enter a number: 
-Submit View Answer
-You have infinitely many submissions remaining.
-
-2) Pooling
-
+## 2) Pooling
 When processing an image we ultimately want to convert the input image into a smaller set of activations that we can feed into a fully-connected net that will produce the desired outputs, such as detecting the presence of a cat in the image irrespective of where the cat might be in that image. If one of the detectors in a previous layer had a strong output, we want to preserve that information, no matter where it happened in the input. This is the role of a max pooling layer; it is usually chosen to reduce the size of the output layer by some factor.
-
 With a 1D input, given a "max filter" of size 3 and a stride of 2, what is the ratio (input layer size)/(output layer size)? Assume that the input layer size is much larger than the filter size and stride.
 
 Enter a number: 
 Submit View Answer
 You have infinitely many submissions remaining.
 
-3) CNN concepts
-
+## 3) CNN concepts
 Here are the the building blocks we will use to build a CNN:
-
 A. Convolutional layers
 B. Max pooling layers
 C. Fully connected layers
 
 Assume that the task of our CNN is to detect a cat in an image.
-
-
-
-3.A) Which of these blocks allows the network to be less sensitive to the exact locations of different cat parts?
-
-Choose one: 
---
-A
-B
-C
+3.A) Which of these blocks allows the network to be less sensitive to the exact locations of different cat parts? 
+Choose one: --ABC
 Submit View Answer
 You have infinitely many submissions remaining.
-
-3.B) Which of these blocks allows the network to combine all cat features for high-level reasoning?
-
-Choose one: 
---
-A
-B
-C
+3.B) Which of these blocks allows the network to combine all cat features for high-level reasoning? 
+Choose one: --ABC
 Submit View Answer
 You have infinitely many submissions remaining.
-
-3.C) Which of these blocks are responsible for detecting low and mid-level features of a cat in an image?
-
-Choose one: 
---
-A
-B
-C
+3.C) Which of these blocks are responsible for detecting low and mid-level features of a cat in an image? 
+Choose one: --ABC
 Submit View Answer
 You have infinitely many submissions remaining.
