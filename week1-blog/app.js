@@ -588,147 +588,153 @@ if (articleContent) {
     progress.style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
   }, { passive: true });
 
-  /* ── Highlighter ── */
+  /* ── Highlighter (sentence-level) ── */
   const hlToggle = document.getElementById("highlight-toggle");
-  const HIGHLIGHT_KEY = "llm-training:hl";
-  let hlActive = false;
-
-  // Floating highlight button
-  const hlBtn = document.createElement("button");
-  hlBtn.id = "hl-float-btn";
-  hlBtn.textContent = "🖊";
-  hlBtn.setAttribute("aria-label", "高亮选中文字");
-  document.body.appendChild(hlBtn);
-  let hlBtnTimer = null;
+  const HIGHLIGHT_KEY = "llm-training:highlights";
 
   function getHighlights() {
     try { return JSON.parse(localStorage.getItem(HIGHLIGHT_KEY)) || {}; } catch { return {}; }
   }
-  function saveHighlights(h) {
+
+  function saveRangeHighlight(articleId, paraIndex, start, end, text) {
+    const h = getHighlights();
+    if (!h[articleId]) h[articleId] = {};
+    if (!h[articleId][paraIndex]) h[articleId][paraIndex] = [];
+    // Remove duplicate (same text range)
+    h[articleId][paraIndex] = h[articleId][paraIndex].filter(
+      r => !(r.start === start && r.end === end)
+    );
+    if (text) h[articleId][paraIndex].push({ start, end, text });
+    if (h[articleId][paraIndex].length === 0) delete h[articleId][paraIndex];
     localStorage.setItem(HIGHLIGHT_KEY, JSON.stringify(h));
   }
 
-  // Store highlights as array of {paraIdx, text} for each article
-  function addHighlight(articleId, paraIdx, text) {
-    const h = getHighlights();
-    if (!h[articleId]) h[articleId] = [];
-    // Check if already highlighted (toggle off)
-    const match = h[articleId].findIndex(x => x.paraIdx === paraIdx && x.text === text);
-    if (match >= 0) {
-      h[articleId].splice(match, 1);
-      saveHighlights(h);
-      return false; // removed
+  /** Wrap text nodes in a container with <mark> for a single character range */
+  function applyRange(container, startOff, endOff) {
+    const textNodes = [];
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while ((node = walker.nextNode())) textNodes.push(node);
+
+    let acc = 0;
+    const toWrap = [];
+    for (const tn of textNodes) {
+      const len = tn.textContent.length;
+      const segStart = Math.max(0, startOff - acc);
+      const segEnd = Math.min(len, endOff - acc);
+      if (segStart < segEnd) toWrap.push({ node: tn, start: segStart, end: segEnd });
+      acc += len;
+      if (acc >= endOff) break;
     }
-    h[articleId].push({ paraIdx, text });
-    saveHighlights(h);
-    return true; // added
+
+    for (const { node, start, end } of toWrap) {
+      const parent = node.parentNode;
+      if (start === 0 && end === node.textContent.length && parent.tagName !== "MARK") {
+        const mark = document.createElement("mark");
+        mark.className = "hl";
+        parent.replaceChild(mark, node);
+        mark.appendChild(node);
+      } else {
+        const before = node.textContent.slice(0, start);
+        const mid = node.textContent.slice(start, end);
+        const after = node.textContent.slice(end);
+        const frag = document.createDocumentFragment();
+        if (before) frag.appendChild(document.createTextNode(before));
+        const mark = document.createElement("mark");
+        mark.className = "hl";
+        mark.textContent = mid;
+        frag.appendChild(mark);
+        if (after) frag.appendChild(document.createTextNode(after));
+        parent.replaceChild(frag, node);
+      }
+    }
   }
 
-  // Apply stored highlights: walk paragraphs and wrap matching text
   function applyHighlights(articleId) {
     const h = getHighlights();
-    const items = h[articleId] || [];
-    // Remove all existing hl spans first
-    articleContent.querySelectorAll("span.hl").forEach(el => {
+    const ranges = h[articleId] || {};
+    // Remove existing <mark.hl> that we created
+    articleContent.querySelectorAll("mark.hl").forEach(el => {
       const parent = el.parentNode;
       parent.replaceChild(document.createTextNode(el.textContent), el);
       parent.normalize();
     });
-    items.forEach(({ paraIdx, text }) => {
-      const para = articleContent.children[paraIdx];
-      if (!para) return;
-      highlightTextInNode(para, text);
-    });
-  }
-
-  // Walk text nodes inside `root` and wrap `text` with hl span
-  function highlightTextInNode(root, text) {
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
-    const nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-    for (const node of nodes) {
-      const idx = node.textContent.indexOf(text);
-      if (idx < 0) continue;
-      // Don't re-highlight inside existing hl spans
-      if (node.parentNode.closest && node.parentNode.closest(".hl")) continue;
-      const span = document.createElement("span");
-      span.className = "hl";
-      span.textContent = text;
-      const range = document.createRange();
-      range.setStart(node, idx);
-      range.setEnd(node, idx + text.length);
-      range.surroundContents(span);
-      return; // only first match per para
+    // Re-apply from stored ranges
+    for (const [idxStr, entries] of Object.entries(ranges)) {
+      const el = articleContent.children[parseInt(idxStr)];
+      if (!el) continue;
+      for (const { start, end, text } of entries) {
+        // Use stored offsets; if offsets don't match, search by text
+        const fullText = el.textContent;
+        if (start >= 0 && end <= fullText.length && fullText.slice(start, end) === text) {
+          applyRange(el, start, end);
+        } else {
+          // Fallback: search text position
+          const pos = fullText.indexOf(text);
+          if (pos >= 0) applyRange(el, pos, pos + text.length);
+        }
+      }
     }
   }
+
+  let hlActive = false;
+  let hlFloat = null;
 
   if (hlToggle) {
     hlToggle.addEventListener("click", () => {
       hlActive = !hlActive;
       document.body.classList.toggle("highlight-mode", hlActive);
       hlToggle.classList.toggle("active", hlActive);
-      if (!hlActive) hlBtn.classList.remove("show");
+      if (!hlActive && hlFloat) { hlFloat.remove(); hlFloat = null; }
     });
 
-    // Show floating button on text selection in highlight mode
-    document.addEventListener("mouseup", (e) => {
-      clearTimeout(hlBtnTimer);
-      if (!hlActive) { hlBtn.classList.remove("show"); return; }
+    articleContent.addEventListener("mouseup", (e) => {
+      if (!hlActive) return;
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed || !sel.toString().trim()) {
-        hlBtnTimer = setTimeout(() => hlBtn.classList.remove("show"), 300);
+        if (hlFloat) { hlFloat.remove(); hlFloat = null; }
         return;
       }
-      // Must be inside articleContent
-      if (!articleContent.contains(sel.anchorNode)) return;
-      const rect = sel.getRangeAt(0).getBoundingClientRect();
-      hlBtn.style.left = Math.min(rect.left + rect.width / 2 - 16, innerWidth - 50) + "px";
-      hlBtn.style.top = Math.max(rect.top - 40, scrollY + 10) + "px";
-      hlBtn.classList.add("show");
-    });
-
-    hlBtn.addEventListener("click", () => {
-      const sel = window.getSelection();
-      if (!sel || sel.isCollapsed) return;
-      const text = sel.toString().trim();
-      if (!text) return;
-
-      // Find the paragraph index (direct child of articleContent)
-      let node = sel.anchorNode;
-      while (node && node.parentElement !== articleContent) node = node.parentElement;
-      if (!node) return;
-      const paraIdx = Array.from(articleContent.children).indexOf(node);
-      if (paraIdx < 0) return;
-
-      // Check if already highlighted → remove
-      const h = getHighlights();
-      const items = h[requested] || [];
-      const match = items.findIndex(x => x.paraIdx === paraIdx && x.text === text);
-      if (match >= 0) {
-        // Remove highlight
-        items.splice(match, 1);
-        h[requested] = items;
-        saveHighlights(h);
-        articleContent.querySelectorAll("span.hl").forEach(el => {
-          if (el.textContent === text && articleContent.children[paraIdx] && articleContent.children[paraIdx].contains(el)) {
-            const parent = el.parentNode;
-            parent.replaceChild(document.createTextNode(el.textContent), el);
-            parent.normalize();
-          }
+      // Show floating highlight button
+      if (!hlFloat) {
+        hlFloat = document.createElement("button");
+        hlFloat.textContent = "🖍 高亮";
+        hlFloat.style.cssText = "position:fixed;z-index:999;padding:4px 10px;border:1px solid var(--amber);background:var(--paper);color:var(--ink);border-radius:4px;cursor:pointer;font:14px var(--sans);box-shadow:0 2px 8px rgba(0,0,0,.2);";
+        hlFloat.addEventListener("click", () => {
+          const sel2 = window.getSelection();
+          if (!sel2 || sel2.isCollapsed) return;
+          const range = sel2.getRangeAt(0);
+          const container = range.commonAncestorContainer;
+          let para = container;
+          while (para && para.parentElement !== articleContent) para = para.parentElement;
+          if (!para || para === articleContent) return;
+          const idx = Array.from(articleContent.children).indexOf(para);
+          if (idx < 0) return;
+          const text = sel2.toString().trim();
+          // Calculate character offset within the paragraph
+          const preRange = document.createRange();
+          preRange.selectNodeContents(para);
+          preRange.setEnd(range.startContainer, range.startOffset);
+          const start = preRange.toString().length;
+          const end = start + text.length;
+          applyRange(para, start, end);
+          saveRangeHighlight(requested, idx, start, end, text);
+          sel2.removeAllRanges();
+          hlFloat.remove(); hlFloat = null;
         });
-      } else {
-        // Add highlight
-        if (!h[requested]) h[requested] = [];
-        h[requested].push({ paraIdx, text });
-        saveHighlights(h);
-        highlightTextInNode(node, text);
+        document.body.appendChild(hlFloat);
       }
-
-      sel.removeAllRanges();
-      hlBtn.classList.remove("show");
+      const rect = sel.getRangeAt(0).getBoundingClientRect();
+      hlFloat.style.left = Math.min(rect.left + rect.width / 2 - 40, window.innerWidth - 120) + "px";
+      hlFloat.style.top = (rect.bottom + 6) + "px";
     });
 
-    // Apply on load
+    document.addEventListener("mousedown", (e) => {
+      if (hlFloat && e.target !== hlFloat && !hlFloat.contains(e.target)) {
+        hlFloat.remove(); hlFloat = null;
+      }
+    });
+
     applyHighlights(requested);
   }
 } else {
