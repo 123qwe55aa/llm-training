@@ -13,7 +13,7 @@
   --shadow: rgba(42, 53, 43, .14);
   --serif: "Noto Serif SC", "Songti SC", serif;
   --sans: "Source Sans 3", "PingFang SC", sans-serif;
-  --reading-size: 18px;
+  --reading-size: 24px;
 }
 
 body.night {
@@ -157,13 +157,13 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
 #toc a:hover { color: var(--moss); border-color: var(--amber); }
 .article-header { margin-bottom: 60px; padding-bottom: 45px; border-bottom: 1px solid var(--line); }
 .article-header h1 { margin: 15px 0 18px; font: 900 clamp(42px, 6vw, 66px)/1.2 var(--serif); letter-spacing: -.045em; }
-.article-header p:last-child { color: var(--muted); font: 400 18px/1.8 var(--serif); }
+.article-header p:last-child { color: var(--muted); font: 400 22px/1.8 var(--serif); }
 .article-content { font: 400 var(--reading-size)/2 var(--serif); }
 .prose, .article-content { min-width: 0; }
 .article-content p, .article-content li, .article-content a { overflow-wrap: anywhere; }
 .article-content mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .article-content h1 { display: none; }
-.article-content h2 { margin: 90px 0 24px; color: var(--moss-deep); font: 800 34px/1.35 var(--serif); letter-spacing: -.03em; }
+.article-content h2 { margin: 90px 0 24px; color: var(--moss-deep); font: 800 38px/1.35 var(--serif); letter-spacing: -.03em; }
 .article-content h2::before { content: "§"; margin-right: 12px; color: var(--amber); font-weight: 400; }
 .article-content.activity-view h2::before { content: none; }
 .article-content h3 { margin: 46px 0 15px; font: 700 23px/1.4 var(--serif); }
