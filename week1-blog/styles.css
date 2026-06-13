@@ -317,10 +317,10 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
 
 /* Exercise interactive elements — MIT Open Learning Library style */
 .article-content.activity-view {
-  background: #fff;
+  background: transparent;
 }
 .article-content.activity-view .prose {
-  background: #fff;
+  background: transparent;
 }
 .article-content.activity-view .exercise-options {
   display: flex;
