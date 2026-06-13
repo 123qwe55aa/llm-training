@@ -8,6 +8,8 @@ These warmup exercises are divided into two sections:
 
 We will be using the notion of a hyperplane a great deal. A hyperplane is useful for classification, as discussed in the notes.
 
+![Hyperplane diagram](images/example1.png)
+
 Some notational conventions:
 
 * $x$: is a point in $d$-dimensional space (represented as a column vector of $d$ real numbers), $R^d$
@@ -29,6 +31,8 @@ Hint: When doing the two-dimensional problems below, start by drawing a picture.
 1.1) Through origin
 
 In $d$ dimensions, any vector $\theta \in R^d$ can define a hyperplane. Specifically, the hyperplane through the origin associated with $\theta$ is the set of all vectors $x \in R^d$ such that $\theta^T x = 0$. Note that this hyperplane includes the origin, since $x=0$ is in the set.
+
+![Labelled hyperplane diagram](images/example1-labelled.png)
 
 Ex1.1a: In two dimensions, $\theta = [\theta_1, \theta_2]$ can define a hyperplane.
 Let $\theta = [1, 2]$. Give a vector that lies on the hyperplane given by the set of all $x \in R^2$ such that $\theta^T x = 0$:
@@ -53,6 +57,8 @@ Now, we'll consider hyperplanes defined by $\theta^T x + \theta_0 = 0$, which do
 from points to such general hyperplanes are useful in machine learning models, such as the perceptron (as described in the notes).
 
 Define the positive side of a hyperplane to be the half-space defined by $\{x \mid \theta^T x + \theta_0 > 0\}$, so $\theta$ points toward the positive side.
+
+![General hyperplane diagram](images/example2.png)
 
 Ex1.2a. In two dimensions, let $\theta = [3, 4]$ and $\theta_0 = 5$. What is the signed perpendicular distance from the hyperplane to the origin? The distance should be positive if the origin is on the positive side of the hyperplane, 0 on the hyperplane and negative otherwise. It may be helpful to draw your own picture of the hyperplane (like the one above but with the right intercepts and slopes) with $\theta = [3, 4]$ and $\theta_0 = 5$. Hint -Draw a picture
 
@@ -246,8 +252,7 @@ fix it:
 import numpy as np
 def transform(data): return (np.dot(np.array([1, 1]), data))
 ```
-
-<img src="data:image/gif;base64,R0lGODlhEAAQAPIGAMLCwkJCQgAAAGJiYoKCgpKSkv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAGACwAAAAAEAAQAAADMmi63P4wyklrAyEA[Truncated]
+|
 
 ---
 
@@ -260,6 +265,8 @@ These warmup exercises are divided into two sections:
 1) Hyperplanes
 
 We will be using the notion of a hyperplane a great deal. A hyperplane is useful for classification, as discussed in the notes.
+
+![Hyperplane diagram](images/example1.png)
 
 Some notational conventions:
 
@@ -282,6 +289,8 @@ Hint: When doing the two-dimensional problems below, start by drawing a picture.
 1.1) Through origin
 
 In $d$ dimensions, any vector $\theta \in R^d$ can define a hyperplane. Specifically, the hyperplane through the origin associated with $\theta$ is the set of all vectors $x \in R^d$ such that $\theta^T x = 0$. Note that this hyperplane includes the origin, since $x=0$ is in the set.
+
+![Labelled hyperplane diagram](images/example1-labelled.png)
 
 Ex1.1a: In two dimensions, $\theta = [\theta_1, \theta_2]$ can define a hyperplane.
 Let $\theta = [1, 2]$. Give a vector that lies on the hyperplane given by the set of all $x \in R^2$ such that $\theta^T x = 0$:
@@ -306,6 +315,8 @@ Now, we'll consider hyperplanes defined by $\theta^T x + \theta_0 = 0$, which do
 from points to such general hyperplanes are useful in machine learning models, such as the perceptron (as described in the notes).
 
 Define the positive side of a hyperplane to be the half-space defined by $\{x \mid \theta^T x + \theta_0 > 0\}$, so $\theta$ points toward the positive side.
+
+![General hyperplane diagram](images/example2.png)
 
 Ex1.2a. In two dimensions, let $\theta = [3, 4]$ and $\theta_0 = 5$. What is the signed perpendicular distance from the hyperplane to the origin? The distance should be positive if the origin is on the positive side of the hyperplane, 0 on the hyperplane and negative otherwise. It may be helpful to draw your own picture of the hyperplane (like the one above but with the right intercepts and slopes) with $\theta = [3, 4]$ and $\theta_0 = 5$. Hint -Draw a picture
 

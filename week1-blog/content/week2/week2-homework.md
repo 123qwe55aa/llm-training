@@ -339,4 +339,3 @@ Add an extra dimension to all of the datapoints using a 1 for each point
 Add an extra dimension to all of the data points, using 0 for each point
 A transformation with these properties is impossible
 
-<a class="anchor" name="catsoop_sect[Truncated]

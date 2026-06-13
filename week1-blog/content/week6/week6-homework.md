@@ -196,4 +196,3 @@ What probability distribution over the categories is represented by $z^L = [-1, 
 
 Enter a distribution (a list of three numbers adding up to 1) for the three categories. Your answers should be numeric (please enter numbers, and do not use the symbol $e$):
 
-View Answer Ask for Help</button[Truncated]
