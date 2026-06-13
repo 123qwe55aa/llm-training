@@ -208,7 +208,7 @@ const activityToMarkdown = (text) => {
     const trimmed = raw.trim();
 
     const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
-    const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That|You|Select)/.test(trimmed);
+    const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That|You|Select|Such|All|We|It|A)/.test(trimmed);
     const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
     const isShort = trimmed.length > 2 && trimmed.length < 50 && trimmed.split(/\s+/).length <= 4;
     const hasEquals = /=/.test(trimmed);
@@ -230,6 +230,8 @@ const activityToMarkdown = (text) => {
   result = result.replace(/(exists\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
   // Also handle single-line "? -- yes no"
   result = result.replace(/\? -- (yes|no)(?:\s+(yes|no))?/g, '? {RADIO:$1,$2}');
+  // Handle " =0 -- yes no" or "exists -- yes no" (without preceding ?)
+  result = result.replace(/-- (yes|no)\s+(yes|no)/g, '{RADIO:$1,$2}');
 
   // Convert "Enter a Python list..." to marker
   result = result.replace(
