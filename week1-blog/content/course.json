@@ -1,0 +1,2595 @@
+{
+  "course": {
+    "id": "course-v1:MITx+6.036+1T2019",
+    "title": "MIT 6.036 Introduction to Machine Learning",
+    "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/course/"
+  },
+  "stats": {
+    "chapters": 14,
+    "sections": 53,
+    "videos": 121,
+    "activities": 39,
+    "pdfs": 18
+  },
+  "chapters": [
+    {
+      "id": "welcome",
+      "number": 0,
+      "title": "Welcome to 6.036",
+      "sections": [
+        {
+          "id": "welcome-6-036-information-you-should-know",
+          "title": "6.036 Information",
+          "type": "notes",
+          "url": "../course-data/content/welcome/6-036-information-you-should-know.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 702,
+          "activities": [
+            {
+              "id": "activity-welcome-6036",
+              "title": "welcome 6036",
+              "type": "guide",
+              "url": "../course-data/lti/welcome_6036.txt",
+              "markdown": false,
+              "characters": 703,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/welcome"
+            }
+          ]
+        },
+        {
+          "id": "welcome-week0-exercises-v3",
+          "title": "Self-Assessment",
+          "type": "notes",
+          "url": "../course-data/content/welcome/week0-exercises-v3.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 284,
+          "activities": [
+            {
+              "id": "activity-self-assessment-exercises",
+              "title": "Self-Assessment Exercises",
+              "type": "exercise",
+              "url": "../course-data/lti/Self-Assessment_Exercises.txt",
+              "markdown": false,
+              "characters": 12489,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/readiness"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week1",
+      "number": 1,
+      "title": "Week 1: Basics",
+      "sections": [
+        {
+          "id": "week1-intro-ml",
+          "title": "Introduction to ML",
+          "type": "notes",
+          "url": "../course-data/content/week1/intro-ml.md",
+          "markdown": true,
+          "video_count": 7,
+          "pdf_count": 2,
+          "characters": 49894,
+          "activities": []
+        },
+        {
+          "id": "week1-linear-classifiers",
+          "title": "Linear classifiers",
+          "type": "notes",
+          "url": "../course-data/content/week1/linear-classifiers.md",
+          "markdown": true,
+          "video_count": 2,
+          "pdf_count": 2,
+          "characters": 25029,
+          "activities": []
+        },
+        {
+          "id": "week1-week1-exercises",
+          "title": "Week 1 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week1/week1-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 504,
+          "activities": [
+            {
+              "id": "activity-week-1-exercises-hyperplanes",
+              "title": "Week 1 Exercises Hyperplanes",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_1_Exercises_Hyperplanes.txt",
+              "markdown": false,
+              "characters": 11754,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex01"
+            },
+            {
+              "id": "activity-week-1-exercises-numpy",
+              "title": "Week 1 Exercises numpy",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_1_Exercises_numpy.txt",
+              "markdown": false,
+              "characters": 11754,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex01#catsoop_section_2"
+            }
+          ]
+        },
+        {
+          "id": "week1-week1-homework",
+          "title": "Homework 1",
+          "type": "overview",
+          "url": "../course-data/content/week1/week1-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 232,
+          "activities": [
+            {
+              "id": "activity-homework-1",
+              "title": "Homework 1",
+              "type": "homework",
+              "url": "../course-data/lti/Homework_1.txt",
+              "markdown": false,
+              "characters": 8525,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week2",
+      "number": 2,
+      "title": "Week 2: Perceptrons",
+      "sections": [
+        {
+          "id": "week2-perceptron",
+          "title": "The Perceptron",
+          "type": "notes",
+          "url": "../course-data/content/week2/perceptron.md",
+          "markdown": true,
+          "video_count": 9,
+          "pdf_count": 1,
+          "characters": 59932,
+          "activities": []
+        },
+        {
+          "id": "week2-week2-exercises",
+          "title": "Week 2 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week2/week2-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 300,
+          "activities": [
+            {
+              "id": "activity-week-2-exercises-perceptrons",
+              "title": "Week 2 Exercises Perceptrons",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_2_Exercises_Perceptrons.txt",
+              "markdown": false,
+              "characters": 2792,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex02"
+            }
+          ]
+        },
+        {
+          "id": "week2-week2-lab",
+          "title": "Week 2 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week2/week2-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 237,
+          "activities": [
+            {
+              "id": "activity-week-2-lab",
+              "title": "Week 2 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_2_Lab.txt",
+              "markdown": false,
+              "characters": 7561,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab02"
+            }
+          ]
+        },
+        {
+          "id": "week2-week2-homework",
+          "title": "Week 2 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week2/week2-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 257,
+          "activities": [
+            {
+              "id": "activity-week-2-homework",
+              "title": "Week 2 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_2_Homework.txt",
+              "markdown": false,
+              "characters": 23228,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw02"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week3",
+      "number": 3,
+      "title": "Week 3: Features",
+      "sections": [
+        {
+          "id": "week3-feature-representation",
+          "title": "Feature representation",
+          "type": "notes",
+          "url": "../course-data/content/week3/feature-representation.md",
+          "markdown": true,
+          "video_count": 4,
+          "pdf_count": 1,
+          "characters": 44234,
+          "activities": []
+        },
+        {
+          "id": "week3-week3-exercises",
+          "title": "Week 3 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week3/week3-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 288,
+          "activities": [
+            {
+              "id": "activity-week-3-exercises-features",
+              "title": "Week 3 Exercises Features",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_3_Exercises_Features.txt",
+              "markdown": false,
+              "characters": 1855,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex03"
+            }
+          ]
+        },
+        {
+          "id": "week3-week3-lab",
+          "title": "Week 3 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week3/week3-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 234,
+          "activities": [
+            {
+              "id": "activity-week-3-lab",
+              "title": "Week 3 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_3_Lab.txt",
+              "markdown": false,
+              "characters": 11228,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab03"
+            }
+          ]
+        },
+        {
+          "id": "week3-week3-homework",
+          "title": "Week 3 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week3/week3-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 254,
+          "activities": [
+            {
+              "id": "activity-week-3-homework",
+              "title": "Week 3 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_3_Homework.txt",
+              "markdown": false,
+              "characters": 26165,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw03"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week4",
+      "number": 4,
+      "title": "Week 4: Margin Maximization",
+      "sections": [
+        {
+          "id": "week4-logistic-regression",
+          "title": "Logistic Regression",
+          "type": "notes",
+          "url": "../course-data/content/week4/logistic-regression.md",
+          "markdown": true,
+          "video_count": 9,
+          "pdf_count": 1,
+          "characters": 75542,
+          "activities": []
+        },
+        {
+          "id": "week4-gradient-descent",
+          "title": "Gradient Descent",
+          "type": "notes",
+          "url": "../course-data/content/week4/gradient-descent.md",
+          "markdown": true,
+          "video_count": 4,
+          "pdf_count": 1,
+          "characters": 35913,
+          "activities": []
+        },
+        {
+          "id": "week4-week4-exercises",
+          "title": "Week 4 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week4/week4-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 332,
+          "activities": [
+            {
+              "id": "activity-week-4-exercises-margin-maximization",
+              "title": "Week 4 Exercises Margin Maximization",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_4_Exercises_Margin_Maximization.txt",
+              "markdown": false,
+              "characters": 3637,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex04"
+            }
+          ]
+        },
+        {
+          "id": "week4-week4-lab",
+          "title": "Week 4 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week4/week4-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 245,
+          "activities": [
+            {
+              "id": "activity-week-4-lab",
+              "title": "Week 4 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_4_Lab.txt",
+              "markdown": false,
+              "characters": 8917,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab04"
+            }
+          ]
+        },
+        {
+          "id": "week4-week4-homework",
+          "title": "Week 4 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week4/week4-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 265,
+          "activities": [
+            {
+              "id": "activity-week-4-homework",
+              "title": "Week 4 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_4_Homework.txt",
+              "markdown": false,
+              "characters": 33675,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw04"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week5",
+      "number": 5,
+      "title": "Week 5: Regression",
+      "sections": [
+        {
+          "id": "week5-regression",
+          "title": "Regression",
+          "type": "notes",
+          "url": "../course-data/content/week5/regression.md",
+          "markdown": true,
+          "video_count": 11,
+          "pdf_count": 1,
+          "characters": 67736,
+          "activities": []
+        },
+        {
+          "id": "week5-week5-exercises",
+          "title": "Week 5 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week5/week5-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 296,
+          "activities": [
+            {
+              "id": "activity-week-5-exercises-regression",
+              "title": "Week 5 Exercises Regression",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_5_Exercises_Regression.txt",
+              "markdown": false,
+              "characters": 6433,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex05"
+            }
+          ]
+        },
+        {
+          "id": "week5-week5-lab",
+          "title": "Week 5 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week5/week5-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 236,
+          "activities": [
+            {
+              "id": "activity-week-5-lab",
+              "title": "Week 5 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_5_Lab.txt",
+              "markdown": false,
+              "characters": 10415,
+              "source_url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/xblock/block-v1:MITx+6.036+1T2019+type@lti+block@Week_5_Lab/handler/preview_handler"
+            }
+          ]
+        },
+        {
+          "id": "week5-week5-homework",
+          "title": "Week 5 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week5/week5-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 256,
+          "activities": [
+            {
+              "id": "activity-week-5-homework",
+              "title": "Week 5 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_5_Homework.txt",
+              "markdown": false,
+              "characters": 30652,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw05"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week6",
+      "number": 6,
+      "title": "Week 6: Neural Networks I",
+      "sections": [
+        {
+          "id": "week6-neural-networks",
+          "title": "Neural Networks",
+          "type": "notes",
+          "url": "../course-data/content/week6/neural-networks.md",
+          "markdown": true,
+          "video_count": 8,
+          "pdf_count": 1,
+          "characters": 84263,
+          "activities": []
+        },
+        {
+          "id": "week6-week6-exercises",
+          "title": "Week 6 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week6/week6-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 324,
+          "activities": [
+            {
+              "id": "activity-week-6-exercises-neural-networks-i",
+              "title": "Week 6 Exercises Neural Networks I",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_6_Exercises_Neural_Networks_I.txt",
+              "markdown": false,
+              "characters": 3821,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex06"
+            }
+          ]
+        },
+        {
+          "id": "week6-week6-lab",
+          "title": "Week 6 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week6/week6-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 243,
+          "activities": [
+            {
+              "id": "activity-week-6-lab",
+              "title": "Week 6 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_6_Lab.txt",
+              "markdown": false,
+              "characters": 6105,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab06"
+            }
+          ]
+        },
+        {
+          "id": "week6-week6-homework",
+          "title": "Week 6 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week6/week6-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 263,
+          "activities": [
+            {
+              "id": "activity-week-6-homework",
+              "title": "Week 6 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_6_Homework.txt",
+              "markdown": false,
+              "characters": 21217,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week7",
+      "number": 7,
+      "title": "Week 7: Neural Networks II",
+      "sections": [
+        {
+          "id": "week7-neural-networks-2",
+          "title": "Making NN's Work",
+          "type": "notes",
+          "url": "../course-data/content/week7/neural-networks-2.md",
+          "markdown": true,
+          "video_count": 10,
+          "pdf_count": 2,
+          "characters": 77737,
+          "activities": []
+        },
+        {
+          "id": "week7-week7-exercises",
+          "title": "Week 7 Exercises",
+          "type": "notes",
+          "url": "../course-data/content/week7/week7-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 328,
+          "activities": [
+            {
+              "id": "activity-week-7-exercises-neural-networks-ii",
+              "title": "Week 7 Exercises Neural Networks II",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_7_Exercises_Neural_Networks_II.txt",
+              "markdown": false,
+              "characters": 79,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex07"
+            }
+          ]
+        },
+        {
+          "id": "week7-week7-homework",
+          "title": "Week 7 Homework",
+          "type": "notes",
+          "url": "../course-data/content/week7/week7-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 264,
+          "activities": [
+            {
+              "id": "activity-week-7-homework",
+              "title": "Week 7 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_7_Homework.txt",
+              "markdown": false,
+              "characters": 12658,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw07"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week8",
+      "number": 8,
+      "title": "Week 8: Convolutional Neural Networks",
+      "sections": [
+        {
+          "id": "week8-convolutional-neural-networks",
+          "title": "Convolutional Neural Networks",
+          "type": "notes",
+          "url": "../course-data/content/week8/convolutional-neural-networks.md",
+          "markdown": true,
+          "video_count": 8,
+          "pdf_count": 2,
+          "characters": 69770,
+          "activities": []
+        },
+        {
+          "id": "week8-week8-exercises",
+          "title": "Week 8 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week8/week8-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 372,
+          "activities": [
+            {
+              "id": "activity-week-8-exercises-convolutional-neural-networks",
+              "title": "Week 8 Exercises Convolutional Neural Networks",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_8_Exercises_Convolutional_Neural_Networks.txt",
+              "markdown": false,
+              "characters": 3067,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex08"
+            }
+          ]
+        },
+        {
+          "id": "week8-week8-lab",
+          "title": "Week 8 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week8/week8-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 255,
+          "activities": [
+            {
+              "id": "activity-week-8-lab",
+              "title": "Week 8 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_8_Lab.txt",
+              "markdown": false,
+              "characters": 11806,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab08"
+            }
+          ]
+        },
+        {
+          "id": "week8-week8-homework",
+          "title": "Week 8 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week8/week8-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 275,
+          "activities": [
+            {
+              "id": "activity-week-8-homework",
+              "title": "Week 8 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_8_Homework.txt",
+              "markdown": false,
+              "characters": 26746,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week9",
+      "number": 9,
+      "title": "Week 9: State Machines and Markov Decision Processes",
+      "sections": [
+        {
+          "id": "week9-state-machines",
+          "title": "Sequential models",
+          "type": "notes",
+          "url": "../course-data/content/week9/state-machines.md",
+          "markdown": true,
+          "video_count": 11,
+          "pdf_count": 1,
+          "characters": 83628,
+          "activities": []
+        },
+        {
+          "id": "week9-week9-exercises",
+          "title": "Week 9 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week9/week9-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 432,
+          "activities": [
+            {
+              "id": "activity-week-9-exercises-state-machines-and-markov-decision-processes",
+              "title": "Week 9 Exercises State Machines and Markov Decision Processes",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_9_Exercises_State_Machines_and_Markov_Decision_Processes.txt",
+              "markdown": false,
+              "characters": 4703,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex09"
+            }
+          ]
+        },
+        {
+          "id": "week9-week9-lab",
+          "title": "Week 9 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week9/week9-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 270,
+          "activities": [
+            {
+              "id": "activity-week-9-lab",
+              "title": "Week 9 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_9_Lab.txt",
+              "markdown": false,
+              "characters": 7146,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab09"
+            }
+          ]
+        },
+        {
+          "id": "week9-week9-homework",
+          "title": "Week 9 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week9/week9-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 290,
+          "activities": [
+            {
+              "id": "activity-week-9-homework",
+              "title": "Week 9 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_9_Homework.txt",
+              "markdown": false,
+              "characters": 26161,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week10",
+      "number": 10,
+      "title": "Week 10: Reinforcement Learning",
+      "sections": [
+        {
+          "id": "week10-reinforcement-learning",
+          "title": "Reinforcement learning",
+          "type": "notes",
+          "url": "../course-data/content/week10/reinforcement-learning.md",
+          "markdown": true,
+          "video_count": 9,
+          "pdf_count": 1,
+          "characters": 83705,
+          "activities": []
+        },
+        {
+          "id": "week10-week10-exercises",
+          "title": "Week 10 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week10/week10-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 349,
+          "activities": [
+            {
+              "id": "activity-week-10-exercises-reinforcement-learning",
+              "title": "Week 10 Exercises Reinforcement Learning",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_10_Exercises_Reinforcement_Learning.txt",
+              "markdown": false,
+              "characters": 2897,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex10"
+            }
+          ]
+        },
+        {
+          "id": "week10-week10-lab",
+          "title": "Week 10 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week10/week10-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 253,
+          "activities": [
+            {
+              "id": "activity-week-10-lab",
+              "title": "Week 10 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_10_Lab.txt",
+              "markdown": false,
+              "characters": 12731,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab10"
+            }
+          ]
+        },
+        {
+          "id": "week10-week10-homework",
+          "title": "Week 10 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week10/week10-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 273,
+          "activities": [
+            {
+              "id": "activity-week-10-homework",
+              "title": "Week 10 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_10_Homework.txt",
+              "markdown": false,
+              "characters": 29618,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week11",
+      "number": 11,
+      "title": "Week 11: Recurrent Neural Networks",
+      "sections": [
+        {
+          "id": "week11-rnn",
+          "title": "Recurrent Neural Networks",
+          "type": "notes",
+          "url": "../course-data/content/week11/rnn.md",
+          "markdown": true,
+          "video_count": 7,
+          "pdf_count": 1,
+          "characters": 75468,
+          "activities": []
+        },
+        {
+          "id": "week11-week11-exercises",
+          "title": "Week 11 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week11/week11-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 361,
+          "activities": [
+            {
+              "id": "activity-week-11-exercises-recurrent-neural-networks",
+              "title": "Week 11 Exercises Recurrent Neural Networks",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_11_Exercises_Recurrent_Neural_Networks.txt",
+              "markdown": false,
+              "characters": 4701,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex11"
+            }
+          ]
+        },
+        {
+          "id": "week11-week11-lab",
+          "title": "Week 11 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week11/week11-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 256,
+          "activities": [
+            {
+              "id": "activity-week-11-lab",
+              "title": "Week 11 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_11_Lab.txt",
+              "markdown": false,
+              "characters": 9243,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab11"
+            }
+          ]
+        },
+        {
+          "id": "week11-week11-homework",
+          "title": "Week 11 Homework",
+          "type": "overview",
+          "url": "../course-data/content/week11/week11-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 276,
+          "activities": [
+            {
+              "id": "activity-week-11-homework",
+              "title": "Week 11 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_11_Homework.txt",
+              "markdown": false,
+              "characters": 20798,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week12",
+      "number": 12,
+      "title": "Week 12: Recommender Systems",
+      "sections": [
+        {
+          "id": "week12-recommender-systems",
+          "title": "Recommender systems",
+          "type": "notes",
+          "url": "../course-data/content/week12/recommender-systems.md",
+          "markdown": true,
+          "video_count": 9,
+          "pdf_count": 2,
+          "characters": 69153,
+          "activities": []
+        },
+        {
+          "id": "week12-week12-exercises",
+          "title": "Week 12 Exercises",
+          "type": "notes",
+          "url": "../course-data/content/week12/week12-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 337,
+          "activities": [
+            {
+              "id": "activity-week-12-exercises-recommender-systems",
+              "title": "Week 12 Exercises Recommender Systems",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_12_Exercises_Recommender_Systems.txt",
+              "markdown": false,
+              "characters": 3306,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex12"
+            }
+          ]
+        },
+        {
+          "id": "week12-week12-lab",
+          "title": "Week 12 Lab",
+          "type": "notes",
+          "url": "../course-data/content/week12/week12-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 250,
+          "activities": [
+            {
+              "id": "activity-week-12-lab",
+              "title": "Week 12 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_12_Lab.txt",
+              "markdown": false,
+              "characters": 13832,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab12"
+            }
+          ]
+        },
+        {
+          "id": "week12-week12-homework",
+          "title": "Week 12 Homework",
+          "type": "notes",
+          "url": "../course-data/content/week12/week12-homework.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 270,
+          "activities": [
+            {
+              "id": "activity-week-12-homework",
+              "title": "Week 12 Homework",
+              "type": "homework",
+              "url": "../course-data/lti/Week_12_Homework.txt",
+              "markdown": false,
+              "characters": 25267,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "week13",
+      "number": 13,
+      "title": "Week 13: Decision Trees and Nearest Neighbors",
+      "sections": [
+        {
+          "id": "week13-non-parametric",
+          "title": "Decision Trees and Nearest Neighbors",
+          "type": "notes",
+          "url": "../course-data/content/week13/non-parametric.md",
+          "markdown": true,
+          "video_count": 13,
+          "pdf_count": 1,
+          "characters": 73171,
+          "activities": []
+        },
+        {
+          "id": "week13-week13-exercises",
+          "title": "Week 13 Exercises",
+          "type": "overview",
+          "url": "../course-data/content/week13/week13-exercises.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 405,
+          "activities": [
+            {
+              "id": "activity-week-13-exercises-decision-trees-and-nearest-neighbors",
+              "title": "Week 13 Exercises Decision Trees and Nearest Neighbors",
+              "type": "exercise",
+              "url": "../course-data/lti/Week_13_Exercises_Decision_Trees_and_Nearest_Neighbors.txt",
+              "markdown": false,
+              "characters": 6125,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex13"
+            }
+          ]
+        },
+        {
+          "id": "week13-week13-lab",
+          "title": "Week 13 Lab",
+          "type": "overview",
+          "url": "../course-data/content/week13/week13-lab.md",
+          "markdown": true,
+          "video_count": 0,
+          "pdf_count": 0,
+          "characters": 267,
+          "activities": [
+            {
+              "id": "activity-week-13-lab",
+              "title": "Week 13 Lab",
+              "type": "lab",
+              "url": "../course-data/lti/Week_13_Lab.txt",
+              "markdown": false,
+              "characters": 7988,
+              "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab13"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "articles": {
+    "activity-welcome-6036": {
+      "id": "activity-welcome-6036",
+      "title": "welcome 6036",
+      "type": "guide",
+      "url": "../course-data/lti/welcome_6036.txt",
+      "markdown": false,
+      "characters": 703,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/welcome",
+      "kicker": "Welcome to 6.036 · GUIDE",
+      "deck": "6.036 Information 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "welcome-6-036-information-you-should-know": {
+      "id": "welcome-6-036-information-you-should-know",
+      "title": "6.036 Information",
+      "type": "notes",
+      "url": "../course-data/content/welcome/6-036-information-you-should-know.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 702,
+      "activities": [
+        {
+          "id": "activity-welcome-6036",
+          "title": "welcome 6036",
+          "type": "guide",
+          "url": "../course-data/lti/welcome_6036.txt",
+          "markdown": false,
+          "characters": 703,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/welcome"
+        }
+      ],
+      "kicker": "Welcome to 6.036 · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-self-assessment-exercises": {
+      "id": "activity-self-assessment-exercises",
+      "title": "Self-Assessment Exercises",
+      "type": "exercise",
+      "url": "../course-data/lti/Self-Assessment_Exercises.txt",
+      "markdown": false,
+      "characters": 12489,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/readiness",
+      "kicker": "Welcome to 6.036 · EXERCISE",
+      "deck": "Self-Assessment 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "welcome-week0-exercises-v3": {
+      "id": "welcome-week0-exercises-v3",
+      "title": "Self-Assessment",
+      "type": "notes",
+      "url": "../course-data/content/welcome/week0-exercises-v3.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 284,
+      "activities": [
+        {
+          "id": "activity-self-assessment-exercises",
+          "title": "Self-Assessment Exercises",
+          "type": "exercise",
+          "url": "../course-data/lti/Self-Assessment_Exercises.txt",
+          "markdown": false,
+          "characters": 12489,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/readiness"
+        }
+      ],
+      "kicker": "Welcome to 6.036 · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week1-intro-ml": {
+      "id": "week1-intro-ml",
+      "title": "Introduction to ML",
+      "type": "notes",
+      "url": "../course-data/content/week1/intro-ml.md",
+      "markdown": true,
+      "video_count": 7,
+      "pdf_count": 2,
+      "characters": 49894,
+      "activities": [],
+      "kicker": "Week 1: Basics · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 7 段视频 transcript 的网页讲义。"
+    },
+    "week1-linear-classifiers": {
+      "id": "week1-linear-classifiers",
+      "title": "Linear classifiers",
+      "type": "notes",
+      "url": "../course-data/content/week1/linear-classifiers.md",
+      "markdown": true,
+      "video_count": 2,
+      "pdf_count": 2,
+      "characters": 25029,
+      "activities": [],
+      "kicker": "Week 1: Basics · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 2 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-1-exercises-hyperplanes": {
+      "id": "activity-week-1-exercises-hyperplanes",
+      "title": "Week 1 Exercises Hyperplanes",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_1_Exercises_Hyperplanes.txt",
+      "markdown": false,
+      "characters": 11754,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex01",
+      "kicker": "Week 1: Basics · EXERCISE",
+      "deck": "Week 1 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "activity-week-1-exercises-numpy": {
+      "id": "activity-week-1-exercises-numpy",
+      "title": "Week 1 Exercises numpy",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_1_Exercises_numpy.txt",
+      "markdown": false,
+      "characters": 11754,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex01#catsoop_section_2",
+      "kicker": "Week 1: Basics · EXERCISE",
+      "deck": "Week 1 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week1-week1-exercises": {
+      "id": "week1-week1-exercises",
+      "title": "Week 1 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week1/week1-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 504,
+      "activities": [
+        {
+          "id": "activity-week-1-exercises-hyperplanes",
+          "title": "Week 1 Exercises Hyperplanes",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_1_Exercises_Hyperplanes.txt",
+          "markdown": false,
+          "characters": 11754,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex01"
+        },
+        {
+          "id": "activity-week-1-exercises-numpy",
+          "title": "Week 1 Exercises numpy",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_1_Exercises_numpy.txt",
+          "markdown": false,
+          "characters": 11754,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex01#catsoop_section_2"
+        }
+      ],
+      "kicker": "Week 1: Basics · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-homework-1": {
+      "id": "activity-homework-1",
+      "title": "Homework 1",
+      "type": "homework",
+      "url": "../course-data/lti/Homework_1.txt",
+      "markdown": false,
+      "characters": 8525,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw01",
+      "kicker": "Week 1: Basics · HOMEWORK",
+      "deck": "Homework 1 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week1-week1-homework": {
+      "id": "week1-week1-homework",
+      "title": "Homework 1",
+      "type": "overview",
+      "url": "../course-data/content/week1/week1-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 232,
+      "activities": [
+        {
+          "id": "activity-homework-1",
+          "title": "Homework 1",
+          "type": "homework",
+          "url": "../course-data/lti/Homework_1.txt",
+          "markdown": false,
+          "characters": 8525,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw01"
+        }
+      ],
+      "kicker": "Week 1: Basics · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week2-perceptron": {
+      "id": "week2-perceptron",
+      "title": "The Perceptron",
+      "type": "notes",
+      "url": "../course-data/content/week2/perceptron.md",
+      "markdown": true,
+      "video_count": 9,
+      "pdf_count": 1,
+      "characters": 59932,
+      "activities": [],
+      "kicker": "Week 2: Perceptrons · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 9 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-2-exercises-perceptrons": {
+      "id": "activity-week-2-exercises-perceptrons",
+      "title": "Week 2 Exercises Perceptrons",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_2_Exercises_Perceptrons.txt",
+      "markdown": false,
+      "characters": 2792,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex02",
+      "kicker": "Week 2: Perceptrons · EXERCISE",
+      "deck": "Week 2 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week2-week2-exercises": {
+      "id": "week2-week2-exercises",
+      "title": "Week 2 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week2/week2-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 300,
+      "activities": [
+        {
+          "id": "activity-week-2-exercises-perceptrons",
+          "title": "Week 2 Exercises Perceptrons",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_2_Exercises_Perceptrons.txt",
+          "markdown": false,
+          "characters": 2792,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex02"
+        }
+      ],
+      "kicker": "Week 2: Perceptrons · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-2-lab": {
+      "id": "activity-week-2-lab",
+      "title": "Week 2 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_2_Lab.txt",
+      "markdown": false,
+      "characters": 7561,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab02",
+      "kicker": "Week 2: Perceptrons · LAB",
+      "deck": "Week 2 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week2-week2-lab": {
+      "id": "week2-week2-lab",
+      "title": "Week 2 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week2/week2-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 237,
+      "activities": [
+        {
+          "id": "activity-week-2-lab",
+          "title": "Week 2 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_2_Lab.txt",
+          "markdown": false,
+          "characters": 7561,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab02"
+        }
+      ],
+      "kicker": "Week 2: Perceptrons · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-2-homework": {
+      "id": "activity-week-2-homework",
+      "title": "Week 2 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_2_Homework.txt",
+      "markdown": false,
+      "characters": 23228,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw02",
+      "kicker": "Week 2: Perceptrons · HOMEWORK",
+      "deck": "Week 2 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week2-week2-homework": {
+      "id": "week2-week2-homework",
+      "title": "Week 2 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week2/week2-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 257,
+      "activities": [
+        {
+          "id": "activity-week-2-homework",
+          "title": "Week 2 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_2_Homework.txt",
+          "markdown": false,
+          "characters": 23228,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw02"
+        }
+      ],
+      "kicker": "Week 2: Perceptrons · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week3-feature-representation": {
+      "id": "week3-feature-representation",
+      "title": "Feature representation",
+      "type": "notes",
+      "url": "../course-data/content/week3/feature-representation.md",
+      "markdown": true,
+      "video_count": 4,
+      "pdf_count": 1,
+      "characters": 44234,
+      "activities": [],
+      "kicker": "Week 3: Features · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 4 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-3-exercises-features": {
+      "id": "activity-week-3-exercises-features",
+      "title": "Week 3 Exercises Features",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_3_Exercises_Features.txt",
+      "markdown": false,
+      "characters": 1855,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex03",
+      "kicker": "Week 3: Features · EXERCISE",
+      "deck": "Week 3 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week3-week3-exercises": {
+      "id": "week3-week3-exercises",
+      "title": "Week 3 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week3/week3-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 288,
+      "activities": [
+        {
+          "id": "activity-week-3-exercises-features",
+          "title": "Week 3 Exercises Features",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_3_Exercises_Features.txt",
+          "markdown": false,
+          "characters": 1855,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex03"
+        }
+      ],
+      "kicker": "Week 3: Features · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-3-lab": {
+      "id": "activity-week-3-lab",
+      "title": "Week 3 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_3_Lab.txt",
+      "markdown": false,
+      "characters": 11228,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab03",
+      "kicker": "Week 3: Features · LAB",
+      "deck": "Week 3 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week3-week3-lab": {
+      "id": "week3-week3-lab",
+      "title": "Week 3 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week3/week3-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 234,
+      "activities": [
+        {
+          "id": "activity-week-3-lab",
+          "title": "Week 3 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_3_Lab.txt",
+          "markdown": false,
+          "characters": 11228,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab03"
+        }
+      ],
+      "kicker": "Week 3: Features · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-3-homework": {
+      "id": "activity-week-3-homework",
+      "title": "Week 3 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_3_Homework.txt",
+      "markdown": false,
+      "characters": 26165,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw03",
+      "kicker": "Week 3: Features · HOMEWORK",
+      "deck": "Week 3 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week3-week3-homework": {
+      "id": "week3-week3-homework",
+      "title": "Week 3 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week3/week3-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 254,
+      "activities": [
+        {
+          "id": "activity-week-3-homework",
+          "title": "Week 3 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_3_Homework.txt",
+          "markdown": false,
+          "characters": 26165,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw03"
+        }
+      ],
+      "kicker": "Week 3: Features · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week4-logistic-regression": {
+      "id": "week4-logistic-regression",
+      "title": "Logistic Regression",
+      "type": "notes",
+      "url": "../course-data/content/week4/logistic-regression.md",
+      "markdown": true,
+      "video_count": 9,
+      "pdf_count": 1,
+      "characters": 75542,
+      "activities": [],
+      "kicker": "Week 4: Margin Maximization · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 9 段视频 transcript 的网页讲义。"
+    },
+    "week4-gradient-descent": {
+      "id": "week4-gradient-descent",
+      "title": "Gradient Descent",
+      "type": "notes",
+      "url": "../course-data/content/week4/gradient-descent.md",
+      "markdown": true,
+      "video_count": 4,
+      "pdf_count": 1,
+      "characters": 35913,
+      "activities": [],
+      "kicker": "Week 4: Margin Maximization · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 4 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-4-exercises-margin-maximization": {
+      "id": "activity-week-4-exercises-margin-maximization",
+      "title": "Week 4 Exercises Margin Maximization",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_4_Exercises_Margin_Maximization.txt",
+      "markdown": false,
+      "characters": 3637,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex04",
+      "kicker": "Week 4: Margin Maximization · EXERCISE",
+      "deck": "Week 4 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week4-week4-exercises": {
+      "id": "week4-week4-exercises",
+      "title": "Week 4 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week4/week4-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 332,
+      "activities": [
+        {
+          "id": "activity-week-4-exercises-margin-maximization",
+          "title": "Week 4 Exercises Margin Maximization",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_4_Exercises_Margin_Maximization.txt",
+          "markdown": false,
+          "characters": 3637,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex04"
+        }
+      ],
+      "kicker": "Week 4: Margin Maximization · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-4-lab": {
+      "id": "activity-week-4-lab",
+      "title": "Week 4 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_4_Lab.txt",
+      "markdown": false,
+      "characters": 8917,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab04",
+      "kicker": "Week 4: Margin Maximization · LAB",
+      "deck": "Week 4 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week4-week4-lab": {
+      "id": "week4-week4-lab",
+      "title": "Week 4 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week4/week4-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 245,
+      "activities": [
+        {
+          "id": "activity-week-4-lab",
+          "title": "Week 4 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_4_Lab.txt",
+          "markdown": false,
+          "characters": 8917,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab04"
+        }
+      ],
+      "kicker": "Week 4: Margin Maximization · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-4-homework": {
+      "id": "activity-week-4-homework",
+      "title": "Week 4 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_4_Homework.txt",
+      "markdown": false,
+      "characters": 33675,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw04",
+      "kicker": "Week 4: Margin Maximization · HOMEWORK",
+      "deck": "Week 4 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week4-week4-homework": {
+      "id": "week4-week4-homework",
+      "title": "Week 4 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week4/week4-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 265,
+      "activities": [
+        {
+          "id": "activity-week-4-homework",
+          "title": "Week 4 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_4_Homework.txt",
+          "markdown": false,
+          "characters": 33675,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw04"
+        }
+      ],
+      "kicker": "Week 4: Margin Maximization · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week5-regression": {
+      "id": "week5-regression",
+      "title": "Regression",
+      "type": "notes",
+      "url": "../course-data/content/week5/regression.md",
+      "markdown": true,
+      "video_count": 11,
+      "pdf_count": 1,
+      "characters": 67736,
+      "activities": [],
+      "kicker": "Week 5: Regression · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 11 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-5-exercises-regression": {
+      "id": "activity-week-5-exercises-regression",
+      "title": "Week 5 Exercises Regression",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_5_Exercises_Regression.txt",
+      "markdown": false,
+      "characters": 6433,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex05",
+      "kicker": "Week 5: Regression · EXERCISE",
+      "deck": "Week 5 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week5-week5-exercises": {
+      "id": "week5-week5-exercises",
+      "title": "Week 5 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week5/week5-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 296,
+      "activities": [
+        {
+          "id": "activity-week-5-exercises-regression",
+          "title": "Week 5 Exercises Regression",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_5_Exercises_Regression.txt",
+          "markdown": false,
+          "characters": 6433,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex05"
+        }
+      ],
+      "kicker": "Week 5: Regression · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-5-lab": {
+      "id": "activity-week-5-lab",
+      "title": "Week 5 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_5_Lab.txt",
+      "markdown": false,
+      "characters": 10415,
+      "source_url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/xblock/block-v1:MITx+6.036+1T2019+type@lti+block@Week_5_Lab/handler/preview_handler",
+      "kicker": "Week 5: Regression · LAB",
+      "deck": "Week 5 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week5-week5-lab": {
+      "id": "week5-week5-lab",
+      "title": "Week 5 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week5/week5-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 236,
+      "activities": [
+        {
+          "id": "activity-week-5-lab",
+          "title": "Week 5 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_5_Lab.txt",
+          "markdown": false,
+          "characters": 10415,
+          "source_url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/xblock/block-v1:MITx+6.036+1T2019+type@lti+block@Week_5_Lab/handler/preview_handler"
+        }
+      ],
+      "kicker": "Week 5: Regression · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-5-homework": {
+      "id": "activity-week-5-homework",
+      "title": "Week 5 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_5_Homework.txt",
+      "markdown": false,
+      "characters": 30652,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw05",
+      "kicker": "Week 5: Regression · HOMEWORK",
+      "deck": "Week 5 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week5-week5-homework": {
+      "id": "week5-week5-homework",
+      "title": "Week 5 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week5/week5-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 256,
+      "activities": [
+        {
+          "id": "activity-week-5-homework",
+          "title": "Week 5 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_5_Homework.txt",
+          "markdown": false,
+          "characters": 30652,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw05"
+        }
+      ],
+      "kicker": "Week 5: Regression · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week6-neural-networks": {
+      "id": "week6-neural-networks",
+      "title": "Neural Networks",
+      "type": "notes",
+      "url": "../course-data/content/week6/neural-networks.md",
+      "markdown": true,
+      "video_count": 8,
+      "pdf_count": 1,
+      "characters": 84263,
+      "activities": [],
+      "kicker": "Week 6: Neural Networks I · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 8 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-6-exercises-neural-networks-i": {
+      "id": "activity-week-6-exercises-neural-networks-i",
+      "title": "Week 6 Exercises Neural Networks I",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_6_Exercises_Neural_Networks_I.txt",
+      "markdown": false,
+      "characters": 3821,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex06",
+      "kicker": "Week 6: Neural Networks I · EXERCISE",
+      "deck": "Week 6 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week6-week6-exercises": {
+      "id": "week6-week6-exercises",
+      "title": "Week 6 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week6/week6-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 324,
+      "activities": [
+        {
+          "id": "activity-week-6-exercises-neural-networks-i",
+          "title": "Week 6 Exercises Neural Networks I",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_6_Exercises_Neural_Networks_I.txt",
+          "markdown": false,
+          "characters": 3821,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex06"
+        }
+      ],
+      "kicker": "Week 6: Neural Networks I · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-6-lab": {
+      "id": "activity-week-6-lab",
+      "title": "Week 6 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_6_Lab.txt",
+      "markdown": false,
+      "characters": 6105,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab06",
+      "kicker": "Week 6: Neural Networks I · LAB",
+      "deck": "Week 6 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week6-week6-lab": {
+      "id": "week6-week6-lab",
+      "title": "Week 6 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week6/week6-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 243,
+      "activities": [
+        {
+          "id": "activity-week-6-lab",
+          "title": "Week 6 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_6_Lab.txt",
+          "markdown": false,
+          "characters": 6105,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab06"
+        }
+      ],
+      "kicker": "Week 6: Neural Networks I · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-6-homework": {
+      "id": "activity-week-6-homework",
+      "title": "Week 6 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_6_Homework.txt",
+      "markdown": false,
+      "characters": 21217,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw06",
+      "kicker": "Week 6: Neural Networks I · HOMEWORK",
+      "deck": "Week 6 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week6-week6-homework": {
+      "id": "week6-week6-homework",
+      "title": "Week 6 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week6/week6-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 263,
+      "activities": [
+        {
+          "id": "activity-week-6-homework",
+          "title": "Week 6 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_6_Homework.txt",
+          "markdown": false,
+          "characters": 21217,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw06"
+        }
+      ],
+      "kicker": "Week 6: Neural Networks I · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week7-neural-networks-2": {
+      "id": "week7-neural-networks-2",
+      "title": "Making NN's Work",
+      "type": "notes",
+      "url": "../course-data/content/week7/neural-networks-2.md",
+      "markdown": true,
+      "video_count": 10,
+      "pdf_count": 2,
+      "characters": 77737,
+      "activities": [],
+      "kicker": "Week 7: Neural Networks II · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 10 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-7-exercises-neural-networks-ii": {
+      "id": "activity-week-7-exercises-neural-networks-ii",
+      "title": "Week 7 Exercises Neural Networks II",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_7_Exercises_Neural_Networks_II.txt",
+      "markdown": false,
+      "characters": 79,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex07",
+      "kicker": "Week 7: Neural Networks II · EXERCISE",
+      "deck": "Week 7 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week7-week7-exercises": {
+      "id": "week7-week7-exercises",
+      "title": "Week 7 Exercises",
+      "type": "notes",
+      "url": "../course-data/content/week7/week7-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 328,
+      "activities": [
+        {
+          "id": "activity-week-7-exercises-neural-networks-ii",
+          "title": "Week 7 Exercises Neural Networks II",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_7_Exercises_Neural_Networks_II.txt",
+          "markdown": false,
+          "characters": 79,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex07"
+        }
+      ],
+      "kicker": "Week 7: Neural Networks II · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-7-homework": {
+      "id": "activity-week-7-homework",
+      "title": "Week 7 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_7_Homework.txt",
+      "markdown": false,
+      "characters": 12658,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw07",
+      "kicker": "Week 7: Neural Networks II · HOMEWORK",
+      "deck": "Week 7 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week7-week7-homework": {
+      "id": "week7-week7-homework",
+      "title": "Week 7 Homework",
+      "type": "notes",
+      "url": "../course-data/content/week7/week7-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 264,
+      "activities": [
+        {
+          "id": "activity-week-7-homework",
+          "title": "Week 7 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_7_Homework.txt",
+          "markdown": false,
+          "characters": 12658,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw07"
+        }
+      ],
+      "kicker": "Week 7: Neural Networks II · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week8-convolutional-neural-networks": {
+      "id": "week8-convolutional-neural-networks",
+      "title": "Convolutional Neural Networks",
+      "type": "notes",
+      "url": "../course-data/content/week8/convolutional-neural-networks.md",
+      "markdown": true,
+      "video_count": 8,
+      "pdf_count": 2,
+      "characters": 69770,
+      "activities": [],
+      "kicker": "Week 8: Convolutional Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 8 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-8-exercises-convolutional-neural-networks": {
+      "id": "activity-week-8-exercises-convolutional-neural-networks",
+      "title": "Week 8 Exercises Convolutional Neural Networks",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_8_Exercises_Convolutional_Neural_Networks.txt",
+      "markdown": false,
+      "characters": 3067,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex08",
+      "kicker": "Week 8: Convolutional Neural Networks · EXERCISE",
+      "deck": "Week 8 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week8-week8-exercises": {
+      "id": "week8-week8-exercises",
+      "title": "Week 8 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week8/week8-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 372,
+      "activities": [
+        {
+          "id": "activity-week-8-exercises-convolutional-neural-networks",
+          "title": "Week 8 Exercises Convolutional Neural Networks",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_8_Exercises_Convolutional_Neural_Networks.txt",
+          "markdown": false,
+          "characters": 3067,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex08"
+        }
+      ],
+      "kicker": "Week 8: Convolutional Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-8-lab": {
+      "id": "activity-week-8-lab",
+      "title": "Week 8 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_8_Lab.txt",
+      "markdown": false,
+      "characters": 11806,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab08",
+      "kicker": "Week 8: Convolutional Neural Networks · LAB",
+      "deck": "Week 8 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week8-week8-lab": {
+      "id": "week8-week8-lab",
+      "title": "Week 8 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week8/week8-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 255,
+      "activities": [
+        {
+          "id": "activity-week-8-lab",
+          "title": "Week 8 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_8_Lab.txt",
+          "markdown": false,
+          "characters": 11806,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab08"
+        }
+      ],
+      "kicker": "Week 8: Convolutional Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-8-homework": {
+      "id": "activity-week-8-homework",
+      "title": "Week 8 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_8_Homework.txt",
+      "markdown": false,
+      "characters": 26746,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw08",
+      "kicker": "Week 8: Convolutional Neural Networks · HOMEWORK",
+      "deck": "Week 8 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week8-week8-homework": {
+      "id": "week8-week8-homework",
+      "title": "Week 8 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week8/week8-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 275,
+      "activities": [
+        {
+          "id": "activity-week-8-homework",
+          "title": "Week 8 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_8_Homework.txt",
+          "markdown": false,
+          "characters": 26746,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw08"
+        }
+      ],
+      "kicker": "Week 8: Convolutional Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week9-state-machines": {
+      "id": "week9-state-machines",
+      "title": "Sequential models",
+      "type": "notes",
+      "url": "../course-data/content/week9/state-machines.md",
+      "markdown": true,
+      "video_count": 11,
+      "pdf_count": 1,
+      "characters": 83628,
+      "activities": [],
+      "kicker": "Week 9: State Machines and Markov Decision Processes · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 11 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-9-exercises-state-machines-and-markov-decision-processes": {
+      "id": "activity-week-9-exercises-state-machines-and-markov-decision-processes",
+      "title": "Week 9 Exercises State Machines and Markov Decision Processes",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_9_Exercises_State_Machines_and_Markov_Decision_Processes.txt",
+      "markdown": false,
+      "characters": 4703,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex09",
+      "kicker": "Week 9: State Machines and Markov Decision Processes · EXERCISE",
+      "deck": "Week 9 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week9-week9-exercises": {
+      "id": "week9-week9-exercises",
+      "title": "Week 9 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week9/week9-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 432,
+      "activities": [
+        {
+          "id": "activity-week-9-exercises-state-machines-and-markov-decision-processes",
+          "title": "Week 9 Exercises State Machines and Markov Decision Processes",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_9_Exercises_State_Machines_and_Markov_Decision_Processes.txt",
+          "markdown": false,
+          "characters": 4703,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex09"
+        }
+      ],
+      "kicker": "Week 9: State Machines and Markov Decision Processes · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-9-lab": {
+      "id": "activity-week-9-lab",
+      "title": "Week 9 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_9_Lab.txt",
+      "markdown": false,
+      "characters": 7146,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab09",
+      "kicker": "Week 9: State Machines and Markov Decision Processes · LAB",
+      "deck": "Week 9 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week9-week9-lab": {
+      "id": "week9-week9-lab",
+      "title": "Week 9 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week9/week9-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 270,
+      "activities": [
+        {
+          "id": "activity-week-9-lab",
+          "title": "Week 9 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_9_Lab.txt",
+          "markdown": false,
+          "characters": 7146,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab09"
+        }
+      ],
+      "kicker": "Week 9: State Machines and Markov Decision Processes · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-9-homework": {
+      "id": "activity-week-9-homework",
+      "title": "Week 9 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_9_Homework.txt",
+      "markdown": false,
+      "characters": 26161,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw09",
+      "kicker": "Week 9: State Machines and Markov Decision Processes · HOMEWORK",
+      "deck": "Week 9 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week9-week9-homework": {
+      "id": "week9-week9-homework",
+      "title": "Week 9 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week9/week9-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 290,
+      "activities": [
+        {
+          "id": "activity-week-9-homework",
+          "title": "Week 9 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_9_Homework.txt",
+          "markdown": false,
+          "characters": 26161,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw09"
+        }
+      ],
+      "kicker": "Week 9: State Machines and Markov Decision Processes · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week10-reinforcement-learning": {
+      "id": "week10-reinforcement-learning",
+      "title": "Reinforcement learning",
+      "type": "notes",
+      "url": "../course-data/content/week10/reinforcement-learning.md",
+      "markdown": true,
+      "video_count": 9,
+      "pdf_count": 1,
+      "characters": 83705,
+      "activities": [],
+      "kicker": "Week 10: Reinforcement Learning · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 9 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-10-exercises-reinforcement-learning": {
+      "id": "activity-week-10-exercises-reinforcement-learning",
+      "title": "Week 10 Exercises Reinforcement Learning",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_10_Exercises_Reinforcement_Learning.txt",
+      "markdown": false,
+      "characters": 2897,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex10",
+      "kicker": "Week 10: Reinforcement Learning · EXERCISE",
+      "deck": "Week 10 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week10-week10-exercises": {
+      "id": "week10-week10-exercises",
+      "title": "Week 10 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week10/week10-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 349,
+      "activities": [
+        {
+          "id": "activity-week-10-exercises-reinforcement-learning",
+          "title": "Week 10 Exercises Reinforcement Learning",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_10_Exercises_Reinforcement_Learning.txt",
+          "markdown": false,
+          "characters": 2897,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex10"
+        }
+      ],
+      "kicker": "Week 10: Reinforcement Learning · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-10-lab": {
+      "id": "activity-week-10-lab",
+      "title": "Week 10 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_10_Lab.txt",
+      "markdown": false,
+      "characters": 12731,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab10",
+      "kicker": "Week 10: Reinforcement Learning · LAB",
+      "deck": "Week 10 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week10-week10-lab": {
+      "id": "week10-week10-lab",
+      "title": "Week 10 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week10/week10-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 253,
+      "activities": [
+        {
+          "id": "activity-week-10-lab",
+          "title": "Week 10 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_10_Lab.txt",
+          "markdown": false,
+          "characters": 12731,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab10"
+        }
+      ],
+      "kicker": "Week 10: Reinforcement Learning · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-10-homework": {
+      "id": "activity-week-10-homework",
+      "title": "Week 10 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_10_Homework.txt",
+      "markdown": false,
+      "characters": 29618,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw10",
+      "kicker": "Week 10: Reinforcement Learning · HOMEWORK",
+      "deck": "Week 10 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week10-week10-homework": {
+      "id": "week10-week10-homework",
+      "title": "Week 10 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week10/week10-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 273,
+      "activities": [
+        {
+          "id": "activity-week-10-homework",
+          "title": "Week 10 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_10_Homework.txt",
+          "markdown": false,
+          "characters": 29618,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw10"
+        }
+      ],
+      "kicker": "Week 10: Reinforcement Learning · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week11-rnn": {
+      "id": "week11-rnn",
+      "title": "Recurrent Neural Networks",
+      "type": "notes",
+      "url": "../course-data/content/week11/rnn.md",
+      "markdown": true,
+      "video_count": 7,
+      "pdf_count": 1,
+      "characters": 75468,
+      "activities": [],
+      "kicker": "Week 11: Recurrent Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 7 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-11-exercises-recurrent-neural-networks": {
+      "id": "activity-week-11-exercises-recurrent-neural-networks",
+      "title": "Week 11 Exercises Recurrent Neural Networks",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_11_Exercises_Recurrent_Neural_Networks.txt",
+      "markdown": false,
+      "characters": 4701,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex11",
+      "kicker": "Week 11: Recurrent Neural Networks · EXERCISE",
+      "deck": "Week 11 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week11-week11-exercises": {
+      "id": "week11-week11-exercises",
+      "title": "Week 11 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week11/week11-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 361,
+      "activities": [
+        {
+          "id": "activity-week-11-exercises-recurrent-neural-networks",
+          "title": "Week 11 Exercises Recurrent Neural Networks",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_11_Exercises_Recurrent_Neural_Networks.txt",
+          "markdown": false,
+          "characters": 4701,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex11"
+        }
+      ],
+      "kicker": "Week 11: Recurrent Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-11-lab": {
+      "id": "activity-week-11-lab",
+      "title": "Week 11 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_11_Lab.txt",
+      "markdown": false,
+      "characters": 9243,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab11",
+      "kicker": "Week 11: Recurrent Neural Networks · LAB",
+      "deck": "Week 11 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week11-week11-lab": {
+      "id": "week11-week11-lab",
+      "title": "Week 11 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week11/week11-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 256,
+      "activities": [
+        {
+          "id": "activity-week-11-lab",
+          "title": "Week 11 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_11_Lab.txt",
+          "markdown": false,
+          "characters": 9243,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab11"
+        }
+      ],
+      "kicker": "Week 11: Recurrent Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-11-homework": {
+      "id": "activity-week-11-homework",
+      "title": "Week 11 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_11_Homework.txt",
+      "markdown": false,
+      "characters": 20798,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw11",
+      "kicker": "Week 11: Recurrent Neural Networks · HOMEWORK",
+      "deck": "Week 11 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week11-week11-homework": {
+      "id": "week11-week11-homework",
+      "title": "Week 11 Homework",
+      "type": "overview",
+      "url": "../course-data/content/week11/week11-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 276,
+      "activities": [
+        {
+          "id": "activity-week-11-homework",
+          "title": "Week 11 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_11_Homework.txt",
+          "markdown": false,
+          "characters": 20798,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw11"
+        }
+      ],
+      "kicker": "Week 11: Recurrent Neural Networks · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week12-recommender-systems": {
+      "id": "week12-recommender-systems",
+      "title": "Recommender systems",
+      "type": "notes",
+      "url": "../course-data/content/week12/recommender-systems.md",
+      "markdown": true,
+      "video_count": 9,
+      "pdf_count": 2,
+      "characters": 69153,
+      "activities": [],
+      "kicker": "Week 12: Recommender Systems · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 9 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-12-exercises-recommender-systems": {
+      "id": "activity-week-12-exercises-recommender-systems",
+      "title": "Week 12 Exercises Recommender Systems",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_12_Exercises_Recommender_Systems.txt",
+      "markdown": false,
+      "characters": 3306,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex12",
+      "kicker": "Week 12: Recommender Systems · EXERCISE",
+      "deck": "Week 12 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week12-week12-exercises": {
+      "id": "week12-week12-exercises",
+      "title": "Week 12 Exercises",
+      "type": "notes",
+      "url": "../course-data/content/week12/week12-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 337,
+      "activities": [
+        {
+          "id": "activity-week-12-exercises-recommender-systems",
+          "title": "Week 12 Exercises Recommender Systems",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_12_Exercises_Recommender_Systems.txt",
+          "markdown": false,
+          "characters": 3306,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex12"
+        }
+      ],
+      "kicker": "Week 12: Recommender Systems · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-12-lab": {
+      "id": "activity-week-12-lab",
+      "title": "Week 12 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_12_Lab.txt",
+      "markdown": false,
+      "characters": 13832,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab12",
+      "kicker": "Week 12: Recommender Systems · LAB",
+      "deck": "Week 12 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week12-week12-lab": {
+      "id": "week12-week12-lab",
+      "title": "Week 12 Lab",
+      "type": "notes",
+      "url": "../course-data/content/week12/week12-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 250,
+      "activities": [
+        {
+          "id": "activity-week-12-lab",
+          "title": "Week 12 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_12_Lab.txt",
+          "markdown": false,
+          "characters": 13832,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab12"
+        }
+      ],
+      "kicker": "Week 12: Recommender Systems · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-12-homework": {
+      "id": "activity-week-12-homework",
+      "title": "Week 12 Homework",
+      "type": "homework",
+      "url": "../course-data/lti/Week_12_Homework.txt",
+      "markdown": false,
+      "characters": 25267,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw12",
+      "kicker": "Week 12: Recommender Systems · HOMEWORK",
+      "deck": "Week 12 Homework 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week12-week12-homework": {
+      "id": "week12-week12-homework",
+      "title": "Week 12 Homework",
+      "type": "notes",
+      "url": "../course-data/content/week12/week12-homework.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 270,
+      "activities": [
+        {
+          "id": "activity-week-12-homework",
+          "title": "Week 12 Homework",
+          "type": "homework",
+          "url": "../course-data/lti/Week_12_Homework.txt",
+          "markdown": false,
+          "characters": 25267,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/homework/hw12"
+        }
+      ],
+      "kicker": "Week 12: Recommender Systems · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "week13-non-parametric": {
+      "id": "week13-non-parametric",
+      "title": "Decision Trees and Nearest Neighbors",
+      "type": "notes",
+      "url": "../course-data/content/week13/non-parametric.md",
+      "markdown": true,
+      "video_count": 13,
+      "pdf_count": 1,
+      "characters": 73171,
+      "activities": [],
+      "kicker": "Week 13: Decision Trees and Nearest Neighbors · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 13 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-13-exercises-decision-trees-and-nearest-neighbors": {
+      "id": "activity-week-13-exercises-decision-trees-and-nearest-neighbors",
+      "title": "Week 13 Exercises Decision Trees and Nearest Neighbors",
+      "type": "exercise",
+      "url": "../course-data/lti/Week_13_Exercises_Decision_Trees_and_Nearest_Neighbors.txt",
+      "markdown": false,
+      "characters": 6125,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex13",
+      "kicker": "Week 13: Decision Trees and Nearest Neighbors · EXERCISE",
+      "deck": "Week 13 Exercises 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week13-week13-exercises": {
+      "id": "week13-week13-exercises",
+      "title": "Week 13 Exercises",
+      "type": "overview",
+      "url": "../course-data/content/week13/week13-exercises.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 405,
+      "activities": [
+        {
+          "id": "activity-week-13-exercises-decision-trees-and-nearest-neighbors",
+          "title": "Week 13 Exercises Decision Trees and Nearest Neighbors",
+          "type": "exercise",
+          "url": "../course-data/lti/Week_13_Exercises_Decision_Trees_and_Nearest_Neighbors.txt",
+          "markdown": false,
+          "characters": 6125,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/exercises/ex13"
+        }
+      ],
+      "kicker": "Week 13: Decision Trees and Nearest Neighbors · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    },
+    "activity-week-13-lab": {
+      "id": "activity-week-13-lab",
+      "title": "Week 13 Lab",
+      "type": "lab",
+      "url": "../course-data/lti/Week_13_Lab.txt",
+      "markdown": false,
+      "characters": 7988,
+      "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab13",
+      "kicker": "Week 13: Decision Trees and Nearest Neighbors · LAB",
+      "deck": "Week 13 Lab 的原版交互活动题面。网站仅整理题目与代码模板，不包含答案。"
+    },
+    "week13-week13-lab": {
+      "id": "week13-week13-lab",
+      "title": "Week 13 Lab",
+      "type": "overview",
+      "url": "../course-data/content/week13/week13-lab.md",
+      "markdown": true,
+      "video_count": 0,
+      "pdf_count": 0,
+      "characters": 267,
+      "activities": [
+        {
+          "id": "activity-week-13-lab",
+          "title": "Week 13 Lab",
+          "type": "lab",
+          "url": "../course-data/lti/Week_13_Lab.txt",
+          "markdown": false,
+          "characters": 7988,
+          "source_url": "https://introml_oll.odl.mit.edu/cat-soop/_lti/course/6.036/labs/lab13"
+        }
+      ],
+      "kicker": "Week 13: Decision Trees and Nearest Neighbors · COURSE NOTES",
+      "deck": "融合课程正文、PDF 内容与 0 段视频 transcript 的网页讲义。"
+    }
+  }
+}

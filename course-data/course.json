@@ -1,0 +1,3041 @@
+{
+  "course": {
+    "id": "course-v1:MITx+6.036+1T2019",
+    "title": "MIT 6.036 Introduction to Machine Learning",
+    "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/course/"
+  },
+  "chapters": [
+    {
+      "id": "welcome",
+      "title": "Welcome to 6.036",
+      "sections": [
+        {
+          "id": "6_036_Information_You_Should_Know",
+          "title": "6.036 Information",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@6_036_Information_You_Should_Know",
+          "graded": false,
+          "article": "content/welcome/6-036-information-you-should-know.md",
+          "units": [
+            {
+              "title": "This Course on Open Learning Library",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Basic Information",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "welcome_6036"
+          ],
+          "characters": 702
+        },
+        {
+          "id": "week0_exercises_v3",
+          "title": "Self-Assessment",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week0_exercises_v3",
+          "graded": false,
+          "article": "content/welcome/week0-exercises-v3.md",
+          "units": [
+            {
+              "title": "Self-Assessment Exercises",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Self-Assessment_Exercises"
+          ],
+          "characters": 284
+        }
+      ]
+    },
+    {
+      "id": "Week1",
+      "title": "Week 1: Basics",
+      "sections": [
+        {
+          "id": "intro_ml",
+          "title": "Introduction to ML",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@intro_ml",
+          "graded": false,
+          "article": "content/week1/intro-ml.md",
+          "units": [
+            {
+              "title": "Notes – Chapters 1 and 2",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Introduction to ML - perspective and history",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to ML",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Introduction to ML - estimation and generalization",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Supervised learning - setting",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Problem class",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Supervised learning - hypotheses",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Assumptions",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Evaluating predictions - loss functions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Evaluating hypotheses - training set error",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Evaluation criteria",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Model type",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Model class and parameter fitting",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Learning algorithms",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Algorithm",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L01a",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            },
+            {
+              "id": "MIT6036L01b",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            },
+            {
+              "id": "MIT6036L01c",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            },
+            {
+              "id": "MIT6036L01d",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            },
+            {
+              "id": "MIT6036L01e",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            },
+            {
+              "id": "MIT6036L01f",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            },
+            {
+              "id": "MIT6036L01g",
+              "title": "Lecture: Introduction to ML - perspective and history"
+            }
+          ],
+          "video_count": 7,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/2481f8f2964716032b134db99e369b81/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Introduction.pdf",
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/9d904854b4ae0878cfdcedcdceabf937/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Linear_classifiers.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 49894
+        },
+        {
+          "id": "linear_classifiers",
+          "title": "Linear classifiers",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@linear_classifiers",
+          "graded": false,
+          "article": "content/week1/linear-classifiers.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 2: Linear classifiers",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Linear classifiers",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Classification",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Learning algorithm",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Linear classifiers",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: The random linear classifier algorithm",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Learning linear classifiers",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Evaluating a learning algorithm",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L01h",
+              "title": "Lecture: Linear classifiers"
+            },
+            {
+              "id": "MIT6036L01j",
+              "title": "Lecture: Linear classifiers"
+            }
+          ],
+          "video_count": 2,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/9d904854b4ae0878cfdcedcdceabf937/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Linear_classifiers.pdf",
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/dc2ca4ef11bd7be3faec0efc56f46cca/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Linear_classifers.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 25029
+        },
+        {
+          "id": "week1_exercises",
+          "title": "Week 1 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week1_exercises",
+          "graded": true,
+          "article": "content/week1/week1-exercises.md",
+          "units": [
+            {
+              "title": "Week 1 Exercises: Hyperplanes",
+              "types": [
+                "html",
+                "lti"
+              ]
+            },
+            {
+              "title": "Week 1 Exercises: numpy",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_1_Exercises_Hyperplanes",
+            "Week_1_Exercises_numpy"
+          ],
+          "characters": 504
+        },
+        {
+          "id": "week1_homework",
+          "title": "Homework 1",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week1_homework",
+          "graded": true,
+          "article": "content/week1/week1-homework.md",
+          "units": [
+            {
+              "title": "Homework 1",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Homework_1"
+          ],
+          "characters": 232
+        }
+      ]
+    },
+    {
+      "id": "Week2",
+      "title": "Week 2: Perceptrons",
+      "sections": [
+        {
+          "id": "perceptron",
+          "title": "The Perceptron",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@perceptron",
+          "graded": false,
+          "article": "content/week2/perceptron.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 3: Perceptron",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: The perceptron algorithm",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "An algorithm by any other name...",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: The perceptron algorithm in action - an example",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Algorithm",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Evaluating learning algorithms - validation",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Offset",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Perceptron - overview of plan",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Perceptron through origin algorithm",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Theory of perceptron - Linear separability",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Theory of perceptron - margin of a dataset",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Perceptron convergence theorem",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Proof sketch of the perceptron convergence theorem",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Theory of the perceptron",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L01k",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L01m",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L01n",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L02a",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L02b",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L02c",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L02d",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L02e",
+              "title": "Lecture: The perceptron algorithm"
+            },
+            {
+              "id": "MIT6036L02f",
+              "title": "Lecture: The perceptron algorithm"
+            }
+          ],
+          "video_count": 9,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/8f4f9aca5581dde50291b0d0e29d0148/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_The_Perceptron.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 59932
+        },
+        {
+          "id": "week2_exercises",
+          "title": "Week 2 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week2_exercises",
+          "graded": true,
+          "article": "content/week2/week2-exercises.md",
+          "units": [
+            {
+              "title": "Week 2 Exercises: Perceptrons",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_2_Exercises_Perceptrons"
+          ],
+          "characters": 300
+        },
+        {
+          "id": "week2_lab",
+          "title": "Week 2 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week2_lab",
+          "graded": true,
+          "article": "content/week2/week2-lab.md",
+          "units": [
+            {
+              "title": "Week 2 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_2_Lab"
+          ],
+          "characters": 237
+        },
+        {
+          "id": "week2_homework",
+          "title": "Week 2 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week2_homework",
+          "graded": true,
+          "article": "content/week2/week2-homework.md",
+          "units": [
+            {
+              "title": "Week 2 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_2_Homework"
+          ],
+          "characters": 257
+        }
+      ]
+    },
+    {
+      "id": "Week3",
+      "title": "Week 3: Features",
+      "sections": [
+        {
+          "id": "feature_representation",
+          "title": "Feature representation",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@feature_representation",
+          "graded": false,
+          "article": "content/week3/feature-representation.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 4: Feature representation",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Feature representation - transforming through-origin to not-through-origin",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Linear classifiers and the XOR dataset",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Feature representation - polynomial basis",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Polynomial basis",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Example of perceptron algorithm with polynomial basis transformations",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Feature representation strategies for dealing with varied data",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Hand-constructing features for real domains",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L02g",
+              "title": "Lecture: Feature representation - transforming through-origin to not-through-origin"
+            },
+            {
+              "id": "MIT6036L02h",
+              "title": "Lecture: Feature representation - transforming through-origin to not-through-origin"
+            },
+            {
+              "id": "MIT6036L02j",
+              "title": "Lecture: Feature representation - transforming through-origin to not-through-origin"
+            },
+            {
+              "id": "MIT6036L02k",
+              "title": "Lecture: Feature representation - transforming through-origin to not-through-origin"
+            }
+          ],
+          "video_count": 4,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/b5ca509c17bab346cc6252ca41a1aac7/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Feature_representation.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 44234
+        },
+        {
+          "id": "week3_exercises",
+          "title": "Week 3 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week3_exercises",
+          "graded": true,
+          "article": "content/week3/week3-exercises.md",
+          "units": [
+            {
+              "title": "Week 3 Exercises: Features",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_3_Exercises_Features"
+          ],
+          "characters": 288
+        },
+        {
+          "id": "week3_lab",
+          "title": "Week 3 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week3_lab",
+          "graded": true,
+          "article": "content/week3/week3-lab.md",
+          "units": [
+            {
+              "title": "Week 3 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_3_Lab"
+          ],
+          "characters": 234
+        },
+        {
+          "id": "week3_homework",
+          "title": "Week 3 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week3_homework",
+          "graded": true,
+          "article": "content/week3/week3-homework.md",
+          "units": [
+            {
+              "title": "Week 3 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_3_Homework"
+          ],
+          "characters": 254
+        }
+      ]
+    },
+    {
+      "id": "Week4",
+      "title": "Week 4: Margin Maximization",
+      "sections": [
+        {
+          "id": "logistic_regression",
+          "title": "Logistic Regression",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@logistic_regression",
+          "graded": false,
+          "article": "content/week4/logistic-regression.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 5: Logistic Regression",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Logistic Regression",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Logistic regression - setting and sigmoid function",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Machine learning as optimization",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Linear logistic classifier - hypothesis class",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Regularization",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "A new hypothesis class: linear logistic classifiers",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Linear logistic classifier - negative log likelihood loss function",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Loss function for logistic classifiers",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Machine learning as optimization - gradient descent in one dimension",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Machine learning as optimization - gradient descent in multiple dimensions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Logistic classification as optimization",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: One-dimensional linear regression - demo",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Two-dimensional linear regression - demo",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Linear logistic classifier - a few comments about regularization",
+              "types": [
+                "video"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L03F19a",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19b",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19c",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19d",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19e",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19f",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19g",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19h",
+              "title": "Lecture: Machine learning as optimization - framework"
+            },
+            {
+              "id": "MIT6036L03F19j",
+              "title": "Lecture: Machine learning as optimization - framework"
+            }
+          ],
+          "video_count": 9,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/920d2b98ba33e5f1ef544c1e54d9a69d/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Logistic_regression.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 75542
+        },
+        {
+          "id": "gradient_descent",
+          "title": "Gradient Descent",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@gradient_descent",
+          "graded": false,
+          "article": "content/week4/gradient-descent.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 6: Gradient Descent",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Gradient descent optimization - algorithm in one dimension",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Gradient descent - introduction",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Gradient descent optimization - local optima",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "One dimension",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Gradient descent optimization - algorithm in multiple dimensions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Multiple dimensions",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Gradient descent optimization - parameters and demo",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Application to logistic regression objective",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Stochastic Gradient Descent",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L03g",
+              "title": "Lecture: Gradient descent optimization - algorithm in one dimension"
+            },
+            {
+              "id": "MIT6036L03h",
+              "title": "Lecture: Gradient descent optimization - algorithm in one dimension"
+            },
+            {
+              "id": "MIT6036L03j",
+              "title": "Lecture: Gradient descent optimization - algorithm in one dimension"
+            },
+            {
+              "id": "MIT6036L03k",
+              "title": "Lecture: Gradient descent optimization - algorithm in one dimension"
+            }
+          ],
+          "video_count": 4,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/d81d9ec0bd142738b069ce601382fdb7/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Gradient_Descent.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 35913
+        },
+        {
+          "id": "week4_exercises",
+          "title": "Week 4 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week4_exercises",
+          "graded": true,
+          "article": "content/week4/week4-exercises.md",
+          "units": [
+            {
+              "title": "Week 4 Exercises: Margin Maximization",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_4_Exercises_Margin_Maximization"
+          ],
+          "characters": 332
+        },
+        {
+          "id": "week4_lab",
+          "title": "Week 4 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week4_lab",
+          "graded": true,
+          "article": "content/week4/week4-lab.md",
+          "units": [
+            {
+              "title": "Week 4 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_4_Lab"
+          ],
+          "characters": 245
+        },
+        {
+          "id": "week4_homework",
+          "title": "Week 4 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week4_homework",
+          "graded": true,
+          "article": "content/week4/week4-homework.md",
+          "units": [
+            {
+              "title": "Week 4 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_4_Homework"
+          ],
+          "characters": 265
+        }
+      ]
+    },
+    {
+      "id": "Week5",
+      "title": "Week 5: Regression",
+      "sections": [
+        {
+          "id": "regression",
+          "title": "Regression",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@regression",
+          "graded": false,
+          "article": "content/week5/regression.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 7: Regression",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Regression and the ordinary least squares problem",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to regression",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - ordinary least squares solution using optimization",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - OLS analytical solution setup",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - OLS analytical solution using gradients",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Analytical solution: ordinary least squares",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - beauty of the closed form OLS solution",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - regularization by ridge regression",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - analytical minimization of the ridge regression objective",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Regularizing linear regression",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - ridge regression using gradient descent",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Optimization via gradient descent",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - stochastic gradient descent",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - OLS and gradient descent demo example",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression - structural error and estimation error",
+              "types": [
+                "video"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L04a",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04b",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04c",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04d",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04e",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04f",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04g",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04h",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04j",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04k",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            },
+            {
+              "id": "MIT6036L04m",
+              "title": "Lecture: Regression and the ordinary least squares problem"
+            }
+          ],
+          "video_count": 11,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/030eba9b066b079e2b16dc863c18ea39/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Regression.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 67736
+        },
+        {
+          "id": "week5_exercises",
+          "title": "Week 5 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week5_exercises",
+          "graded": true,
+          "article": "content/week5/week5-exercises.md",
+          "units": [
+            {
+              "title": "Week 5 Exercises: Regression",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_5_Exercises_Regression"
+          ],
+          "characters": 296
+        },
+        {
+          "id": "week5_lab",
+          "title": "Week 5 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week5_lab",
+          "graded": true,
+          "article": "content/week5/week5-lab.md",
+          "units": [
+            {
+              "title": "Week 5 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_5_Lab"
+          ],
+          "characters": 236
+        },
+        {
+          "id": "week5_homework",
+          "title": "Week 5 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week5_homework",
+          "graded": true,
+          "article": "content/week5/week5-homework.md",
+          "units": [
+            {
+              "title": "Week 5 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_5_Homework"
+          ],
+          "characters": 256
+        }
+      ]
+    },
+    {
+      "id": "Week6",
+      "title": "Week 6: Neural Networks I",
+      "sections": [
+        {
+          "id": "neural_networks",
+          "title": "Neural Networks",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@neural_networks",
+          "graded": false,
+          "article": "content/week6/neural-networks.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 8: Neural Networks",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - basic element",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to neural networks",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Basic element",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - layer definition",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - many layers",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Networks",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - activation functions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Choices of activation function",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - training and back-propagation",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Error back-propagation",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - backprop with the chain rule",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - weight initialization",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Training",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - output layer activation functions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Loss functions and activation functions",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L05a",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05b",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05c",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05d",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05e",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05f",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05g",
+              "title": "Lecture: Neural networks - basic element"
+            },
+            {
+              "id": "MIT6036L05h",
+              "title": "Lecture: Neural networks - basic element"
+            }
+          ],
+          "video_count": 8,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/9c36c444e5df10eef7ce4d052e4a2ed1/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Neural_Networks.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 84263
+        },
+        {
+          "id": "week6_exercises",
+          "title": "Week 6 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week6_exercises",
+          "graded": true,
+          "article": "content/week6/week6-exercises.md",
+          "units": [
+            {
+              "title": "Week 6 Exercises: Neural Networks I",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_6_Exercises_Neural_Networks_I"
+          ],
+          "characters": 324
+        },
+        {
+          "id": "week6_lab",
+          "title": "Week 6 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week6_lab",
+          "graded": true,
+          "article": "content/week6/week6-lab.md",
+          "units": [
+            {
+              "title": "Week 6 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_6_Lab"
+          ],
+          "characters": 243
+        },
+        {
+          "id": "week6_homework",
+          "title": "Week 6 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week6_homework",
+          "graded": true,
+          "article": "content/week6/week6-homework.md",
+          "units": [
+            {
+              "title": "Week 6 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_6_Homework"
+          ],
+          "characters": 263
+        }
+      ]
+    },
+    {
+      "id": "Week7",
+      "title": "Week 7: Neural Networks II",
+      "sections": [
+        {
+          "id": "neural_networks_2",
+          "title": "Making NN's Work",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@neural_networks_2",
+          "graded": false,
+          "article": "content/week7/neural-networks-2.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 8: Neural Networks",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - brief review of layers and backprop",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - optimizing parameters - batch gradient descent training",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - optimizing parameters - adaptive step-size",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - optimizing parameters - running averages",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - optimizing parameters - momentum",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - optimizing parameters - adagrad and adadelta",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - optimizing parameters - adam step-size update strategy",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Optimizing neural network parameters",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - regularization by weight decay",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - regularization by early stopping and dropout",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks - regularization by batch normalization",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Regularization",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L06a",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06b",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06c",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06d",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06e",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06f",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06g",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06h",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06j",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            },
+            {
+              "id": "MIT6036L06k",
+              "title": "Lecture: Neural networks - brief review of layers and backprop"
+            }
+          ],
+          "video_count": 10,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/9c36c444e5df10eef7ce4d052e4a2ed1/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Making_NN_s_Work.pdf",
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/9c36c444e5df10eef7ce4d052e4a2ed1/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Neural_Networks.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 77737
+        },
+        {
+          "id": "week7_exercises",
+          "title": "Week 7 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week7_exercises",
+          "graded": false,
+          "article": "content/week7/week7-exercises.md",
+          "units": [
+            {
+              "title": "Week 7 Exercises: Neural Networks II",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_7_Exercises_Neural_Networks_II"
+          ],
+          "characters": 328
+        },
+        {
+          "id": "week7_homework",
+          "title": "Week 7 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week7_homework",
+          "graded": false,
+          "article": "content/week7/week7-homework.md",
+          "units": [
+            {
+              "title": "Week 7 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_7_Homework"
+          ],
+          "characters": 264
+        }
+      ]
+    },
+    {
+      "id": "Week8",
+      "title": "Week 8: Convolutional Neural Networks",
+      "sections": [
+        {
+          "id": "convolutional_neural_networks",
+          "title": "Convolutional Neural Networks",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@convolutional_neural_networks",
+          "graded": false,
+          "article": "content/week8/convolutional-neural-networks.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 9: Convolutional Neural Networks",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - convolutional neural networks - intro",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to CNNs",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - one-dimensional filters",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - two-dimensional filters",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - a specific illustrative example filter",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - convolutional neural network layers",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Filters",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - max pooling",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Max Pooling",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - typical architecture",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: CNNs - backprop and gradient descent",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Typical architecture",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L07a",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07b",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07c",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07d",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07e",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07f",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07g",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            },
+            {
+              "id": "MIT6036L07h",
+              "title": "Lecture: CNNs - convolutional neural networks - intro"
+            }
+          ],
+          "video_count": 8,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/41c7c4a6141b76b324055d56387570c0/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Convolutional_Neural_Networks.pdf",
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/cda92ed2c6672271916e8cb8974af568/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_conv_nets_slides.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 69770
+        },
+        {
+          "id": "week8_exercises",
+          "title": "Week 8 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week8_exercises",
+          "graded": true,
+          "article": "content/week8/week8-exercises.md",
+          "units": [
+            {
+              "title": "Week 8 Exercises: Convolutional Neural Networks",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_8_Exercises_Convolutional_Neural_Networks"
+          ],
+          "characters": 372
+        },
+        {
+          "id": "week8_lab",
+          "title": "Week 8 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week8_lab",
+          "graded": true,
+          "article": "content/week8/week8-lab.md",
+          "units": [
+            {
+              "title": "Week 8 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_8_Lab"
+          ],
+          "characters": 255
+        },
+        {
+          "id": "week8_homework",
+          "title": "Week 8 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week8_homework",
+          "graded": true,
+          "article": "content/week8/week8-homework.md",
+          "units": [
+            {
+              "title": "Week 8 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_8_Homework"
+          ],
+          "characters": 275
+        }
+      ]
+    },
+    {
+      "id": "Week9",
+      "title": "Week 9: State Machines and Markov Decision Processes",
+      "sections": [
+        {
+          "id": "state_machines",
+          "title": "Sequential models",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@state_machines",
+          "graded": false,
+          "article": "content/week9/state-machines.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 10: Sequential models",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Sequential models - state machines",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to sequential models",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: SM - State machine as a transducer",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - Towards recurrent neural networks",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "State machines",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: SM - Markov decision processes - states and actions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - the transition function",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - the reward and policy functions",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - finite horizon and the value function",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - computing the value function",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - finding an optimal policy",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - infinite-horizons and the value iteration algorithm",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Markov decision processes",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: SM - MDP - Grid world example demos",
+              "types": [
+                "video"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L08a",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08b",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08c",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08d",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08e",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08f",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08g",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08h",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08j",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08k",
+              "title": "Lecture: Sequential models - state machines"
+            },
+            {
+              "id": "MIT6036L08m",
+              "title": "Lecture: Sequential models - state machines"
+            }
+          ],
+          "video_count": 11,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/caee9a9ff60ed183e4485869c2e88ac4/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Sequential_models.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 83628
+        },
+        {
+          "id": "week9_exercises",
+          "title": "Week 9 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week9_exercises",
+          "graded": true,
+          "article": "content/week9/week9-exercises.md",
+          "units": [
+            {
+              "title": "Week 9 Exercises: State Machines and Markov Decision Processes",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_9_Exercises_State_Machines_and_Markov_Decision_Processes"
+          ],
+          "characters": 432
+        },
+        {
+          "id": "week9_lab",
+          "title": "Week 9 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week9_lab",
+          "graded": true,
+          "article": "content/week9/week9-lab.md",
+          "units": [
+            {
+              "title": "Week 9 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_9_Lab"
+          ],
+          "characters": 270
+        },
+        {
+          "id": "week9_homework",
+          "title": "Week 9 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week9_homework",
+          "graded": true,
+          "article": "content/week9/week9-homework.md",
+          "units": [
+            {
+              "title": "Week 9 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_9_Homework"
+          ],
+          "characters": 290
+        }
+      ]
+    },
+    {
+      "id": "Week10",
+      "title": "Week 10: Reinforcement Learning",
+      "sections": [
+        {
+          "id": "reinforcement_learning",
+          "title": "Reinforcement learning",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@reinforcement_learning",
+          "graded": false,
+          "article": "content/week10/reinforcement-learning.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 11: Reinforcement learning",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Introduction to reinforcement learning",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to reinforcement learning",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: K-armed bandits",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Bandit problems",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Objectives of the reinforcement learning problem",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Model-based learning",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Policy search",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Q-learning",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Q-learning select-action strategies",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Neural networks and Q-learning",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Sequential problems",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Reinforcement learning demos",
+              "types": [
+                "video"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L09a",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09b",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09c",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09d",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09e",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09f",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09g",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09h",
+              "title": "Lecture: Introduction to reinforcement learning"
+            },
+            {
+              "id": "MIT6036L09j",
+              "title": "Lecture: Introduction to reinforcement learning"
+            }
+          ],
+          "video_count": 9,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/153f87d9a11295896ffa8215253bf354/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Reinforcement_learning.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 83705
+        },
+        {
+          "id": "week10_exercises",
+          "title": "Week 10 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week10_exercises",
+          "graded": true,
+          "article": "content/week10/week10-exercises.md",
+          "units": [
+            {
+              "title": "Week 10 Exercises: Reinforcement Learning",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_10_Exercises_Reinforcement_Learning"
+          ],
+          "characters": 349
+        },
+        {
+          "id": "week10_lab",
+          "title": "Week 10 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week10_lab",
+          "graded": true,
+          "article": "content/week10/week10-lab.md",
+          "units": [
+            {
+              "title": "Week 10 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_10_Lab"
+          ],
+          "characters": 253
+        },
+        {
+          "id": "week10_homework",
+          "title": "Week 10 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week10_homework",
+          "graded": true,
+          "article": "content/week10/week10-homework.md",
+          "units": [
+            {
+              "title": "Week 10 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_10_Homework"
+          ],
+          "characters": 273
+        }
+      ]
+    },
+    {
+      "id": "Week11",
+      "title": "Week 11: Recurrent Neural Networks",
+      "sections": [
+        {
+          "id": "rnn",
+          "title": "Recurrent Neural Networks",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@rnn",
+          "graded": false,
+          "article": "content/week11/rnn.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 12: Recurrent Neural Networks",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Recurrent neural network model",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to RNNs",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "RNN model",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Sequence-to-sequence RNN",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Sequence-to-sequence RNN",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Back-propagation through time - forward pass",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Back-propagation through time - backwards pass",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Back-propagation through time - weight updates",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Back-propagation through time",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: RNNs - training a language model",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Training a language model",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: RNNs - gating mechanisms and LSTM",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Vanishing gradients and gating mechanisms",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L10a",
+              "title": "Lecture: Recurrent neural network model"
+            },
+            {
+              "id": "MIT6036L10b",
+              "title": "Lecture: Recurrent neural network model"
+            },
+            {
+              "id": "MIT6036L10c",
+              "title": "Lecture: Recurrent neural network model"
+            },
+            {
+              "id": "MIT6036L10d",
+              "title": "Lecture: Recurrent neural network model"
+            },
+            {
+              "id": "MIT6036L10e",
+              "title": "Lecture: Recurrent neural network model"
+            },
+            {
+              "id": "MIT6036L10f",
+              "title": "Lecture: Recurrent neural network model"
+            },
+            {
+              "id": "MIT6036L10g",
+              "title": "Lecture: Recurrent neural network model"
+            }
+          ],
+          "video_count": 7,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/0de27572f5d771b35ad094df49a8e200/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Recurrent_Neural_Networks.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 75468
+        },
+        {
+          "id": "week11_exercises",
+          "title": "Week 11 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week11_exercises",
+          "graded": true,
+          "article": "content/week11/week11-exercises.md",
+          "units": [
+            {
+              "title": "Week 11 Exercises: Recurrent Neural Networks",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_11_Exercises_Recurrent_Neural_Networks"
+          ],
+          "characters": 361
+        },
+        {
+          "id": "week11_lab",
+          "title": "Week 11 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week11_lab",
+          "graded": true,
+          "article": "content/week11/week11-lab.md",
+          "units": [
+            {
+              "title": "Week 11 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_11_Lab"
+          ],
+          "characters": 256
+        },
+        {
+          "id": "week11_homework",
+          "title": "Week 11 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week11_homework",
+          "graded": true,
+          "article": "content/week11/week11-homework.md",
+          "units": [
+            {
+              "title": "Week 11 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_11_Homework"
+          ],
+          "characters": 276
+        }
+      ]
+    },
+    {
+      "id": "Week12",
+      "title": "Week 12: Recommender Systems",
+      "sections": [
+        {
+          "id": "recommender_systems",
+          "title": "Recommender systems",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@recommender_systems",
+          "graded": false,
+          "article": "content/week12/recommender-systems.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 13: Recommender systems",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Recommender systems - introduction",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to recommender systems",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Content-based recommendations",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - framework",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - strategy",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - hypothesis space",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - objective function",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - alternating least squares idea",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - alternating least squares algorithm",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Collaborative filtering - stochastic gradient descent",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Collaborative filtering",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Demo example - RNNs",
+              "types": [
+                "video"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L11a",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11b",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11c",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11d",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11e",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11f",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11g",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11h",
+              "title": "Lecture: Recommender systems - introduction"
+            },
+            {
+              "id": "MIT6036L11j",
+              "title": "Lecture: Recommender systems - introduction"
+            }
+          ],
+          "video_count": 9,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/8b609c84fc452d77fd213069ca3504e7/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Appendices.pdf",
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/d47d5e8f3dc7157f83382f72e103f8e4/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Recommender_systems.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 69153
+        },
+        {
+          "id": "week12_exercises",
+          "title": "Week 12 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week12_exercises",
+          "graded": false,
+          "article": "content/week12/week12-exercises.md",
+          "units": [
+            {
+              "title": "Week 12 Exercises: Recommender Systems",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_12_Exercises_Recommender_Systems"
+          ],
+          "characters": 337
+        },
+        {
+          "id": "week12_lab",
+          "title": "Week 12 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week12_lab",
+          "graded": false,
+          "article": "content/week12/week12-lab.md",
+          "units": [
+            {
+              "title": "Week 12 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_12_Lab"
+          ],
+          "characters": 250
+        },
+        {
+          "id": "week12_homework",
+          "title": "Week 12 Homework",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week12_homework",
+          "graded": false,
+          "article": "content/week12/week12-homework.md",
+          "units": [
+            {
+              "title": "Week 12 Homework",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_12_Homework"
+          ],
+          "characters": 270
+        }
+      ]
+    },
+    {
+      "id": "Week13",
+      "title": "Week 13: Decision Trees and Nearest Neighbors",
+      "sections": [
+        {
+          "id": "non_parametric",
+          "title": "Decision Trees and Nearest Neighbors",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@non_parametric",
+          "graded": false,
+          "article": "content/week13/non-parametric.md",
+          "units": [
+            {
+              "title": "Notes – Chapter 14: Non-parametric methods",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Introduction to non-parametric models",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Introduction to non-parametric methods",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Decision trees",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Regression trees - problem statement",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Building a tree - greedy algorithm",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Building a tree - minimum error splits",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Building a tree - pruning",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Classification trees",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Classification trees - impurity measures - gini index",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Classification trees - impurity measures - entropy",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Decision trees - the good and the bad",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Trees",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Bagging - bootstrap aggregation of models",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Bagging",
+              "types": [
+                "html"
+              ]
+            },
+            {
+              "title": "Lecture: Random forests models",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Lecture: Nearest neighbor models",
+              "types": [
+                "video"
+              ]
+            },
+            {
+              "title": "Nearest Neighbor",
+              "types": [
+                "html"
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "id": "MIT6036L12a",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12b",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12c",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12d",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12e",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12f",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12g",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12h",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12j",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12k",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12m",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12n",
+              "title": "Lecture: Introduction to non-parametric models"
+            },
+            {
+              "id": "MIT6036L12o",
+              "title": "Lecture: Introduction to non-parametric models"
+            }
+          ],
+          "video_count": 13,
+          "pdf_urls": [
+            "https://openlearninglibrary.mit.edu/assets/courseware/v1/2ea3ce073a6c2ff4d5ead87a661e7e41/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Non-parametric_methods.pdf"
+          ],
+          "lti_blocks": [],
+          "characters": 73171
+        },
+        {
+          "id": "week13_exercises",
+          "title": "Week 13 Exercises",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week13_exercises",
+          "graded": true,
+          "article": "content/week13/week13-exercises.md",
+          "units": [
+            {
+              "title": "Week 13 Exercises: Decision Trees and Nearest Neighbors",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_13_Exercises_Decision_Trees_and_Nearest_Neighbors"
+          ],
+          "characters": 405
+        },
+        {
+          "id": "week13_lab",
+          "title": "Week 13 Lab",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/jump_to/block-v1:MITx+6.036+1T2019+type@sequential+block@week13_lab",
+          "graded": true,
+          "article": "content/week13/week13-lab.md",
+          "units": [
+            {
+              "title": "Week 13 Lab",
+              "types": [
+                "html",
+                "lti"
+              ]
+            }
+          ],
+          "videos": [],
+          "video_count": 0,
+          "pdf_urls": [],
+          "lti_blocks": [
+            "Week_13_Lab"
+          ],
+          "characters": 267
+        }
+      ]
+    }
+  ],
+  "pdfs": [
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/030eba9b066b079e2b16dc863c18ea39/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Regression.pdf",
+      "path": "course-data/pdfs/notes_chapter_Regression.pdf",
+      "sha256": "bb92ec179af4ef9f2863d027b661f3d437ae7862d4e6d5ea604cf50337685b07",
+      "bytes": 172362
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/0de27572f5d771b35ad094df49a8e200/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Recurrent_Neural_Networks.pdf",
+      "path": "course-data/pdfs/notes_chapter_Recurrent_Neural_Networks.pdf",
+      "sha256": "ccdc96eca75be1034f383d5420c10d85397c7f7db7d174def07a5f084b56b505",
+      "bytes": 340469
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/153f87d9a11295896ffa8215253bf354/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Reinforcement_learning.pdf",
+      "path": "course-data/pdfs/notes_chapter_Reinforcement_learning.pdf",
+      "sha256": "d4ff629604c7a492e354434139be2d81108debbe70f6081ea09347d20030469c",
+      "bytes": 204486
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/2481f8f2964716032b134db99e369b81/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Introduction.pdf",
+      "path": "course-data/pdfs/notes_chapter_Introduction.pdf",
+      "sha256": "6fdbe782e18e33b973448cb106aeaf6926ab8add3aabe7bb9c45b1814bb2f495",
+      "bytes": 170866
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/2ea3ce073a6c2ff4d5ead87a661e7e41/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Non-parametric_methods.pdf",
+      "path": "course-data/pdfs/notes_chapter_Non-parametric_methods.pdf",
+      "sha256": "e00d5dc543ae0b9e28abbfb3306718784f61c40f83c907c14d93aa56d65e831a",
+      "bytes": 245414
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/41c7c4a6141b76b324055d56387570c0/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Convolutional_Neural_Networks.pdf",
+      "path": "course-data/pdfs/notes_chapter_Convolutional_Neural_Networks.pdf",
+      "sha256": "509b88ae89421afd84bda66ca0aad5bb849c00edcf97bfc4732fed954a7ca750",
+      "bytes": 389053
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/8b609c84fc452d77fd213069ca3504e7/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Appendices.pdf",
+      "path": "course-data/pdfs/notes_chapter_Appendices.pdf",
+      "sha256": "81746ba4df4b496c7c66131c3c396bde3cedf3d161709952b31a9df10d38f1ec",
+      "bytes": 153712
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/8f4f9aca5581dde50291b0d0e29d0148/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_The_Perceptron.pdf",
+      "path": "course-data/pdfs/notes_chapter_The_Perceptron.pdf",
+      "sha256": "331d18c09ad44850cdf58c4a81e9949f2dd6a04e4f80d19def195719e72d63da",
+      "bytes": 199014
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/920d2b98ba33e5f1ef544c1e54d9a69d/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Logistic_regression.pdf",
+      "path": "course-data/pdfs/notes_chapter_Logistic_regression.pdf",
+      "sha256": "fac27246e7128db8148f72c55f808f22bfe6e6c3202fb5f2d915de18f8815b7e",
+      "bytes": 536738
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/9c36c444e5df10eef7ce4d052e4a2ed1/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Making_NN_s_Work.pdf",
+      "path": "course-data/pdfs/notes_chapter_Making_NN_s_Work.pdf",
+      "sha256": "0cd4dd0930fe62e0e949fec55e09df13269b1011f4d487170d5bead24169f901",
+      "bytes": 330832
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/9c36c444e5df10eef7ce4d052e4a2ed1/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Neural_Networks.pdf",
+      "path": "course-data/pdfs/notes_chapter_Neural_Networks.pdf",
+      "sha256": "0cd4dd0930fe62e0e949fec55e09df13269b1011f4d487170d5bead24169f901",
+      "bytes": 330832
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/9d904854b4ae0878cfdcedcdceabf937/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Linear_classifiers.pdf",
+      "path": "course-data/pdfs/notes_chapter_Linear_classifiers.pdf",
+      "sha256": "48d7aebd41e987fd44c9a56c7c69b074ee4f1bf8058aaaca4b4ee1f36e4c374a",
+      "bytes": 179391
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/b5ca509c17bab346cc6252ca41a1aac7/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Feature_representation.pdf",
+      "path": "course-data/pdfs/notes_chapter_Feature_representation.pdf",
+      "sha256": "168814ec6dc724d6cd9dcba12fed79c641d38ef1fd82d4a99c502cae29ea3afd",
+      "bytes": 223221
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/caee9a9ff60ed183e4485869c2e88ac4/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Sequential_models.pdf",
+      "path": "course-data/pdfs/notes_chapter_Sequential_models.pdf",
+      "sha256": "ee35ae8f4d9fe8dbbba1b7fc41c75b3263cc4fca070169b497e3ff6c373128a1",
+      "bytes": 225525
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/cda92ed2c6672271916e8cb8974af568/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_conv_nets_slides.pdf",
+      "path": "course-data/pdfs/notes_conv_nets_slides.pdf",
+      "sha256": "040c88212829a3049b82dc1b120352b2b59f992daeecdecd74d70ec32736d23a",
+      "bytes": 5871877
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/d47d5e8f3dc7157f83382f72e103f8e4/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Recommender_systems.pdf",
+      "path": "course-data/pdfs/notes_chapter_Recommender_systems.pdf",
+      "sha256": "7756e5d4a33c25fff50310cb727480e5f52eac67ead8bcf341368e2142cca179",
+      "bytes": 195486
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/d81d9ec0bd142738b069ce601382fdb7/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Gradient_Descent.pdf",
+      "path": "course-data/pdfs/notes_chapter_Gradient_Descent.pdf",
+      "sha256": "d9c45c753ce23d76c2ae5d7c1652296274c6874d26c617bc593a29fa82809c20",
+      "bytes": 188756
+    },
+    {
+      "url": "https://openlearninglibrary.mit.edu/assets/courseware/v1/dc2ca4ef11bd7be3faec0efc56f46cca/asset-v1:MITx+6.036+1T2019+type@asset+block/notes_chapter_Linear_classifers.pdf",
+      "path": "course-data/pdfs/notes_chapter_Linear_classifers.pdf",
+      "sha256": "058bc7c39f47f62cce07f0f38779d23b8c9e7958f24c037b6e033e5a9b609124",
+      "bytes": 179363
+    }
+  ]
+}

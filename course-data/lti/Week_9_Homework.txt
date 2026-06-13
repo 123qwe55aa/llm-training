@@ -1,0 +1,1824 @@
+A code directory that may be useful for doing this homework can be found here. You should implement your code for Problem 1 (State Machines) in sm.py and Problem 5 (MDP Implementations) in mdp.py. There are unit tests available for you run in tests.py. Download this to your computer, or alternatively, use the colab notebook. The colab notebook will also contain unit tests defined after each code question.
+
+1) State Machines
+
+We will implement state machines as sub-classes of the SM class, which specifies the start_state, transition_fn, and output_fn.
+
+class SM:
+    start_state = None  # default start state
+
+    def transition_fn(self, s, x):
+        '''s:       the current state
+           x:       the given input
+           returns: the next state'''
+        raise NotImplementedError
+
+    def output_fn(self, s):
+        '''s:       the current state
+           returns: the corresponding output'''
+        raise NotImplementedError
+
+    def transduce(self, input_seq):
+        '''input_seq: the given list of inputs
+           returns: list of outputs given the inputs'''
+        raise NotImplementedError
+
+
+An example of a sub-class is the Accumulator state machine, which adds up (accumulates) its input and outputs the sum. Convince yourself that the implementation works as expected before moving on.
+
+class Accumulator(SM):
+    start_state = 0
+
+    def transition_fn(self, s, x):
+        return s + x
+
+    def output_fn(self, s):
+        return s
+
+
+An example case of using Accumulator (with transduce)
+
+sm = Accumulator()
+
+# Output should = [-1, 1, 4, 2, 7, 13]
+output = sm.transduce([-1, 2, 3, -2, 5, 6])
+
+
+You can find these definitions in the sm.py file.
+
+1.1) Transduce
+
+Implement the transduce method for the SM class. It is given an input sequence (a list) and returns an output sequence (a list) of the outputs of the state machine on the input sequence. Assume self.transition_fn and self.output_fn are defined.
+
+1
+2
+3
+4
+5
+6
+7
+8
+class SM:
+    start_state = None
+    def transduce(self, input_seq):
+        '''input_seq: a list of inputs to feed into SM
+           returns:   a list of outputs of SM'''
+        pass  # Your code here
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.2) Binary Addition
+
+Implement a Binary_Addition state machine that takes in a sequence of pairs of binary digits (0,1) representing two reversed binary numbers and returns a sequence of digits representing the reversed sum. For instance, to sum two binary numbers 100 and 011, the input sequence will be [(0, 1), (0, 1), (1, 0)]. You will need to define start_state, transition_fn, and output_fn. Note that when transduced, the input sequence may need to be extended with an extra (0,0) to output the final carry. The inputs in the test cases have already been extended with the extra (0, 0).
+
+An example case of using Binary_Addition is
+
+sm = Binary_Addition()
+
+# Output should = [0, 0, 1]
+output = sm.transduce([(1, 1), (1, 0), (0, 0)])
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+class Binary_Addition(SM):
+    start_state = None # Change
+    def transition_fn(self, s, x):
+        # Your code here
+        pass
+    def output_fn(self, s):
+        # Your code here
+        pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.3) Reverser
+
+Implement a state machine that reverses a sequence. The input is a list of the form:
+
+ sequence1 + ['end'] + sequence2 
++ refers to concatenation. sequence1 is a list of strings, the 'end' string indicates termination, and sequence2 is arbitrary. The machine reverses sequence1: for each entry in the sequence1, the machine outputs None. For the 'end' input and each entry in the second sequence, an item from the reversed sequence1 is output, or None if no characters remain.
+
+To view test cases, try submitting your code. An example case of using Reverser
+
+sm = Binary_Addition()
+
+# Output should = [None, None, None, 'bar', ' ', 'foo', None, None, None]
+output = sm.transduce(['foo', ' ', 'bar'] + ['end'] + list(range(5)))
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+class Reverser(SM):
+    start_state = None # Change
+    def transition_fn(self, s, x):
+        # Your code here
+        pass
+    def output_fn(self, s):
+        # Your code here
+        pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.4) RNN
+
+A neural network is a (learned) function that maps input vectors to output vectors. A recurrent neural network (RNN) is a (learned) state machine that maps input sequences to output sequences.
+
+In particular, an RNN has a transition function and an output function, each of which is defined in terms of weight matrices, offset vectors and activation functions, analogously to standard neural networks.
+
+The inputs 
+𝑥
+x are 
+𝑙
+×
+1
+l×1 vectors
+The states 
+𝑠
+s are 
+𝑚
+×
+1
+m×1 vectors
+The outputs 
+𝑦
+y are 
+𝑛
+×
+1
+n×1 vectors
+
+The behavior is defined as follows:
+
+\begin{align*} s_{t} & = f_1(W^{ss} s_{{t-1}} + W^{sx} x_{t} + W^{ss}_0) \\ y_{t} & = f_2(W^o s_{t} + W^o_0) \end{align*}
+where 
+𝑓
+1
+f
+1
+	​
+
+ and 
+𝑓
+2
+f
+2
+	​
+
+ are two activation functions, such as linear, softmax, or tanh. This arrangement is shown below.
+
+Note that each input i below has dimension l x 1. Implement the corresponding state machine, where the weights are given in __init__. Make sure to set an appropriate start_state.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+class RNN(SM):
+    def __init__(self, Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2):
+        # Your code here
+        pass
+    def transition_fn(self, s, x):
+        # Your code here
+        pass
+    def output_fn(self, s):
+        # Your code here
+        pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.5) Accumulator Sign RNN
+
+Enter the parameter matrices and vectors for an instance of the RNN class such that the output is 1 if the cumulative sum of the inputs is positive, -1 if the cumulative sum is negative and 0 if otherwise. Make sure that you scale the outputs so that the output activation values are very close to 1, 0 and -1. Note that both the inputs and outputs are 1x1.
+
+Hint: np.tanh may be useful. Remember to convert your python lists to np.array.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Wsx =    # Your code here
+Wss =    # Your code here
+Wo =     # Your code here
+Wss_0 =  # Your code here
+Wo_0 =   # Your code here
+f1 =     # Your code here, e.g. lambda x : x
+f2 =     # Your code here
+acc_sign = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.6) Autoregressive RNN
+
+Enter the parameter matrices and vectors for an instance of the RNN class such that it implements the following autoregressive model:
+
+𝑦
+𝑡
+=
+1
+𝑦
+𝑡
+−
+1
+−
+2
+𝑦
+𝑡
+−
+2
++
+3
+𝑦
+𝑡
+−
+3
+y
+t
+	​
+
+=1y
+t−1
+	​
+
+−2y
+t−2
+	​
+
++3y
+t−3
+	​
+
+when 
+𝑥
+𝑡
+=
+𝑦
+𝑡
+−
+1
+x
+t
+	​
+
+=y
+t−1
+	​
+
+.
+
+Note: unlike in the lab, as a result of your call to RNN, your initial (start) state vector in the RNN will be initialized to all zeros (i.e., our RNN implementation enforces this requirement). Instead, you should assume that the initial value for 
+𝑥
+x will be provided , e.g., 
+𝑥
+1
+=
+5
+x
+1
+	​
+
+=5 in the lab example, and that each successive 
+𝑥
+𝑡
+=
+𝑦
+𝑡
+−
+1
+x
+t
+	​
+
+=y
+t−1
+	​
+
+ is also provided to the transduce method.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Wsx =    # Your code here
+Wss =    # Your code here
+Wo =     # Your code here
+Wss_0 =  # Your code here
+Wo_0 =   # Your code here
+f1 =     # Your code here
+f2 =     # Your code here
+auto = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+2) MDP
+
+We consider the same tiny MDP as in the exercises, with states (0, 1, 2, 3) and actions ('b', 'c'). The reward function is:
+
+𝑅
+(
+𝑠
+,
+𝑎
+)
+=
+{
+1
+	
+if 
+𝑠
+=
+1
+
+
+2
+	
+if 
+𝑠
+=
+3
+
+
+0
+	
+otherwise
+R(s,a)=
+⎩
+⎪
+⎨
+⎪
+⎧
+	​
+
+1
+2
+0
+	​
+
+if s=1
+if s=3
+otherwise
+	​
+
+You get the reward associated with a state on the step when you exit that state. The transition function for each action is below, where 
+𝑇
+[
+𝑖
+,
+𝑥
+,
+𝑗
+]
+T[i,x,j] is the 
+𝑃
+(
+𝑠
+𝑡
++
+1
+=
+𝑗
+∣
+𝑎
+=
+𝑥
+,
+𝑠
+𝑡
+=
+𝑖
+)
+P(s
+t+1
+	​
+
+=j∣a=x,s
+t
+	​
+
+=i) (note rows correspond to the input states, and columns correspond to the output states).
+𝑇
+(
+𝑠
+𝑡
+,
+’b’
+,
+𝑠
+𝑡
++
+1
+)
+=
+[
+0.0
+	
+0.9
+	
+0.1
+	
+0.0
+
+
+0.9
+	
+0.1
+	
+0.0
+	
+0.0
+
+
+0.0
+	
+0.0
+	
+0.1
+	
+0.9
+
+
+0.9
+	
+0.0
+	
+0.0
+	
+0.1
+]
+T(s
+t
+	​
+
+,’b’,s
+t+1
+	​
+
+)=
+⎣
+⎢
+⎢
+⎡
+	​
+
+0.0
+0.9
+0.0
+0.9
+	​
+
+0.9
+0.1
+0.0
+0.0
+	​
+
+0.1
+0.0
+0.1
+0.0
+	​
+
+0.0
+0.0
+0.9
+0.1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+
+𝑇
+(
+𝑠
+𝑡
+,
+’c’
+,
+𝑠
+𝑡
++
+1
+)
+=
+[
+0.0
+	
+0.1
+	
+0.9
+	
+0.0
+
+
+0.9
+	
+0.1
+	
+0.0
+	
+0.0
+
+
+0.0
+	
+0.0
+	
+0.1
+	
+0.9
+
+
+0.9
+	
+0.0
+	
+0.0
+	
+0.1
+]
+T(s
+t
+	​
+
+,’c’,s
+t+1
+	​
+
+)=
+⎣
+⎢
+⎢
+⎡
+	​
+
+0.0
+0.9
+0.0
+0.9
+	​
+
+0.1
+0.1
+0.0
+0.0
+	​
+
+0.9
+0.0
+0.1
+0.0
+	​
+
+0.0
+0.0
+0.9
+0.1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+Note that the only effect of the action is to change the transition probability from state 0.
+
+2.1) Limited horizons
+
+Consider two policies: one that always takes action 'b' in state 0 and one that always takes action 'c'.
+
+2.1.A) Which policy is best if you're starting from state 0 with horizon 2?
+
+--
+Taking action 'b'
+Taking action 'c'
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.1.B) Which policy is best if you're starting from state 0 with horizon 3?
+
+--
+Taking action 'b'
+Taking action 'c'
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.1.C) What if we start in state 0 with horizon 5, take action 'c', land in state 2 with horizon 4, land in state 3 with horizon 3 (and get reward = 2!), and then land in state 0 with horizon 2? What action should we take now?
+
+--
+Action 'b'
+Action 'c'
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.2) At a discount
+
+Now, in the same tiny MDP, we are interested in the infinite-horizon discounted value, with discount factor 0.9. For a given policy, we can write down a set of linear equations characterizing these values, in the form:
+
+\begin{align} v_0 & = r_0 + c_{00}v_0 + c_{01} v_1 + c_{02} v_2 + c_{03}v_3 \newline v_1 & = r_1 + c_{10}v_0 + c_{11} v_1 + c_{12} v_2 + c_{13}v_3 \newline v_2 & = r_2 + c_{20}v_0 + c_{21} v_1 + c_{22} v_2 + c_{23}v_3 \newline v_3 & = r_3 + c_{30}v_0 + c_{31} v_1 + c_{32} v_2 + c_{33}v_3 \end{align}
+
+2.2.A) Enter the vector of 
+𝑟
+𝑖
+r
+i
+	​
+
+ values, in the order shown above.
+
+Enter the matrix as a list of 4 numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.2.B) Enter the matrix of 
+𝑐
+𝑖
+𝑗
+c
+ij
+	​
+
+ values, in the order shown above, for the policy "always take action 'c'".
+
+Enter the matrix as a list of 4 lists of numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Solve for the value function under this policy by using numpy.linalg.solve to solve these equations. For example, if you have a set of linear equations of the form:
+
+      1 v0 + 2  v1 + 3  v2 = 4
+      5 v0 + 6  v1 + 7  v2 = 8
+      9 v0 + 10 v1 + 11 v2 = 12
+
+Then you can solve as follows:
+      A = np.matrix([[1, 2, 3], [5, 6, 7], [9, 10, 11]])
+      b = np.matrix([[4], [8], [12]])
+      v = np.linalg.solve(A,b)  # A v = b
+
+
+2.2.C)
+
+Enter a Python list of 4 numbers, accurate to at least 3 decimal places: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+3) Tiny Q-value iteration
+
+In the same example as above, with an infinite horizon and a discount factor of 0.9, compute three iterations of value iteration. Don't assume a particular policy. Assume that:
+
+All the value estimates start at 0 (meaning, at iteration 0, 
+𝑄
+(
+𝑠
+,
+𝑎
+)
+=
+0
+Q(s,a)=0 for all 
+𝑠
+,
+𝑎
+s,a pairs), and
+You operate synchronously (that is, on iteration 
+𝑡
+t of value iteration, you only use values that were computed on iteration 
+𝑡
+−
+1
+t−1).
+We recommend you compute the Q-value iteration by hand to get a better understanding of the algorithm.
+
+For each iteration enter 8 numbers corresponding to:
+
+[
+𝑄
+(
+0
+,
+𝑏
+)
+,
+𝑄
+(
+0
+,
+𝑐
+)
+,
+𝑄
+(
+1
+,
+𝑏
+)
+,
+𝑄
+(
+1
+,
+𝑐
+)
+,
+𝑄
+(
+2
+,
+𝑏
+)
+,
+𝑄
+(
+2
+,
+𝑐
+)
+,
+𝑄
+(
+3
+,
+𝑏
+)
+,
+𝑄
+(
+3
+,
+𝑐
+)
+]
+[Q(0,b),Q(0,c),Q(1,b),Q(1,c),Q(2,b),Q(2,c),Q(3,b),Q(3,c)]
+at that iteration, accurate to at least 3 decimal places.
+
+3.A) Iteration 1
+
+Enter a Python list of 8 numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.B) Iteration 2
+
+Enter a Python list of 8 numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.C) Iteration 3
+
+Enter a Python list of 8 numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.D) After the third iteration, what action would you select in state 0?
+
+--
+Action 'b'
+Action 'c'
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+4) One D Grid
+
+Consider a domain where states correspond to squares on a 1 by 10 grid. The state is the position of a robot on the board, 
+𝑖
+i, which ranges from 1 to 10. The robot can move one square East or West. In this question, assume there is no randomness in the robot's motion. It cannot move off the board.
+
+4.1) Negative Reward
+
+There is a "goal" state 
+𝑖
+𝑔
+i
+g
+	​
+
+. Assume that the reward for taking any action from the goal state is 0, and that, once in the goal state, the robot "sticks" there forever. Further, assume the reward for all other actions is -1. 
+𝐻
+H is the horizon.
+
+4.1.A) If the goal is 
+10
+10, 
+𝐻
+=
+5
+H=5 and 
+𝛾
+=
+1
+γ=1, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1)?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.1.B) If the goal is 
+10
+10, 
+𝐻
+=
+15
+H=15 and 
+𝛾
+=
+1
+γ=1, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1)?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.1.C) If the goal is 
+10
+10, 
+𝐻
+=
+∞
+H=∞ and 
+𝛾
+=
+1
+γ=1, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1)?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.1.D) If the goal is 
+10
+10 and 
+𝐻
+=
+∞
+H=∞, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1) in terms of 
+𝛾
+γ, if 
+0
+&lt;
+𝛾
+&lt;
+1
+0<γ<1? Recall that 
+∑
+𝑖
+=
+0
+𝑛
+𝛾
+𝑖
+=
+1
+−
+𝛾
+𝑛
++
+1
+1
+−
+𝛾
+∑
+i=0
+n
+	​
+
+γ
+i
+=
+1−γ
+1−γ
+n+1
+	​
+
+. You can use gamma in your expression.
+
+𝑉
+∗
+(
+1
+)
+=
+V
+∗
+(1)= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.1.E) Is there a value of 
+0
+&lt;
+𝛾
+&lt;
+1
+0<γ<1 for which the optimal policy differs from the optimal policy for 
+𝛾
+=
+0.9
+γ=0.9?
+
+--
+Yes
+No
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.2) Positive Reward
+
+Now, we will consider a different reward function: The reward for any action in the goal state is 1; reward for any action in any other state is 0; once in the goal state, the robot "sticks" there forever. 
+𝐻
+H is the horizon.
+
+4.2.A) If the goal is 
+10
+10, 
+𝐻
+=
+5
+H=5 and 
+𝛾
+=
+1
+γ=1, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1)?
+
+Enter a number (or '+infty', '-infty'): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.2.B) If the goal is 
+10
+10, 
+𝐻
+=
+15
+H=15 and 
+𝛾
+=
+1
+γ=1, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1)?
+
+Enter a number (or '+infty', '-infty'): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.2.C) If the goal is 
+10
+10, 
+𝐻
+=
+∞
+H=∞ and 
+𝛾
+=
+1
+γ=1, what is 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1)?
+
+Enter a number (or '+infty', '-infty'): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4.2.D) If the goal is 
+10
+10 and 
+𝐻
+=
+∞
+H=∞, enter an expression for 
+𝑉
+∗
+(
+1
+)
+V
+∗
+(1) in terms of 
+𝛾
+γ, if 
+0
+&lt;
+𝛾
+&lt;
+1
+0<γ<1? Recall that 
+∑
+𝑖
+=
+0
+∞
+𝛾
+𝑖
+=
+1
+1
+−
+𝛾
+∑
+i=0
+∞
+	​
+
+γ
+i
+=
+1−γ
+1
+	​
+
+. You can use gamma in your expression.
+
+𝑉
+∗
+(
+1
+)
+=
+V
+∗
+(1)= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+5) MDP Implementations
+
+We'll be using a couple of simple classes to represent MDPs and probability distributions. The minimal API is shown below, the detailed definition can be found in the lab code file.
+
+# Discrete distribution represented as a dictionary.  Can be
+# sparse, in the sense that elements that are not explicitly
+# contained in the dictionary are assumed to have zero probability.
+class DDist:
+    def __init__(self, dictionary):
+        # Initializes dictionary whose keys are elements of the domain
+        # and values are their probabilities
+
+    def prob(self, elt):
+        # Returns the probability associated with elt
+
+    def support(self):
+        # Returns a list (in any order) of the elements of this
+        # distribution with non-zero probabability.
+
+    def draw(self):
+        # Returns a randomly drawn element from the distribution
+
+    def expectation(self, f):
+        # Returns the expected value of the function f over the current distribution
+
+def uniform_dist(elts):
+    # Returns DDist with uniform distribution over a given finite set of elts
+
+def argmax(l, f):
+    # l is a list of items. f is a procedure that maps an item into a numeric score
+    # returns the element of l that has the highest score
+
+class MDP:
+    def __init__(self, states, actions, transition_model, reward_fn,
+                     discount_factor = 1.0, start_dist = None):
+        # states: list or set of states
+        # actions: list or set of actions
+        # transition_model: function from (state, action) into DDist over next state
+        # reward_fn: function from (state, action) to real-valued reward
+        # discount_factor: real, greater than 0, less than or equal to 1
+        # start_dist: optional instance of DDist, specifying initial state dist
+        #    if it's unspecified, we'll use a uniform over states
+
+    def terminal(self, s):
+        # Given a state, return True if the state should be considered to
+        # be terminal.  You can think of a terminal state as generating an
+        # infinite sequence of zero reward.
+
+    def init_state(self):
+        # Return an initial state by drawing from the distribution over start states.
+
+    def sim_transition(self, s, a):
+        # Simulates a transition from the given state, s and action a, using the
+        # transition model as a probability distribution.  If s is terminal,
+        # use init_state to draw an initial state.  Returns (reward, new_state)
+
+
+We will be using a class to store the Q function, for now this is basically a dictionary mapping (s, a) pairs into their Q values. In the homework next week we will generalize this to use neural nets.
+
+class TabularQ:
+    def __init__(self, states, actions):
+        self.actions = actions
+        self.states = states
+        self.q = dict([((s, a), 0.0) for s in states for a in actions])
+
+    def copy(self):
+        q_copy = TabularQ(self.states, self.actions)
+        q_copy.q.update(self.q)
+        return q_copy
+
+    def set(self, s, a, v):
+        self.q[(s,a)] = v
+
+    def get(self, s, a):
+        return self.q[(s,a)]
+
+
+You can find these definitions in the files dist.py, util.py and mdp.py.
+
+5.1) Working with MDPs
+
+Recall that given a 
+𝑄
+𝜋
+Q
+π
+	​
+
+ for any policy 
+𝜋
+π, then 
+𝑉
+𝜋
+(
+𝑠
+)
+=
+max
+⁡
+𝑎
+𝑄
+𝜋
+(
+𝑠
+,
+𝑎
+)
+V
+π
+	​
+
+(s)=max
+a
+	​
+
+Q
+π
+	​
+
+(s,a).
+
+5.1.A) Write the value method, which takes a Q function (an instance of TabularQ) and a state and returns the value 
+𝑄
+⋆
+(
+𝑠
+,
+𝑎
+)
+Q
+⋆
+(s,a) of an action that maximizes 
+𝑄
+Q function stored in q.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+def value(q, s):
+    """ Return Q*(s,a) based on current Q
+    >>> q = TabularQ([0,1,2,3],['b','c'])
+    >>> q.set(0, 'b', 5)
+    >>> q.set(0, 'c', 10)
+    >>> q_star = value(q,0)
+    >>> q_star
+    10
+    """
+    pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.1.B) Write the greedy method, which takes a Q function (an instance of TabularQ) and a state and returns the action 
+𝑎
+a determined by the policy that acts greedily with respect to the current value of q.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+def greedy(q, s):
+    """ Return pi*(s) based on a greedy strategy.
+    >>> q = TabularQ([0,1,2,3],['b','c'])
+    >>> q.set(0, 'b', 5)
+    >>> q.set(0, 'c', 10)
+    >>> q.set(1, 'b', 2)
+    >>> greedy(q, 0)
+    'c'
+    >>> greedy(q, 1)
+    'b'
+    """
+    # Your code here
+    pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.1.C) Write the epsilon_greedy method, which takes a state s and a parameter epsilon, and returns an action. With probability 1 - epsilon it should select the greedy action and with probability epsilon it should select an action uniformly from the set of possible actions.
+
+You should use random.random() to generate a random number to test against eps.
+You should use the draw method of uniform_dist to generate a random action.
+You can use the greedy function defined earlier.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+def epsilon_greedy(q, s, eps = 0.5):
+    """ Returns an action.
+    >>> q = TabularQ([0,1,2,3],['b','c'])
+    >>> q.set(0, 'b', 5)
+    >>> q.set(0, 'c', 10)
+    >>> q.set(1, 'b', 2)
+    >>> eps = 0.
+    >>> epsilon_greedy(q, 0, eps) #greedy
+    'c'
+    >>> epsilon_greedy(q, 1, eps) #greedy
+    'b'
+    """
+    if random.random() < eps:  # True with prob eps, random action
+        # Your code here
+    else:
+        # Your code here
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.2) Implement Q-Value Iteration
+
+Provide the definition of the value_iteration function. It takes an MDP instance and a TabularQ instance. It should terminate when
+
+max
+⁡
+(
+𝑠
+,
+𝑎
+)
+∣
+𝑄
+𝑡
+(
+𝑠
+,
+𝑎
+)
+−
+𝑄
+𝑡
+−
+1
+(
+𝑠
+,
+𝑎
+)
+∣
+&lt;
+𝜖
+(s,a)
+max
+	​
+
+∣Q
+t
+	​
+
+(s,a)−Q
+t−1
+	​
+
+(s,a)∣<ϵ
+that is, the biggest difference between the value functions on successive iterations is less than input parameter eps. This function should return the final TabularQ instance. It should do no more that max_iters iterations.
+
+The pseudocode for this algorithm is in the lecture notes. Read the API specification at the beginning of this problem to use the MDP instance mdp and TabularQ instance q.
+
+Make sure to copy the Q function between iterations, e.g. new_q = q.copy().
+The q parameter contains the initialization of the Q function.
+The value function is already defined.
+Use mdp class definitions to get the reward function, discount factor, transition model, and expectation of the Q-values over a distribution.
+
+1
+2
+3
+def value_iteration(mdp, q, eps = 0.01, max_iters=1000):
+    # Your code here
+    pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.3) Receding-horizon control and online search
+
+Value iteration depends on the dynamic programming principle to efficiently solve for a value function over all the states in the domain, which allows very fast determination of the optimal action for each state. In some cases, the state space is huge, but the set of states that are reachable in a reasonable number of steps from the current state is relatively small. In that case, it's actually more efficient to select actions by performing an "expectimax" tree search from the current state to find the best action, taking the action, seeing what state results, and performing another tree search.
+
+We will need to fix the horizon for the tree search; it is possible to choose a finite horizon that will guarantee bounded "regret" (optimal value minus value actually obtained) based on the discount factor, but for this problem we will just assume we are given horizon h.
+
+Consider a function 
+𝑞
+𝑒
+𝑚
+(
+𝑠
+,
+𝑎
+,
+ℎ
+)
+q
+em
+	​
+
+(s,a,h) that computes the horizon-
+ℎ
+h Q value for state 
+𝑠
+s and action 
+𝑎
+a by using the definition of the finite-horizon Q function in the notes (but including a discount factor). This is sometimes called "expectimax" search, because you can think of it as building a search tree, in which some nodes are evaluated by taking an expectation (we take an expectation over possible outcomes of an action in a state) and some nodes are evaluated by taking a maximum (we take a maximum over the Q values for the possible actions in a state).
+
+Consider again our "tiny" MDP as in Section 2 with states (0, 1, 2, 3) and actions ('b', 'c'). Assume no discounting (i.e., discount factor = 1.0). The reward function is:
+
+𝑅
+(
+𝑠
+,
+𝑎
+)
+=
+{
+1
+	
+if 
+𝑠
+=
+1
+
+
+2
+	
+if 
+𝑠
+=
+3
+
+
+0
+	
+otherwise
+R(s,a)=
+⎩
+⎪
+⎨
+⎪
+⎧
+	​
+
+1
+2
+0
+	​
+
+if s=1
+if s=3
+otherwise
+	​
+
+You get the reward associated with a state on the step when you exit that state. The transition function for each action is below, where 
+𝑇
+[
+𝑖
+,
+𝑥
+,
+𝑗
+]
+T[i,x,j] is the 
+𝑃
+(
+𝑠
+𝑡
++
+1
+=
+𝑗
+∣
+𝑎
+=
+𝑥
+,
+𝑠
+𝑡
+=
+𝑖
+)
+P(s
+t+1
+	​
+
+=j∣a=x,s
+t
+	​
+
+=i).
+𝑇
+(
+𝑠
+𝑡
+,
+’b’
+,
+𝑠
+𝑡
++
+1
+)
+=
+[
+0.0
+	
+0.9
+	
+0.1
+	
+0.0
+
+
+0.9
+	
+0.1
+	
+0.0
+	
+0.0
+
+
+0.0
+	
+0.0
+	
+0.1
+	
+0.9
+
+
+0.9
+	
+0.0
+	
+0.0
+	
+0.1
+]
+T(s
+t
+	​
+
+,’b’,s
+t+1
+	​
+
+)=
+⎣
+⎢
+⎢
+⎡
+	​
+
+0.0
+0.9
+0.0
+0.9
+	​
+
+0.9
+0.1
+0.0
+0.0
+	​
+
+0.1
+0.0
+0.1
+0.0
+	​
+
+0.0
+0.0
+0.9
+0.1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+
+𝑇
+(
+𝑠
+𝑡
+,
+’c’
+,
+𝑠
+𝑡
++
+1
+)
+=
+[
+0.0
+	
+0.1
+	
+0.9
+	
+0.0
+
+
+0.9
+	
+0.1
+	
+0.0
+	
+0.0
+
+
+0.0
+	
+0.0
+	
+0.1
+	
+0.9
+
+
+0.9
+	
+0.0
+	
+0.0
+	
+0.1
+]
+T(s
+t
+	​
+
+,’c’,s
+t+1
+	​
+
+)=
+⎣
+⎢
+⎢
+⎡
+	​
+
+0.0
+0.9
+0.0
+0.9
+	​
+
+0.1
+0.1
+0.0
+0.0
+	​
+
+0.9
+0.0
+0.1
+0.0
+	​
+
+0.0
+0.0
+0.9
+0.1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+Note that the only effect of the action is to change the transition probability in state 0.
+
+5.3.A) What is 
+𝑞
+𝑒
+𝑚
+(
+0
+,
+′
+𝑏
+′
+,
+0
+)
+q
+em
+	​
+
+(0,
+′
+b
+′
+,0)?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.3.B) What is 
+𝑞
+𝑒
+𝑚
+(
+0
+,
+′
+𝑏
+′
+,
+1
+)
+q
+em
+	​
+
+(0,
+′
+b
+′
+,1)?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.3.C) What is 
+𝑞
+𝑒
+𝑚
+(
+0
+,
+′
+𝑏
+′
+,
+2
+)
+q
+em
+	​
+
+(0,
+′
+b
+′
+,2)?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.3.D) Write the procedure q_em(mdp, s, a, h) that computes the horizon-h Q value for state s and action a. This can be written as a relatively simple recursive procedure with a base case (what is the Q value when horizon is 0?) and a recursive case that computes the horizon-h values assuming we can (recursively) get horizon h-1 values.
+
+1
+2
+3
+def q_em(mdp, s, a, h):
+    # Your code here
+    pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

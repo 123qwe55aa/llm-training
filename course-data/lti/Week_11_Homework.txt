@@ -1,0 +1,2477 @@
+For this homework, you will need to understand the notes on Recurrent Neural Networks.
+
+1) Where is the gradient?
+
+In backpropagation through time, we have a nice recursive equation for 
+𝛿
+𝑖
+𝑠
+𝑡
+−
+1
+δ
+i
+s
+t−1
+	​
+
+	​
+
+, which is the degree to which unit 
+𝑖
+i of the state at time 
+𝑡
+−
+1
+t−1 was responsible for the losses from time 
+𝑡
+t through 
+𝑛
+n (the end of the sequence):
+
+𝛿
+𝑖
+𝑠
+𝑡
+−
+1
+=
+∑
+𝑗
+=
+1
+𝑚
+∂
+𝑠
+𝑡
+;
+𝑗
+∂
+𝑠
+𝑡
+−
+1
+;
+𝑖
+[
+∂
+∂
+𝑠
+𝑡
+;
+𝑗
+L
+o
+s
+s
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
++
+𝛿
+𝑗
+𝑠
+𝑡
+]
+δ
+i
+s
+t−1
+	​
+
+	​
+
+=
+j=1
+∑
+m
+	​
+
+∂s
+t−1;i
+	​
+
+∂s
+t;j
+	​
+
+	​
+
+[
+∂s
+t;j
+	​
+
+∂
+	​
+
+Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)+δ
+j
+s
+t
+	​
+
+	​
+
+]
+
+For concreteness, consider a sequence of length 
+𝑛
+=
+5
+n=5 and assume that 
+𝑠
+s has a single dimension, so we can omit that subscript.
+
+1A) We are interested in the impact of the state at time 
+1
+1 on the error at time 
+5
+5. Assume that the losses for all times 
+𝑡
+&lt;
+5
+t<5 are 0.
+
+Which of the following expressions are correct formulas for that quantity?
+	
+𝛿
+𝑠
+1
+=
+∂
+𝑠
+2
+∂
+𝑠
+1
+𝛿
+𝑠
+2
+δ
+s
+1
+	​
+
+=
+∂s
+1
+	​
+
+∂s
+2
+	​
+
+	​
+
+δ
+s
+2
+	​
+
+
+	
+𝛿
+𝑠
+1
+=
+∂
+𝑠
+2
+∂
+𝑠
+1
+∂
+𝑠
+3
+∂
+𝑠
+2
+𝛿
+𝑠
+3
+δ
+s
+1
+	​
+
+=
+∂s
+1
+	​
+
+∂s
+2
+	​
+
+	​
+
+∂s
+2
+	​
+
+∂s
+3
+	​
+
+	​
+
+δ
+s
+3
+	​
+
+
+	
+𝛿
+𝑠
+1
+=
+(
+∑
+𝑡
+=
+2
+5
+∂
+𝑠
+𝑡
+∂
+𝑠
+𝑡
+−
+1
+)
+(
+∂
+∂
+𝑠
+5
+L
+o
+s
+s
+(
+𝑦
+5
+,
+𝑝
+5
+)
+)
+δ
+s
+1
+	​
+
+=(
+t=2
+∑
+5
+	​
+
+∂s
+t−1
+	​
+
+∂s
+t
+	​
+
+	​
+
+)(
+∂s
+5
+	​
+
+∂
+	​
+
+Loss(y
+5
+	​
+
+,p
+5
+	​
+
+))
+
+	
+𝛿
+𝑠
+1
+=
+(
+∏
+𝑡
+=
+2
+5
+∂
+𝑠
+𝑡
+∂
+𝑠
+𝑡
+−
+1
+)
+(
+∂
+∂
+𝑠
+5
+L
+o
+s
+s
+(
+𝑦
+5
+,
+𝑝
+5
+)
+)
+δ
+s
+1
+	​
+
+=(
+t=2
+∏
+5
+	​
+
+∂s
+t−1
+	​
+
+∂s
+t
+	​
+
+	​
+
+)(
+∂s
+5
+	​
+
+∂
+	​
+
+Loss(y
+5
+	​
+
+,p
+5
+	​
+
+))
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1B) If the network were actually 20 layers deep, 
+∂
+𝑠
+𝑡
+∂
+𝑠
+𝑡
+−
+1
+=
+0.1
+∂s
+t−1
+	​
+
+∂s
+t
+	​
+
+	​
+
+=0.1 for all 
+𝑡
+t, and 
+𝛿
+𝑠
+20
+=
+1
+δ
+s
+20
+	​
+
+=1, what is 
+𝛿
+𝑠
+1
+δ
+s
+1
+	​
+
+?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1C) Is this gradient exploding or vanishing?
+
+Pick one: 
+--
+Exploding
+Vanishing
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+2) RNN
+
+Consider a simple recurrent neural network model given by
+
+𝑠
+𝑡
+=
+sign
+0
+(
+𝑊
+𝑠
+𝑠
+𝑠
+𝑡
+−
+1
++
+𝑊
+𝑠
+𝑥
+𝑥
+𝑡
+)
+,
+𝑡
+=
+1
+,
+2
+,
+…
+s
+t
+	​
+
+=sign
+0
+	​
+
+(W
+ss
+s
+t−1
+	​
+
++W
+sx
+x
+t
+	​
+
+),t=1,2,…
+where we have omitted any offset parameters (set biases to zero) and the non-linear activation function, applied element-wise, is a sign function that also returns zero: 
+sign
+0
+(
+𝑧
+)
+=
+1
+sign
+0
+	​
+
+(z)=1 if 
+𝑧
+&gt;
+0
+z>0, 
+sign
+0
+(
+0
+)
+=
+0
+sign
+0
+	​
+
+(0)=0, and 
+−
+1
+−1 otherwise. In our problem here, 
+𝑠
+∈
+𝑅
+2
+s∈R
+2
+ and 
+𝑥
+∈
+𝑅
+x∈R. The parameters are set (not learned) as follows:
+𝑊
+𝑠
+𝑠
+=
+[
+−
+1
+	
+0
+
+
+0
+	
+−
+1
+]
+,
+𝑊
+𝑠
+𝑥
+=
+[
+1
+
+
+1
+]
+,
+𝑠
+0
+=
+[
+0
+
+
+0
+]
+W
+ss
+=[
+−1
+0
+	​
+
+0
+−1
+	​
+
+],W
+sx
+=[
+1
+1
+	​
+
+],s
+0
+	​
+
+=[
+0
+0
+	​
+
+]
+We will use the RNN model to translate variable length input sequences to corresponding state vectors. In other words, a sequence 
+𝑥
+1
+,
+𝑥
+2
+x
+1
+	​
+
+,x
+2
+	​
+
+ will be represented by the resulting 
+𝑠
+2
+s
+2
+	​
+
+; similarly, 
+𝑥
+1
+,
+𝑥
+2
+,
+𝑥
+3
+x
+1
+	​
+
+,x
+2
+	​
+
+,x
+3
+	​
+
+ will be represented by 
+𝑠
+3
+s
+3
+	​
+
+, and so on.
+
+Once each sequence has an associated state vector, we can use them, e.g., to train a linear classifier. To this end, our three training examples are binary sequences:
+
+𝑥
+(
+1
+)
+=
+(
+𝑥
+1
+(
+1
+)
+,
+𝑥
+2
+(
+1
+)
+)
+=
+(
+1
+,
+0
+)
+x
+(1)
+=(x
+1
+(1)
+	​
+
+,x
+2
+(1)
+	​
+
+)=(1,0)
+𝑥
+(
+2
+)
+=
+(
+𝑥
+1
+(
+2
+)
+,
+𝑥
+2
+(
+2
+)
+,
+𝑥
+3
+(
+2
+)
+)
+=
+(
+0
+,
+0
+,
+1
+)
+x
+(2)
+=(x
+1
+(2)
+	​
+
+,x
+2
+(2)
+	​
+
+,x
+3
+(2)
+	​
+
+)=(0,0,1)
+𝑥
+(
+3
+)
+=
+(
+𝑥
+1
+(
+3
+)
+)
+=
+(
+0
+)
+x
+(3)
+=(x
+1
+(3)
+	​
+
+)=(0)
+Note that the input sequences do not have to have the same length! (This is an advantage of RNNs).
+
+2A) What is the sequence of first two state vectors 
+𝑠
+1
+s
+1
+	​
+
+ and 
+𝑠
+2
+s
+2
+	​
+
+ resulting from feeding the RNN model with the input sequence 
+𝑥
+(
+1
+)
+x
+(1)
+?
+
+Enter a list of two numbers corresponding to 
+𝑠
+1
+s
+1
+	​
+
+: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Enter a list of two numbers corresponding to 
+𝑠
+2
+s
+2
+	​
+
+: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2B) Map all the sequences to their corresponding state vector representations (that is, the final state vector that results from feeding the entire sequence into the model):
+
+Enter a list of two numbers for the final state vector given input 
+𝑥
+(
+1
+)
+x
+(1)
+: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Enter a list of two numbers for the final state vector given input 
+𝑥
+(
+2
+)
+x
+(2)
+: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Enter a list of two numbers for the final state vector given input 
+𝑥
+(
+3
+)
+x
+(3)
+: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2C) Suppose we train a linear classifier that operates on the state vector representations of these sequences 
+𝑥
+(
+1
+)
+x
+(1)
+, 
+𝑥
+(
+2
+)
+x
+(2)
+, and 
+𝑥
+(
+3
+)
+x
+(3)
+ (run through our RNN). Could the linear classifier separate these three examples for all possible labelings of positive and negative examples?
+
+Could the linear classifier separate these three examples regardless of how they were labeled? 
+--
+No
+Yes
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2D) We can think of the RNN model as giving rise to an equivalent feed-forward neural network for any input sequence 
+(
+𝑥
+1
+,
+𝑥
+2
+,
+…
+,
+𝑥
+𝑛
+)
+(x
+1
+	​
+
+,x
+2
+	​
+
+,…,x
+n
+	​
+
+) run through it. Choose True or False for each statement based on whether it is correct for this feed-forward interpretation:
+
+The parameters of each layer are different: 
+--
+True
+False
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Each input 
+𝑥
+𝑖
+x
+i
+	​
+
+ is fed into a different hidden layer: 
+--
+True
+False
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+The number of layers is proportional to the length of the input sequence: 
+--
+True
+False
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Each hidden layer would have two units in case of our RNN above: 
+--
+True
+False
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+3) State
+
+We consider a language model based on sequences of characters. We construct a classifier on the state
+
+
+𝑠
+𝑡
+=
+t
+a
+n
+h
+(
+[
+1
+	
+0
+
+
+0
+	
+1
+]
+𝑠
+𝑡
+−
+1
++
+𝑊
+𝑠
+,
+𝑥
+𝑥
+𝑡
+)
+s
+t
+	​
+
+=tanh([
+1
+0
+	​
+
+0
+1
+	​
+
+]s
+t−1
+	​
+
++W
+s,x
+x
+t
+	​
+
+)
+such that positive classification is decided if 
+[
+1
+,
+1
+]
+⋅
+𝑠
+𝑇
+&gt;
+0
+[1,1]⋅s
+T
+	​
+
+>0 and negative classification is if decided 
+[
+1
+,
+1
+]
+⋅
+𝑠
+𝑇
+&lt;
+0
+[1,1]⋅s
+T
+	​
+
+<0 (for 
+𝑠
+𝑇
+s
+T
+	​
+
+ at the end of the word).
+
+Find 
+𝑊
+𝑠
+𝑥
+W
+sx
+ such that 'draw' and 'saw' result in positive classification and 'paw' and 'raw' result in negative classification. Assume 
+𝑠
+0
+=
+[
+0
+,
+0
+]
+s
+0
+	​
+
+=[0,0].
+
+Assume our alphabet only has the letters 'a', 'd', 'p', 'r', 's', and 'w' and that when we make a one-hot encoding, we do it in that order.
+
+3A) What is the shape of 
+𝑊
+𝑠
+𝑥
+W
+sx
+?
+
+Enter a Python list of numbers corresponding to the shape of the matrix: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3B) Provide a 
+𝑊
+𝑠
+𝑥
+W
+sx
+.
+
+Enter the matrix as a list of lists; one list for each row of the matrix: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+4) A sequence of cats
+
+Imagine that we have several training sequences. Sequence 
+𝑗
+j consists of 
+𝑛
+𝑗
+n
+j
+	​
+
+ images, 
+𝑥
+1
+(
+𝑗
+)
+,
+…
+,
+𝑥
+𝑛
+𝑗
+(
+𝑗
+)
+x
+1
+(j)
+	​
+
+,…,x
+n
+j
+	​
+
+(j)
+	​
+
+, and a corresponding sequence of numbers 
+𝑦
+1
+(
+𝑗
+)
+,
+…
+,
+𝑦
+𝑛
+𝑗
+(
+𝑗
+)
+y
+1
+(j)
+	​
+
+,…,y
+n
+j
+	​
+
+(j)
+	​
+
+ where 
+𝑦
+𝑖
+(
+𝑗
+)
+y
+i
+(j)
+	​
+
+ is intended to indicate the number of images, among 
+𝑥
+1
+(
+𝑗
+)
+,
+…
+,
+𝑥
+𝑖
+(
+𝑗
+)
+x
+1
+(j)
+	​
+
+,…,x
+i
+(j)
+	​
+
+ that satisfy some desired criterion (e.g., they are images of cats).
+
+We will use the architecture below (note that the outputs in this diagram are labelled as 
+𝑦
+𝑡
+y
+t
+	​
+
+, which are the desired outputs, the actual outputs are 
+𝑝
+𝑡
+p
+t
+	​
+
+):
+
+In place of 
+𝑊
+𝑠
+𝑥
+W
+sx
+ in the usual RNN, we will put a more complex, convolutional neural network CNN; but it still takes an input (in this case, an image) and returns a scalar value as output (labeled 
+𝑣
+𝑖
+v
+i
+	​
+
+ in the figure).
+
+Assume:
+
+The loss function for prediction on a sequence of length T is 
+𝐿
+(
+𝑝
+,
+𝑦
+)
+=
+1
+2
+𝑇
+∑
+𝑡
+(
+𝑝
+𝑡
+−
+𝑦
+𝑡
+)
+2
+L(p,y)=
+2T
+1
+	​
+
+∑
+t
+	​
+
+(p
+t
+	​
+
+−y
+t
+	​
+
+)
+2
+,
+The output unit on the CNN is a sigmoid,
+𝑊
+𝑠
+𝑠
+W
+ss
+ is a scalar (assume it is 1 when numerical results are required),
+𝑊
+𝑜
+W
+o
+ is a scalar (assume it is 1 when numerical results are required), and
+𝑓
+1
+f
+1
+	​
+
+ and 
+𝑓
+2
+f
+2
+	​
+
+ are linear.
+
+Assume that 
+𝑦
+y is the sequence of true, desired outputs and that 
+𝑝
+p is the sequence of actual outputs from the network. Note that we are looking at a sequence of two images.
+
+4A) Since we have replaced 
+𝑊
+𝑠
+𝑥
+W
+sx
+ with a CNN, in order to perform gradient descent, we must calculate the loss with respect to 
+𝑣
+1
+v
+1
+	​
+
+, 
+𝑣
+2
+v
+2
+	​
+
+, the outputs of the CNN. What is 
+𝑑
+𝐿
+𝑑
+𝑣
+2
+dv
+2
+	​
+
+dL
+	​
+
+? Provide your answer as an expression in terms of: y_1,y_2, p_1, p_2, Wss, Wo.
+
+dL/dv2= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4B) What is 
+𝑑
+𝐿
+𝑑
+𝑣
+1
+dv
+1
+	​
+
+dL
+	​
+
+? Provide your answer as an expression in terms of: y_1,y_2, p_1, p_2, Wss, Wo.
+
+dL/dv1= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4C) Assume there were three correctly-counted cat pictures before now, and so 
+𝑠
+0
+=
+3
+s
+0
+	​
+
+=3, the desired output values 
+𝑦
+=
+(
+3
+,
+4
+)
+y=(3,4), and the current predicted values 
+𝑝
+=
+(
+4
+,
+4
+)
+p=(4,4). Which images are being misclassified by the CNN?
+
+Choose one: 
+--
+x_1
+x_2
+Both
+None
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4D) In this case, what is 
+𝑑
+𝐿
+𝑑
+𝑣
+2
+dv
+2
+	​
+
+dL
+	​
+
+?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4E) What is 
+𝑑
+𝐿
+𝑑
+𝑣
+1
+dv
+1
+	​
+
+dL
+	​
+
+? Recall that 
+𝑊
+𝑠
+𝑠
+=
+1
+W
+ss
+	​
+
+=1 and 
+𝑊
+𝑜
+=
+1
+W
+o
+	​
+
+=1. Look at the explanation of the answer to see a simulation of running gradient descent.
+
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4F) Assume 
+𝑠
+0
+=
+3
+s
+0
+	​
+
+=3 is correct, 
+𝑦
+=
+(
+3
+,
+4
+)
+y=(3,4), 
+𝑝
+=
+(
+4
+,
+5
+)
+p=(4,5). Which images are being misclassified by the CNN?
+
+Choose one: 
+--
+x_1
+x_2
+Both
+None
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4G) In this case, what is 
+𝑑
+𝐿
+𝑑
+𝑣
+2
+dv
+2
+	​
+
+dL
+	​
+
+?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4H) What is 
+𝑑
+𝐿
+𝑑
+𝑣
+1
+dv
+1
+	​
+
+dL
+	​
+
+? Look at the explanation of the answer to see a simulation of running gradient descent.
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4I) Assume 
+𝑠
+0
+=
+3
+s
+0
+	​
+
+=3, 
+𝑦
+=
+(
+3
+,
+4
+)
+y=(3,4), 
+𝑝
+=
+(
+3
+,
+3
+)
+p=(3,3). Which images are being misclassified by the CNN?
+
+Choose one: 
+--
+x_1
+x_2
+Both
+None
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4J) In this case, what is 
+𝑑
+𝐿
+𝑑
+𝑣
+2
+dv
+2
+	​
+
+dL
+	​
+
+?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+4K) What is 
+𝑑
+𝐿
+𝑑
+𝑣
+1
+dv
+1
+	​
+
+dL
+	​
+
+? Look at the explanation of the answer to see a simulation of running gradient descent (and the code used to generate the simulations).
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Note: You can see that this is learning to classify the second image correctly (that is, get 
+𝑣
+2
+v
+2
+	​
+
+ correct) and then classify the first image in the sequence correctly. If it does manage to get the second one right, then it has a good error signal for the first.
+
+This approach is less efficient and direct compared to just getting explicitly correct labels for each image. But the point of this exercise is to hopefully give you some insight into how backpropagation through time works with recurrent neural networks and how the errors from later timesteps are used for weight updates.
+
+5) Backprop Through Time (BPTT) in formulas
+
+Please watch the Week 11 lecture video before doing this problem.
+
+We will build on the notation and derivations in Chapter 12 of the class notes. The notes write out expressions in scalar form (to update individual components of the weight matrices); we will be using vector/matrix notation that matches the numpy implementation.
+
+The backpropagation algorithm (as usual) will consist of:
+
+A forward pass that will compute the values of the quantities indicated on the "wires" of the diagram below: 
+𝑠
+𝑡
+s
+t
+	​
+
+, 
+𝑧
+𝑡
+1
+z
+t
+1
+	​
+
+, 
+𝑧
+𝑡
+2
+z
+t
+2
+	​
+
+, 
+𝑝
+𝑡
+p
+t
+	​
+
+.
+
+A backward pass that will compute the gradients of the relevant qunatities with respect to the weights in the matrices.
+
+Recall that the forward pass computes:
+
+\begin{align*} z_{t}^1 &= W^{ss} s_{{t-1}} + W^{sx} x_{t} + W^{ss}_0 \\ s_{t} & = f_1(z_t^1) \\ z_{t}^2 &= W^o s_{t} + W^o_0 \\ p_{t} & = f_2(z_t^2) \end{align*}
+
+The image below shows the operation of the (forward) RNN unrolled over three time steps. We will use this to help us derive the basic equations we will need to implement the backward pass in RNNs.
+
+Enter your answer to each of the following questions as a Python expression. You can use transpose(x) for transpose of an array, and x@y to indicate a matrix product of two arrays. Remember that x*y denotes component-wise multiplication.
+
+In any of these questions you can always use: Wss, Wsx, Wo, Wo_0, Wss_0, st, xt, z1t, z2t. Additional allowed inputs will be described with each question.
+
+5.1) Delta Recursion
+
+In the backward pass, as we did for feedforward networks, we are looking for quantities that enable us to define a recursion, where we define the gradient at time (formerly layer) 
+𝑡
+−
+1
+t−1 given the gradient at time (formerly layer) 
+𝑡
+t. The crucial quantity for BPTT is:
+
+𝛿
+𝑠
+𝑡
+=
+∂
+∂
+𝑠
+𝑡
+∑
+𝑙
+=
+𝑡
++
+1
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+δ
+s
+t
+	​
+
+=
+∂s
+t
+	​
+
+∂
+	​
+
+l=t+1
+∑
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+)
+
+This is the derivative with respect to the state 
+𝑠
+𝑡
+s
+t
+	​
+
+ at time 
+𝑡
+t, of the future losses (after time 
+𝑡
+t). Note that we will refer to the loss at time 
+𝑡
+t as Lt and the future losses (after time 
+𝑡
+t) as Ft. Therefore, we will refer to 
+𝛿
+𝑠
+𝑡
+δ
+s
+t
+	​
+
+ as dFtdst. Note that 
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
++
+∑
+𝑙
+=
+𝑡
++
+1
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)+∑
+l=t+1
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+) is the future loss for time 
+𝑡
+−
+1
+t−1, which we will call Ftm1.
+
+We are interested in computing 
+𝛿
+𝑠
+𝑡
+−
+1
+δ
+s
+t−1
+	​
+
+ given 
+𝛿
+𝑠
+𝑡
+δ
+s
+t
+	​
+
+. We can see from Eq(8) - Eq(11) in the notes, that:
+
+𝛿
+𝑠
+𝑡
+−
+1
+=
+∂
+𝑠
+𝑡
+∂
+𝑠
+𝑡
+−
+1
+[
+∂
+∂
+𝑠
+𝑡
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
++
+𝛿
+𝑠
+𝑡
+]
+δ
+s
+t−1
+	​
+
+=
+∂s
+t−1
+	​
+
+∂s
+t
+	​
+
+	​
+
+[
+∂s
+t
+	​
+
+∂
+	​
+
+Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)+δ
+s
+t
+	​
+
+]
+
+Assume we have 
+∂
+Loss
+∂
+𝑧
+𝑡
+2
+∂z
+t
+2
+	​
+
+∂Loss
+	​
+
+ available (called dLtdz2t); recall from Week 5 that we have a nice simple expression (
+𝑝
+𝑡
+−
+𝑦
+𝑡
+p
+t
+	​
+
+−y
+t
+	​
+
+) for this quantity for the common loss functions.
+
+5.1A) Write an expression for 
+∂
+∂
+𝑠
+𝑡
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
+∂s
+t
+	​
+
+∂
+	​
+
+Loss(y
+t
+	​
+
+,p
+t
+	​
+
+) (called dLtdst).
+
+dLtdst= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.1B) Assume we have dFtdst (defined as above) and dLtdst. What is 
+∂
+∂
+𝑠
+𝑡
+[
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
++
+∑
+𝑙
+=
+𝑡
++
+1
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+]
+∂s
+t
+	​
+
+∂
+	​
+
+[Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)+∑
+l=t+1
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+)] (called dFtm1dst)?
+
+dFtm1dst= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.1C) Assume we have dFtm1dst (defined as above) and we have been given 
+𝑑
+𝑓
+1
+𝑑
+𝑧
+𝑡
+1
+dz
+t
+1
+	​
+
+df
+1
+	​
+
+	​
+
+ (called dfdz1). What is 
+∂
+∂
+𝑧
+𝑡
+1
+[
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
++
+∑
+𝑙
+=
+𝑡
++
+1
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+]
+∂z
+t
+1
+	​
+
+∂
+	​
+
+[Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)+∑
+l=t+1
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+)] (called dFtm1dz1t)?
+
+dFtm1dz1t= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.1D) Assume we have dFtm1dz1t (defined as above). Whats is 
+𝛿
+𝑠
+𝑡
+−
+1
+δ
+s
+t−1
+	​
+
+ (called dFtm1dstm1).
+
+dFtm1dstm1= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.2) Weight gradients
+
+Assume we have the quantities defined in the previous section: dFtm1dst, dFtm1dz1t, dLtdz2t, and also 
+𝑠
+𝑡
+s
+t
+	​
+
+ (called st), 
+𝑠
+𝑡
+−
+1
+s
+t−1
+	​
+
+ (called stm1) and 
+𝑥
+𝑡
+x
+t
+	​
+
+ (called xt).
+
+This diagram is helpful to refer back to:
+
+5.2A) What is 
+𝑑
+𝑑
+𝑊
+𝑜
+[
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
+]
+dW
+o
+d
+	​
+
+[Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)]?
+
+dLtdWo= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.2B) What is 
+𝑑
+𝑑
+𝑊
+0
+𝑜
+[
+Loss
+(
+𝑦
+𝑡
+,
+𝑝
+𝑡
+)
+]
+dW
+0
+o
+	​
+
+d
+	​
+
+[Loss(y
+t
+	​
+
+,p
+t
+	​
+
+)]?
+
+dLtdWo0= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.2C) What is 
+𝑑
+𝑑
+𝑊
+𝑠
+𝑠
+[
+∑
+𝑙
+=
+𝑡
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+]
+dW
+ss
+d
+	​
+
+[∑
+l=t
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+)]?
+
+dFtm1dWss= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.2D) What is 
+𝑑
+𝑑
+𝑊
+0
+𝑠
+𝑠
+[
+∑
+𝑙
+=
+𝑡
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+]
+dW
+0
+ss
+	​
+
+d
+	​
+
+[∑
+l=t
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+)]?
+
+dFtm1dWss0= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+5.2E) What is 
+𝑑
+𝑑
+𝑊
+𝑠
+𝑥
+[
+∑
+𝑙
+=
+𝑡
+𝑛
+Loss
+(
+𝑦
+𝑙
+,
+𝑝
+𝑙
+)
+]
+dW
+sx
+d
+	​
+
+[∑
+l=t
+n
+	​
+
+Loss(y
+l
+	​
+
+,p
+l
+	​
+
+)]?
+
+dFtm1dWsx= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+6) BPTT in code
+
+Complete the following implementation of BPTT. This is a method in an RNN class.
+
+The code for this problem is also available in a colab notebook here.
+
+The instance (self) has attributes that define the RNN, in particular:
+
+The weight matrices and offsets: self.Wss, self.Wsx, self.Wo, self.Wss0 and self.Wo0.
+The activation functions and their derivatives: self.f1, self.df1, self.f2, self.df2
+The loss function and the derivative of the combined loss and final activation (as we did for feedforward networks): self.loss_fn and self.dloss_f2.
+The dimensions of states (hidden), inputs and outputs: self.hidden_dim, self.input_dim, self.output_dim.
+The initial state and, the current state: self.init_state and self.hidden_state
+The step size for gradient descent: self.step_size
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+# Back propgation through time
+# xs is matrix of inputs: l by k
+# dLdz2 is matrix of output errors:  1 by k
+# states is matrix of state values: m by k
+def bptt(self, xs, dLtdz2, states):
+    dWsx = np.zeros_like(self.Wsx)
+    dWss = np.zeros_like(self.Wss)
+    dWo = np.zeros_like(self.Wo)
+    dWss0 = np.zeros_like(self.Wss0)
+    dWo0 = np.zeros_like(self.Wo0)
+    # Derivative of future loss (from t+1 forward) wrt state at time t
+    # initially 0;  will pass "back" through iterations
+    dFtdst = np.zeros((self.hidden_dim, 1))
+    k = xs.shape[1]
+    # Technically we are considering time steps 1..k, but we need
+    # to index into our xs and states with indices 0..k-1
+    for t in range(k-1, -1, -1):
+        # Get relevant quantities
+        xt = xs[:, t:t+1]
+        st = states[:, t:t+1]
+        stm1 = states[:, t-1:t] if t-1 >= 0 else self.init_state
+        dLtdz2t = dLtdz2[:, t:t+1]
+        # Compute gradients step by step
+        # ==> Use self.df1(st) to get dfdz1;
+        # ==> Use self.Wo, self.Wss, etc. for weight matrices
+        # derivative of loss at time t wrt state at time t
+        dLtdst = None        # Your code
+        # derivatives of loss from t forward
+        dFtm1dst = None            # Your code
+        dFtm1dz1t = None           # Your code
+        dFtm1dstm1 = None          # Your code
+        # gradients wrt weights
+        dLtdWo = None              # Your code
+        dLtdWo0 = None             # Your code
+        dFtm1dWss = None           # Your code
+        dFtm1dWss0 = None          # Your code
+        dFtm1dWsx = None           # Your code
+        # Accumulate updates to weights
+        dWsx += dFtm1dWsx
+        dWss += dFtm1dWss
+        dWss0 += dFtm1dWss0
+        dWo += dLtdWo
+        dWo0 += dLtdWo0
+        # pass delta "back" to next iteration
+        dFtdst = dFtm1dstm1
+    return dWsx, dWss, dWo, dWss0, dWo0
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

@@ -1,0 +1,138 @@
+[
+  {
+    "href": "https://introml_oll.odl.mit.edu/cat-soop/6.036",
+    "text": ""
+  },
+  {
+    "href": "javascript:void(0);",
+    "text": "☰"
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/courseware/Week1/linear_classifiers/3",
+    "text": "notes"
+  },
+  {
+    "href": "http://faculty.bard.edu/belk/math213/PlanesAndHyperplanes.pdf",
+    "text": "geometry review for planes and hyperplanes"
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/courseware/Week2/perceptron/4",
+    "text": "as described in the notes"
+  },
+  {
+    "href": "http://mathworld.wolfram.com/Point-PlaneDistance.html",
+    "text": "walkthrough of point-plane distances"
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/user/quickstart.html",
+    "text": "here"
+  },
+  {
+    "href": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/courseware/welcome/6_036_Information_You_Should_Know/6",
+    "text": "6.036-specific numpy tutorial"
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html",
+    "text": "np.array"
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.transpose.html",
+    "text": "np.transpose"
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html",
+    "text": "np.ndarray.shape"
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html",
+    "text": "np.dot"
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.sign.html",
+    "text": "np.sign"
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html",
+    "text": "np.sum"
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "https://docs.scipy.org/doc/numpy/reference/generated/numpy.asscalar.html",
+    "text": "scalar"
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "",
+    "text": ""
+  },
+  {
+    "href": "https://catsoop.mit.edu/",
+    "text": "CAT-SOOP"
+  },
+  {
+    "href": "http://www.fsf.org/about/what-is-free-software",
+    "text": "free/libre software"
+  },
+  {
+    "href": "https://introml_oll.odl.mit.edu/cat-soop/_util/license",
+    "text": "GNU Affero General Public License, version 3"
+  },
+  {
+    "href": "https://introml_oll.odl.mit.edu/cat-soop/_util/source.zip?course=6.036",
+    "text": "Download Source Code"
+  },
+  {
+    "href": "https://introml_oll.odl.mit.edu/cat-soop/_util/jslicense.html",
+    "text": "Javascript License Information"
+  }
+]

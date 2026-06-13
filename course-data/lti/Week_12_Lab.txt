@@ -1,0 +1,2059 @@
+For this lab:
+You will need to understand the material in the notes on recommender systems.
+Recommender Systems
+1) Complete data
+
+We will explore the effect of 
+𝑘
+k (the rank of the approximation) in representing relationships between raters and ratings by looking at complete ratings matrices and the ability to fit them using different models.
+
+Consider the following data set:
+
+𝑌
+=
+[
+5
+	
+1
+
+
+1
+	
+5
+]
+Y=[
+5
+1
+	​
+
+1
+5
+	​
+
+]
+
+1A) Can this matrix be perfectly represented with 
+𝑘
+=
+1
+k=1? Provide 
+𝑈
+U, 
+𝑉
+𝑇
+V
+T
+ matrices if it can such that 
+𝑌
+=
+𝑈
+𝑉
+𝑇
+Y=UV
+T
+, or prove (at checkoff) that it cannot be done.
+
+Enter a Python list of 
+𝑈
+U and 
+𝑉
+𝑇
+V
+T
+, with 
+𝑈
+U as a 2x1 matrix and 
+𝑉
+𝑇
+V
+T
+ as a 1x2 matrix, e.g., [[[1],[2]], [[3, 4]]], or the quoted string 'None' if none exists: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Now consider this data set:
+
+𝑌
+=
+[
+5
+	
+10
+	
+15
+
+
+2
+	
+4
+	
+6
+
+
+1
+	
+2
+	
+3
+]
+Y=
+⎣
+⎡
+	​
+
+5
+2
+1
+	​
+
+10
+4
+2
+	​
+
+15
+6
+3
+	​
+
+⎦
+⎤
+	​
+
+
+1B) Can this matrix be perfectly represented with 
+𝑘
+=
+1
+k=1? Provide 
+𝑈
+U, 
+𝑉
+𝑇
+V
+T
+ matrices if it can such that 
+𝑌
+=
+𝑈
+𝑉
+𝑇
+Y=UV
+T
+, or prove (at checkoff) that it cannot be done.
+
+Enter a Python list of 
+𝑈
+U and 
+𝑉
+𝑇
+V
+T
+, with 
+𝑈
+U as a 3x1 matrix and 
+𝑉
+𝑇
+V
+T
+ as a 1x3 matrix, e.g., [[[1],[2],[3]], [[4, 5, 6]]], or the quoted string 'None' if none exists: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+2) Two kinds of people, two kinds of movies
+
+Here's our new movie database:
+
+1) Llama Drama
+2) Rocking Robot
+3) Rama Llama Ding Dong
+4) Rossum's Universal Robots
+5) Me Llamo Llama
+6) Robbie and Rosie
+7) Three L Llama
+
+
+We have complete preferences for four people, Amy, Bob, Cathy, and Dana, corresponding (in that order) to the rows of 
+𝑌
+Y. The entries of the matrix are their ratings out of 5 stars (where 5 stars is strongly positive and 1 star is strongly negative):
+
+𝑌
+=
+[
+5
+	
+1
+	
+5
+	
+1
+	
+5
+	
+1
+	
+5
+
+
+1
+	
+5
+	
+1
+	
+5
+	
+1
+	
+5
+	
+1
+
+
+5
+	
+5
+	
+5
+	
+5
+	
+5
+	
+5
+	
+5
+
+
+1
+	
+1
+	
+1
+	
+1
+	
+1
+	
+1
+	
+1
+]
+Y=
+⎣
+⎢
+⎢
+⎡
+	​
+
+5
+1
+5
+1
+	​
+
+1
+5
+5
+1
+	​
+
+5
+1
+5
+1
+	​
+
+1
+5
+5
+1
+	​
+
+5
+1
+5
+1
+	​
+
+1
+5
+5
+1
+	​
+
+5
+1
+5
+1
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+
+2A)
+
+What kind of movies does Amy like? 
+--
+Robot
+Llama
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2B)
+
+Who likes all movies? 
+--
+Amy
+Bob
+Cathy
+Dana
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2C) It turns out that we can come up with several exact factorizations of the data matrix 
+𝑌
+Y in this case! One nice factorization has:
+
+U = [[ 1 5]
+     [ 5 1]
+     [ 5 5]
+     [ 1 1]]
+
+What is the matrix 
+𝑉
+𝑇
+V
+T
+ which makes 
+𝑌
+=
+𝑈
+𝑉
+𝑇
+Y=UV
+T
+?
+
+Enter 
+𝑉
+𝑇
+V
+T
+ as a python list of lists: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2D)
+
+What aspects of 
+𝑈
+U and 
+𝑉
+V model Amy's high scores on Llama movies?
+
+I. Movies about Robots have a weight of zero on their second 
+𝑉
+V component (column 
+𝑉
+2
+V
+2
+	​
+
+). Amy has higher weight on the second component.
+
+II. Llama movies have a value of zero for the first feature and positive value for the second feature, and Amy also assigns low weight to the first feature and high weight to the second feature. Therefore, the dot product between Amy's features (first row of 
+𝑈
+U) and movie features (columns of 
+𝑉
+𝑇
+V
+T
+) is high for Llama movies.
+
+III. The dot product between Amy's features (first row of 
+𝑈
+U) and movie features (columns of 
+𝑉
+𝑇
+V
+T
+) corresponding to Llama movies is higher than the dot product between the other people's features (other rows of 
+𝑈
+U) and movie features corresponding to Llama movies.
+
+--
+I
+II
+III
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2E)
+
+What aspects of 
+𝑈
+U and 
+𝑉
+V model Dana's low ratings of all movies?
+
+I. Movies about Llamas have a lower weight on their first 
+𝑉
+V component (column 
+𝑉
+1
+V
+1
+	​
+
+), and higher on the second.
+
+II. The dot product between Dana's features (last row of 
+𝑈
+U) and the features of any movie in our database is 1.
+
+III. The first entry of 
+𝑈
+U corresponding to Dana is equal to the second.
+
+--
+I
+II
+III
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+In practice, we often won't be able to immediately come up with a factorization as nice as the one above. Consider the following factorization that exactly reconstructs the data, i.e., 
+𝑌
+=
+𝑈
+𝑉
+𝑇
+Y=UV
+T
+:
+
+U = [[ 128.27790923   37.21907314]
+     [ -24.10214086  132.5681096 ]
+     [  86.81314031  141.48931895]
+     [  17.36262806   28.29786379]]
+V.T = [[ 0.03494581 -0.00298991  0.03494581 -0.00298991  0.03494581 -0.00298991 0.03494581]
+       [ 0.01389677  0.03717287  0.01389677  0.03717287  0.01389677  0.03717287 0.01389677]]
+
+
+2F) What aspects of your answers for the previous two parts are unchanged? What aspects are different? Does this new factorization provide counterexamples explaining why the incorrect choices for the previous two answers were indeed incorrect? Be prepared to discuss this at checkoff time.
+
+2G)
+
+Does factorizing preference matrices this way require the engineer to define any special features of people or movies? 
+--
+Yes
+No
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+3) Half-fixed
+
+Notation
+
+𝑛
+n is number of people
+𝑚
+m is number of movies
+𝑘
+k is the rank of the approximation
+𝑈
+U is 
+𝑛
+n by 
+𝑘
+k
+𝑉
+V is 
+𝑚
+m by 
+𝑘
+k
+𝑢
+(
+𝑎
+)
+u
+(a)
+ is row 
+𝑎
+a of 
+𝑈
+U, but transposed into a 
+𝑘
+k by 1 column vector. Corresponds to the importance (weight) of the 
+𝑘
+k movie features on person 
+𝑎
+a's movie ratings.
+𝑣
+(
+𝑖
+)
+v
+(i)
+ is row 
+𝑖
+i of 
+𝑉
+V, also transposed into a 
+𝑘
+k by 1 column vector. Corresponds to the 
+𝑘
+k features of movie 
+𝑖
+i.
+𝑌
+Y is the (sparse) 
+𝑛
+n by 
+𝑚
+m data matrix
+𝐷
+D is the set of 
+(
+𝑎
+,
+𝑖
+)
+(a,i) pairs for which there is a rating in 
+𝑌
+Y
+
+Let's consider optimizing our objective:
+
+𝐽
+(
+𝑈
+,
+𝑉
+)
+=
+1
+2
+∑
+(
+𝑎
+,
+𝑖
+)
+∈
+𝐷
+(
+𝑌
+𝑎
+𝑖
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+)
+2
++
+𝜆
+2
+∑
+𝑎
+=
+1
+𝑛
+∥
+𝑢
+(
+𝑎
+)
+∥
+2
++
+𝜆
+2
+∑
+𝑖
+=
+1
+𝑚
+∥
+𝑣
+(
+𝑖
+)
+∥
+2
+.
+J(U,V)=
+2
+1
+	​
+
+(a,i)∈D
+∑
+	​
+
+(Y
+ai
+	​
+
+−u
+(a)
+⋅v
+(i)
+)
+2
++
+2
+λ
+	​
+
+a=1
+∑
+n
+	​
+
+∥u
+(a)
+∥
+2
++
+2
+λ
+	​
+
+i=1
+∑
+m
+	​
+
+∥v
+(i)
+∥
+2
+.
+
+Assume someone came up with a really great 
+𝑘
+k-dimensional set of features for characterizing movies (e.g., how violent, how loud, how sappy, how many llamas, how many robots) and hired a bunch of movie experts with time on their hands to watch and describe all the movies in terms of these features.
+
+3A)
+
+Would this information be contained in 
+𝑈
+U or 
+𝑉
+V? 
+--
+U
+V
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Given a 
+𝑘
+k-dimensional movie feature representation 
+𝑉
+V, and not allowing it to vary, we get a new objective that is only on the matrix 
+𝑈
+U:
+
+𝐽
+(
+𝑈
+)
+=
+1
+2
+∑
+(
+𝑎
+,
+𝑖
+)
+∈
+𝐷
+(
+𝑌
+𝑎
+𝑖
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+)
+2
++
+𝜆
+2
+∑
+𝑎
+=
+1
+𝑛
+∥
+𝑢
+(
+𝑎
+)
+∥
+2
+.
+J(U)=
+2
+1
+	​
+
+(a,i)∈D
+∑
+	​
+
+(Y
+ai
+	​
+
+−u
+(a)
+⋅v
+(i)
+)
+2
++
+2
+λ
+	​
+
+a=1
+∑
+n
+	​
+
+∥u
+(a)
+∥
+2
+.
+
+Be prepared to show your understanding of this simplification at checkoff time.
+
+3B) What is the gradient of this new objective with respect to one row, 
+𝑢
+(
+𝑎
+)
+u
+(a)
+, of 
+𝑈
+U? Warm up by being sure you know the dimension of 
+𝑢
+(
+𝑎
+)
+u
+(a)
+ and of 
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+∇
+u
+(a)
+	​
+
+J(U).
+
+The form of the gradient is:
+
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+=
+∑
+{
+𝑖
+∣
+(
+𝑎
+,
+𝑖
+)
+∈
+𝐷
+}
+𝑔
+(
+𝑌
+𝑎
+𝑖
+,
+𝑢
+(
+𝑎
+)
+,
+𝑣
+(
+𝑖
+)
+)
++
+𝜆
+𝑢
+(
+𝑎
+)
+∇
+u
+(a)
+	​
+
+J(U)=
+{i∣(a,i)∈D}
+∑
+	​
+
+g(Y
+ai
+	​
+
+,u
+(a)
+,v
+(i)
+)+λu
+(a)
+
+Note that the gradient of the regularization term, 
+𝜆
+𝑢
+(
+𝑎
+)
+λu
+(a)
+, is separated from 
+𝑔
+(
+𝑌
+𝑎
+𝑖
+,
+𝑢
+(
+𝑎
+)
+,
+𝑣
+(
+𝑖
+)
+)
+g(Y
+ai
+	​
+
+,u
+(a)
+,v
+(i)
+).
+
+𝑔
+(
+𝑌
+𝑎
+𝑖
+,
+𝑢
+(
+𝑎
+)
+,
+𝑣
+(
+𝑖
+)
+)
+=
+g(Y
+ai
+	​
+
+,u
+(a)
+,v
+(i)
+)=
+	
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+u
+(a)
+⋅v
+(i)
+
+	
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+−u
+(a)
+⋅v
+(i)
+
+	
+𝑌
+𝑎
+𝑖
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+Y
+ai
+	​
+
+−u
+(a)
+⋅v
+(i)
+
+	
+−
+(
+𝑌
+𝑎
+𝑖
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+)
+−(Y
+ai
+	​
+
+−u
+(a)
+⋅v
+(i)
+)
+	
+(
+𝑌
+𝑎
+𝑖
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+)
+𝑣
+(
+𝑖
+)
+(Y
+ai
+	​
+
+−u
+(a)
+⋅v
+(i)
+)v
+(i)
+
+	
+−
+(
+𝑌
+𝑎
+𝑖
+−
+𝑢
+(
+𝑎
+)
+⋅
+𝑣
+(
+𝑖
+)
+)
+𝑣
+(
+𝑖
+)
+−(Y
+ai
+	​
+
+−u
+(a)
+⋅v
+(i)
+)v
+(i)
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Note that in practice, it is impossible to have all users rate all movies; companies like Netflix recommend movies to its users who have rated only a subset of movies.
+
+To make this concrete, consider an incomplete version of the data from the previous question:
+
+𝑌
+=
+[
+?
+	
+1
+	
+?
+	
+1
+	
+5
+	
+1
+	
+5
+
+
+1
+	
+5
+	
+1
+	
+?
+	
+?
+	
+5
+	
+1
+
+
+5
+	
+5
+	
+5
+	
+5
+	
+?
+	
+?
+	
+5
+
+
+1
+	
+?
+	
+1
+	
+1
+	
+1
+	
+1
+	
+?
+]
+Y=
+⎣
+⎢
+⎢
+⎡
+	​
+
+?
+1
+5
+1
+	​
+
+1
+5
+5
+?
+	​
+
+?
+1
+5
+1
+	​
+
+1
+?
+5
+1
+	​
+
+5
+?
+?
+1
+	​
+
+1
+5
+?
+1
+	​
+
+5
+1
+5
+?
+	​
+
+⎦
+⎥
+⎥
+⎤
+	​
+
+
+Now our goal is to find 
+𝑈
+U, 
+𝑉
+𝑇
+V
+T
+ that minimize 
+𝐽
+(
+𝑈
+,
+𝑉
+)
+J(U,V) given the incomplete matrix 
+𝑌
+Y above. To do so, we will use the alternating least squares method, where we
+
+Fix (or initialize) 
+𝑉
+V and find the optimal 
+𝑈
+U that minimizes 
+𝐽
+(
+𝑈
+)
+J(U) given this 
+𝑉
+V.
+Fix 
+𝑈
+U to the value obtained from 1, and find the optimal 
+𝑉
+V that minimizes 
+𝐽
+(
+𝑉
+)
+J(V) given this 
+𝑈
+U.
+Repeat from 1, with 
+𝑉
+V fixed to value obtained from 2.
+
+To implement the alternating least squares method with our incomplete matrix 
+𝑌
+Y, we will define some notation that will make the gradient 
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+∇
+u
+(a)
+	​
+
+J(U) easier to write in matrix form, and similarly for 
+∇
+𝑣
+(
+𝑖
+)
+𝐽
+(
+𝑉
+)
+∇
+v
+(i)
+	​
+
+J(V).
+
+Let 
+𝐼
+𝑎
+I
+a
+	​
+
+ be the set of all movies that were rated by person 
+𝑎
+a. To be precise, 
+𝐼
+𝑎
+=
+{
+𝑖
+∣
+(
+𝑎
+,
+𝑖
+)
+∈
+𝐷
+}
+I
+a
+	​
+
+={i∣(a,i)∈D}. Also, define 
+𝐵
+𝑎
+B
+a
+	​
+
+ to be the matrix of relevant data: 
+𝐵
+𝑎
+B
+a
+	​
+
+ is constructed by taking 
+𝑉
+V and removing every row 
+𝑖
+i that is not in 
+𝐼
+𝑎
+I
+a
+	​
+
+. In other words, 
+𝐵
+𝑎
+B
+a
+	​
+
+ is the matrix of movie features for just the movies that were rated by person 
+𝑎
+a. Letting 
+𝑙
+𝑎
+l
+a
+	​
+
+ be the number of elements in 
+𝐼
+𝑎
+I
+a
+	​
+
+, observe that 
+𝐵
+𝑎
+B
+a
+	​
+
+ has dimensions 
+𝑙
+𝑎
+l
+a
+	​
+
+ by 
+𝑘
+k.
+
+Furthermore, let
+
+𝑉
+𝑇
+=
+[
+10
+	
+1
+	
+10
+	
+1
+	
+10
+	
+1
+	
+10
+
+
+1
+	
+10
+	
+1
+	
+10
+	
+1
+	
+10
+	
+1
+]
+V
+T
+=[
+10
+1
+	​
+
+1
+10
+	​
+
+10
+1
+	​
+
+1
+10
+	​
+
+10
+1
+	​
+
+1
+10
+	​
+
+10
+1
+	​
+
+]
+
+3C) Let's consider Amy (corresponding to 
+𝑎
+=
+0
+a=0). Assume zero-based indexing. What is 
+𝐼
+0
+I
+0
+	​
+
+?
+
+Enter a Python list of zero-based indices: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3D) Let's consider Amy again. What is 
+𝐵
+0
+B
+0
+	​
+
+? (Note that the 
+𝐵
+0
+B
+0
+	​
+
+ is constructed from 
+𝑉
+V instead of 
+𝑉
+𝑇
+V
+T
+. The shape of 
+𝐵
+0
+B
+0
+	​
+
+ is 
+𝑙
+𝑎
+l
+a
+	​
+
+ by 
+𝑘
+k.)
+
+Enter a Python list of lists (corresponding to a list of rows of the matrix): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Now define the 
+𝑍
+𝑎
+Z
+a
+	​
+
+ vector to be a column vector of the 
+𝑌
+𝑎
+𝑖
+Y
+ai
+	​
+
+ elements for all 
+𝑖
+i in 
+𝐼
+𝑎
+I
+a
+	​
+
+.
+
+3E) Let's consider Amy again. What is 
+𝑍
+0
+Z
+0
+	​
+
+?
+
+Enter a column vector as a Python list of lists, e.g., [[1],[2],[3]]: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3F) We will use the condition that the gradient 
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+=
+0
+∇
+u
+(a)
+	​
+
+J(U)=0 to solve for the optimal 
+𝑢
+(
+𝑎
+)
+u
+(a)
+. Equipped with our new notation, we can write this gradient as a matrix, without the sum over the elements of 
+𝐷
+D that we used before. Find the expression for 
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+∇
+u
+(a)
+	​
+
+J(U) in terms of 
+𝐵
+𝑎
+B
+a
+	​
+
+, 
+𝑍
+𝑎
+Z
+a
+	​
+
+, 
+𝑢
+(
+𝑎
+)
+u
+(a)
+ and 
+𝜆
+λ. Note that 
+𝑍
+𝑎
+Z
+a
+	​
+
+ is 
+𝑙
+𝑎
+l
+a
+	​
+
+ by 1, 
+𝑢
+(
+𝑎
+)
+u
+(a)
+ is 
+𝑘
+k by 
+1
+1, and 
+𝐵
+𝑎
+B
+a
+	​
+
+ is 
+𝑙
+𝑎
+l
+a
+	​
+
+ by 
+𝑘
+k.
+
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+=
+∇
+u
+(a)
+	​
+
+J(U)=
+	
+𝐵
+𝑎
+𝑇
+(
+𝑍
+𝑎
+−
+𝐵
+𝑎
+𝑢
+(
+𝑎
+)
+)
+B
+a
+T
+	​
+
+(Z
+a
+	​
+
+−B
+a
+	​
+
+u
+(a)
+)
+	
+−
+𝐵
+𝑎
+𝑇
+(
+𝑍
+𝑎
+−
+𝐵
+𝑎
+𝑢
+(
+𝑎
+)
+)
+−B
+a
+T
+	​
+
+(Z
+a
+	​
+
+−B
+a
+	​
+
+u
+(a)
+)
+	
+𝐵
+𝑎
+𝑇
+(
+𝑍
+𝑎
+−
+𝐵
+𝑎
+𝑢
+(
+𝑎
+)
+)
++
+𝜆
+𝑢
+(
+𝑎
+)
+B
+a
+T
+	​
+
+(Z
+a
+	​
+
+−B
+a
+	​
+
+u
+(a)
+)+λu
+(a)
+
+	
+−
+𝐵
+𝑎
+𝑇
+(
+𝑍
+𝑎
+−
+𝐵
+𝑎
+𝑢
+(
+𝑎
+)
+)
++
+𝜆
+𝑢
+(
+𝑎
+)
+−B
+a
+T
+	​
+
+(Z
+a
+	​
+
+−B
+a
+	​
+
+u
+(a)
+)+λu
+(a)
+
+	
+𝐵
+𝑎
+𝑇
+(
+𝑍
+𝑎
+−
+𝐵
+𝑎
+𝑢
+(
+𝑎
+)
+)
+−
+𝜆
+𝑢
+(
+𝑎
+)
+B
+a
+T
+	​
+
+(Z
+a
+	​
+
+−B
+a
+	​
+
+u
+(a)
+)−λu
+(a)
+
+	
+−
+𝐵
+𝑎
+𝑇
+(
+𝑍
+𝑎
+−
+𝐵
+𝑎
+𝑢
+(
+𝑎
+)
+)
+−
+𝜆
+𝑢
+(
+𝑎
+)
+−B
+a
+T
+	​
+
+(Z
+a
+	​
+
+−B
+a
+	​
+
+u
+(a)
+)−λu
+(a)
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3G) Use the condition 
+∇
+𝑢
+(
+𝑎
+)
+𝐽
+(
+𝑈
+)
+=
+0
+∇
+u
+(a)
+	​
+
+J(U)=0 to find an analytical formula for the optimal 
+𝑢
+(
+𝑎
+)
+u
+(a)
+. Here, 
+𝐼
+I is the 
+𝑘
+k-dimensional identity matrix. Does the form of the solution look familiar??
+
+	
+(
+𝐵
+𝑎
+𝑇
+𝐵
+𝑎
+)
+−
+1
+𝐵
+𝑎
+𝑇
+𝑍
+𝑎
++
+𝜆
+𝐼
+(B
+a
+T
+	​
+
+B
+a
+	​
+
+)
+−1
+B
+a
+T
+	​
+
+Z
+a
+	​
+
++λI
+	
+(
+𝐵
+𝑎
+𝑇
+𝐵
+𝑎
+)
+−
+1
+(
+𝐵
+𝑎
+𝑇
++
+𝜆
+𝐼
+)
+𝑍
+𝑎
+(B
+a
+T
+	​
+
+B
+a
+	​
+
+)
+−1
+(B
+a
+T
+	​
+
++λI)Z
+a
+	​
+
+
+	
+(
+𝐵
+𝑎
+𝑇
+𝐵
+𝑎
++
+𝜆
+𝐼
+)
+−
+1
+𝐵
+𝑎
+𝑇
+𝑍
+𝑎
+(B
+a
+T
+	​
+
+B
+a
+	​
+
++λI)
+−1
+B
+a
+T
+	​
+
+Z
+a
+	​
+
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3H) What is the optimal 
+𝑢
+(
+𝑎
+)
+u
+(a)
+ for Amy (
+𝑎
+=
+0
+a=0) when 
+𝜆
+=
+1
+λ=1? Compute it in Python.
+
+Hint: you can use the function np.linalg.inv to invert a matrix.
+
+Note: In practice, for reasons of numerical stability, one should use np.linalg.solve rather than np.linalg.inv to solve a linear system.
+
+Note: If you do not have numpy installed on your computer, you can create a new colab notebook here, and run the line import numpy as np.
+
+Enter a Python list of lists (corresponding to rows), and give at least 3 digits after each decimal point: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3I) Using this 
+𝑢
+(
+𝑎
+)
+u
+(a)
+, what rating do you predict that Amy will give to the classic film Llama Drama?
+
+Enter a floating point number (not an integer): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

@@ -1,0 +1,291 @@
+For these exercises, it will be helpful to review the notes on Linear Classifiers and the Perceptron. You may also find it helpful to write some test code with a local python installation or in a google colab notebook.
+1) Classification
+
+Consider a linear classifier through the origin in 4 dimensions, specified by
+
+𝜃
+=
+(
+1
+,
+−
+1
+,
+2
+,
+−
+3
+)
+θ=(1,−1,2,−3)
+Which of the following points 
+𝑥
+x are classified as positive, i.e. 
+ℎ
+(
+𝑥
+;
+𝜃
+)
+=
++
+1
+h(x;θ)=+1?
+(
+1
+,
+−
+1
+,
+2
+,
+−
+3
+)
+(1,−1,2,−3)
+(
+1
+,
+2
+,
+3
+,
+4
+)
+(1,2,3,4)
+(
+−
+1
+,
+−
+1
+,
+−
+1
+,
+−
+1
+)
+(−1,−1,−1,−1)
+(
+1
+,
+1
+,
+1
+,
+1
+)
+(1,1,1,1)
+Enter a Python list with a subset of the numbers 1, 2, 3, 4: 
+Submit View Answer
+You have infinitely many submissions remaining.
+
+2) Classifier vs Hyperplane
+
+Consider another parameter vector
+
+𝜃
+′
+=
+(
+−
+1
+,
+1
+,
+−
+2
+,
+3
+)
+θ
+′
+=(−1,1,−2,3)
+
+Ex2a
+
+Does 
+𝜃
+′
+θ
+′
+ represent the same hyperplane as 
+𝜃
+θ does? 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Ex2b
+
+Does 
+𝜃
+′
+θ
+′
+ represent the same classifier as 
+𝜃
+θ does? 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+3) Linearly Separable Training
+
+As discussed in lecture and in the lecture notes, note that 
+𝐸
+𝑛
+(
+𝜃
+,
+𝜃
+0
+)
+E
+n
+	​
+
+(θ,θ
+0
+	​
+
+) refers to the training error of the linear classifier specified by 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+, and 
+𝐸
+(
+𝜃
+,
+𝜃
+0
+)
+E(θ,θ
+0
+	​
+
+) refers to its test error. What does the fact that the training data are linearly separable imply?
+
+Select "yes" or "no" for each of the following statements:
+
+Ex3a
+
+There must exist 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+ such that E(θ,θ0)=0 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Ex3b
+
+There must exist 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+ such that En(θ,θ0)=0 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Ex3c
+
+A separator with 0 training error exists 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Ex3d
+
+A separator with 0 testing error exists, for all possible test sets 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+Ex3e
+
+The perceptron algorithm will find 
+𝜃
+,
+𝜃
+0
+θ,θ
+0
+	​
+
+ such that En(θ,θ0)=0 
+--
+yes
+no
+Submit View Answer
+You have infinitely many submissions remaining.
+
+4) Separable Through Origin?
+
+Provide two points, 
+(
+𝑥
+0
+,
+𝑥
+1
+)
+(x
+0
+	​
+
+,x
+1
+	​
+
+) and 
+(
+𝑦
+0
+,
+𝑦
+1
+)
+(y
+0
+	​
+
+,y
+1
+	​
+
+) in two dimensions that are linearly separable but not linearly separable through the origin. If you get stuck try drawing a picture and review the notes on offsets.
+
+Enter a Python list with two entries of the form [[ x0, x1], label] where label is 1 or -1. (So each entry represents a point with 2 dimensions and its label) 
+Submit View Answer
+You have infinitely many submissions remaining.

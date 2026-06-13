@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Raw crawl pages may contain authenticated-session page state.
+course-data/raw/
+course-data/lti/*.html
+downloads/**/*.html

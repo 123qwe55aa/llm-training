@@ -1,0 +1,2290 @@
+This homework builds on the material in the notes on neural networks up through and including section 6 on loss functions.
+
+In particular, in this homework we consider neural networks with multiple layers. Each layer has multiple inputs and outputs, and can be broken down into two parts:
+
+A linear module that implements a linear transformation: 
+𝑧
+𝑗
+=
+(
+∑
+𝑖
+=
+1
+𝑚
+𝑥
+𝑖
+𝑤
+𝑖
+,
+𝑗
+)
++
+𝑤
+0
+𝑗
+z
+j
+	​
+
+=(∑
+i=1
+m
+	​
+
+x
+i
+	​
+
+w
+i,j
+	​
+
+)+w
+0
+	​
+
+j
+	​
+
+ specified by a weight matrix 
+𝑊
+W and a bias vector 
+𝑊
+0
+W
+0
+	​
+
+. The output is 
+[
+𝑧
+1
+,
+…
+,
+𝑧
+𝑛
+]
+𝑇
+[z
+1
+	​
+
+,…,z
+n
+	​
+
+]
+T
+.
+An activation module that applies an activation function to the outputs of the linear module for some activation function 
+𝑓
+f, such as Tanh or ReLU in the hidden layers or Softmax (see below) at the output layer. We write the output as: : 
+[
+𝑓
+(
+𝑧
+1
+)
+,
+…
+,
+𝑓
+(
+𝑧
+𝑚
+)
+]
+𝑇
+[f(z
+1
+	​
+
+),…,f(z
+m
+	​
+
+)]
+T
+, although technically, for some activation functions such as softmax, each output will depend on all the 
+𝑧
+𝑖
+z
+i
+	​
+
+, not just one.
+
+We will use the following notation for quantities in a network:
+
+Inputs to the network are 
+𝑥
+1
+,
+…
+,
+𝑥
+𝑑
+x
+1
+	​
+
+,…,x
+d
+	​
+
+.
+Number of layers is 
+𝐿
+L
+There are 
+𝑚
+𝑙
+m
+l
+ inputs to layer 
+𝑙
+l
+There are 
+𝑛
+𝑙
+=
+𝑚
+𝑙
++
+1
+n
+l
+=m
+l+1
+ outputs from layer 
+𝑙
+l
+The weight matrix for layer 
+𝑙
+l is 
+𝑊
+𝑙
+W
+l
+, an 
+𝑚
+𝑙
+×
+𝑛
+𝑙
+m
+l
+×n
+l
+ matrix, and the bias vector (offset) is 
+𝑊
+0
+𝑙
+W
+0
+l
+	​
+
+, an 
+𝑛
+𝑙
+×
+1
+n
+l
+×1 vector
+The outputs of the linear module for layer 
+𝑙
+l are known as pre-activation values and denoted 
+𝑧
+𝑙
+z
+l
+The activation function at layer 
+𝑙
+l is 
+𝑓
+𝑙
+(
+⋅
+)
+f
+l
+(⋅)
+Layer 
+𝑙
+l activations are 
+𝑎
+𝑙
+=
+[
+𝑓
+𝑙
+(
+𝑧
+1
+𝑙
+)
+,
+…
+,
+𝑓
+𝑙
+(
+𝑧
+𝑛
+𝑙
+𝑙
+)
+]
+𝑇
+a
+l
+=[f
+l
+(z
+1
+l
+	​
+
+),…,f
+l
+(z
+n
+l
+l
+	​
+
+)]
+T
+The output of the network is the values 
+𝑎
+𝐿
+=
+[
+𝑓
+𝐿
+(
+𝑧
+1
+𝐿
+)
+,
+…
+,
+𝑓
+𝐿
+(
+𝑧
+𝑛
+𝐿
+𝐿
+)
+]
+𝑇
+a
+L
+=[f
+L
+(z
+1
+L
+	​
+
+),…,f
+L
+(z
+n
+L
+L
+	​
+
+)]
+T
+Loss function 
+𝐿
+𝑜
+𝑠
+𝑠
+(
+𝑎
+,
+𝑦
+)
+Loss(a,y) measures the loss of output values 
+𝑎
+a when the target is 
+𝑦
+y
+1) Loss functions and output activations: classification
+
+When doing classification, it's natural to think of the output values as being discrete: +1 and -1. But it is generally difficult to use optimization-based methods without somehow thinking of the outputs as being continuous (even though you will have to discretize when it's time to make a prediction).
+
+1.1) Hinge loss, linear activation
+
+When we looked at the SVM objective for classification, we did this:
+
+Defined the output space to be 
+𝑅
+R
+Developed the hinge loss function
+𝐿
+𝑜
+𝑠
+𝑠
+(
+𝑎
+,
+𝑦
+)
+=
+𝐿
+ℎ
+(
+𝑦
+𝑎
+)
+=
+{
+0
+	
+if 
+𝑦
+𝑎
+ &gt; 1
+
+
+1
+−
+𝑦
+𝑎
+	
+otherwise
+Loss(a,y)=L
+h
+	​
+
+(ya)={
+0
+1−ya
+	​
+
+if ya > 1
+otherwise
+	​
+
+where 
+𝑎
+a is the continuous output (we're using 
+𝑎
+a here to be consistent with the neural network terminology of activation) and 
+𝑦
+y is the desired/target output
+Tried to find parameters 
+𝜃
+θ of our model to minimize loss summed over the training data
+
+Consider a single "neuron" with a linear activation function; that is, where 
+𝑎
+1
+𝐿
+=
+∑
+𝑘
+𝑤
+𝑘
+,
+1
+𝐿
+𝑥
+𝑘
++
+𝑤
+0
+,
+1
+𝐿
+a
+1
+L
+	​
+
+=∑
+k
+	​
+
+w
+k,1
+L
+	​
+
+x
+k
+	​
+
++w
+0,1
+L
+	​
+
+. In this case, we have 
+𝐿
+=
+1
+L=1 and 
+𝑓
+𝐿
+(
+𝑧
+)
+=
+𝑧
+f
+L
+(z)=z.
+
+1.1.A) Write a short program to compute the gradient of the loss function with respect to the weight vector (not the bias): 
+∇
+𝑤
+𝐿
+𝐿
+𝑜
+𝑠
+𝑠
+(
+𝑎
+1
+𝐿
+,
+𝑦
+)
+∇
+w
+L
+	​
+
+Loss(a
+1
+L
+	​
+
+,y) when 
+𝐿
+𝑜
+𝑠
+𝑠
+(
+𝑎
+,
+𝑦
+)
+=
+𝐿
+ℎ
+(
+𝑦
+𝑎
+)
+Loss(a,y)=L
+h
+	​
+
+(ya).
+
+x is a column vector
+y is a number, a label
+a is a number, an activation
+
+It should return a column vector.
+
+1
+2
+3
+def hinge_loss_grad(x, y, a):
+  pass
+Run Code Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.2) Log loss, sigmoidal activation
+
+Another way to make the output for a classifier continuous is to make it be in the range 
+(
+0
+,
+1
+)
+(0,1), which admits the interpretation of being the predicted probability that the example is positive. A convenient way to make the activation of a unit be in the range 
+(
+0
+,
+1
+)
+(0,1) is to use a sigmoid function:
+
+𝜎
+(
+𝑧
+)
+=
+1
+1
++
+𝑒
+−
+𝑧
+.
+σ(z)=
+1+e
+−z
+1
+	​
+
+.
+The figure below shows a sigmoid activation function on the left, with the rectified linear (ReLU) activation function on the right for comparison.
+
+1.2.A) What is an expression for the derivative of the sigmoid with respect to 
+𝑧
+z, expressed as a function of 
+𝑧
+z, its input?
+
+Enter a Python expression (use ** for exponentiation) involving e and z: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.2.B) What is an expression for the derivative of the sigmoid with respect to 
+𝑧
+z, but this time expressed as a function of 
+𝑜
+=
+𝜎
+(
+𝑧
+)
+o=σ(z), its output?
+Hint: Think about the expression 
+1
+−
+1
+1
++
+𝑒
+−
+𝑧
+1−
+1+e
+−z
+1
+	​
+
+. (Here is a review of computing derivatives.)
+
+Enter a Python expression (use ** for exponentiation) involving only o (note: eand z are not allowed, and remember 
+𝑜
+=
+𝜎
+(
+𝑧
+)
+o=σ(z)): 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+In this model, we will consider positive points to have label +1, and negative points to have label 0.
+
+We need a loss function that works well when we are predicting probabilities. A good choice is to ask what probability is assigned to the correct label. We will interpret the value outputted by our classifier as the probability that the example is positive. So, if the output value is 
+𝑎
+a and the true label is 
++
+1
++1, then the probability assigned to the true label is 
+𝑎
+a; on the other hand, if the true label is 
+0
+0, then the probability assigned to the true label is 
+1
+−
+𝑎
+1−a. Because we actually will be interested in the probability of the predictions on the whole data set, we'd want to choose weights to maximize
+
+∏
+𝑡
+𝑃
+(
+𝑎
+(
+𝑡
+)
+,
+𝑦
+(
+𝑡
+)
+)
+t
+∏
+	​
+
+P(a
+(t)
+,y
+(t)
+)
+where 
+𝑃
+(
+𝑎
+(
+𝑡
+)
+,
+𝑦
+(
+𝑡
+)
+)
+P(a
+(t)
+,y
+(t)
+) is the probability that the network predicts the correct label for data point 
+(
+𝑡
+)
+(t).
+
+Using a notational trick (which turns an if expression into a product) that might seem unmotivated now, but will be useful later, we can write the probability 
+𝑃
+(
+𝑎
+,
+𝑦
+)
+P(a,y) as
+
+𝑃
+(
+𝑎
+,
+𝑦
+)
+=
+𝑎
+𝑦
+(
+1
+−
+𝑎
+)
+(
+1
+−
+𝑦
+)
+.
+P(a,y)=a
+y
+(1−a)
+(1−y)
+.
+
+1.2.C) What is the value of 
+𝑃
+(
+𝑎
+,
+𝑦
+)
+P(a,y) when 
+𝑦
+=
+0
+y=0?
+
+Enter an expression for 
+𝑃
+(
+𝑎
+,
+𝑦
+)
+P(a,y) when 
+𝑦
+=
+0
+y=0 in terms of a: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.2.D) What is the value of 
+𝑃
+(
+𝑎
+,
+𝑦
+)
+P(a,y) when 
+𝑦
+=
+1
+y=1?
+
+Enter an expression for 
+𝑃
+(
+𝑎
+,
+𝑦
+)
+P(a,y) when 
+𝑦
+=
+1
+y=1 in terms of a: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.2.E) Find a simplified expression for 
+log
+⁡
+𝑃
+(
+𝑎
+,
+𝑦
+)
+logP(a,y) that does not use exponentiation. Note that we refer to the natural logarithm 
+ln
+⁡
+ln as 
+log
+⁡
+log throughout this assignment, consistent with the lecture notes.
+
+Enter an expression in terms of y and a; you can use log(.) to indicate natural log: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+In fact, because log is a monotonic function, the same weights that maximize the product of the probabilities will minimize the negative log likelihood ("likelihood" is the same as probability; we just use that name here because the phrase is an idiom in machine learning, abbreviated NLL):
+
+𝐿
+𝑜
+𝑠
+𝑠
+(
+𝑎
+,
+𝑦
+)
+=
+𝑁
+𝐿
+𝐿
+(
+𝑎
+,
+𝑦
+)
+=
+−
+𝑦
+log
+⁡
+𝑎
+−
+(
+1
+−
+𝑦
+)
+log
+⁡
+(
+1
+−
+𝑎
+)
+.
+Loss(a,y)=NLL(a,y)=−yloga−(1−y)log(1−a).
+Our objective function (over our 
+𝑛
+n data points) will then be
+∑
+𝑁
+𝐿
+𝐿
+(
+𝑎
+(
+𝑡
+)
+,
+𝑦
+(
+𝑡
+)
+)
+=
+−
+∑
+𝑡
+=
+1
+𝑛
+[
+𝑦
+(
+𝑡
+)
+log
+⁡
+𝑎
+(
+𝑡
+)
++
+(
+1
+−
+𝑦
+(
+𝑡
+)
+)
+log
+⁡
+(
+1
+−
+𝑎
+(
+𝑡
+)
+)
+]
+.
+∑NLL(a
+(t)
+,y
+(t)
+)=−
+t=1
+∑
+n
+	​
+
+[y
+(t)
+loga
+(t)
++(1−y
+(t)
+)log(1−a
+(t)
+)].
+Remember that 
+𝑎
+(
+𝑡
+)
+a
+(t)
+ is our model's output for training example 
+𝑡
+t, and 
+𝑦
+(
+𝑡
+)
+y
+(t)
+ is the true label (+1 or 0).
+
+Now, we can think about a single unit with a sigmoidal activation function, trained to minimize NLL. So, 
+𝑎
+1
+𝐿
+=
+𝜎
+(
+∑
+𝑘
+𝑤
+𝑘
+,
+1
+𝐿
+𝑥
+𝑘
++
+𝑤
+0
+,
+1
+𝐿
+)
+a
+1
+L
+	​
+
+=σ(∑
+k
+	​
+
+w
+k,1
+L
+	​
+
+x
+k
+	​
+
++w
+0,1
+L
+	​
+
+). In this case, we have 
+𝐿
+=
+1
+L=1.
+
+1.2.F) Write a formula for the gradient of the NLL with respect to the first weight, 
+∇
+𝑤
+1
+,
+1
+𝐿
+𝑁
+𝐿
+𝐿
+(
+𝑎
+1
+𝐿
+,
+𝑦
+)
+∇
+w
+1,1
+L
+	​
+
+	​
+
+NLL(a
+1
+L
+	​
+
+,y), for a single training example. Hint: consider using the chain rule; the final answer (expression) is very short.
+
+Write an expression in terms of x_1, a_1, and y: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+1.2.G) Write a formula for the gradient of the NLL with respect to the full weight vector, 
+∇
+𝑊
+𝐿
+𝑁
+𝐿
+𝐿
+(
+𝑎
+1
+𝐿
+,
+𝑦
+)
+∇
+W
+L
+	​
+
+NLL(a
+1
+L
+	​
+
+,y), for a single training example.
+
+Enter an expression in terms of x, a_1, and y: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+2) Multiclass classification
+
+What if we needed to classify homework problems into three categories: enlightening, boring, impossible? We can do this by using a "one-hot" encoding on the output, and using three output units with what is called a "softmax" (SM) activation module. It's not a typical activation module, since it takes in all 
+𝑛
+𝐿
+n
+L
+	​
+
+ pre-activation values 
+𝑧
+𝑗
+𝐿
+z
+j
+L
+	​
+
+ in 
+𝑅
+R and returns 
+𝑛
+𝐿
+n
+L
+	​
+
+ output values 
+𝑎
+𝑗
+𝐿
+∈
+[
+0
+,
+1
+]
+a
+j
+L
+	​
+
+∈[0,1] such that 
+∑
+𝑗
+𝑎
+𝑗
+𝐿
+=
+1
+∑
+j
+	​
+
+a
+j
+L
+	​
+
+=1. This can be interpreted as representing a probability distribution over the possible categories.
+
+The individual entries are computed as
+
+𝑎
+𝑗
+=
+𝑒
+𝑧
+𝑗
+∑
+𝑘
+=
+1
+𝑛
+𝐿
+𝑒
+𝑧
+𝑘
+a
+j
+	​
+
+=
+k=1
+∑
+n
+L
+	​
+
+e
+z
+k
+	​
+
+e
+z
+j
+	​
+
+	​
+
+We'll describe the relationship of the vector 
+𝑎
+a on the vector 
+𝑧
+z as
+𝑎
+=
+S
+M
+(
+𝑧
+)
+a=SM(z)
+The network below shows a one-layer network with a linear module followed by a softmax activation module.
+
+2.A) What probability distribution over the categories is represented by 
+𝑧
+𝐿
+=
+[
+−
+1
+,
+0
+,
+1
+]
+𝑇
+z
+L
+=[−1,0,1]
+T
+?
+
+Enter a distribution (a list of three numbers adding up to 1) for the three categories. Your answers should be numeric (please enter numbers, and do not use the symbol 
+𝑒
+e): 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Now, we need a loss function 
+𝐿
+𝑜
+𝑠
+𝑠
+(
+𝑎
+,
+𝑦
+)
+Loss(a,y) where 
+𝑎
+a is a discrete probability distribution and 
+𝑦
+y is a one-hot vector encoding of a single output value. It makes sense to use negative log likelihood as a loss function for the same reasons as before. So, we'll just extend our definition of NLL from earlier:
+
+𝑁
+𝐿
+𝐿
+(
+𝑎
+,
+𝑦
+)
+=
+−
+∑
+𝑗
+=
+1
+𝑛
+𝐿
+𝑦
+𝑗
+ln
+⁡
+𝑎
+𝑗
+𝐿
+.
+NLL(a,y)=−
+j=1
+∑
+n
+L
+	​
+
+y
+j
+	​
+
+lna
+j
+L
+	​
+
+.
+Note that the above expression is for multi-classes (number of class 
+&gt;
+2
+>2). For two-classes, the expression reduce to what you saw after Problem 1.2.E.
+
+2.B) If 
+𝑎
+=
+[
+.
+3
+,
+.
+5
+,
+.
+2
+]
+𝑇
+a=[.3,.5,.2]
+T
+ and 
+𝑦
+=
+[
+0
+,
+0
+,
+1
+]
+𝑇
+y=[0,0,1]
+T
+, what is 
+𝑁
+𝐿
+𝐿
+(
+𝑎
+,
+𝑦
+)
+NLL(a,y)?
+
+Enter an expression involving log(.) (for natural log) and constants: 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Now, we can think about a single layer with a softmax activation module, trained to minimize NLL. The pre-activation values (the output of the linear module) are:
+
+𝑧
+𝑗
+𝐿
+=
+∑
+𝑘
+𝑤
+𝑘
+,
+𝑗
+𝐿
+𝑥
+𝑘
++
+𝑤
+0
+,
+𝑗
+𝐿
+z
+j
+L
+	​
+
+=
+k
+∑
+	​
+
+w
+k,j
+L
+	​
+
+x
+k
+	​
+
++w
+0,j
+L
+	​
+
+and 
+𝑎
+𝐿
+=
+𝑆
+𝑀
+(
+𝑧
+𝐿
+)
+a
+L
+=SM(z
+L
+).
+
+To do gradient descent, we need to know 
+∂
+∂
+𝑤
+𝑘
+,
+𝑗
+𝐿
+𝑁
+𝐿
+𝐿
+(
+𝑎
+𝐿
+,
+𝑦
+)
+∂w
+k,j
+L
+	​
+
+∂
+	​
+
+NLL(a
+L
+,y). We'll reveal the secret (that you might guess from Problem 1) that it has an awesome form! (Please consider deriving this, for fun and satisfaction!)
+
+∂
+∂
+𝑤
+𝑘
+,
+𝑗
+𝐿
+𝑁
+𝐿
+𝐿
+(
+𝑎
+𝐿
+,
+𝑦
+)
+=
+𝑥
+𝑘
+(
+𝑎
+𝑗
+𝐿
+−
+𝑦
+𝑗
+)
+∂w
+k,j
+L
+	​
+
+∂
+	​
+
+NLL(a
+L
+,y)=x
+k
+	​
+
+(a
+j
+L
+	​
+
+−y
+j
+	​
+
+)
+And of course, it's easy to compute the whole matrix of these derivatives, 
+∇
+𝑊
+𝐿
+𝑁
+𝐿
+𝐿
+(
+𝑎
+𝐿
+,
+𝑦
+)
+∇
+W
+L
+	​
+
+NLL(a
+L
+,y), in one quick matrix computation.
+
+2.C) Suppose we have two input units and three possible output values, and the weight matrix 
+𝑊
+𝐿
+W
+L
+ is
+
+𝑊
+𝐿
+=
+[
+1
+	
+−
+1
+	
+−
+2
+
+
+−
+1
+	
+2
+	
+1
+]
+W
+L
+=[
+1
+−1
+	​
+
+−1
+2
+	​
+
+−2
+1
+	​
+
+]
+or in Python form: w = np.array([[1, -1, -2], [-1, 2, 1]]).
+
+Assume the biases are zero, the input 
+𝑥
+=
+[
+1
+,
+1
+]
+𝑇
+x=[1,1]
+T
+ (e.g., x = np.array([[1, 1]]).T), and the target output 
+𝑦
+=
+[
+0
+,
+1
+,
+0
+]
+𝑇
+y=[0,1,0]
+T
+ (e.g., y = np.array([[0, 1, 0]]).T). What is the matrix 
+∇
+𝑊
+𝐿
+𝑁
+𝐿
+𝐿
+(
+𝑎
+𝐿
+,
+𝑦
+)
+∇
+W
+L
+	​
+
+NLL(a
+L
+,y)? Hint: You might want to solve using Python and numpy, or using colab for calculation.
+
+Enter the matrix as a list of lists, one list for each row of the matrix. Please enter values with a precision of three decimal points. 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.D) What is the predicted probability that 
+𝑥
+x is in class 1, before any gradient updates? (Assume we have classes 0, 1, and 2.)
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.E) Using step size 0.5, what is 
+𝑊
+𝐿
+W
+L
+ after one gradient update step?
+
+Enter the matrix as a list of lists, one list for each row of the matrix. Please enter values with a precision of three decimal points. 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+2.F) What is the predicted probability that 
+𝑥
+x is in class 1, given the new weight matrix?
+
+Enter a number: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+3) Neural Networks
+
+In this problem we will analyze a simple neural network to understand its classification properties. You might find the colab file useful. However, we encourage you to go through all the calculation by hand once, which should be a good practice.
+
+Consider the neural network given in the figure below, with ReLU activation functions (
+𝑓
+1
+f
+1
+ in the figure) on all hidden neurons, and softmax activation (
+𝑓
+2
+f
+2
+ in the figure) for the output layer, resulting in softmax outputs (
+𝑎
+1
+2
+a
+1
+2
+	​
+
+ and 
+𝑎
+2
+2
+a
+2
+2
+	​
+
+ in the figure).
+
+Given an input 
+𝑥
+=
+[
+𝑥
+1
+,
+𝑥
+2
+]
+𝑇
+x=[x
+1
+	​
+
+,x
+2
+	​
+
+]
+T
+, the hidden units in the network are activated in stages as described by the following equations:
+
+\begin{align} z^1_1 &= x_1 w^1_{1,1} + x_2 w^1_{2,1} + w^1_{0,1} \qquad & a^1_1 &= {\rm max}\{z^1_1, 0\} \\ z^1_2 &= x_1 w^1_{1,2} + x_2 w^1_{2,2} + w^1_{0,2} & a^1_2 &= {\rm max}\{z^1_2, 0\} \\ z^1_3 &= x_1 w^1_{1,3} + x_2 w^1_{2,3} + w^1_{0,3} & a^1_3 &= {\rm max}\{z^1_3, 0\} \\ z^1_4 &= x_1 w^1_{1,4} + x_2 w^1_{2,4} + w^1_{0,4} & a^1_4 &= {\rm max}\{z^1_4, 0\} \end{align}
+\begin{align} z^2_1 &=a^1_1 w^2_{1,1} + a^1_2 w^2_{2,1} + a^1_3 w^2_{3,1} + a^1_4 w^2_{4,1} +w^2_{0,1} \\ z^2_2 &= a^1_1 w^2_{1,2} + a^1_2 w^2_{2,2} + a^1_3 w^2_{3,2} + a^1_4 w^2_{4,2} +w^2_{0,2}. \end{align}
+The final output of the network is obtained by applying the softmax function to the last hidden layer,
+\begin{align} a^2_1 &= \frac{e^{z^2_1}} {e^{z^2_1} +e^{z^2_2}} \\ a^2_2 &= \frac{e^{z^2_2}} {e^{z^2_1} +e^{z^2_2}}. \end{align}
+
+In this problem, we will consider the following setting of parameters:
+
+\left[ \begin{array}{cccc} w^1_{1,1} & w^1_{1,2} & w^1_{1,3} & w^1_{1,4} \\ w^1_{2,1} & w^1_{2,2} & w^1_{2,3} & w^1_{2,4} \\ \end{array}\right] = \left[\begin{array}{cccc} 1 & 0 & -1 & 0\\ 0 & 1 & 0 & -1 \end{array}\right], \qquad \left[ \begin{array}{c} w^1_{0,1} \\ w^1_{0,2} \\ w^1_{0,3} \\ w^1_{0,4} \\ \end{array}\right] = \left[\begin{array}{c} -1 \\ -1 \\ -1 \\ -1 \end{array}\right], \left[ \begin{array}{ccccc} w^2_{1,1} & w^2_{1,2} \\ w^2_{2,1} & w^2_{2,2} \\ w^2_{3,1} & w^2_{3,2} \\ w^2_{4,1} & w^2_{4,2} \end{array} \right] = \left[ \begin{array}{ccccc} 1 & -1 \\ 1 & -1 \\ 1 & -1 \\ 1 & -1 \end{array}\right], \qquad \left[ \begin{array}{c} w^2_{0,1} \\ w^2_{0,2} \\ \end{array}\right] = \left[\begin{array}{c} 0 \\ 2 \end{array}\right].
+
+3.1) Output
+
+Consider the input 
+𝑥
+1
+=
+3
+x
+1
+	​
+
+=3, 
+𝑥
+2
+=
+14
+x
+2
+	​
+
+=14.
+
+3.1.A) What are the outputs of the hidden units, 
+(
+𝑓
+1
+(
+𝑧
+1
+1
+)
+,
+𝑓
+1
+(
+𝑧
+2
+1
+)
+,
+𝑓
+1
+(
+𝑧
+3
+1
+)
+,
+𝑓
+1
+(
+𝑧
+4
+1
+)
+)
+(f
+1
+(z
+1
+1
+	​
+
+),f
+1
+(z
+2
+1
+	​
+
+),f
+1
+(z
+3
+1
+	​
+
+),f
+1
+(z
+4
+1
+	​
+
+)).
+
+Enter a Python list of 4 numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.1.B) What is the final output 
+(
+𝑎
+1
+2
+,
+𝑎
+2
+2
+)
+(a
+1
+2
+	​
+
+,a
+2
+2
+	​
+
+) of the network?
+
+Enter a Python list of 2 numbers: 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.2) Unit decision boundaries
+
+Let's characterize the decision boundaries in 
+𝑥
+x-space, corresponding to the four hidden units. These are the regions where the input to the units 
+𝑧
+1
+1
+,
+𝑧
+2
+1
+,
+𝑧
+3
+1
+,
+𝑧
+4
+1
+z
+1
+1
+	​
+
+,z
+2
+1
+	​
+
+,z
+3
+1
+	​
+
+,z
+4
+1
+	​
+
+ are exactly zero.
+
+Hint: You should draw a diagram of the decision boundaries for each unit in the 
+𝑥
+x-space and label the sides of the boundaries with 
+0
+0 and 
++
++ to indicate whether the unit's output would be exactly 0 or positive, respectively. (The diagram should be a 2D plot with 
+𝑥
+1
+x
+1
+	​
+
+ and 
+𝑥
+2
+x
+2
+	​
+
+ on each axis, with lines for 
+𝑧
+1
+1
+=
+0
+z
+1
+1
+	​
+
+=0, 
+𝑧
+2
+1
+=
+0
+z
+2
+1
+	​
+
+=0, 
+𝑧
+3
+1
+=
+0
+z
+3
+1
+	​
+
+=0, 
+𝑧
+4
+1
+=
+0
+z
+4
+1
+	​
+
+=0.)
+
+3.2.A) What is the shape of the decision boundary for a single unit?
+
+Choose one: 
+--
+Line
+Parabola
+Circle
+Can be different shapes
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.2.B) Enter a 2 x 4 matrix where each column represents a (different) input vector 
+[
+𝑥
+1
+,
+𝑥
+2
+]
+𝑇
+[x
+1
+	​
+
+,x
+2
+	​
+
+]
+T
+ each of which is on the decision boundary for the first unit, that is, for which 
+𝑧
+1
+1
+=
+0
+z
+1
+1
+	​
+
+=0. (There are multiple possible answers.)
+
+Enter a Python list of lists where each list is a row of the matrix. 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.2.C) Consider the following input vectors: 
+𝑥
+(
+1
+)
+=
+[
+0.5
+,
+0.5
+]
+𝑇
+,
+𝑥
+(
+2
+)
+=
+[
+0
+,
+2
+]
+𝑇
+,
+𝑥
+(
+3
+)
+=
+[
+−
+3
+,
+0.5
+]
+𝑇
+x
+(1)
+=[0.5,0.5]
+T
+,x
+(2)
+=[0,2]
+T
+,x
+(3)
+=[−3,0.5]
+T
+. Enter a matrix where each column represents the outputs of the hidden units (
+𝑓
+(
+𝑧
+1
+1
+)
+,
+…
+,
+𝑓
+(
+𝑧
+4
+1
+)
+f(z
+1
+1
+	​
+
+),…,f(z
+4
+1
+	​
+
+)) for each of the input vectors. You can use your diagram of decision boundaries.
+
+Enter a Python list of lists where each list is a row of the matrix. 
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3) Network outputs
+
+In our network above, the output layer with two softmax units is used to classify into one of two classes. For class 1, the first unit's output should be larger than the other unit's output, and for class 2, the second unit's output should be larger. This generalizes nicely to 
+𝑘
+k classes by using 
+𝑘
+k output units.
+
+(We have previously examined addressing two-class classification problems using a single output unit with a sigmoid activation; this is another way to address them.)
+
+Let's characterize the region in 
+𝑥
+x-space where this network's output indicates the first class (that is, 
+𝑎
+1
+2
+a
+1
+2
+	​
+
+ is larger) or indicates the second class (that is, 
+𝑎
+2
+2
+a
+2
+2
+	​
+
+ is larger). Your diagram from the previous part will be useful here.
+
+What is the output value of the neural network in each of the following cases? Write your answer for 
+𝑎
+𝑖
+2
+a
+i
+2
+	​
+
+ as expressions, you can use powers of 
+𝑒
+e, for example, e**2 + 1; the exponents can be negative, e**(-2) + 1.
+
+Case 1) For 
+𝑓
+(
+𝑧
+1
+1
+)
++
+𝑓
+(
+𝑧
+2
+1
+)
++
+𝑓
+(
+𝑧
+3
+1
+)
++
+𝑓
+(
+𝑧
+4
+1
+)
+=
+0
+f(z
+1
+1
+	​
+
+)+f(z
+2
+1
+	​
+
+)+f(z
+3
+1
+	​
+
+)+f(z
+4
+1
+	​
+
+)=0
+
+3.3.A)
+
+𝑎
+1
+2
+=
+a
+1
+2
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3.B)
+
+𝑎
+2
+2
+=
+a
+2
+2
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3.C)
+
+Which class is predicted? 
+--
+Class 1
+Class 2
+Boundary
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Case 2) For 
+𝑓
+(
+𝑧
+1
+1
+)
++
+𝑓
+(
+𝑧
+2
+1
+)
++
+𝑓
+(
+𝑧
+3
+1
+)
++
+𝑓
+(
+𝑧
+4
+1
+)
+=
+1
+f(z
+1
+1
+	​
+
+)+f(z
+2
+1
+	​
+
+)+f(z
+3
+1
+	​
+
+)+f(z
+4
+1
+	​
+
+)=1
+
+3.3.D)
+
+𝑎
+1
+2
+=
+a
+1
+2
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3.E)
+
+𝑎
+2
+2
+=
+a
+2
+2
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3.F)
+
+Which class is predicted? 
+--
+Class 1
+Class 2
+Boundary
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+Case 3) For 
+𝑓
+(
+𝑧
+1
+1
+)
++
+𝑓
+(
+𝑧
+2
+1
+)
++
+𝑓
+(
+𝑧
+3
+1
+)
++
+𝑓
+(
+𝑧
+4
+1
+)
+=
+3
+f(z
+1
+1
+	​
+
+)+f(z
+2
+1
+	​
+
+)+f(z
+3
+1
+	​
+
+)+f(z
+4
+1
+	​
+
+)=3
+
+3.3.G)
+
+𝑎
+1
+2
+=
+a
+1
+2
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3.H)
+
+𝑎
+2
+2
+=
+a
+2
+2
+	​
+
+= 
+Check Syntax Submit View Answer Ask for Help
+You have infinitely many submissions remaining.
+
+3.3.I)
+
+Which class is predicted? 
+--
+Class 1
+Class 2
+Boundary
+Submit View Answer Ask for Help
+You have infinitely many submissions remaining.

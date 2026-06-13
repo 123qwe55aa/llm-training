@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MIT 6.036 全课程网页讲义：课程正文、视频 transcript、练习、Lab 与 Homework。">
+  <title>树影下学机器学习 · MIT 6.036 全课程</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">6.036</span>
+      <span>树影下学机器学习</span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="#catalog">课程目录</a>
+      <a href="#articles">起步精选</a>
+      <a href="#about">关于</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="切换深色护眼模式">暮</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">MIT 6.036 · COMPLETE COURSE NOTES</p>
+        <h1>在一座网站里，<br><em>读完整门课。</em></h1>
+        <p class="intro">课程正文、PDF 内容、121 段视频 transcript，以及所有练习、Lab 与 Homework，已经整理成适合慢读的网页。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#catalog">展开课程目录</a>
+          <a class="button quiet" href="reader.html?article=week1-intro-ml">从 Week 1 开始</a>
+        </div>
+      </div>
+      <aside class="hero-note">
+        <span class="pin"></span>
+        <p class="note-label">阅读方式</p>
+        <blockquote>先读课程讲义，再做 Exercise，最后用 Lab 和 Homework 把理解落到代码上。</blockquote>
+        <p class="note-answer">所有内容都留在护眼阅读器里，不必来回翻 PDF。</p>
+      </aside>
+    </section>
+
+    <section class="stats" aria-label="课程内容统计">
+      <div><strong id="stat-chapters">14</strong><span>课程周章</span></div>
+      <div><strong id="stat-sections">53</strong><span>网页讲义</span></div>
+      <div><strong id="stat-videos">121</strong><span>视频 transcript</span></div>
+      <div><strong id="stat-activities">39</strong><span>练习与作业</span></div>
+    </section>
+
+    <section class="section catalog-section" id="catalog">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE COMPLETE COURSE</p>
+          <h2>全课程目录</h2>
+        </div>
+        <label class="course-search">
+          <span>搜索课程</span>
+          <input id="course-search" type="search" placeholder="例如：perceptron、神经网络、homework">
+        </label>
+      </div>
+      <div id="course-catalog" class="course-catalog" aria-live="polite">
+        <p class="catalog-loading">正在展开课程目录…</p>
+      </div>
+    </section>
+
+    <section class="section articles" id="articles">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">STARTING DESK</p>
+          <h2>从这里开始</h2>
+        </div>
+      </div>
+      <div class="article-grid">
+        <a class="feature-card lecture-card" href="reader.html?article=lecture">
+          <span class="card-index">01</span>
+          <div>
+            <p class="tag">视频精编讲义</p>
+            <h3>从数据到线性分类器</h3>
+            <p>九段课程视频的中文结构化讲义，串起监督学习、假设类、损失函数、训练误差与随机线性分类器。</p>
+          </div>
+          <span class="read-link">阅读约 28 分钟 →</span>
+        </a>
+        <a class="feature-card exercise-card" href="reader.html?article=exercises">
+          <span class="card-index">02</span>
+          <div>
+            <p class="tag">原版练习册</p>
+            <h3>Hyperplanes 与 NumPy</h3>
+            <p>完整保留题目与代码模板。用超平面的几何直觉和 NumPy 的数组操作，把公式落实到手上。</p>
+          </div>
+          <span class="read-link">共 15 组练习 →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section originals" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">COURSE ORIGINALS</p>
+        <h2>PDF 已经铺进网页</h2>
+      </div>
+      <div class="original-grid">
+        <a class="original-card" href="reader.html?article=introduction">
+          <span class="original-number">I</span>
+          <div>
+            <p class="tag">COURSE NOTES · CHAPTER 1</p>
+            <h3>Introduction to Machine Learning</h3>
+            <p>从 induction 的根本问题开始，浏览监督学习、无监督学习、强化学习、评价标准、模型类与算法。</p>
+          </div>
+          <span class="read-link">在网站内阅读 →</span>
+        </a>
+        <a class="original-card original-card-dark" href="reader.html?article=linear">
+          <span class="original-number">II</span>
+          <div>
+            <p class="tag">COURSE NOTES · CHAPTER 2</p>
+            <h3>Linear Classifiers</h3>
+            <p>从二分类与特征表示出发，进入超平面、训练误差、随机线性分类器和交叉验证。</p>
+          </div>
+          <span class="read-link">在网站内阅读 →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section path-section">
+      <div class="section-heading">
+        <p class="eyebrow">A QUIET PATH</p>
+        <h2>每周建议学习路线</h2>
+      </div>
+      <ol class="learning-path">
+        <li><span>01</span><div><strong>先读框架</strong><p>理解估计、泛化、监督学习和假设类。</p></div></li>
+        <li><span>02</span><div><strong>再看几何</strong><p>掌握超平面、法向量与线性分类器。</p></div></li>
+        <li><span>03</span><div><strong>动手练习</strong><p>完成 Hyperplanes 与 NumPy 练习。</p></div></li>
+        <li><span>04</span><div><strong>回到原典</strong><p>在站内阅读课程原文，补足推导和细节。</p></div></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>整理自 MIT Open Learning Library · 6.036 Introduction to Machine Learning</p>
+    <a href="#top">回到树梢 ↑</a>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
