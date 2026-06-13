@@ -265,3 +265,10 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
   .reader-header .brand span:last-child { display: none; }
   footer { display: block; }
 }
+
+/* Exercise / activity view: preserve line breaks in raw text */
+.article-content.activity-view p {
+  white-space: pre-wrap;
+  margin: 0;
+  line-height: 1.7;
+}
