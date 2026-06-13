@@ -157,11 +157,9 @@ const activityToMarkdown = (text) => {
   const lines = cleaned.split("\n");
   const cleanLines = [];
   // Detect and remove broken Unicode math (each char on its own line)
-  // Trigger: a line that's a single surrogate pair (math italic range)
-  // Detect lines that are a single math character (surrogate pair like 𝐸 or BMP like ℎ, ′)
   const mathSurrogate = /^[\uD800-\uDBFF][\uDC00-\uDFFF]$/;
-  const bmpMathChar = /^[\u2100-\u214F\u2032]$/; // Planck constant ℎ, prime ′, etc.
-  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\),;:\d\-−′∙⋅+*\/<>^]$/;
+  const bmpMathChar = /^[\u2100-\u214F\u2032]$/;
+  const singleChar = /^[\uD800-\uDBFF][\uDC00-\uDFFF]|^[=(\)),;:\d\-−′∙⋅+*\/<>^]$/;
   let inMathBlock = false;
 
   for (let i = 0; i < lines.length; i++) {
@@ -181,7 +179,6 @@ const activityToMarkdown = (text) => {
         continue;
       }
       inMathBlock = false;
-      // This line is the compact version — keep it
       cleanLines.push(raw);
       continue;
     }
@@ -191,7 +188,6 @@ const activityToMarkdown = (text) => {
   const out = [];
   cleanLines.forEach((line) => {
     const val = line.trimEnd();
-    // Section headings: "1) Title", "2.3) Title", "Ex2.3a"
     if (/^\d+\)\s+\S/.test(val)) { out.push(`## ${val}`); return; }
     if (/^\d+\.\d+\)\s+\S/.test(val)) { out.push(`### ${val}`); return; }
     if (/^\d+\.\d+[a-z]\)\s+\S/i.test(val)) { out.push(`#### ${val}`); return; }
@@ -200,20 +196,79 @@ const activityToMarkdown = (text) => {
   });
 
   let result = out.join("\n");
-  // Remove spaced-out duplicate tuples e.g. "( 1 , − 1 , 2 , − 3 ) (1,−1,2,−3)" → keep compact only
+  // Remove spaced-out duplicate tuples
   result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
-  // Merge separated letter-digit pairs (subscript artifacts): "θ 0" → "θ0", "x 0" → "x0"
-  result = result.replace(/([a-zA-Z\u00C0-\u024F\u0370-\u03FF]) (\d)/g, "$1$2");
-  // Merge separated two-letter function names: "E n" → "En" (only UPPER + single lower)
-  result = result.replace(/\b([A-Z]) ([a-z])(?=[^a-z]|$)/g, "$1$2");
-  // Remove duplicate opening parens from artifact: "( (x" → "(x"
-  result = result.replace(/\(\s*\(/g, "(");
-  // Remove duplicate closing parens from artifact: "x ) )" → "x )"
-  result = result.replace(/\)\s*\)/g, ")");
-  // Collapse remaining 3+ blank lines to 2
-  result = result.replace(/\n{3,}/g, "\n\n");
-  // Strip lines that are just spaces after cleanup
-  result = result.replace(/^ +$/gm, "");
+
+  // === Post-processing: wrap math in $...$ for MathJax ===
+  const lines2 = result.split("\n");
+  const mathWrapped = [];
+
+  for (let i = 0; i < lines2.length; i++) {
+    const raw = lines2[i];
+    const trimmed = raw.trim();
+
+    // Detect display math: standalone equation line (θ=..., h(x;θ)=..., E_n(...)=...)
+    const displayMathRE = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ]*['′]?\s*[=(]\s*.*[)=\d]$/;
+    // But not if it's already a heading, list, or looks like regular text
+    const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
+    const hasVerb = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If)/.test(trimmed);
+    const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
+
+    if (!isHeading && !hasVerb && !isURL && trimmed.length > 5 && displayMathRE.test(trimmed)) {
+      // Display math — wrap in $$...$$
+      mathWrapped.push(`$$${trimmed}$$`);
+      continue;
+    }
+
+    // For non-heading lines, wrap inline math expressions in $...$
+    // Pattern: Greek letters and function names followed by parenthesized args
+    let processed = raw;
+    if (!isHeading && !trimmed.startsWith("$$")) {
+      // Wrap common inline math patterns:
+      // 1. Greek letters (θ, θ', ℰ(θ,θ₀), ℋ, 𝒙, etc.)
+      // 2. Function calls like h(x;θ), E_n(θ,θ₀), En(θ,θ0)
+      // 3. Math symbols like ℎ, 𝑛, etc.
+      // But NOT numbers, list markers, or text like "yes no"
+      
+      // Inline math: function calls with Greek args
+      processed = processed.replace(
+        /\b([A-Za-z])(?:_\{?(\w+)\}?)?\s*\(([^)]*[θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒ][^)]*)\)/g,
+        (_, fn, sub, args) => {
+          const full = sub ? `${fn}_{${sub}}(${args})` : `${fn}(${args})`;
+          return `$${full}$`;
+        }
+      );
+      // Inline math: standalone Greek letters (not preceded by word chars)
+      processed = processed.replace(/(?<!\w)([θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℋ𝒙𝒚𝒛𝑤𝐸ℎ′]'?)(?!\w)/g, "$$$1$$");
+      // Inline math: expressions that are mostly math like θ=(1,−1,2,−3) within text
+      processed = processed.replace(/\b([θ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰ]'?\s*=\s*\([^)]+\))\b/g, "$$$1$$");
+      // Inline math: h(x;θ)=+1, h(x;θ), etc. (function name + parenthesized math args)
+      processed = processed.replace(/\b([a-z])\([^)]*[θ𝜃𝜙𝜓β;=+\-−][^)]*\)/g, (m) => `$${m}$`);
+    }
+
+    mathWrapped.push(processed);
+  }
+
+  result = mathWrapped.join("\n");
+
+  // === Convert -- yes/no to radio buttons ===
+  // Pattern: "Does ...? -- yes no" → radio buttons
+  result = result.replace(
+    /\? -- (yes|no)(?:\s+(yes|no))?/g,
+    (match, first, second) => {
+      if (second) {
+        // Two options: -- yes no
+        return `?\n<div class="exercise-options">\n  <label class="ex-option"><input type="radio" name="ex-${Math.random().toString(36).slice(2, 6)}" value="${first}"> ${first}</label>\n  <label class="ex-option"><input type="radio" name="ex-${Math.random().toString(36).slice(2, 6)}" value="${second}"> ${second}</label>\n</div>`;
+      }
+      return match;
+    }
+  );
+
+  // === Convert "Enter a Python list..." to text input ===
+  result = result.replace(
+    /(Enter a Python list[^:]*:)/g,
+    '$1\n<div class="exercise-input"><input type="text" class="ex-text-input" placeholder="Type your answer here..."></div>'
+  );
 
   return result;
 };
