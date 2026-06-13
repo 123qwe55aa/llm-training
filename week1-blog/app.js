@@ -202,6 +202,18 @@ const activityToMarkdown = (text) => {
   let result = out.join("\n");
   // Remove spaced-out duplicate tuples e.g. "( 1 , − 1 , 2 , − 3 ) (1,−1,2,−3)" → keep compact only
   result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
+  // Merge separated letter-digit pairs (subscript artifacts): "θ 0" → "θ0", "x 0" → "x0"
+  result = result.replace(/([a-zA-Z\u00C0-\u024F\u0370-\u03FF]) (\d)/g, "$1$2");
+  // Merge separated two-letter function names: "E n" → "En" (only UPPER + single lower)
+  result = result.replace(/\b([A-Z]) ([a-z])(?=[^a-z]|$)/g, "$1$2");
+  // Remove duplicate opening parens from artifact: "( (x" → "(x"
+  result = result.replace(/\(\s*\(/g, "(");
+  // Remove duplicate closing parens from artifact: "x ) )" → "x )"
+  result = result.replace(/\)\s*\)/g, ")");
+  // Collapse remaining 3+ blank lines to 2
+  result = result.replace(/\n{3,}/g, "\n\n");
+  // Strip lines that are just spaces after cleanup
+  result = result.replace(/^ +$/gm, "");
 
   return result;
 };
