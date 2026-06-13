@@ -209,6 +209,31 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
   border-radius: 4px;
 }
 .article-content .example-block p { margin: 0; }
+
+/* ── Highlighter ── */
+.article-content .hl {
+  background: #f7e07e;
+  color: #1f2d26;
+  padding: 0 2px;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+body.night .article-content .hl {
+  background: #5c4e1e;
+  color: #e8e1cb;
+}
+#highlight-toggle.active {
+  background: var(--amber);
+  color: #fff;
+  border-radius: 4px;
+}
+body.highlight-mode .article-content p,
+body.highlight-mode .article-content li,
+body.highlight-mode .article-content blockquote,
+body.highlight-mode .article-content .example-block {
+  cursor: pointer;
+}
 .article-content pre.algorithm-box {
   position: relative;
   margin: 44px 0;

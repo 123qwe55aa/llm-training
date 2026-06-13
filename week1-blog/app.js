@@ -587,6 +587,53 @@ if (articleContent) {
     const max = document.documentElement.scrollHeight - innerHeight;
     progress.style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
   }, { passive: true });
+
+  /* ── Highlighter ── */
+  const hlToggle = document.getElementById("highlight-toggle");
+  const HIGHLIGHT_KEY = "llm-training:highlights";
+  function getHighlights() {
+    try { return JSON.parse(localStorage.getItem(HIGHLIGHT_KEY)) || {}; } catch { return {}; }
+  }
+  function saveHighlight(articleId, elIndex) {
+    const h = getHighlights();
+    if (!h[articleId]) h[articleId] = [];
+    const idx = h[articleId].indexOf(elIndex);
+    if (idx >= 0) h[articleId].splice(idx, 1); else h[articleId].push(elIndex);
+    localStorage.setItem(HIGHLIGHT_KEY, JSON.stringify(h));
+    return idx >= 0; // true = removed, false = added
+  }
+  function applyHighlights(articleId) {
+    const h = getHighlights();
+    const indices = h[articleId] || [];
+    document.querySelectorAll(".article-content .hl").forEach(el => el.classList.remove("hl"));
+    indices.forEach(idx => {
+      const el = articleContent.children[idx];
+      if (el) el.classList.add("hl");
+    });
+  }
+
+  let hlActive = false;
+  if (hlToggle) {
+    hlToggle.addEventListener("click", () => {
+      hlActive = !hlActive;
+      document.body.classList.toggle("highlight-mode", hlActive);
+      hlToggle.classList.toggle("active", hlActive);
+    });
+    // Click on content to highlight/unhighlight
+    articleContent.addEventListener("click", (e) => {
+      if (!hlActive) return;
+      // Find the direct child of articleContent that was clicked
+      let target = e.target;
+      while (target && target.parentElement !== articleContent) target = target.parentElement;
+      if (!target || target === articleContent) return;
+      const idx = Array.from(articleContent.children).indexOf(target);
+      if (idx < 0) return;
+      const removed = saveHighlight(requested, idx);
+      target.classList.toggle("hl", !removed);
+    });
+    // Apply on load
+    applyHighlights(requested);
+  }
 } else {
   coursePromise.then(renderCatalog).catch(() => {
     const catalog = document.querySelector("#course-catalog");
