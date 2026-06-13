@@ -38,11 +38,6 @@ increase
 decrease
 don't change (no effect)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.1B) How do you change $\tau$?
 
 --
@@ -50,22 +45,12 @@ increase
 decrease
 don't change (no effect)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.1C) How do you change the magnitude of $C$?
 
 --
 increase
 decrease
 don't change (no effect)
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.2) On-line Q-learning
 
@@ -96,11 +81,6 @@ increase
 decrease
 don't change (no effect)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2B) How do you change $\tau$?
 
 --
@@ -108,22 +88,12 @@ increase
 decrease
 don't change (no effect)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2C) How do you change the magnitude of $C$?
 
 --
 increase
 decrease
 don't change (no effect)
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.3) Simulating multiple episodes
 
@@ -142,11 +112,6 @@ increase
 decrease
 don't change (no effect)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.3B) How do you change $\tau$?
 
 --
@@ -154,22 +119,12 @@ increase
 decrease
 don't change (no effect)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.3B) How do you change the magnitude of $C$?
 
 --
 increase
 decrease
 don't change (no effect)
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Q-Learning: Goal vs. SSP
 
@@ -243,11 +198,6 @@ random action among the tied values were to be selected instead?
 
 Check this box and submit when you have finished questions 2A through 2E.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 These are plots of the values of the states using the SSP formulation as we run 50,000 iterations of Q-value learning, plotting every 5,000 iterations. Note that the scale of the colors changes across the different plots, per the bar on the right of each plot.
 
 1
@@ -273,11 +223,6 @@ These are plots of the values of the states using the SSP formulation as we run 
 
 Check this box and submit when you have finished question 2.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3) A Wild Epsilon Search
 
 $\epsilon$ typically denotes an "explore vs. exploit" tradeoff in reinforcement learning, specifically Q-learning algorithm. As a reminder, when a Q-learning algorithm interacts with the environment, it takes a completely random move with probability $\epsilon$ and the best move according to its current Q-table with probability $1-\epsilon$.
@@ -296,11 +241,6 @@ Before you move on, write down how you expect the Q-learning algorithm to behave
 1
 none
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3.1B) Which of these epsilon values risks spending way too much time exploring parts of the space that are unlikely to be useful?
 
 --
@@ -309,11 +249,6 @@ You have infinitely many submissions remaining.
 1
 none
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3.1C) Which of these epsilon values is guaranteed to cause optimal behavior during learning?
 
 --
@@ -321,11 +256,6 @@ You have infinitely many submissions remaining.
 0.5
 1
 none
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3.2) Versus Reality
 

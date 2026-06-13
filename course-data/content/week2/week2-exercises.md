@@ -29,12 +29,12 @@ You have infinitely many submissions remaining.
 Consider another parameter vector
 
 $$
-\theta&#x27; = (-1, 1, -2, 3)
+\theta' = (-1, 1, -2, 3)
 $$
 
 Ex2a
 
-Does $\theta&#x27;$ represent the same hyperplane as $\theta$ does?
+Does $\theta'$ represent the same hyperplane as $\theta$ does?
 
 --
 yes
@@ -47,7 +47,7 @@ You have infinitely many submissions remaining.
 
 Ex2b
 
-Does $\theta&#x27;$ represent the same classifier as $\theta$ does?
+Does $\theta'$ represent the same classifier as $\theta$ does?
 
 --
 yes

@@ -41,11 +41,9 @@ $b = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}$, what is $a + b$?
 
 Enter your result as a Python list:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 We are given $c^{(1)} = \begin{bmatrix}1 \\ 5 \\ -3 \\ 2\end{bmatrix}$, and
 $c^{(2)} = \begin{bmatrix}8 \\ 2 \\ 4 \\ 7\end{bmatrix}$.
@@ -57,21 +55,17 @@ $n = 4$ length column vectors.
 
 Enter your result as a Python list:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q3) What is $c^{(1)}\ * c^{(2)}$? Here $*$ indicates element-wise multiplication.
 
 Enter your result as a Python list:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 The transpose is notated here by the superscript $^T$. For example, if
 $a$ is the row vector $a = \begin{bmatrix}1 & 5 & -3 & 2\end{bmatrix}$,
@@ -83,11 +77,9 @@ $b^T = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}$, what is $a$+$b$?
 
 Enter your result as a Python list, or None if the operation is invalid:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 1.2) Vector dot product
 
@@ -100,16 +92,13 @@ $b = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}^T$, what is $a \cdot b$?
 
 Enter your result as a Python value, or None if the operation is invalid:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q6) What is $a^T b$? Enter your result as a Python list (if a vector) or as a Python number (if a single number), or as None if the operation is invalid:
 
 0.00%
-You have infinitely many submissions remaining.
 
 Solution: 20
 
@@ -152,19 +141,15 @@ A column vector
 A matrix with multiple columns and rows
 An invalid operation
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q8) What is $Mv$? Enter your result as a Python value:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q9) What kind of value is the result of $vM$?
 
@@ -175,33 +160,27 @@ A column vector
 A matrix with multiple columns and rows
 An invalid operation
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q10) Given $w = \begin{bmatrix}1 & 5 & -3 & 2\end{bmatrix}^T$, and
 $x = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}^T$, what is $w^T x$?
 
 Enter your result as a Python value:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q11) Given $w = \begin{bmatrix}1 & 5 & 0\end{bmatrix}^T$, and
 $x = \begin{bmatrix}8 & 2 \end{bmatrix}^T$, what is $w x^T$?
 
 Enter your result as a Python value:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q12) Which of these is equivalent to $(AB)^T$?
 
@@ -230,11 +209,9 @@ Selection:
 6
 7
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q13) Does the matrix $X$ below have an inverse?
 $X = \begin{bmatrix}1 & 3 & 2 \\ 2 & 6 & 7\end{bmatrix}$
@@ -243,11 +220,9 @@ $X = \begin{bmatrix}1 & 3 & 2 \\ 2 & 6 & 7\end{bmatrix}$
 Yes
 No
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q14) Does the matrix $X$ below have an inverse?
 $X = \begin{bmatrix}1 & 3 & 2 \\ 2 & 6 & 7 \\ 3 & 9 & 6\end{bmatrix}$
@@ -256,11 +231,9 @@ $X = \begin{bmatrix}1 & 3 & 2 \\ 2 & 6 & 7 \\ 3 & 9 & 6\end{bmatrix}$
 Yes
 No
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q15) We have the following relationship: $Wx = y$. Assuming
 $W$ is full rank and square and the dimensions of $W$, $x$, and $y$ are
@@ -288,11 +261,9 @@ Selection:
 5
 6
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 2) Differential Calculus (Gradients)
 
@@ -308,19 +279,15 @@ A column vector
 A matrix with multiple columns and rows
 An invalid operation
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q17) What is the value of $\frac{\partial f(v)}{\partial v_3}$?
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q18) What kind of an object is $\nabla_v f(v)$?
 
@@ -331,11 +298,9 @@ A column vector
 A matrix with multiple columns and rows
 An invalid operation
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q19) What is the value of $\nabla_v f(v)$?
 
@@ -362,11 +327,9 @@ You have infinitely many submissions remaining.
 6
 7
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q20) If you dropped a marble down on a
 (smooth) mountain range whose height over an n-dimensional landscape
@@ -392,11 +355,9 @@ was given by $f$, in what direction would the marble roll?
 5
 6
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 3) Python
 
@@ -414,12 +375,9 @@ following, no imports should be used.
 
 123def add_two_lists(a, b): pass return [x + y for x, y in zip(a, b)]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
  Your score on your most recent submission was: 100.00%
 
@@ -448,12 +406,9 @@ vectors, each represented as a list of numbers.
 
 123def dot(v1, v2): pass return sum(x * y for x, y in zip(v1, v2))XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
  Your score on your most recent submission was: 100.00%
 
@@ -500,12 +455,9 @@ For example, add_n(10)([1, 5, 3]) should return [11, 15, 13].
 
 1234def add_n(n): def add_to_vector(v): return [x + n for x in v] return add_to_vectorXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
  Your score on your most recent submission was: 100.00%
 
@@ -561,12 +513,9 @@ rows, as discussed earlier. For example,
 
 123456789def array_mult(A, B): pass return [ [ sum(A[i][k] * B[k][j] for k in range(len(B))) for j in range(len(B[0])) ] for i in range(len(A)) ]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
  Your score on your most recent submission was: 100.00%
 

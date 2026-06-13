@@ -19,7 +19,6 @@ Nothing can be done to $V$ to provide the desired outcome
 Multiply the three columns of $V$ by $1/2$, $1/3$, and $1/4$, respectively
 Multiply all elements of $V$ by $1/2$, $1/3$, and $1/4$, respectively
 
-Submit
 View Answer
 
 You have 4 submissions remaining.
@@ -41,10 +40,7 @@ for user 3's rating of movie 1?
 
 Enter the answer as a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3) Low-rank matrix factorization
 
@@ -69,27 +65,18 @@ Compute $X$, the matrix of predicted rankings given these values.
 
 Enter $X$ as a list of lists of integers (representing the rows of the matrix):
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1B)
 Compute the value of the squared error term in $J(U,V)$, including the $\frac{1}{2}$ factor, for the current estimate $X$:
 
 Enter the answer as a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1C)
 Compute the total regularization term in $J(U,V)$ for the current values of $U$, $V$ and $\lambda$.
 
 Enter the answer as a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

@@ -55,11 +55,6 @@ Given that the algorithm starts with $\theta^{(0)} = [0,0]$, the first point tha
 
 Number of mistakes is:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 (1) (2)
 
 (3) (4)
@@ -68,28 +63,13 @@ You have infinitely many submissions remaining.
 
 Please provide the plot number(s) in the order of progression as a Python list.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.1c) How many mistakes does the algorithm make if it starts with data point $x^{(2)}$ (and then does $x^{(3)}$ and $x^{(1)}$)?
 
 Number of mistakes is:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.1d) Again, if it starts with data point $x^{(2)}$ (and then does $x^{(3)}$ and $x^{(1)}$), which plot(s) correspond to the progression of the hyperplane as the algorithm cycles? Ignore the initial 0 weights.
 
 Please provide the plot number(s) in the order of progression as a Python list.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.2) Take 2
 
@@ -99,19 +79,9 @@ Now assume that $x^{(3)} = [-10, -1]$, with label $1$.
 
 Number of mistakes is
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2b) How many mistakes if it starts with data point $x^{(2)}$?
 
 Number of mistakes is
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Initialization
 
@@ -120,11 +90,6 @@ You have infinitely many submissions remaining.
 It would have small or no effect on the number of mistakes.
 It would significantly decrease the number of mistakes.
 It would significantly increase the number of mistakes.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.2) Provide a value of $\theta^{(0)}$ for which running the perceptron algorithm (through origin) on the data set from question 1 returns a different result than using $\theta^{(0)} = [0,0]$. The data set is repeated below:
 
@@ -145,11 +110,6 @@ $[-1.5, -1]$
 1
 
 Enter the 2 coordinates of $\theta$ as a Python list or the string 'none' if none exists.'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Dual View
 
@@ -189,19 +149,9 @@ $[1, -1]$
 
 Provide it as a python list of the form $[a, b]$.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3.2) What is the post training $\theta_0$?
 
 Provide it as a number.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4) Decision Boundaries
 
@@ -226,32 +176,17 @@ $$
 
 Please enter the values of $f(x_1,x_2,x_3)$ as a Python list.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.1b) Assuming $\theta_0 = 0$ (no offset), enter $\theta$ as a Python
 list of length 3 or enter 'none' as a Python string (with quotes) if none
 exists.
 
 Enter a Python list of 3 numbers or the string 'none'
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.1c) Assuming $\theta_0$ is non-zero (offset), enter a $\theta$ and $\theta_0$ as a Python
 list of length 4 ($\theta_0$ last) or enter 'none' as a Python string (with quotes) if none
 exists.
 
 Enter a Python list with 4 numbers or the string 'none'.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4.2) Families
 
@@ -271,37 +206,17 @@ Recall from lecture that we consider a point lying exactly on the separator to b
 
 Enter a value for $r$ or the string 'none' if none exists.'
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.2b) Inside or outside of a circle centered on $x_0$ with radius $r$
 
 Enter a list with 3 entries for coordinates of $x_0$ and $r$ ([x0_1,x0_2,r]) or the string 'none' if none exists.'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4.2c) On one side of a line through the origin with normal $\theta$ (recall normal vector points into positive half-space).
 
 Enter a list with 2 entries for coordinates of $\theta$ or the string 'none' if none exists.'
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.2d) On one side of a line with normal $\theta$ and offset $\theta_0$ (recall normal vector points into positive half-space).
 
 Enter a list with 3 entries for coordinates of $\theta$ and $\theta_0$ ([theta_1, theta_2, theta0])or the string 'none' if none exists.'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4.2e)
 
@@ -310,11 +225,6 @@ Which of the above are families of linear classifiers?
 4.2b
 4.2c
 4.2d
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 5) Separation
 
@@ -357,11 +267,6 @@ Not linearly separable
 Linearly separable without an offset
 Linearly separable only with a non-zero offset
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 5.2) Dataset 2:
 
 $i$
@@ -390,11 +295,6 @@ This dataset is:
 Not linearly separable
 Linearly separable without an offset
 Linearly separable only with a non-zero offset
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 5.3) Dataset 3:
 
@@ -425,11 +325,6 @@ Not linearly separable
 Linearly separable without an offset
 Linearly separable only with a non-zero offset
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 5.4) Compare datasets 2 and 3, and see if you can generalize what you learned from those two examples.
 Which of the following transformations allow one to transform any dataset
 that is only linearly separable with an offset to a dataset that is linearly
@@ -443,10 +338,5 @@ Add an extra dimension to all of the datapoints using the same (nonzero) number 
 Add an extra dimension to all of the datapoints using a 1 for each point
 Add an extra dimension to all of the data points, using 0 for each point
 A transformation with these properties is impossible
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 <a class="anchor" name="catsoop_sect[Truncated]

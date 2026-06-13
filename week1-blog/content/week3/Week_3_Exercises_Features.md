@@ -15,10 +15,7 @@ An integer valued feature: 1, 2, 3, 4
 Two binary valued features: 00, 01, 10, 11
 4 unary features (one-hot): 1000, 0100, 0010, 0001
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2) Feature mapping
 
@@ -44,16 +41,10 @@ Ex2.a.: Which of these feature transformations leads to a separable problem?
 
 Enter a Python list with a subset of the numbers 1, 2, 3, 4, 5.
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Ex2.b.: Your friend Kernelius uses feature transformation $\phi(x) = (x, x^2)$ on the data above. In the new space, the linear classifier with $\theta=(0,1)$ and $\theta_0=-0.25$ achieves perfect accuracy. What points from the original space $\mathbb{R}$ map to this linear classifier in $\mathbb{R}^2$? (It may be helpful to find the equation of the separator.)
 
 Enter a Python list with all values of $x$ which constitute this separator.
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

@@ -35,37 +35,17 @@ You are free to use your perceptron algorithm implemented in the previous homewo
 
 What is the margin $\gamma$ of this data set with respect to that separator (up to 3 decimal places)?
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B)
 
 What is the theoretical bound on the number of mistakes perceptron will make on this problem?
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C)
 
 How many mistakes does perceptron through origin have to make in order to find a perfect separator on the data provided above, in the order given? (Try it on your computer, not by hand!)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1D)
 
 If we were to multiply both original features of all of the points by $.001$, and considered the separator through origin $\theta = (0, 1, -0.0005)$, what would the margin of the new dataset be?
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1E)
 
@@ -76,37 +56,17 @@ Fewer mistakes
 Approximately the same mistakes
 More mistakes
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1F)
 
 If we multiplied just the first original feature (first row of the data) by .001, and used our original separator, what would the new margin be?
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1G)
 
 What would the mistake bound be in this case?
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1H)
 
 Run the perceptron algorithm on this data; how many mistakes does it make?
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Encoding Discrete Values
 
@@ -130,20 +90,10 @@ What value of $\theta$ and $\theta_0$ would we get when running perceptron on th
 
 Enter a Python list with two floats, one for $\theta$ and one for $\theta_0$.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2B)
 What prediction would we make about other phone types based on this classifier?
 
 Enter a Python list with two labels (1 or -1), the first one for a Samsung phone and the second for a Nokia phone.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2C)
 
@@ -152,11 +102,6 @@ Are these predictions meaningful given the training data we used?
 --
 Yes
 No
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2D)
 It is common to encode a feature which takes on a value from a set of discrete values, not as a single multi-valued feature, but
@@ -170,12 +115,6 @@ For example, one_hot(3,7) should return a column vector of length $7$ with the e
 
 12345import numpy as npdef one_hot(x, k): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2E)
 What happens if we use one-hot encoding on the data set part 2A) above, and put it into the perceptron? Recall that for a classifier $h(x)$, the prediction is $+1$ if $h(x) > 0$ and $-1$ otherwise. Further note that the perceptron algorithm makes an update whenever $y^{(i)}(\theta^Tx^{(i)}+\theta_0)\le 0$.
 
@@ -184,30 +123,15 @@ What is the separator produced by the perceptron algorithm?
 
 Enter a Python list with 7 floats, six for $\theta$ and one for $\theta_0$.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2E ii)
 What are the predictions for Samsung and Nokia?
 
 Enter a Python list with two labels (1 or -1), the first one for a Samsung phone and the second for a Nokia phone.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2E iii)
 What are the distances for the Samsung and Nokia data points from the separator?
 
 Enter a Python list with two distances, the first one for a Samsung phone and the second for a Nokia phone.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2F)
 Now, what if we have this dataset:
@@ -221,30 +145,15 @@ Is it linearly separable in the original encoding?
 Yes
 No
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2G)
 Is it linearly separable in the one-hot encoding? If so, provide the separator found by the perceptron.
 
 Enter a Python list with 7 floats, six for $\theta$ and one for $\theta_0$ or 'none'
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2H)
 Enter an assignment of data values to labels (with distinct data points) that is not linearly separable using the one-hot encoding, or enter None if no such assignment exists.
 
 Enter a Python list with 6 tuples (value, label) or 'none'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Polynomial Features
 
@@ -263,11 +172,6 @@ In the code file, we have defined make_polynomial_feature_fun that, given the or
 
 Enter a list of 6 integers indicating the number of polynomial features of degrees [1, 10, 20, 30, 40, 50] for a 2-dimensional feature vector.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3B)
 Consider this data-set of four points in two-dimensional space:
 
@@ -281,11 +185,6 @@ In the code file, we have defined 4 sample data sets, (1) super_simple_separable
 The separators are displayed when the code runs; it's instructive to watch them to see the range of separators that these non-linear transformations produce. Note that the separators are drawn by evaluating the feature transformations on a grid of points in the feature space and using the separator to classify them. (Note: If you have issues with the graphic not moving forward, try pressing the keys within your terminal.)
 
 Enter a Python list of integers indicating the smallest polynomial order for which a separator exists for each of the four datasets in the code file (in order).
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Experiments
 
@@ -361,55 +260,25 @@ In general, you should shuffle the dataset before evaluating, but for this exerc
 
 Enter accuracies (perceptron, averaged perceptron) for T=1, feature set 1:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.1C ii)
 
 Enter accuracies (perceptron, averaged perceptron) for T=1, feature set 2:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4.1C iii)
 
 Enter accuracies (perceptron, averaged perceptron) for T=10, feature set 1:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.1C iv)
 
 Enter accuracies (perceptron, averaged perceptron) for T=10, feature set 2:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4.1C v)
 
 Enter accuracies (perceptron, averaged perceptron) for T=50, feature set 1:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.1C vi)
 
 Enter accuracies (perceptron, averaged perceptron) for T=50, feature set 2:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Now we have the data we need to make rational choices.
 
@@ -421,7 +290,6 @@ Pick one:
 Perceptron
 Averaged Perceptron
 
-Submit
 View Answer <button class="btn btn-catsoop" onclick="!queue.get('location') ?
 "Enter Table Number",
 "Please enter your table number:",

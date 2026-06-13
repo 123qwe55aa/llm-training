@@ -57,10 +57,7 @@ t: S A R
 
 Enter a list of 3 numbers giving the updated Q values just after each of these times:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1B)
 
@@ -70,10 +67,7 @@ You have infinitely many submissions remaining.
 
 Enter a list of 3 numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1C)
 
@@ -83,10 +77,7 @@ You have infinitely many submissions remaining.
 
 Enter a list of 3 numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1D)
 
@@ -96,10 +87,7 @@ You have infinitely many submissions remaining.
 
 Enter a list of 3 numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1E)
 
@@ -109,10 +97,7 @@ You have infinitely many submissions remaining.
 
 Enter a list of 3 numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1F)
 
@@ -123,7 +108,4 @@ You have infinitely many submissions remaining.
 
 Enter a list of 3 numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

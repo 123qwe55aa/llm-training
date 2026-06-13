@@ -112,12 +112,6 @@ your expectations.
 
 123def run(): return t1(order=1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1A) Consider the solution with the 0th-order basis (the
 regression polynomial described by only $\theta_0$). What is the shape
 of the solution that you expect, and why? How does this solution
@@ -186,12 +180,6 @@ using your chosen $\lambda.$
 
 123def run(): return t2(order=9, lam = 1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2A) What happens to both $J_{\it ridge}(\theta, \theta_0)$ and
 the learned regression line, with very large (e.g., infinite) and very
 small (0) values of $\lambda$?
@@ -235,12 +223,6 @@ Click 'Show/Hide Detailed Results' after submitting your code to view
 the convergence plot generated.
 
 123def run(): return t3(order=2, lam=0, step_size= 0.3, max_iter = 1000)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3A) With \texttt{max_iter = 1000} in the code snippet above,
 what step sizes were needed to match the analytic solution almost

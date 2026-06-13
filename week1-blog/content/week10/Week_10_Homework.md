@@ -97,11 +97,6 @@ Even when $Q^{\star}$ is known very well, behavior can be suboptimal due to the 
 Even when $Q^{\star}$ is not correct, all that matters for optimal behavior (if we don't explore) is that the relative ordering of action values is correct.
 For any state, it is necessary to execute action 'c' from that state some number of times before its estimated Q-value is higher than the estimated Q-value for action 'b' from that state.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B)
 The yellow line goes down the fastest in plot 1, but doesn't have the best performance in plot 2.
 
@@ -110,11 +105,6 @@ When there's a tie between action values, our implementation of argmax always re
 Even when $Q^{\star}$ is known very well, behavior can be suboptimal due to the exploration.
 Even when $Q^{\star}$ is not correct, all that matters for optimal behavior (if we don't explore) is that the relative ordering of action values is correct.
 For any state, it is necessary to execute action 'c' from that state some number of times before its estimated Q-value is higher than the estimated Q-value for action 'b' from that state.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C)
 The red line goes down slowly in plot 1, and leaps up in the middle of plot 2.
@@ -125,11 +115,6 @@ Even when $Q^{\star}$ is known very well, behavior can be suboptimal due to the 
 Even when $Q^{\star}$ is not correct, all that matters for optimal behavior (if we don't explore) is that the relative ordering of action values is correct.
 For any state, it is necessary to execute action 'c' from that state some number of times before its estimated Q-value is higher than the estimated Q-value for action 'b' from that state.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1D)
 The magenta, cyan, red, and green lines each leap up at some point (each one after the other) in the average rewards plot.
 
@@ -138,11 +123,6 @@ When there's a tie between action values, our implementation of argmax always re
 Even when $Q^{\star}$ is known very well, behavior can be suboptimal due to the exploration.
 Even when $Q^{\star}$ is not correct, all that matters for optimal behavior (if we don't explore) is that the relative ordering of action values is correct.
 For any state, it is necessary to execute action 'c' from that state some number of times before its estimated Q-value is higher than the estimated Q-value for action 'b' from that state.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Implement Q-Learning
 
@@ -225,12 +205,6 @@ Here is an example of how to test update:
 
 123def update(self, data, lr): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.2) Q_learn
 
 Complete the definition of the Q_learn function. It should
@@ -306,12 +280,6 @@ return list(qf.q.items())
 [((0, 'a'), 0.6649739221724159), ((0, 'b'), 0.1712369526453748), ((1, 'a'), 0.7732751316011999), ((1, 'b'), 1.2034912054227331), ((2, 'a'), 0.37197205380133874), ((2, 'b'), 0.45929063274463033), ((3, 'a'), 1.5156163024818292), ((3, 'b'), 0.8776852768653631), ((4, 'a'), 0.0), ((4, 'b'), 0.0)]
 
 123456def Q_learn(mdp, q, lr=.1, iters=100, eps = 0.5, interactive_fn=None): # Your code here for i in range(iters): # include this line in the iteration, where i is the iteration number if interactive_fn: interactive_fn(q, i) passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Below, assume this update method has been defined.
 
@@ -406,12 +374,6 @@ return list(qf.q.items())
 [((0, 'a'), 4.7566600197286535), ((0, 'b'), 3.993296047838986), ((1, 'a'), 5.292467934685342), ((1, 'b'), 5.364014782870985), ((2, 'a'), 4.139537149779127), ((2, 'b'), 4.155347555640753), ((3, 'a'), 4.076532544818926), ((3, 'b'), 4.551442974149778), ((4, 'a'), 0.0), ((4, 'b'), 0.0)]
 
 12345678def Q_learn_batch(mdp, q, lr=.1, iters=100, eps=0.5, episode_length=10, n_episodes=2, interactive_fn=None): # Your code here for i in range(iters): # include this line in the iteration, where i is the iteration number if interactive_fn: interactive_fn(q, i) passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) NNQ: Using neural networks to store the Q function
 
@@ -528,12 +490,6 @@ return [q.get(s,a) for s in q.states for a in q.actions]
 [array([[-0.07211456]]), array([[-0.19553234]]), array([[-0.21926211]]), array([[0.01699455]]), array([[-0.26390356]]), array([[0.06374809]]), array([[0.0340214]]), array([[-0.18334733]]), array([[-0.438375]]), array([[-0.13844737]])]
 
 12345678910111213class NNQ: def __init__(self, states, actions, state2vec, num_layers, num_units, epochs=1): self.actions = actions self.states = states self.epochs = epochs self.state2vec = state2vec self.models = None # Your code here def get(self, s, a): # Your code here pass def update(self, data, lr, epochs=1): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4) No Exit
 
@@ -657,37 +613,17 @@ successful submission will have a 100.0 score achieved during the learning.
 
 Enter the string printed by tabular Q_learn:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4B)
 
 Enter the string printed by tabular Q_learn_batch:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4C)
 
 Enter the string printed by NNQ Q_learn:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4D)
 
 Enter the string printed by Fitted Q_learn (NNQ in Q_learn_batch):
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 With this experience in hand, you might compare how many iterations are
 needed to reliably get to something that gets reward of 100, for each

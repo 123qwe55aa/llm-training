@@ -37,31 +37,15 @@ Enter your answer as a Python list of numbers.
 
 Vector on hyperplane:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Ex1.1b. Using the same hyperplane, determine a vector that is normal to the hyperplane.
 
 Vector normal to hyperplane:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Ex1.1c. Now, in $d$ dimensions, supply the simplified formula for a unit vector normal to the hyperplane in terms of $\theta$ where $\theta \in R^d$.
 
 In this question and the subsequent ones that ask for a formula, enter your answer as a Python expression. Use theta for $\theta$, theta_0 for $\theta_0$, x for any array $x,$ transpose(x) for transpose of an array, norm(x) for the length (L2-norm) of a vector, and x@y to indicate a matrix product of two arrays.
 
 Formula for unit vector normal to hyperplane:
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.2) General hyperplane, distance to origin
 
@@ -74,20 +58,9 @@ Ex1.2a. In two dimensions, let $\theta = [3, 4]$ and $\theta_0 = 5$. What is the
 
 Distance =
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Ex1.2b: Now, in $d$ dimensions, supply the formula for the signed perpendicular distance from a hyperplane specified by $\theta, \theta_0$ to the origin. If you get stuck, take a look at this walkthrough of point-plane distances.
 
 Formula for signed distance to origin:
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Numpy intro
 
@@ -150,23 +123,11 @@ Provide an expression that sets A to be a $2 \times 3$ numpy array ($2$ rows by 
 
 123import numpy as npA = 0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.2) Transpose
 
 Write a procedure that takes an array and returns the transpose of the array. You can use 'np.transpose' or the '.T', but you may not use a loop.
 
 1234import numpy as npdef tp(A): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.3) Shapes
 
@@ -176,73 +137,33 @@ Ex2.3a
 
 C * C
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Ex2.3b
 
 np.dot(C, C)
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Ex2.3c
 
 np.dot(np.transpose(C), C)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Ex2.3d
 
 np.dot(A, B)
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Ex2.3e
 
 np.dot(A.T, B)
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Ex2.3f
 
 D = np.array([1,2,3])
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Ex2.3g
 
 A[:,1]
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Ex2.3h
 
 A[:,1:2]
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.4) Row vector
 
@@ -250,23 +171,11 @@ Write a procedure that takes a list of numbers and returns a 2D numpy array repr
 
 1234import numpy as npdef rv(value_list): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.5) Column vector
 
 Write a procedure that takes a list of numbers and returns a 2D numpy array representing a column vector containing those numbers. You can use the rv procedure.
 
 1234import numpy as npdef cv(value_list): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.6) length
 
@@ -274,35 +183,17 @@ Write a procedure that takes a column vector and returns the vector's Euclidean 
 
 1234import numpy as npdef length(col_v): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.7) normalize
 
 Write a procedure that takes a column vector and returns a unit vector in the same direction. You may not use a for loop. Use your length procedure from above (you do not need to define it again).
 
 1234import numpy as npdef normalize(col_v): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.8) indexing
 
 Write a procedure that takes a 2D array and returns the final column as a two dimensional array. You may not use a for loop.
 
 1234import numpy as npdef index_final_col(A): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.9) Representing data
 
@@ -322,12 +213,6 @@ set data equal to the appropriate numpy array:
 
 123import numpy as npdata = 0 #your code hereXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Now she wants to compute the sum of each person's height and weight as
 a column vector by multiplying data by another numpy array. She has
 written the following incorrect code to do so and needs your help to
@@ -336,9 +221,3 @@ fix it:
 2.10) Matrix multiplication
 
 1234import numpy as npdef transform(data): return (np.dot(np.array([1, 1]), data))XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.

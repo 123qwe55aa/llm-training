@@ -65,19 +65,9 @@ The situation is illustrated in the figure below.
 
 Enter a Python list of three numbers.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B) What are the values of each score $(S_{\it sum}, S_{\it min}, S_{\it max})$ on the blue separator?
 
 Enter a Python list of three numbers.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C) Which of these separators maximizes $S_{\it sum}$?
 
@@ -88,11 +78,6 @@ red
 blue
 could be either
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1D) Which separator maximizes $S_{\it min}$?
 
 Choose one:
@@ -101,11 +86,6 @@ Choose one:
 red
 blue
 could be either
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1E) Which separator maximizes $S_{\it max}$?
 
@@ -116,11 +96,6 @@ red
 blue
 could be either
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1F) Which score function should we prefer if our goal is to find
 a separator that generalizes better to new data?
 
@@ -130,11 +105,6 @@ Choose one:
 S_sum
 S_min
 S_max
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) What a loss
 
@@ -160,11 +130,6 @@ for every point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \t
 for at least one point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \leq \gamma_{\it ref}$
 for every point $x^{(i)}, y^{(i)}$, we have $\gamma(x^{(i)}, y^{(i)}, \theta, \theta_0) \leq \gamma_{\it ref}$
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2B) Suppose for our data set we find that the
 maximum $\gamma_{\it ref}$ across all linear separators is 0.
 
@@ -173,11 +138,6 @@ Is our data linearly separable?
 --
 Yes
 No
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2C) For this subproblem, assume that $\gamma_{\it ref} \gt 0$
 (i.e., the data is linearly separable). Note that in this case, the
@@ -191,11 +151,6 @@ $0$
 $\infty$
 $\gamma_{\it ref}$
 some $\epsilon$ where $\epsilon \gt 0$
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Now we want to improve on the (infinitesimally small)
 guaranteed margin of the Perceptron algorithm. We saw in the lecture
@@ -242,11 +197,6 @@ It is infinite
 It can be any of these things
 It is not well defined
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2E) For a non linearly separable data set, and positive
 $\lambda$ and $\gamma_{\it ref}$, what is true about the
 minimal value of $J_{0, \infty}$:
@@ -260,11 +210,6 @@ It is always zero
 It is infinite
 It can be any of these things
 It is not well defined
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Simply inseparable
 

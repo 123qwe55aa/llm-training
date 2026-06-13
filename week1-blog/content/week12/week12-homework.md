@@ -17,20 +17,10 @@ Can this matrix be factored using $k = 1$? Provide $U$, $V^T$ matrices if it can
 
 Enter a Python list of $U$ and $V^T$, with $U$ as a 3x1 matrix and $V^T$ as a 1x3 matrix, e.g., [[[1],[2],[3]], [[4, 5, 6]]], or the quoted string 'None' if none exists:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B)
 Can this matrix be factored using $k=2$? Provide $U$, $V^T$ matrices if it can (such that $Y = UV^T$), or or enter 'None' if it cannot be done.
 
 Enter a Python list of $U$ and $V^T$, with $U$ as a 3x2 matrix and $V^T$ as a 2x3 matrix, e.g., [[[1, 2],[3, 4],[5, 6]], [[7, 8, 9],[10, 11, 12]], or the quoted string 'None' if none exists:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Some movies are more equal than others
 
@@ -103,30 +93,15 @@ How will Amy feel about a brand new Llama movie (not in the existing movie data)
 
 Enter a Python list with two floats [a,b] (with two decimal places) where a is the prediction without offset and b is the prediction with offset:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2B)
 What about a brand new Robot movie (not in the existing movie data) that gets good ratings from almost everyone ($b_v^{(i)}= 5$), in the two models?
 
 Enter a Python list with two floats [a,b] (with two decimal places) where a is the prediction without offset and b is the prediction with offset:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2C)
 What about a brand new Robot movie (not in the existing movie data) that gets average ratings from almost everyone ($b_v^{(i)}= 3$), in the two models?
 
 Enter a Python list with two floats [a,b] (with two decimal places) where a is the prediction without offset and b is the prediction with offset:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Implementing recommender systems
 
@@ -234,12 +209,6 @@ The function should update the entries in x corresponding to the u vectors and t
 Note that if there are no ratings from a particular user, we don't want to update that user's entries.
 
 12345def update_U(data, vs_from_u, x, k, lam): (u, b_u, v, b_v) = x # Your code here return xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3.2) Stochastic Gradient Descent (SGD)
 

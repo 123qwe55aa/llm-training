@@ -66,12 +66,6 @@ It should return a column vector.
 
 123def hinge_loss_grad(x, y, a): passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2) Log loss, sigmoidal activation
 
 Another way to make the output for a classifier continuous is to make it be in the range $(0, 1)$, which admits the interpretation of being the predicted probability that the example is positive. A convenient way to make the activation of a unit be in the range $(0, 1)$ is to use a sigmoid function:
@@ -88,12 +82,6 @@ to $z$, expressed as a function of $z$, its input?
 
 Enter a Python expression (use ** for exponentiation) involving e and z:
 
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2.B)
 What is an expression for the derivative of the sigmoid with respect
 to $z$, but this time expressed as a function of $o = \sigma(z)$, its
@@ -102,12 +90,6 @@ output?
 Hint: Think about the expression $1 - \frac{1}{1 + e^{-z}}$. (Here is a review of computing derivatives.)
 
 Enter a Python expression (use ** for exponentiation) involving only o (note: eand z are not allowed, and remember $o = \sigma(z)$):
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 In this model, we will consider positive points to have label +1, and negative points to have label 0.
 
@@ -142,22 +124,10 @@ What is the value of $P(a, y)$ when $y=0$?
 
 Enter an expression for $P(a, y)$ when $y=0$ in terms of a:
 
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2.D)
 What is the value of $P(a, y)$ when $y=1$?
 
 Enter an expression for $P(a, y)$ when $y=1$ in terms of a:
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.2.E)
 Find a simplified expression for $\log P(a, y)$ that does not use exponentiation. Note that we
@@ -165,12 +135,6 @@ refer to the natural logarithm $\ln$ as $\log$ throughout this assignment, consi
 with the lecture notes.
 
 Enter an expression in terms of y and a; you can use log(.) to indicate natural log:
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 In fact, because log is a monotonic function, the same weights that
 maximize the product of the probabilities will minimize the
@@ -200,24 +164,12 @@ example. Hint: consider using the chain rule; the final answer (expression) is v
 
 Write an expression in terms of x_1, a_1, and y:
 
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2.G)
 Write a formula for the gradient of the NLL with respect to the full
 weight vector, $\nabla_{W^L} NLL(a_1^L, y)$, for a single training
 example.
 
 Enter an expression in terms of x, a_1, and y:
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Multiclass classification
 
@@ -242,5 +194,4 @@ What probability distribution over the categories is represented by $z^L = [-1, 
 
 Enter a distribution (a list of three numbers adding up to 1) for the three categories. Your answers should be numeric (please enter numbers, and do not use the symbol $e$):
 
-Submit
 View Answer Ask for Help</button[Truncated]

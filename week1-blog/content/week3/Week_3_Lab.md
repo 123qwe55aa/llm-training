@@ -42,11 +42,6 @@ origin is a discrete valued feature
 There are too many features and the classifier will overfit
 model year is in the 70s, so a classifier based on this data might not perform well in 2019
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B) For each feature from the following:
 
 [cylinders, displacement, horsepower, weight, acceleration, model_year, origin]
@@ -94,11 +89,6 @@ $(Mary, \ is, \ selling, \ apples, \ Tom, \ is, \ buying, \ apples, \ to, \ eat)
 $(Mary, \ is,\ selling, \ apples, \ Tom, \ buying, \ to, \ eat)$
 $(Mary, \ is, \ selling, \ red, \ apples, \ Tom, \ buying, \ blue, \ to, \ eat)$
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 We can then transform each of the reviews into a feature vector of length $d$ by setting the $i^{th}$ coordinate of the feature vector to $1$ if the $i^{th}$ word in the dictionary appears in the review or $0$ if it does not.
 
 2B) Hence, how would we represent the sentence "Tom is buying apples to eat" as a feature vector using the bag-of-words approach and the dictionary we found above?
@@ -106,11 +96,6 @@ We can then transform each of the reviews into a feature vector of length $d$ by
 $(1,1,0,0,1,1,1,1)$
 $(0,1,0,1,1,0,1,1)$
 $(0,1,0,1,1,1,1,1)$
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2C) Talk with your partner about the weaknesses of the bag-of-words approach seen above. For instance, how would you interpret the feature vector $(1,1,1,1,1,0,1,0)$? (Who is selling what to whom?)
 
@@ -136,11 +121,6 @@ With the help of your partner, write down the matrix corresponding to the image 
 Imagine we want to use the perceptron algorithm to perform the task of distinguishing between images of digits '1' and '3'. Each image is a data point, which we need in vector form, to feed to the perceptron algorithm. One approach is to take the two-dimensional matrix representation of an image and concatenate the rows one after the other, into a one-dimensional vector of the form $[A_{1,1},A_{1,2},A_{1,3},A_{1,4},A_{1,5},A_{2,1},A_{2,2},...,A_{5,5}]$
 
 For the image shown above, what will be the last $3$ entries of the one-dimensional vector representing that image? Enter a python list of length $3$ for your answer.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3C)
 How well would you expect the perceptron algorithm to work on

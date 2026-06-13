@@ -23,7 +23,6 @@ the signed distance changes magnitude but not sign
 the signed distance stays the same
 both the sign and the magnitude may change
 
-Submit
 View Answer
 
 You have 3 submissions remaining.
@@ -42,7 +41,6 @@ the signed distance changes magnitude but not sign
 the signed distance stays the same
 both the sign and the magnitude may change
 
-Submit
 View Answer
 
 You have 3 submissions remaining.
@@ -64,11 +62,7 @@ syntax.
 
 $\gamma(x, y, \theta, \theta_0)=$
 
-Check Syntax
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Ex1d:
 
@@ -81,7 +75,6 @@ positive
 negative
 could be either
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -97,7 +90,6 @@ positive
 negative
 could be either
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -110,10 +102,7 @@ illustrated in the figure below.
 
 Enter the three margins in order as a Python list of three numbers. Note that you can enter sqrt(x) as x**0.5 in Python.
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3) Max Margin Separator
 
@@ -130,10 +119,7 @@ Ex3a:
 
 Enter the four margins in order as a Python list of four numbers.
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Ex3b:
 
@@ -142,10 +128,7 @@ maximizes the minimum margin between that separator and all points in the datase
 
 Enter $\theta$ and $\theta_0$ for a maximum margin separator as a Python list of three numbers.
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Ex3c:
 
@@ -157,7 +140,4 @@ a maximum margin separator?
 Yes
 No
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

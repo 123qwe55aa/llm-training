@@ -67,11 +67,6 @@ Run the function a few times, making sure that the training error is low and loo
 
 Check this box and submit when you have finished all parts of this question.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3) Generating sequences
 
 We are interested in building an RNN model that can predict the next
@@ -181,11 +176,6 @@ minimum size of hidden layer and number of steps required to consistently reprod
 we prioritize hidden layer size). Comment on your results.
 
 Check this box and submit when you have finished problems 3A through 3C.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Try the following so you can see what's possible with these relatively simple models:
 

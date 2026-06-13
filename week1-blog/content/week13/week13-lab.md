@@ -156,11 +156,6 @@ to an averaged perceptron or neural net classifier?
 
 Check this box and submit when you have finished all parts of this question.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2) Parameter Tuning
 
 Note the three variables defined as class variables at the top of the
@@ -195,11 +190,6 @@ You can set verbose='first_tree' to output only the first tree.
 Could you change these parameters such that no splits occur? If so, how?
 
 Check this box and submit when you have finished all parts of this question.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Nearest Neighbors
 

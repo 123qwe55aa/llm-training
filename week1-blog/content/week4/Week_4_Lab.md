@@ -48,20 +48,9 @@ eta and x in your Python expression, where eta represents $\eta$.
 
 x $\leftarrow$
 
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B)
 
 What is the optimal value of $x$ that minimizes $f$?
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C) This question asks you to explore convergence of gradient descent
 for our $f(x)$, to see how
@@ -86,12 +75,6 @@ does $x^{(k)}$ converge without oscillation? For which one(s) does
 $x^{(k)}$ diverge?
 
 123def run(): return t1(step_size= 0.1, init_val = 0)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Why do oscillations happen for some values of step_size and not others?
 To gain insight into this behavior (and to understand how gradient descent proceeds),
@@ -190,21 +173,11 @@ causes $x$ to converge to the global minimum starting from an arbitrary
 initial value? Use $(~)$ for open intervals and $[~]$ for closed
 intervals
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Does your algebraic answer agree with your numerical experiments above?
 
 1F)
 
 What is the largest step size that causes $x$ to converge without oscillating?
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 How many iterations are needed for convergence in this case? Run t1 with this value of step size.
 1G)
@@ -215,11 +188,6 @@ For a step size of $0.1$, is there an initial value of $x_0$ for which $x$ does 
 Yes
 No
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1H)
 What value(s) of step size in the set
 $\{0.1,0.11,0.12,0.13,0.14,0.15\}$ makes gradient descent take the most steps before convergence? Find the answer algebraically and enter your value(s) in a Python
@@ -227,11 +195,6 @@ list. (Hint: think about the magnitude of $1-8\eta$ and how this might
 affect the rate of convergence).
 
 Enter your answer as a python list:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Now try running t1 with the above step sizes. Which ones are
 slowest? Which ones oscillate? Do these behaviors match with your
@@ -260,8 +223,3 @@ There is necessarily a unique location that minimizes the objective function
 The optimization problem may have local minima that are not global minima
 The party can be always be hosted in one of the houses without loss of optimality
 There is necessarily a choice of step size that makes gradient descent converge with oscillations for this problem
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.

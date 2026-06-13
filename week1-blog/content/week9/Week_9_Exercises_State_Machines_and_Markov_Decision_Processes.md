@@ -47,10 +47,7 @@ Input: [0, 1, 2, 1]
 
 Enter a Python list of four numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1B)
 
@@ -61,10 +58,7 @@ Input: [0, 1, 2, 1]
 
 Enter a Python list of four numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2) Tiny Policy Evaluation
 
@@ -100,27 +94,18 @@ What are the horizon 0 undiscounted values of the states under this policy?
 
 Enter a Python list of four numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2B)
 For horizon 1?
 
 Enter a Python list of four numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2C)
 For horizon 2?
 
 Enter a Python list of four numbers:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

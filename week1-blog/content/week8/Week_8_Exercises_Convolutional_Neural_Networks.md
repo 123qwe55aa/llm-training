@@ -7,10 +7,7 @@ biases) between two adjacent layers each having 100 units is:
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Consider a 1D CNN consisting of an input layer with 100 units, 10
 filters each with 5 inputs (i.e., each filter is size 5) having a
@@ -22,10 +19,7 @@ How many units are there in the output layer (feature map)?
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1.C)
 How many weights (including bias) are needed to specify the output
@@ -33,10 +27,7 @@ layer (feature map)?
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Now consider a 1D CNN with an input layer having 100 units, followed by a max
 pooling layer with a pooling filter of size 3 and a stride of 2, producing
@@ -47,10 +38,7 @@ How many units are there in the output layer?
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1.E)
 How many weights (including bias) are needed to specify the max
@@ -58,10 +46,7 @@ pooling output layer?
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2) Pooling
 
@@ -81,10 +66,7 @@ the input layer size is much larger than the filter size and stride.
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3) CNN concepts
 
@@ -109,10 +91,7 @@ A
 B
 C
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3.B)
 Which of these blocks allows the network to combine all cat features
@@ -125,10 +104,7 @@ A
 B
 C
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3.C)
 Which of these blocks are responsible for detecting low and mid-level
@@ -141,7 +117,4 @@ A
 B
 C
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

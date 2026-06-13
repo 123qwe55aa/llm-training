@@ -20,11 +20,6 @@ Can this matrix be perfectly represented with $k = 1$? Provide $U$, $V^T$ matric
 
 Enter a Python list of $U$ and $V^T$, with $U$ as a 2x1 matrix and $V^T$ as a 1x2 matrix, e.g., [[[1],[2]], [[3, 4]]], or the quoted string 'None' if none exists:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Now consider this data set:
 
 $$
@@ -35,11 +30,6 @@ $$
 Can this matrix be perfectly represented with $k = 1$? Provide $U$, $V^T$ matrices if it can such that $Y = UV^T$, or prove (at checkoff) that it cannot be done.
 
 Enter a Python list of $U$ and $V^T$, with $U$ as a 3x1 matrix and $V^T$ as a 1x3 matrix, e.g., [[[1],[2],[3]], [[4, 5, 6]]], or the quoted string 'None' if none exists:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Two kinds of people, two kinds of movies
 
@@ -76,11 +66,6 @@ What kind of movies does Amy like?
 Robot
 Llama
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2B)
 
 Who likes all movies?
@@ -90,11 +75,6 @@ Amy
 Bob
 Cathy
 Dana
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2C)
 It turns out that we can come up with several exact factorizations of the data matrix $Y$ in this case! One nice factorization has:
@@ -107,11 +87,6 @@ U = [[ 1 5]
 What is the matrix $V^T$ which makes $Y = UV^T$?
 
 Enter $V^T$ as a python list of lists:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2D)
 
@@ -130,11 +105,6 @@ I
 II
 III
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2E)
 
 What aspects of $U$ and $V$ model Dana's low ratings of all movies?
@@ -148,11 +118,6 @@ III. The first entry of $U$ corresponding to Dana is equal to the second.
 I
 II
 III
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 In practice, we often won't be able to immediately come up with a factorization as nice as the one above. Consider the following factorization that exactly reconstructs the data, i.e., $Y = UV^T$:
 
@@ -172,11 +137,6 @@ Does factorizing preference matrices this way require the engineer to define any
 --
 Yes
 No
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Half-fixed
 
@@ -217,11 +177,6 @@ Would this information be contained in $U$ or $V$?
 U
 V
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Given a $k$-dimensional movie feature representation $V$, and not allowing it to vary, we get a new objective that is only on the matrix $U$:
 
 $$
@@ -249,11 +204,6 @@ $Y_{ai} - u^{(a)}\cdot v^{(i)}$
 $-(Y_{ai} - u^{(a)}\cdot v^{(i)})$
 $(Y_{ai} - u^{(a)}\cdot v^{(i)})v^{(i)}$
 $-(Y_{ai} - u^{(a)}\cdot v^{(i)})v^{(i)}$
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Note that in practice, it is impossible to have all users rate all movies; companies like Netflix recommend movies to its users who have rated only a subset of movies.
 

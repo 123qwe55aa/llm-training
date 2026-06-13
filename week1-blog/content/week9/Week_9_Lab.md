@@ -44,11 +44,6 @@ How does the policy from 2 change if the horizon is 2?
 
 Check this box and submit when you have finished question 1.
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2) Simple Value Iteration Example
 
 We are going to look at a couple of two-dimensional "grid-world" examples, in which there is a robot that can move North, South, East, or West (N, S, E, W). It cannot move off the board. The transitions are somewhat noisy; when commanding a move there is a small chance that you will end up in one of the neighbor states of the desired state.
@@ -155,11 +150,6 @@ If $y_0 = 5$ and all previous $y$ values are 0, what are $y_{1}, y_{2}, y_{3}$?
 
 Enter a list of three numbers for [$y_{1}$, $y_{2}$, $y_{3}$]:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3B)
 What is the best choice for $f_1$, where $f_1$ is one of the common activation functions (linear, softmax, tanh, sigmoid, relu) we've studied? Be prepared to explain your answer.
 
@@ -169,11 +159,6 @@ softmax
 tanh
 sigmoid
 relu
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3C)
 What is the best choice for $f_2$? Be prepared to explain your answer.
@@ -185,20 +170,10 @@ tanh
 sigmoid
 relu
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3D)
 What is the smallest dimensionality for the state $s$ that will allow this to be implemented exactly?
 
 Enter a list of two numbers [a, b] for the dimensions $a \times b$ of state $s$ :
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3E)
 Provide matrices $W^{ss}$, $W^{sx}$, $W^{o}$, $W_0^{ss}$ and $W_0^{o}$

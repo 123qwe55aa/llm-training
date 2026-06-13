@@ -53,24 +53,15 @@ Make sure that you use log base 2 in computing entropies.
 
 Compute the entropy for the split $f_1 \geq -1.5$, with at least 2 decimal places:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Compute the entropy for the split $f_1 \geq 0$, with at least 2 decimal places:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Compute the entropy for the split $f_2 \geq 0$, with at least 2 decimal places:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1B)
 
@@ -82,10 +73,7 @@ f_1 >= -1.5
 f_1 >= 0.0
 f_2 >= 0.0
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 Construct a decision tree using a greedy algorithm that picks the next
 best split, based on picking the split that minimizes the weighted average entropy
@@ -135,10 +123,7 @@ greedy weighted average entropy minimization algorithm for the given dataset!
 
 Enter a tree as a list, as described above:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 You should practice sketching the decision boundary for this decision
 tree; you can find a picture of it in the explanation (View Answer).
@@ -151,10 +136,7 @@ following points:
 
 Enter a list of 7 labels (-1 or 1):
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2) Nearest Neighbor
 
@@ -172,7 +154,4 @@ View Answer).
 
 Enter a list of 7 labels (-1 or 1):
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

@@ -24,11 +24,6 @@ to explain your answer.
 Enter a list of four numbers for the unit weights and bias
 $[w_1,w_2,w_3,b]$ or the string 'None' if no such weights exist:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B. Now, let's consider a network with two units (each with
 three inputs) on the first layer and one unit (with two inputs) on the
 output layer. All units have ReLU activation. Pick a set of weights
@@ -40,11 +35,6 @@ Enter a list of three lists of weights and bias, first
 for the two units on the first layer (in the order of
 $[w_1,w_2,w_3,b]$) and then for the output unit (in the order of
 $[w_1,w_2,b]$), or 'None' in no such weights and biases exist.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C. Now, let's think about 3x3 "images" and try to detect
 diagonal "edges." Consider a 3x3 image patch
@@ -64,11 +54,6 @@ unit. Pick a set of nine weights (and a bias) for just one of
 the first layer units, that responds to one of the four patterns.
 
 Enter a list of 10 numbers: 9 weights ($w_i$) and a bias.
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Convolution
 
@@ -111,21 +96,11 @@ $\sigma(\phi_i) > 0$:
 
 Enter a list of indices in ascending order:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2C. You are given a ReLU unit that detects $x_1 - x_3 > 1$. Enter a
 list of indices where the output of this ReLU unit is positive, i.e.,
 $\sigma(\phi_i) > 0$:
 
 Enter a list of indices in ascending order:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Note that in the above processing, "step" patterns are detected
 anywhere in the image and independent of the overall "brightness."
@@ -139,12 +114,6 @@ Executing the code below will convolve one of the filters $f_1, f_2, f_3$ (inclu
 
 12345678# Some interesting filters to try:f1 = ((1./8)*np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])).tolist()f2 = ((1./8)*np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])).tolist()f3 = ((1./10)*np.array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]])).tolist()# You will need to change the bias to get nice results... think about the sign.def run(): return filter(weights=f1, bias=0)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3B.
 Consider these "features":
 
@@ -157,11 +126,6 @@ C) Horizontal edges (top brighter)
 Which filter from the code above best detects each feature?
 
 Enter a python list of numbers (1, 2, 3 corresponding to the filters f1, f2, f3) for features A, B, C:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3C.
 How is the output image affected if you increase or decrease the bias
@@ -204,11 +168,6 @@ What is the convolution-equivalent matrix $M$? Hint: What is the feature map $\p
 Enter the matrix $M$ as a list of rows, where each
 row is a list of the matrix elements in that row (i.e., in the same
 format you would use to construct a 2D numpy array):
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 By looking at the matrix you can see the "sliding" of the filter
 during the convolution. In a fully-connected network every entry in

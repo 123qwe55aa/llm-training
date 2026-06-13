@@ -16,7 +16,6 @@ bigram
 trigram
 recurrent
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -28,7 +27,6 @@ bigram
 trigram
 recurrent
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -40,7 +38,6 @@ bigram
 trigram
 recurrent
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -57,10 +54,7 @@ For an RNN that, given $x=[1,1,1]$ produces $p=[1,2,3]$, what is the value of $w
 
 Enter a number:
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2B)
 Assume that the loss at a single time step is $\text{Loss}(p_t, y_t) = \frac{1}{2}(p_t - y_t)^2$. Recall $p_t$ is the actual output and $y_t$
@@ -72,11 +66,7 @@ y_1, y_2, y_3. Do not use any of the $p_t$.
 
 dLoss/dw =
 
-Check Syntax
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3) Weights
 
@@ -93,20 +83,14 @@ Can the single-w model exactly represent a machine that takes $x=[1,1,1]$ and pr
 
 Enter a number or 'None':
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3B)
 Can the multi-w model exactly represent a machine that takes $x=[1,1,1]$ and produces $y=[1,2,4]$? If so, what are the values of $[w_1, w_2, w_3]$ as a Python list? If not, enter 'None'.
 
 Enter a list of 3 numbers or 'None':
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 3C)
 Which of the following are reasons to prefer the single-w model (over the multi-w model)? Note when we say ``memorize a training sequence $[x_1, x_2, \dots, x_n]$" we mean that the model can potentially produce any output sequence $[y_1, y_2, \dots, y_n] \in \mathbb{R}^n$ given this input.
@@ -117,7 +101,6 @@ It will generalize better with a small amount of data.
 It will capture the data's structure as a finite state machine.
 It can memorize any single training sequence
 
-Submit
 View Answer
 
 You have 5 submissions remaining.
@@ -131,7 +114,6 @@ It will generalize better with a small amount of data.
 It will capture the data's structure as a finite state machine.
 It can memorize any single training sequence
 
-Submit
 View Answer
 
 You have 5 submissions remaining.

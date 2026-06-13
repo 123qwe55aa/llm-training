@@ -19,10 +19,10 @@ labels = [[-1, -1, 1, 1]]
 
 Consider the separator defined by $\theta = (0, 1), \theta_0 = -0.5$.
 
-In order to apply the perceptron mistake bound (see notes), we transform our problem from $\theta^T x + \theta_0 = 0$ to some $\theta&#x27;^T x = 0$. We do this by appending $\theta_0$ to $\theta$, and appending $1$ to $x$, as follows:
+In order to apply the perceptron mistake bound (see notes), we transform our problem from $\theta^T x + \theta_0 = 0$ to some $\theta'^T x = 0$. We do this by appending $\theta_0$ to $\theta$, and appending $1$ to $x$, as follows:
 
 $$
-\theta&#x27;^T x = \begin{bmatrix} \theta_1 & \theta_2 & ... & \theta_0 \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \\ ... \\ 1\end{bmatrix} = 0
+\theta'^T x = \begin{bmatrix} \theta_1 & \theta_2 & ... & \theta_0 \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \\ ... \\ 1\end{bmatrix} = 0
 $$
 
 In this phrasing, our new "$\theta$" is (0, 1, -0.5). For a separator through the origin, recall that the margin of the data set is the minimum of $\gamma = y^{(i)}(\theta^T x^{(i)}) / \lVert \theta \rVert$ over all data points $(x^{(i)}, y^{(i)})$.

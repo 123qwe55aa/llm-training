@@ -29,20 +29,14 @@ hidden units ($f^1(z_1^1)$ and $f^1(z_2^1)$) for each of the input vectors in X.
 
 Enter a Python list of lists [[a,b,c],[d,e,f]], each list is a row of the matrix.
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 1B)
 Pick weights for the second layer $w^2_{0,1}, w^2_{1,1}, w^2_{2,1}$ so that the desired outputs are predicted correctly.
 
 Enter a Python list of 3 numbers [$w^2_{0,1}, w^2_{1,1}, w^2_{2,1}$]
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2) Training
 
@@ -66,10 +60,7 @@ What is the output value $a^1_1$, given current input $x^{(i)}$ and the current 
 
 Enter a number
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2B)
 What will the values of weights $w^1_{0,1}, w^1_{1,1}, w^1_{2,1}$ be after one step of stochastic gradient descent at the given training example $x^{(i)} = [1, 2]^T$, $y^{(i)} = -1$ using
@@ -77,47 +68,32 @@ our definition of hinge loss $L_h(v) = {\it max}(0, 1-v)$?
 
 Enter a Python list of 3 numbers [$w^1_{0,1}$, $w^1_{1,1}$, $w^1_{2,1}$] (to 3 decimal places)
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2C)
 What would the output value $a^1_1$ be, for this same input $x$, with these new weights?
 
 Enter a number
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2D)
 What would happen to the $v_i$ if we did another SGD update, for that same point, with step size 0.5, as before?
 
 Enter a Python list of 3 numbers [$w^1_{0,1}$, $w^1_{1,1}$, $w^1_{2,1}$]
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2E)
 Now what would the output be?
 
 Enter a number
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.
 
 2F)
 What if we do one more update, for that same point?
 
 Enter a Python list of 3 numbers [$w^1_{0,1}$, $w^1_{1,1}$, $w^1_{2,1}$]
 
-Submit
 View Answer
-
-You have infinitely many submissions remaining.

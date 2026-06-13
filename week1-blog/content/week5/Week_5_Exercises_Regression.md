@@ -60,7 +60,6 @@ A
 B
 C
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -79,7 +78,6 @@ Ex2.1: What is the squared error of each of the points with respect to the blue 
 
 Provide a Python list of four numbers (in the order of the points given above).
 
-Submit
 View Answer
 
 You have 20 submissions remaining.
@@ -100,7 +98,6 @@ parameters of the blue (lower) line?
 Provide a list of four pairs of numbers (as tuples,
 in the order of the points given above).
 
-Submit
 View Answer
 
 You have 20 submissions remaining.
@@ -109,7 +106,6 @@ Ex2.3: What is the squared error of each of the points with respect to the green
 
 Provide a list of four numbers (in the order of the points given above).
 
-Submit
 View Answer
 
 You have 20 submissions remaining.
@@ -119,7 +115,6 @@ Ex2.4: What is the gradient contribution from each point to the parameters of th
 Provide a list of four pairs of numbers (as tuples,
 in the order of the points given above).
 
-Submit
 View Answer
 
 You have 20 submissions remaining.
@@ -136,7 +131,6 @@ Neither line minimizes mean squared error
 It is impossible to minimize mean squared error
 Both lines minimize mean squared error
 
-Submit
 View Answer
 
 You have 6 submissions remaining.
@@ -178,7 +172,6 @@ B
 C
 D
 
-Submit
 View Answer
 
 You have 3 submissions remaining.
@@ -193,7 +186,6 @@ B
 C
 D
 
-Submit
 View Answer
 
 You have 3 submissions remaining.
@@ -208,7 +200,6 @@ B
 C
 D
 
-Submit
 View Answer
 
 You have 2 submissions remaining.
@@ -223,7 +214,6 @@ B
 C
 D
 
-Submit
 View Answer
 
 You have 2 submissions remaining.

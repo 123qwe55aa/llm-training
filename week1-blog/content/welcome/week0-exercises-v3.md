@@ -41,11 +41,9 @@ $b = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}$, what is $a + b$?
 
 Enter your result as a Python list:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 We are given $c^{(1)} = \begin{bmatrix}1 \\ 5 \\ -3 \\ 2\end{bmatrix}$, and
 $c^{(2)} = \begin{bmatrix}8 \\ 2 \\ 4 \\ 7\end{bmatrix}$.
@@ -57,21 +55,17 @@ $n = 4$ length column vectors.
 
 Enter your result as a Python list:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q3) What is $c^{(1)}\ * c^{(2)}$? Here $*$ indicates element-wise multiplication.
 
 Enter your result as a Python list:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 The transpose is notated here by the superscript $^T$. For example, if
 $a$ is the row vector $a = \begin{bmatrix}1 & 5 & -3 & 2\end{bmatrix}$,
@@ -83,11 +77,9 @@ $b^T = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}$, what is $a$+$b$?
 
 Enter your result as a Python list, or None if the operation is invalid:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 1.2) Vector dot product
 
@@ -100,16 +92,13 @@ $b = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}^T$, what is $a \cdot b$?
 
 Enter your result as a Python value, or None if the operation is invalid:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q6) What is $a^T b$? Enter your result as a Python list (if a vector) or as a Python number (if a single number), or as None if the operation is invalid:
 
 0.00%
-You have infinitely many submissions remaining.
 
 Solution: 20
 
@@ -155,19 +144,15 @@ A column vector
 A matrix with multiple columns and rows
 An invalid operation
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q8) What is $Mv$? Enter your result as a Python value:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q9) What kind of value is the result of $vM$?
 
@@ -178,33 +163,27 @@ A column vector
 A matrix with multiple columns and rows
 An invalid operation
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q10) Given $w = \begin{bmatrix}1 & 5 & -3 & 2\end{bmatrix}^T$, and
 $x = \begin{bmatrix}8 & 2 & 4 & 7\end{bmatrix}^T$, what is $w^T x$?
 
 Enter your result as a Python value:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q11) Given $w = \begin{bmatrix}1 & 5 & 0\end{bmatrix}^T$, and
 $x = \begin{bmatrix}8 & 2 \end{bmatrix}^T$, what is $w x^T$?
 
 Enter your result as a Python value:
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q12) Which of these is equivalent to $(AB)^T$?
 
@@ -233,11 +212,9 @@ Selection:
 6
 7
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q13) Does the matrix $X$ below have an inverse?
 
@@ -249,11 +226,9 @@ $$
 Yes
 No
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q14) Does the matrix $X$ below have an inverse?
 
@@ -265,11 +240,9 @@ $$
 Yes
 No
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 (Q15) We have the following relationship: $Wx = y$. Assuming
 $W$ is full rank and square and the dimensions of $W$, $x$, and $y$ are
@@ -297,11 +270,9 @@ Selection:
 5
 6
 
-Submit
 View Answer
 
 100.00%
-You have infinitely many submissions remaining.
 
 2) Differential Calculus (Gradients)
 

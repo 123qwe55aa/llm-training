@@ -31,20 +31,10 @@ $$
 \delta^{s_1} = \left(\prod_{t=2}^5 \frac{\partial s_t}{\partial s_{t-1}}\right) \left(\frac{\partial}{\partial s_5} {\rm Loss}(y_5, p_5)\right)
 $$
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B)
 If the network were actually 20 layers deep, $\frac{\partial s_t}{\partial s_{t-1}} = 0.1$ for all $t$, and $\delta^{s_{20}} = 1$, what is $\delta^{s_1}$?
 
 Enter a number:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C)
 Is this gradient exploding or vanishing?
@@ -54,11 +44,6 @@ Pick one:
 --
 Exploding
 Vanishing
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) RNN
 
@@ -97,41 +82,16 @@ What is the sequence of first two state vectors $s_1$ and $s_2$ resulting from f
 
 Enter a list of two numbers corresponding to $s_1$:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Enter a list of two numbers corresponding to $s_2$:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2B)
 Map all the sequences to their corresponding state vector representations (that is, the final state vector that results from feeding the entire sequence into the model):
 
 Enter a list of two numbers for the final state vector given input $x^{(1)}$:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Enter a list of two numbers for the final state vector given input $x^{(2)}$:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Enter a list of two numbers for the final state vector given input $x^{(3)}$:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2C)
 Suppose we train a linear classifier that operates on the state vector representations of these sequences $x^{(1)}$, $x^{(2)}$, and $x^{(3)}$ (run through our RNN). Could the linear classifier separate these three examples for all possible labelings of positive and negative examples?
@@ -142,11 +102,6 @@ Could the linear classifier separate these three examples regardless of how they
 No
 Yes
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2D)
 We can think of the RNN model as giving rise to an equivalent feed-forward neural network for any input sequence $(x_1,x_2,\ldots,x_n)$ run through it. Choose True or False for each statement based on whether it is correct for this feed-forward interpretation:
 
@@ -156,21 +111,11 @@ The parameters of each layer are different:
 True
 False
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Each input $x_i$ is fed into a different hidden layer:
 
 --
 True
 False
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 The number of layers is proportional to the length of the input sequence:
 
@@ -178,21 +123,11 @@ The number of layers is proportional to the length of the input sequence:
 True
 False
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Each hidden layer would have two units in case of our RNN above:
 
 --
 True
 False
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) State
 
@@ -220,17 +155,9 @@ What is the shape of $W^{sx}$?
 
 Enter a Python list of numbers corresponding to the shape of the matrix:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3B)
 Provide a $W^{sx}$.
 
 Enter the matrix as a list of lists; one list for each row of the matrix:
-
-Submit
-View Answer Ask for Help
 
 <img src="data:image/gif;base64,R0lGODlhEAAQAPIGAMLCwkJCQgAAAGJiYoKCgpKSkv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAGACwAAAAAEAAQAAADMmi63P4wyklrAyEAGoQInAdOmGYBw7AxwLoMGcG2rkHEQFHQLTsQOd2mB9ERCpTWzpEAACH5BAkKAAYALAAAAgAKAA4AAAMraAYRoNAEIUJUs97VHgTD4EVDQ2xEM2wgMV5AUbyKLKNEvoxA3P8sYNCQAAAh+QQJCgAGACwAAAAACgAOAAADLWi6EAFrBSGCAmQ0as1wROFABuEM0TUQ5FUU7fK+aRkWNYDFqV4bOl8v+BMuEgAh+QQJCgAGACwAAAAADgAKAAADKmi6QAMrrhECkaaVVl+FRiFuAwEEghAoYxGhqgI0oPxlNSbPOcb3PqAkAQAh+QQJCgAGACwCAAAADgAKAAADKWhqUAUrLuekApA+MiDD4BYExAVGwzgsmNR0lgWMXmwEghDYCq7zDFoCACH5BAkKAAYALAYAAAAKAA4AAAMqaADWros9GEuRUBE7jeUTYGEhMZANEQREN6xDJ54PsKJGIAhBp/OyWyMBACH5BAkKAAYALAYAAgAKAA4AAAMpaKoA+609Fie1C5Tipt7WRhRWw0ED0T1DEAyMq7mEEghCAKTdnZcySwIAIfkEBQoABgAsAgAGAA4ACgAAAytoumwALb4X2YR1U[Truncated]

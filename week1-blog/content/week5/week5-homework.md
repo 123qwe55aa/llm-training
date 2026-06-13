@@ -92,12 +92,6 @@ of $J_{emp}$ in a moment.
 
 $g(x^{(i)},y^{(i)})=$
 
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1B) What is the gradient of the empirical risk now with respect to
 $\theta_0$? We can see that it is of a similar form:
 
@@ -109,12 +103,6 @@ Write an expression for $g_0(x^{(i)},y^{(i)})$ using the symbols: x_i,
 y_i, theta and theta_0.
 
 $g_0(x^{(i)},y^{(i)})=$
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1C)
 Next we're interested in the gradient of the empirical loss with respect to
@@ -128,12 +116,6 @@ Remember that you can use @ for matrix product, and you
 can use transpose(a) to transpose a vector or array.
 
 $\nabla_\theta J_{\it emp} =$
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Sources of Error
 
@@ -158,11 +140,6 @@ estimation error
 both
 neither
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2B)
 Penalize $\lVert \theta \rVert^2$ during testing.
 
@@ -171,11 +148,6 @@ structural error
 estimation error
 both
 neither
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2C)
 Increase the amount of training data.
@@ -186,11 +158,6 @@ estimation error
 both
 neither
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2D)
 Increase the order of a fixed polynomial basis.
 
@@ -200,11 +167,6 @@ estimation error
 both
 neither
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2E)
 Decrease the order of a fixed polynomial basis.
 
@@ -213,11 +175,6 @@ structural error
 estimation error
 both
 neither
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Minimizing empirical risk
 
@@ -258,12 +215,6 @@ of an array, and x@y to indicate a matrix product of two arrays.
 
 $J(\theta)=$
 
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 Now, how can we find the minimizing $\theta$, given $Z$ and $T$? Take
 the gradient (yes, even with a matrix expression), set it to zero(s)
 and solve for $\theta$.
@@ -273,12 +224,6 @@ You can use matrix derivatives or, compute the answer for some individual elemen
 deduce the matrix form.
 
 $\nabla_\theta J(\theta)=$
-
-Check Syntax
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3C) What if you set this equation to 0 and solve for
 $\theta^*$, the optimal $\theta$? Hint: It's ok to ignore the

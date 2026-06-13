@@ -55,12 +55,6 @@ outputs of the state machine on the input sequence. Assume self.transition_fn an
 
 12345678class SM: start_state = None def transduce(self, input_seq): '''input_seq: a list of inputs to feed into SM returns: a list of outputs of SM''' pass # Your code hereXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2) Binary Addition
 
 Implement a Binary_Addition state machine that takes in a sequence
@@ -76,12 +70,6 @@ sm = Binary_Addition()
 output = sm.transduce([(1, 1), (1, 0), (0, 0)])
 
 1234567891011class Binary_Addition(SM): start_state = None # Change def transition_fn(self, s, x): # Your code here pass def output_fn(self, s): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.3) Reverser
 
@@ -99,12 +87,6 @@ sm = Binary_Addition()
 output = sm.transduce(['foo', ' ', 'bar'] + ['end'] + list(range(5)))
 
 1234567891011class Reverser(SM): start_state = None # Change def transition_fn(self, s, x): # Your code here pass def output_fn(self, s): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.4) RNN
 
@@ -132,12 +114,6 @@ Note that each input i below has dimension l x 1. Implement the corresponding st
 
 1234567891011class RNN(SM): def __init__(self, Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2): # Your code here pass def transition_fn(self, s, x): # Your code here pass def output_fn(self, s): # Your code here passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.5) Accumulator Sign RNN
 
 Enter the parameter matrices and vectors for an instance of the
@@ -150,12 +126,6 @@ inputs and outputs are 1x1.
 Hint: np.tanh may be useful. Remember to convert your python lists to np.array.
 
 123456789Wsx = # Your code hereWss = # Your code hereWo = # Your code hereWss_0 = # Your code hereWo_0 = # Your code heref1 = # Your code here, e.g. lambda x : xf2 = # Your code hereacc_sign = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 1.6) Autoregressive RNN
 
@@ -176,12 +146,6 @@ and that each successive $x_t = y_{t-1}$ is also provided to
 the transduce method.
 
 123456789Wsx = # Your code hereWss = # Your code hereWo = # Your code hereWss_0 = # Your code hereWo_0 = # Your code heref1 = # Your code heref2 = # Your code hereauto = RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) MDP
 
@@ -214,22 +178,12 @@ Which policy is best if you're starting from state 0 with horizon 2?
 Taking action 'b'
 Taking action 'c'
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.1.B)
 Which policy is best if you're starting from state 0 with horizon 3?
 
 --
 Taking action 'b'
 Taking action 'c'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.1.C)
 What if we start in state 0 with horizon 5, take action 'c', land in
@@ -240,11 +194,6 @@ should we take now?
 --
 Action 'b'
 Action 'c'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2.2) At a discount
 
@@ -260,20 +209,10 @@ Enter the vector of $r_{i}$ values, in the order shown above.
 
 Enter the matrix as a list of 4 numbers:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 2.2.B)
 Enter the matrix of $c_{ij}$ values, in the order shown above, for the policy "always take action 'c'".
 
 Enter the matrix as a list of 4 lists of numbers:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 Solve for the value function under this policy by using numpy.linalg.solve to solve these equations.
 For example, if you have a set of linear equations of the form:
@@ -290,11 +229,6 @@ v = np.linalg.solve(A,b) # A v = b
 2.2.C)
 
 Enter a Python list of 4 numbers, accurate to at least 3 decimal places:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3) Tiny Q-value iteration
 
@@ -317,30 +251,15 @@ Iteration 1
 
 Enter a Python list of 8 numbers:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3.B)
 Iteration 2
 
 Enter a Python list of 8 numbers:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 3.C)
 Iteration 3
 
 Enter a Python list of 8 numbers:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 3.D)
 After the third iteration, what action would you select in state 0?
@@ -348,11 +267,6 @@ After the third iteration, what action would you select in state 0?
 --
 Action 'b'
 Action 'c'
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4) One D Grid
 
@@ -367,25 +281,14 @@ If the goal is $10$, $H = 5$ and $\gamma = 1$, what is $V^*(1)$?
 
 Enter a number:
 
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 4.1.B)
 If the goal is $10$, $H = 15$ and $\gamma = 1$, what is $V^*(1)$?
 
 Enter a number:
-
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 4.1.C)
 If the goal is $10$, $H = \infty$ and $\gamma = 1$, what is $V^*(1)$?
 
 Enter a number:
 
-Submit
 View Answer <button class="btn btn-catsoop" onclick="!queue.get('location') ?

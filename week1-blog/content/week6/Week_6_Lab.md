@@ -40,12 +40,6 @@ combination of iters and learning rate lr?
 
 123def run(): return t1(iters=100, lr=0.05)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.2) Not-XOR
 
 The XOR dataset is a classic example showing the need for more than
@@ -85,12 +79,6 @@ learning rate.
 
 123def run(): return t2(hidden_units=1, iters=1000, lr=0.05)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
-
 1.3) Hard data set
 
 In this next example we use a much harder data set that is barely
@@ -111,12 +99,6 @@ specify the number of hidden units in each hidden layer, the number of
 iterations, and the learning rate.
 
 123def run(): return t3(hidden_units=2, iters=100, lr=0.05)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Run Code
-Submit
-View Answer Ask for Help
-
-You have infinitely many submissions remaining.
 
 2) Crime and Punishment
 
