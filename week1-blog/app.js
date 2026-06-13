@@ -200,13 +200,7 @@ const activityToMarkdown = (text) => {
   result = result.replace(/\( [^)]+? \)(?= ?\([^)]+?\))/g, "");
 
   // === Merge continuation lines that start with closing brackets/punctuation ===
-  // Fix scraper artifact: ") refers to...\nθ,θ" should be "θ,θ) refers to..."
-  // Line starts with ")" + text, and next line is short math expression (θ,θ0, etc.)
-  const reorderParen = result.replace(
-    /^\)([^\n]*)\n(θ[θ,\d\s.;:=+\-()]*)$/gm,
-    (_, text, math) => `${math})${text}`
-  );
-  result = reorderParen;
+  // DISABLED: reorderParen was stealing ')' from En(θ,θ0) and attaching to next θ,θ0
 
   // Merge orphan closing brackets into previous line
   const merged = [];
