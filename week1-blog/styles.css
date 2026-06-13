@@ -232,42 +232,7 @@ body.highlight-mode .article-content p,
 body.highlight-mode .article-content li,
 body.highlight-mode .article-content blockquote,
 body.highlight-mode .article-content .example-block {
-  cursor: text;
-}
-
-/* Floating highlight button */
-#hl-float-btn {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background: var(--amber);
-  color: #fff;
-  font-size: 18px;
-  line-height: 36px;
-  text-align: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: opacity .15s;
-}
-#hl-float-btn.show {
-  display: block;
-}
-#hl-float-btn:hover {
-  transform: scale(1.1);
-}
-#hl-float-btn::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -6px;
-  border: 6px solid transparent;
-  border-top-color: var(--amber);
 }
 .article-content pre.algorithm-box {
   position: relative;
@@ -300,6 +265,12 @@ body.highlight-mode .article-content .example-block {
 .article-content th, .article-content td { padding: 12px; border-bottom: 1px solid var(--line); text-align: left; }
 .article-content th { color: var(--moss); }
 .article-content hr { margin: 70px 0; border: 0; border-top: 1px solid var(--line); }
+
+/* Highlight mode */
+#highlight-toggle.active { background: var(--amber); color: var(--paper); border-color: var(--amber); }
+mark.hl, .article-content .hl { background: #f9e66b; color: #1a1a1a; border-radius: 2px; padding: 0 2px; }
+body.highlight-mode .prose { user-select: text; -webkit-user-select: text; }
+body.night mark.hl, body.night .article-content .hl { background: #6b5a1a; color: #e8e0c0; }
 .loading-error { padding: 30px; color: #7a4538; background: #e6cfb2; font-family: var(--sans); }
 
 @media (max-width: 820px) {
