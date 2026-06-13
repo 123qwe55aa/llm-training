@@ -368,14 +368,24 @@ const coursePromise = fetch("content/course.json").then((response) => {
     chapter.sections.forEach((section) => {
       const hasLti = section.lti_blocks && section.lti_blocks.length > 0;
       if (hasLti) {
-        const blockName = section.lti_blocks[0];
-        articles[section.id] = {
-          title: section.title,
-          kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
-          deck: `${section.characters} 字符`,
-          url: `content/lti/${blockName}.txt`,
-          markdown: false,
-        };
+        if (section.article) {
+          articles[section.id] = {
+            title: section.title,
+            kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
+            deck: `${section.video_count} 段视频 · ${section.pdf_count ?? section.pdf_urls?.length ?? 0} 份 PDF`,
+            url: section.article,
+            markdown: true,
+          };
+        } else {
+          const blockName = section.lti_blocks[0];
+          articles[section.id] = {
+            title: section.title,
+            kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
+            deck: `${section.characters} 字符`,
+            url: `content/lti/${blockName}.txt`,
+            markdown: false,
+          };
+        }
         section.lti_blocks.forEach((block) => {
           articles[`activity-${block}`] = {
             title: `${section.title} (${block})`,
