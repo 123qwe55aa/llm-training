@@ -207,14 +207,11 @@ const activityToMarkdown = (text) => {
     const raw = lines2[i];
     const trimmed = raw.trim();
 
-    // Not a heading, list item, or sentence-starting text
     const isHeading = /^#/.test(trimmed) || /^\d+[).]/.test(trimmed) || /^Ex\d/i.test(trimmed);
     const startsWithWord = /^(Consider|For|Which|What|Enter|Select|Does|There|As|The|Provide|If|This|These|In|Note|That|You|Select)/.test(trimmed);
     const isURL = trimmed.startsWith("http") || trimmed.startsWith("ftp");
-    // Looks like an equation: starts with math identifier, contains =, short line (≤ ~6 words)
     const isShort = trimmed.length > 2 && trimmed.length < 50 && trimmed.split(/\s+/).length <= 4;
     const hasEquals = /=/.test(trimmed);
-    // Starts with a letter, Greek letter, or mathematical symbol
     const startsMath = /^[A-Za-zθ𝜃𝜙𝜓𝛽αδϵεπμλωΩΣΔΠΓℰℒℋ𝒙𝒚𝒛𝑤𝐸ℎ'′′″]/.test(trimmed);
 
     if (!isHeading && !startsWithWord && !isURL && isShort && hasEquals && startsMath) {
@@ -226,28 +223,18 @@ const activityToMarkdown = (text) => {
 
   result = mathWrapped.join("\n");
 
-  // === Convert -- yes/no to radio buttons ===
-  // Handle multi-line "?\n--\nyes\nno" patterns first
-  result = result.replace(/\?\s*\n--\s*\n(yes|no)\s*\n(yes|no)/g, '? -- $1 $2');
-  // Handle mid-paragraph "x -- yes no" where x is the line before
-  result = result.replace(/(does\?)\s*--\s*(yes)\s*(no)/gi, '? -- $2 $3');
-  result = result.replace(/(exists\?)\s*--\s*(yes)\s*(no)/gi, '? -- $2 $3');
-  // Convert to radio buttons
-  result = result.replace(
-    /\? -- (yes|no)(?:\s+(yes|no))?/g,
-    (match, first, second) => {
-      if (second) {
-        const name = "ex-" + Math.random().toString(36).slice(2, 6);
-        return `?\n<div class="exercise-options">\n  <label class="ex-option"><input type="radio" name="${name}" value="${first}"> ${first}</label>\n  <label class="ex-option"><input type="radio" name="${name}" value="${second}"> ${second}</label>\n</div>`;
-      }
-      return match;
-    }
-  );
+  // === Mark yes/no and input locations with markers ===
+  // Collapse multi-line yes/no patterns: "?\n--\nyes\nno" → "? {RADIO:yes,no}"
+  result = result.replace(/\?\s*\n--\s*\n(yes|no)\s*\n(yes|no)/g, '? {RADIO:$1,$2}');
+  result = result.replace(/(does\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
+  result = result.replace(/(exists\?)\s*--\s*(yes)\s*(no)/gi, '? {RADIO:$2,$3}');
+  // Also handle single-line "? -- yes no"
+  result = result.replace(/\? -- (yes|no)(?:\s+(yes|no))?/g, '? {RADIO:$1,$2}');
 
-  // === Convert "Enter a Python list..." to text input ===
+  // Convert "Enter a Python list..." to marker
   result = result.replace(
     /(Enter a Python list[^:]*:)/g,
-    '$1\n<div class="exercise-input"><input type="text" class="ex-text-input" placeholder="Type your answer here..."></div>'
+    '$1 {INPUT}'
   );
 
   return result;
@@ -395,6 +382,23 @@ if (articleContent) {
         : renderMarkdown(activityToMarkdown(text));
       if (!article.markdown) articleContent.classList.add("activity-view");
       articleContent.innerHTML = rendered;
+      // Replace markers with interactive elements (post-render to avoid escapeHtml)
+      articleContent.querySelectorAll("p").forEach((p) => {
+        p.innerHTML = p.innerHTML.replace(
+          /\{RADIO:(\w+),(\w+)\}/g,
+          (_, v1, v2) => {
+            const name = "ex-" + Math.random().toString(36).slice(2, 6);
+            return '<div class="exercise-options">'
+              + '<label class="ex-option"><input type="radio" name="' + name + '" value="' + v1 + '"> ' + v1 + '</label>'
+              + '<label class="ex-option"><input type="radio" name="' + name + '" value="' + v2 + '"> ' + v2 + '</label>'
+              + '</div>';
+          }
+        );
+        p.innerHTML = p.innerHTML.replace(
+          /\{INPUT\}/g,
+          '<div class="exercise-input"><input type="text" class="ex-text-input" placeholder="Type your answer here..."></div>'
+        );
+      });
       const toc = document.querySelector("#toc");
       [...articleContent.querySelectorAll("h2, h3")].forEach((heading, index) => {
         heading.id = `section-${index + 1}`;
