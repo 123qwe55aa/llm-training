@@ -232,7 +232,42 @@ body.highlight-mode .article-content p,
 body.highlight-mode .article-content li,
 body.highlight-mode .article-content blockquote,
 body.highlight-mode .article-content .example-block {
+  cursor: text;
+}
+
+/* Floating highlight button */
+#hl-float-btn {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--amber);
+  color: #fff;
+  font-size: 18px;
+  line-height: 36px;
+  text-align: center;
   cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: opacity .15s;
+}
+#hl-float-btn.show {
+  display: block;
+}
+#hl-float-btn:hover {
+  transform: scale(1.1);
+}
+#hl-float-btn::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: var(--amber);
 }
 .article-content pre.algorithm-box {
   position: relative;
