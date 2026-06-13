@@ -147,14 +147,56 @@ const activityToMarkdown = (text) => {
     .replaceAll("Check Syntax Submit View Answer Ask for Help", "")
     .replaceAll("Submit View Answer", "")
     .replaceAll("You have infinitely many submissions remaining.", "");
-  return cleaned.split("\n").map((line) => {
-    const value = line.trimEnd();
-    if (/^\d+\)\s+\S/.test(value)) return `## ${value}`;
-    if (/^\d+\.\d+\)\s+\S/.test(value)) return `### ${value}`;
-    if (/^\d+\.\d+[a-z]\)\s+\S/i.test(value)) return `#### ${value}`;
-    if (/^(import |from |def |return |class |>>> )/.test(value.trim())) return `\`${value.trim()}\``;
-    return value;
-  }).join("\n");
+
+  const lines = cleaned.split("\n");
+  const out = [];
+  let inCodeBlock = false;
+  let codeLines = [];
+
+  const flushCode = () => {
+    if (codeLines.length) {
+      out.push("```");
+      codeLines.forEach((l) => out.push(l));
+      out.push("```");
+      codeLines = [];
+    }
+    inCodeBlock = false;
+  };
+
+  lines.forEach((line) => {
+    const val = line.trimEnd();
+    const trimmed = val.trim();
+
+    // Detect code-block regions: lines that are just digits (line numbers)
+    // followed by actual code lines
+    if (/^\d+$/.test(trimmed) || /^(import |from |def |return |class |>>> |pass|data )/.test(trimmed) || /^[A-Za-z_]+\s*=/.test(trimmed)) {
+      if (!inCodeBlock) { flushCode(); inCodeBlock = true; }
+      codeLines.push(val);
+      return;
+    }
+
+    // End of code block
+    if (inCodeBlock) {
+      // Check if this line looks like non-code
+      if (/^[A-Z][a-z]/.test(trimmed) || trimmed.startsWith("Ex") || trimmed.startsWith("//") || !trimmed) {
+        flushCode();
+        // Fall through to process this line
+      } else {
+        codeLines.push(val);
+        return;
+      }
+    }
+
+    flushCode();
+
+    if (/^\d+\)\s+\S/.test(val)) { out.push(`## ${val}`); return; }
+    if (/^\d+\.\d+\)\s+\S/.test(val)) { out.push(`### ${val}`); return; }
+    if (/^\d+\.\d+[a-z]\)\s+\S/i.test(val)) { out.push(`#### ${val}`); return; }
+    out.push(val);
+  });
+
+  flushCode();
+  return out.join("\n");
 };
 
 const curatedSources = {
@@ -191,6 +233,31 @@ const curatedSources = {
 const coursePromise = fetch("content/course.json").then((response) => {
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.json();
+}).then((course) => {
+  // Build flat articles map from chapters/sections/activities
+  const articles = {};
+  course.chapters.forEach((chapter) => {
+    chapter.sections.forEach((section) => {
+      articles[section.id] = {
+        title: section.title,
+        kicker: `${chapter.title} · ${typeLabels[section.type] || "讲义"}`,
+        deck: `${section.video_count} 段视频 · ${section.pdf_count} 份 PDF`,
+        url: section.url,
+        markdown: section.markdown !== false,
+      };
+      section.activities.forEach((activity) => {
+        articles[activity.id] = {
+          title: activity.title,
+          kicker: `${chapter.title} · ${typeLabels[activity.type] || "练习"}`,
+          deck: `${activity.characters} 字符`,
+          url: activity.url,
+          markdown: false,
+        };
+      });
+    });
+  });
+  course.articles = articles;
+  return course;
 });
 
 const typeLabels = {
