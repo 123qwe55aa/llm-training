@@ -314,3 +314,49 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
   color: inherit;
   background: none;
 }
+
+/* Exercise interactive elements */
+.article-content.activity-view .exercise-options {
+  display: flex;
+  gap: 20px;
+  margin: 12px 0 20px;
+}
+.article-content.activity-view .ex-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: calc(var(--reading-size) - 2px);
+  transition: background .15s, border-color .15s;
+}
+.article-content.activity-view .ex-option:hover {
+  background: var(--paper-deep);
+  border-color: var(--moss);
+}
+.article-content.activity-view .ex-option input[type="radio"] {
+  accent-color: var(--moss);
+  width: 16px;
+  height: 16px;
+}
+.article-content.activity-view .exercise-input {
+  margin: 12px 0 20px;
+}
+.article-content.activity-view .ex-text-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.5 var(--sans);
+  transition: border-color .15s;
+}
+.article-content.activity-view .ex-text-input:focus {
+  outline: none;
+  border-color: var(--moss);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--moss) 20%, transparent);
+}
