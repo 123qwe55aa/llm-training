@@ -214,10 +214,10 @@ const activityToMarkdown = (text) => {
   result = result.replace(/\n{3,}/g, "\n\n");
   // Strip lines that are just spaces after cleanup
   result = result.replace(/^ +$/gm, "");
-  // Merge orphan closing paren: "content\n)" → "content)"
-  result = result.replace(/(\w)\n\)/g, "$1)");
-  // Merge orphan opening paren: "(\ncontent" → "(content"
-  result = result.replace(/\(\n(\w)/g, "($1");
+  // Merge orphan closing paren across blank lines: "content\n\n)" → "content)"
+  result = result.replace(/(\w)\n+\)/g, "$1)");
+  // Merge orphan opening paren across blank lines: "(\n\ncontent" → "(content"
+  result = result.replace(/\(\n+(\w)/g, "($1");
 
   // === Post-processing: wrap math in $...$ for MathJax ===
   const lines2 = result.split("\n");
