@@ -542,7 +542,8 @@ if (articleContent) {
         heading.id = `section-${index + 1}`;
         const link = document.createElement("a");
         link.href = `#${heading.id}`;
-        link.textContent = heading.textContent;
+        // Strip $...$ from TOC text - KaTeX markers shouldn't appear in nav
+        link.textContent = heading.textContent.replace(/\$[^$]*\$/g, '').replace(/\s+/g, ' ').trim();
         if (heading.tagName === "H3") link.style.paddingLeft = "24px";
         toc.appendChild(link);
       });

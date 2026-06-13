@@ -34,9 +34,9 @@ where a is the continuous output (we're using a here to be consistent with the n
 Consider a single "neuron" with a linear activation function; that is, where $a_1^L = \sum_k w^L_{k,1} x_k + {w_{0,1}^L}$. In this case, we have $L = 1$ and $f^L(z) = z$.
 1.1.A) Write a short program to compute the gradient of the loss function with respect to the weight vector (not the bias): $\nabla_{w^L} Loss(a_1^L, y)$ when $Loss(a, y) = L_h(y a)$.
 
-- x is a column vector
-- y is a number, a label
-- a is a number, an activation
+- `x` is a column vector
+- `y` is a number, a label
+- `a` is a number, an activation
 It should return a column vector.
 START question sig_grad
 123defhinge_loss_grad(x, y, a):passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
@@ -53,12 +53,12 @@ $$\sigma(z) = \frac{1}{1 + e^{-z}}.$$
 The figure below shows a sigmoid activation function on the left, with the rectified linear (ReLU) activation function on the right for comparison.
 1.2.A) What is an expression for the derivative of the sigmoid with respect to z, expressed as a function of z, its input?
 
-Enter a Python expression (use ** for exponentiation) involving e and z: Check Syntax
+Enter a Python expression (use ** for exponentiation) involving `e` and `z`: Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1.2.B) What is an expression for the derivative of the sigmoid with respect to z, but this time expressed as a function of $o = \sigma(z)$, its output?
 Hint: Think about the expression $1 - \frac{1}{1 + e^{-z}}$. (Here is a review of computing derivatives.)
 
-Enter a Python expression (use ** for exponentiation) involving only o (note: eand z are not allowed, and remember $o = \sigma(z)$): Check Syntax
+Enter a Python expression (use ** for exponentiation) involving only `o` (note: `e`and `z` are not allowed, and remember $o = \sigma(z)$): Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. In this model, we will consider positive points to have label +1, and negative points to have label 0.
 We need a loss function that works well when we are predicting probabilities. A good choice is to ask what probability is assigned to the correct label. We will interpret the value outputted by our classifier as the probability that the example is positive. So, if the output value is a and the true label is +1, then the probability assigned to the true label is a; on the other hand, if the true label is 0, then the probability assigned to the true label is $1 - a$. Because we actually will be interested in the probability of the predictions on the whole data set, we'd want to choose weights to maximize
@@ -75,13 +75,13 @@ $$P(a, y) = a^y (1 - a)^{(1 - y)}.$$
 
 1.2.C) What is the value of $P(a, y)$ when $y=0$?
 
-Enter an expression for $P(a, y)$ when $y=0$ in terms of a: Check Syntax
+Enter an expression for $P(a, y)$ when $y=0$ in terms of `a`: Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1.2.D) What is the value of $P(a, y)$ when $y=1$? 
-Enter an expression for $P(a, y)$ when $y=1$ in terms of a: Check Syntax
+Enter an expression for $P(a, y)$ when $y=1$ in terms of `a`: Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1.2.E) Find a simplified expression for $\log P(a, y)$ that does not use exponentiation. Note that we refer to the natural logarithm $\ln$ as $\log$ throughout this assignment, consistent with the lecture notes. 
-Enter an expression in terms of y and a; you can use log(.) to indicate natural log: Check Syntax
+Enter an expression in terms of `y` and `a`; you can use `log(.)` to indicate natural log: Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. In fact, because log is a monotonic function, the same weights that maximize the product of the probabilities will minimize the negative log likelihood ("likelihood" is the same as probability; we just use that name here because the phrase is an idiom in machine learning, abbreviated NLL):
 
@@ -96,11 +96,11 @@ Remember that $a^{(t)}$ is our model's output for training example t, and $y^{(t
 Now, we can think about a single unit with a sigmoidal activation function, trained to minimize NLL. So, $a_1^L = \sigma(\sum_k w^L_{k,1} x_k + {w_{0,1}^L})$. In this case, we have $L = 1$.
 1.2.F) Write a formula for the gradient of the NLL with respect to the first weight, $\nabla_{w^L_{1,1}} NLL(a_1^L, y)$, for a single training example. Hint: consider using the chain rule; the final answer (expression) is very short.
 
-Write an expression in terms of x_1, a_1, and y: Check Syntax
+Write an expression in terms of `x_1`, `a_1`, and `y`: Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1.2.G) Write a formula for the gradient of the NLL with respect to the full weight vector, $\nabla_{W^L} NLL(a_1^L, y)$, for a single training example.
 
-Enter an expression in terms of x, a_1, and y: Check Syntax
+Enter an expression in terms of `x`, `a_1`, and `y`: Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
 ## 2) Multiclass classification

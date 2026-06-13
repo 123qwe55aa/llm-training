@@ -13,7 +13,7 @@ Let the weights in the first layer (layer 1) be:
 
 - $w^1_{0,1} = -0.5$, $w^1_{1, 1} = 1$, $w^1_{2, 1} = 0$
 - $w^1_{0,2} = 1.5$, $w^1_{1, 2} = -1$, $w^1_{2, 2} = 0$
-1A) Enter a matrix Z where each column represents the outputs of the hidden units ($f^1(z_1^1)$ and $f^1(z_2^1)$) for each of the input vectors in X. 
+1A) Enter a matrix Z where each column represents the outputs of the hidden units ($f^1(z_1^1)$ and $f^1(z_2^1)$) for each of the input vectors in `X`. 
 Enter a Python list of lists [[a,b,c],[d,e,f]], each list is a row of the matrix. 
 Submit View Answer
 You have infinitely many submissions remaining.
@@ -23,7 +23,7 @@ Submit View Answer
 You have infinitely many submissions remaining.
 
 ## 2) Training
-Now, we will consider the classification of a different set of X and Y data, with a different single layer network having the following structure and activation function:
+Now, we will consider the classification of a different set of `X` and `Y` data, with a different single layer network having the following structure and activation function:
 
 
 $$z = w^1_{1,1} x_1 + w^1_{2,1} x_2 + w^1_{0,1}$$

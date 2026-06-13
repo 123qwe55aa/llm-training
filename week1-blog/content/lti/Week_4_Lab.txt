@@ -17,21 +17,21 @@ The questions below are concerned with running gradient descent on the parabola
 $$f(x) = (2x + 3)^2\;.$$
 
 
-1A) Formulate the update rule that will be executed on every step when performing gradient descent on $f(x)$. You may use eta and x in your Python expression, where eta represents $\eta$.
+1A) Formulate the update rule that will be executed on every step when performing gradient descent on $f(x)$. You may use `eta` and `x` in your Python expression, where `eta` represents $\eta$.
 
-x$\leftarrow$Check Syntax
+`x`$\leftarrow$Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1B)
 What is the optimal value of x that minimizes f? 
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1C) This question asks you to explore convergence of gradient descent for our $f(x)$, to see how the step size affects the rate of convergence and whether there are oscillations or lack of convergence.
-We implement minimization of $f(x)$ using a function t1, which runs gradient descent for the minimization of $f(x)$. We halt the algorithm when the value of x changes by less than $10^{-5}$. In general, we may use some small tolerance such as this to say whether gradient descent has converged. Conversely, divergence is defined as being when x will not converge to a single finite value, even with an infinite number of updates.
-When you click Submit, the tutor question generates a plot of $f(x)$ in blue and the history of x values you have tried in red with a blue 'x' at the initial x value. You can change the values for step_size or init_val and click Submit again (all submits get 100%).
+We implement minimization of $f(x)$ using a function `t1`, which runs gradient descent for the minimization of $f(x)$. We halt the algorithm when the value of x changes by less than $10^{-5}$. In general, we may use some small tolerance such as this to say whether gradient descent has converged. Conversely, divergence is defined as being when x will not converge to a single finite value, even with an infinite number of updates.
+When you click Submit, the tutor question generates a plot of $f(x)$ in blue and the history of x values you have tried in red with a blue 'x' at the initial x value. You can change the values for `step_size` or `init_val` and click Submit again (all submits get 100%).
 Experiment with the following step sizes: [0.01, 0.1, 0.2, 0.3]. For which one(s) does $x^{(k)}$ converge without oscillation? For which one(s) does $x^{(k)}$ diverge?
 
 123defrun():returnt1(step_size=0.1, init_val=0)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
-You have infinitely many submissions remaining. Why do oscillations happen for some values of step_size and not others? To gain insight into this behavior (and to understand how gradient descent proceeds), we note that we can rewrite our update rule:
+You have infinitely many submissions remaining. Why do oscillations happen for some values of `step_size` and not others? To gain insight into this behavior (and to understand how gradient descent proceeds), we note that we can rewrite our update rule:
 
 
 $$x^{(k + 1)} = x^{(k)} - \eta \nabla_x f(x^{(k)})$$
@@ -74,13 +74,13 @@ You have infinitely many submissions remaining. Does your algebraic answer agree
 1F)
 What is the largest step size that causes x to converge without oscillating? 
 Submit View AnswerAsk for Help
-You have infinitely many submissions remaining. How many iterations are needed for convergence in this case? Run t1 with this value of step size. 1G)
+You have infinitely many submissions remaining. How many iterations are needed for convergence in this case? Run `t1` with this value of step size. 1G)
 For a step size of $0.1$, is there an initial value of $x_0$ for which x does not converge to the global minimum? --YesNo
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 1H) What value(s) of step size in the set $\{0.1,0.11,0.12,0.13,0.14,0.15\}$ makes gradient descent take the most steps before convergence? Find the answer algebraically and enter your value(s) in a Python list. (Hint: think about the magnitude of $1-8\eta$ and how this might affect the rate of convergence). 
 Enter your answer as a python list: 
 Submit View AnswerAsk for Help
-You have infinitely many submissions remaining. Now try running t1 with the above step sizes. Which ones are slowest? Which ones oscillate? Do these behaviors match with your algebraic results?
+You have infinitely many submissions remaining. Now try running `t1` with the above step sizes. Which ones are slowest? Which ones oscillate? Do these behaviors match with your algebraic results?
 
 ## 2) Where to meet?
 A group of friends is planning to host a baby shower over the weekend. They want to find a location for the party that minimizes the sum of squared distances from their houses to the location of the party. Assume for now that they can host the party at any location in the town.

@@ -19,7 +19,7 @@ The margin of labeled point $x, y$ with respect to separator $\theta, \theta_0$ 
 $$\gamma(x, y, \theta, \theta_0) = \frac{y (\theta^T x+\theta_0)}{\lVert \theta \rVert}$$
 
 
-Let sd stand for ${\it sd}(x, \theta, \theta_0)$, the signed distance from the separator to x. Define the margin in terms of sd and y, the label of x. Note that both of these are scalars. Provide an expression in Python syntax.
+Let `sd` stand for ${\it sd}(x, \theta, \theta_0)$, the signed distance from the separator to x. Define the margin in terms of `sd` and `y`, the label of x. Note that both of these are scalars. Provide an expression in Python syntax.
 
 $\gamma(x, y, \theta, \theta_0)=$Check Syntax
 Submit View Answer

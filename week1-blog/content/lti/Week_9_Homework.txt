@@ -1,17 +1,17 @@
-A code directory that may be useful for doing this homework can be found here. You should implement your code for Problem 1 (State Machines) in sm.py and Problem 5 (MDP Implementations) in mdp.py. There are unit tests available for you run in tests.py. Download this to your computer, or alternatively, use the colab notebook. The colab notebook will also contain unit tests defined after each code question.
+A code directory that may be useful for doing this homework can be found here. You should implement your code for Problem 1 (State Machines) in `sm.py` and Problem 5 (MDP Implementations) in `mdp.py`. There are unit tests available for you run in `tests.py`. Download this to your computer, or alternatively, use the colab notebook. The colab notebook will also contain unit tests defined after each code question.
 
 ## 1) State Machines
-We will implement state machines as sub-classes of the SM class, which specifies the start_state, transition_fn, and output_fn.
+We will implement state machines as sub-classes of the `SM` class, which specifies the `start_state`, `transition_fn`, and `output_fn`.
 
-class SM: start_state = None # default start state def transition_fn(self, s, x): '''s: the current state x: the given input returns: the next state''' raise NotImplementedError def output_fn(self, s): '''s: the current state returns: the corresponding output''' raise NotImplementedError def transduce(self, input_seq): '''input_seq: the given list of inputs returns: list of outputs given the inputs''' raise NotImplementedError An example of a sub-class is the Accumulator state machine, which adds up (accumulates) its input and outputs the sum. Convince yourself that the implementation works as expected before moving on.
+class SM: start_state = None # default start state def transition_fn(self, s, x): '''s: the current state x: the given input returns: the next state''' raise NotImplementedError def output_fn(self, s): '''s: the current state returns: the corresponding output''' raise NotImplementedError def transduce(self, input_seq): '''input_seq: the given list of inputs returns: list of outputs given the inputs''' raise NotImplementedError An example of a sub-class is the `Accumulator` state machine, which adds up (accumulates) its input and outputs the sum. Convince yourself that the implementation works as expected before moving on.
 
-class Accumulator(SM): start_state = 0 def transition_fn(self, s, x): return s + x def output_fn(self, s): return s An example case of using Accumulator (with transduce)
-sm = Accumulator() # Output should = [-1, 1, 4, 2, 7, 13] output = sm.transduce([-1, 2, 3, -2, 5, 6]) You can find these definitions in the sm.py file.
+class Accumulator(SM): start_state = 0 def transition_fn(self, s, x): return s + x def output_fn(self, s): return s An example case of using `Accumulator` (with `transduce`)
+sm = Accumulator() # Output should = [-1, 1, 4, 2, 7, 13] output = sm.transduce([-1, 2, 3, -2, 5, 6]) You can find these definitions in the `sm.py` file.
 
 
 ### 1.1) Transduce
 
-Implement the transduce method for the SM class. It is given an input sequence (a list) and returns an output sequence (a list) of the outputs of the state machine on the input sequence. Assume self.transition_fn and self.output_fn are defined.
+Implement the `transduce` method for the `SM` class. It is given an input sequence (a list) and returns an output sequence (a list) of the outputs of the state machine on the input sequence. Assume `self.transition_fn` and `self.output_fn` are defined.
 START question accumulator
 12345678classSM:start_state=Nonedeftransduce(self, input_seq):'''input_seq: a list of inputs to feed into SM returns: a list of outputs of SM'''pass# Your code hereXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -19,8 +19,8 @@ You have infinitely many submissions remaining.END question accumulator
 
 ### 1.2) Binary Addition
 
-Implement a Binary_Addition state machine that takes in a sequence of pairs of binary digits (0,1) representing two reversed binary numbers and returns a sequence of digits representing the reversed sum. For instance, to sum two binary numbers 100 and 011, the input sequence will be [(0, 1), (0, 1), (1, 0)]. You will need to define start_state, transition_fn, and output_fn. Note that when transduced, the input sequence may need to be extended with an extra (0,0) to output the final carry. The inputs in the test cases have already been extended with the extra (0, 0).
-An example case of using Binary_Addition is
+Implement a `Binary_Addition` state machine that takes in a sequence of pairs of binary digits (0,1) representing two reversed binary numbers and returns a sequence of digits representing the reversed sum. For instance, to sum two binary numbers `100` and `011`, the input sequence will be `[(0, 1), (0, 1), (1, 0)]`. You will need to define `start_state`, `transition_fn`, and `output_fn`. Note that when transduced, the input sequence may need to be extended with an extra (0,0) to output the final carry. The inputs in the test cases have already been extended with the extra (0, 0).
+An example case of using `Binary_Addition` is
 sm = Binary_Addition() # Output should = [0, 0, 1] output = sm.transduce([(1, 1), (1, 0), (0, 0)]) START question addition
 1234567891011classBinary_Addition(SM):start_state=None# Changedeftransition_fn(self, s, x):# Your code herepassdefoutput_fn(self, s):# Your code herepassXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -29,7 +29,7 @@ You have infinitely many submissions remaining.END question addition
 ### 1.3) Reverser
 
 Implement a state machine that reverses a sequence. The input is a list of the form:
-sequence1 + ['end'] + sequence2 + refers to concatenation. sequence1 is a list of strings, the 'end' string indicates termination, and sequence2 is arbitrary. The machine reverses sequence1: for each entry in the sequence1, the machine outputs None. For the 'end' input and each entry in the second sequence, an item from the reversed sequence1 is output, or None if no characters remain. To view test cases, try submitting your code. An example case of using Reverser
+sequence1 + ['end'] + sequence2 `+` refers to concatenation. `sequence1` is a list of strings, the `'end'` string indicates termination, and `sequence2` is arbitrary. The machine reverses `sequence1`: for each entry in the `sequence1`, the machine outputs `None`. For the `'end'` input and each entry in the second sequence, an item from the reversed `sequence1` is output, or `None` if no characters remain. To view test cases, try submitting your code. An example case of using `Reverser`
 sm = Binary_Addition() # Output should = [None, None, None, 'bar', ' ', 'foo', None, None, None] output = sm.transduce(['foo', ' ', 'bar'] + ['end'] + list(range(5))) START question reverser
 1234567891011classReverser(SM):start_state=None# Changedeftransition_fn(self, s, x):# Your code herepassdefoutput_fn(self, s):# Your code herepassXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -45,7 +45,7 @@ In particular, an RNN has a transition function and an output function, each of 
 - The outputs y are $n \times 1$ vectors
 The behavior is defined as follows:
 where $f_1$ and $f_2$ are two activation functions, such as linear, softmax, or tanh. This arrangement is shown below.
-Note that each input i below has dimension l x 1. Implement the corresponding state machine, where the weights are given in __init__. Make sure to set an appropriate start_state.
+Note that each input `i` below has dimension `l x 1`. Implement the corresponding state machine, where the weights are given in `__init__`. Make sure to set an appropriate `start_state`.
 START question rnn
 1234567891011classRNN(SM):def__init__(self, Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2):# Your code herepassdeftransition_fn(self, s, x):# Your code herepassdefoutput_fn(self, s):# Your code herepassXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -53,8 +53,8 @@ You have infinitely many submissions remaining.END question rnn
 
 ### 1.5) Accumulator Sign RNN
 
-Enter the parameter matrices and vectors for an instance of the RNN class such that the output is 1 if the cumulative sum of the inputs is positive, -1 if the cumulative sum is negative and 0 if otherwise. Make sure that you scale the outputs so that the output activation values are very close to 1, 0 and -1. Note that both the inputs and outputs are 1x1.
-Hint: np.tanh may be useful. Remember to convert your python lists to np.array.
+Enter the parameter matrices and vectors for an instance of the `RNN` class such that the output is 1 if the cumulative sum of the inputs is positive, -1 if the cumulative sum is negative and 0 if otherwise. Make sure that you scale the outputs so that the output activation values are very close to 1, 0 and -1. Note that both the inputs and outputs are 1x1.
+Hint: `np.tanh` may be useful. Remember to convert your python lists to `np.array`.
 START question acc_rnn
 123456789Wsx=# Your code hereWss=# Your code hereWo=# Your code hereWss_0=# Your code hereWo_0=# Your code heref1=# Your code here, e.g. lambda x : xf2=# Your code hereacc_sign=RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -62,13 +62,13 @@ You have infinitely many submissions remaining.END question acc_rnn
 
 ### 1.6) Autoregressive RNN
 
-Enter the parameter matrices and vectors for an instance of the RNN class such that it implements the following autoregressive model:
+Enter the parameter matrices and vectors for an instance of the `RNN` class such that it implements the following autoregressive model:
 
 
 $$y_t = 1 y_{t-1} - 2 y_{t-2} + 3 y_{t-3}$$
 
 when $x_t = y_{t-1}$.
-Note: unlike in the lab, as a result of your call to RNN, your initial (start) state vector in the RNN will be initialized to all zeros (i.e., our RNN implementation enforces this requirement). Instead, you should assume that the initial value for x will be provided , e.g., $x_1 = 5$ in the lab example, and that each successive $x_t = y_{t-1}$ is also provided to the transduce method.
+Note: unlike in the lab, as a result of your call to `RNN`, your initial (start) state vector in the RNN will be initialized to all zeros (i.e., our `RNN` implementation enforces this requirement). Instead, you should assume that the initial value for x will be provided , e.g., $x_1 = 5$ in the lab example, and that each successive $x_t = y_{t-1}$ is also provided to the `transduce` method.
 START question auto_rnn
 123456789Wsx=# Your code hereWss=# Your code hereWo=# Your code hereWss_0=# Your code hereWo_0=# Your code heref1=# Your code heref2=# Your code hereauto=RNN(Wsx, Wss, Wo, Wss_0, Wo_0, f1, f2)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -114,7 +114,7 @@ Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 2.2.B) Enter the matrix of $c_{ij}$ values, in the order shown above, for the policy "always take action 'c'". 
 Enter the matrix as a list of 4 lists of numbers: 
 Submit View AnswerAsk for Help
-You have infinitely many submissions remaining. Solve for the value function under this policy by using numpy.linalg.solve to solve these equations. For example, if you have a set of linear equations of the form:
+You have infinitely many submissions remaining. Solve for the value function under this policy by using `numpy.linalg.solve` to solve these equations. For example, if you have a set of linear equations of the form:
 1 v0 + 2 v1 + 3 v2 = 4 5 v0 + 6 v1 + 7 v2 = 8 9 v0 + 10 v1 + 11 v2 = 12 Then you can solve as follows: A = np.matrix([[1, 2, 3], [5, 6, 7], [9, 10, 11]]) b = np.matrix([[4], [8], [12]]) v = np.linalg.solve(A,b) # A v = b 2.2.C)
 Enter a Python list of 4 numbers, accurate to at least 3 decimal places: 
 Submit View AnswerAsk for Help

@@ -56,6 +56,6 @@ You have infinitely many submissions remaining.
 ## 4) Separable Through Origin?
 Provide two points, $(x_0, x_1)$ and $(y_0, y_1)$ in two dimensions that are linearly separable but not linearly separable through the origin. If you get stuck try drawing a picture and review the notes on offsets.
 
-Enter a Python list with two entries of the form [[ x0, x1], label] where label is 1 or -1. (So each entry represents a point with 2 dimensions and its label) 
+Enter a Python list with two entries of the form `[[ x0, x1], label]` where label is `1` or `-1`. (So each entry represents a point with 2 dimensions and its label) 
 Submit View Answer
 You have infinitely many submissions remaining.

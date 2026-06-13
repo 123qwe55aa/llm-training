@@ -57,8 +57,8 @@ Are these predictions meaningful given the training data we used? --YesNo
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 2D) It is common to encode a feature which takes on a value from a set of discrete values, not as a single multi-valued feature, but using a one hot encoding.
 Here, assume you have a feature f which can take on any value from the set $\{1,2,...,k\}$. If f takes on value i, then we represent it as a vector of length k of all zeros, except for a +1 at the ith coordinate.
-Write a function one_hot that takes as input x, a single feature value (between 1 and k), and k, the total possible number of values this feature can take on, and transform it to a numpy column vector of k binary features using a one-hot encoding (remember vectors have zero-based indexing).
-For example, one_hot(3,7) should return a column vector of length 7 with the entry at index 2 taking value 1 (indices start at 0) and other entries taking value 0.
+Write a function `one_hot` that takes as input x, a single feature value (between 1 and k), and k, the total possible number of values this feature can take on, and transform it to a numpy column vector of k binary features using a one-hot encoding (remember vectors have zero-based indexing).
+For example, `one_hot(3,7)` should return a column vector of length 7 with the entry at index 2 taking value 1 (indices start at 0) and other entries taking value 0.
 
 12345importnumpyasnpdefone_hot(x, k):passXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
@@ -76,10 +76,10 @@ You have infinitely many submissions remaining. 2F) Now, what if we have this da
 data = [[1, 2, 3, 4, 5, 6]] labels = [[1, 1, -1, -1, 1, 1]]  Is it linearly separable in the original encoding? --YesNo
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 2G) Is it linearly separable in the one-hot encoding? If so, provide the separator found by the perceptron. 
-Enter a Python list with 7 floats, six for $\theta$ and one for $\theta_0$ or 'none'
+Enter a Python list with 7 floats, six for $\theta$ and one for $\theta_0$ or `'none'`
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 2H) Enter an assignment of data values to labels (with distinct data points) that is not linearly separable using the one-hot encoding, or enter None if no such assignment exists. 
-Enter a Python list with 6 tuples (value, label) or 'none'
+Enter a Python list with 6 tuples `(value, label)` or `'none'`
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
 ## 3) Polynomial Features
@@ -92,26 +92,26 @@ and for order 3, we get
 
 $$\phi(x) = [1, x_1, x_2, x_1x_2, x_1^2, x_2^2, x_1^2x_2, x_1x_2^2, x_1^3, x_2^3]^T.$$
 
-In the code file, we have defined make_polynomial_feature_fun that, given the order, returns a feature transformation function (analogous to $\phi$ in the description). You should use it in doing this problem.
+In the code file, we have defined `make_polynomial_feature_fun` that, given the order, returns a feature transformation function (analogous to $\phi$ in the description). You should use it in doing this problem.
 3A)
 Enter a list of 6 integers indicating the number of polynomial features of degrees [1, 10, 20, 30, 40, 50] for a 2-dimensional feature vector.
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining. 3B) Consider this data-set of four points in two-dimensional space:
-data = ([[1, 1, 2, 2], [1, 2, 1, 2]]) labels = [[-1, 1, 1, -1]] It is standardly called the "exclusive-or" or "xor" problem. These points are not linearly separable, and you could interpret each point as being a pair of truth values, with their label being the XOR of the values. In the code file, we have defined 4 sample data sets, (1) super_simple_separable_through_origin, (2) super_simple_separable, (3) xor, and (4) xor_more. On your own machine, you should run the code we have provided (test_with_features) for various orders of polynomial features and enter below the order of the smallest feature that separates the data. Make sure that you have included your implementation of perceptron in that file or you can use the implementation we have provided. You may need to adjust the number of iterations that the perceptron runs.
+data = ([[1, 1, 2, 2], [1, 2, 1, 2]]) labels = [[-1, 1, 1, -1]] It is standardly called the "exclusive-or" or "xor" problem. These points are not linearly separable, and you could interpret each point as being a pair of truth values, with their label being the XOR of the values. In the code file, we have defined 4 sample data sets, (1) `super_simple_separable_through_origin`, (2) `super_simple_separable`, (3) `xor`, and (4) `xor_more`. On your own machine, you should run the code we have provided (`test_with_features`) for various orders of polynomial features and enter below the order of the smallest feature that separates the data. Make sure that you have included your implementation of `perceptron` in that file or you can use the implementation we have provided. You may need to adjust the number of iterations that the perceptron runs.
 The separators are displayed when the code runs; it's instructive to watch them to see the range of separators that these non-linear transformations produce. Note that the separators are drawn by evaluating the feature transformations on a grid of points in the feature space and using the separator to classify them. (Note: If you have issues with the graphic not moving forward, try pressing the keys within your terminal.)
 
 Enter a Python list of integers indicating the smallest polynomial order for which a separator exists for each of the four datasets in the code file (in order).
 Submit View AnswerAsk for Help
-You have infinitely many submissions remaining. ExperimentsA code and data folder that will be necessary for doing this homework can be found at the top of the page. In the file code_for_hw3_part2.py, include your learner code from HW 2. You will want to modify the evaluation algorithms so that they take a T argument to pass to the learners.
+You have infinitely many submissions remaining. ExperimentsA code and data folder that will be necessary for doing this homework can be found at the top of the page. In the file `code_for_hw3_part2.py`, include your learner code from HW 2. You will want to modify the evaluation algorithms so that they take a `T` argument to pass to the learners.
 The rest of this assignment will require running the code on your computer; we will be asking only for the results of your runs.
 
 ## 4) Evaluating algorithmic and feature choices for AUTO data
-We now want to build a classifier for the auto data, with a focus on the numeric data. In the code_for_hw3_part2.py, we have supplied you with the load_auto_data function, which can read the relevant .tsv file. It returns a list of dictionaries, one for each data item.
-We then specify what feature function to use for each column in the data. The file hw3_part2_main.py has an example that constructs the data and label arrays using raw features for all the columns.
-In the list features of hw3_part2_main.py, you will find a list of feature name, feature function tuples. There are three options for feature functions: raw, standard and one_hot. raw uses the original value; standard subtracts out the mean value and divides by the standard deviation; and one_hot will one-hot encode the input, as described in the notes.
-The function auto_data_and_labels processes the dictionaries and return data, labels. data has dimension $(d, 392)$, where d is the total number of features specified, and labels has dimension $(1, 392)$. The data in the file is sorted by class, but it will be shuffled when loaded.
-We have included staff implementations of perceptron and average perceptron in code_for_hw3_part2.py. Using the feature arrays and these implementations, you will be able to compute $\theta$ and $\theta_0$.
-We have also included staff implementations of eval_classifier and xval_learning_alg (in the same code file). You should use these functions to report accuracies.
+We now want to build a classifier for the auto data, with a focus on the numeric data. In the `code_for_hw3_part2.py`, we have supplied you with the `load_auto_data` function, which can read the relevant .tsv file. It returns a list of dictionaries, one for each data item.
+We then specify what feature function to use for each column in the data. The file `hw3_part2_main.py` has an example that constructs the data and label arrays using `raw` features for all the columns.
+In the list `features` of `hw3_part2_main.py`, you will find a list of feature name, feature function tuples. There are three options for feature functions: `raw`, `standard` and `one_hot`. `raw` uses the original value; `standard` subtracts out the mean value and divides by the standard deviation; and `one_hot` will one-hot encode the input, as described in the notes.
+The function `auto_data_and_labels` processes the dictionaries and return `data, labels`. `data` has dimension $(d, 392)$, where d is the total number of features specified, and `labels` has dimension $(1, 392)$. The data in the file is sorted by class, but it will be shuffled when loaded.
+We have included staff implementations of `perceptron` and `average perceptron` in `code_for_hw3_part2.py`. Using the feature arrays and these implementations, you will be able to compute $\theta$ and $\theta_0$.
+We have also included staff implementations of `eval_classifier` and `xval_learning_alg` (in the same code file). You should use these functions to report accuracies.
 
 
 ### 4.1) Making choices
@@ -125,10 +125,10 @@ C) We will use expected accuracy, estimated by 10-fold cross-validation (we have
 - We will try 3 values of T: $T=1$, $T=10$, $T=50$.
 - We will try 2 feature sets:
 
-- [cylinders=raw, displacement=raw, horsepower=raw, weight=raw, acceleration=raw, origin=raw]
-- [cylinders=one_hot, displacement=standard, horsepower=standard, weight=standard, acceleration=standard, origin=one_hot]
+- `[cylinders=raw, displacement=raw, horsepower=raw, weight=raw, acceleration=raw, origin=raw]`
+- `[cylinders=one_hot, displacement=standard, horsepower=standard, weight=standard, acceleration=standard, origin=one_hot]`
 Perform 10-fold cross-validation for all combinations of the two algorithms, three T values, and the two choices of feature sets. It will be worthwhile investing in a piece of code to carry out all of the evaluations, in case you need to do this more than once.
-In general, you should shuffle the dataset before evaluating, but for this exercise, please use hw3.xval_learning_alg, which shuffles the dataset for you, so that your results match ours.
+In general, you should shuffle the dataset before evaluating, but for this exercise, please use `hw3.xval_learning_alg`, which shuffles the dataset for you, so that your results match ours.
 4.1C i)
 Enter accuracies (perceptron, averaged perceptron) for T=1, feature set 1: 
 Submit View AnswerAsk for Help

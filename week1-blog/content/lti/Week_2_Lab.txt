@@ -11,8 +11,10 @@ Note the following notation and definitions, used throughout this lab:
 Imagine that you have a generator $\mathcal{G}$ that pulls from a finite dataset of millions of points.
 Let's assume that $\mathcal{D}_{\it train}$ is one such output of the generator $\mathcal{G}$.
 Consider the situation in which you have run a machine learning algorithm on some training dataset $\mathcal{D}_{\it train}$, and it has returned to you a specific h. Your job is to design (but not implement yet!) a procedure for evaluating h's effectiveness as a classifier. (Want more on classifiers? Check the notes)
-Assume we have a score function that takes a classifier h, dataset D - a tuple of data and labels: $(X,y)$ - and returns the percentage of correctly classified examples as a decimal between 0 and 1. We'll package it as follows:
-def eval_classifier(h, D): test_X, test_y = D return score(h, test_X, test_y) A) Percy Eptron suggests reusing the training data to assess h:
+Assume we have a `score` function that takes a classifier h, dataset D - a tuple of data and labels: $(X,y)$ - and returns the percentage of correctly classified examples as a decimal between 0 and 1. We'll package it as follows:
+`def eval_classifier(h, D):
+test_X, test_y = D
+return score(h, test_X, test_y)`A) Percy Eptron suggests reusing the training data to assess h:
 eval_classifier(h, D_train) Explain why Percy's strategy might not be so good. B) Now write down a better approach for evaluating h, which may use h, $\mathcal{G}$, and $\mathcal{D}_{\it train}$, and computes a score for h. The syntax is not important, but do write something down. What does this score measure and what is the range of possible outputs?
 C) Explain why your method might be more desirable than Percy's. What problem does it fix?
 D) How would your method from B score the classifier h, if $\mathcal{D}_{\it test}$ came from a different distribution than $\mathcal{G}$, but $\mathcal{D}_{\it train}$ was unchanged?
@@ -29,13 +31,31 @@ Now, consider a situation in which someone is trying to sell you a new learning 
 Check Yourself:What is the difference between a classifier and a learning algorithm? Understanding the distinction will help you when thinking about this question. (Stuck? Check the notes)
 Assume that you have a generator of labeled data, $\mathcal{G}$, which will be suitable for your application. The learning algorithm's performance on $\mathcal{G}$-generated data will be a good predictor of the learning algorithm's performance on data from your application. (You can review how to evaluate learning algorithms in the notes)
 B) Linnea Separatorix wants to evaluate a learning algorithm, and suggests the following procedure:
-def eval_learning_alg(L, G, n): # draw a set of n training examples (points and labels) train_X, train_y = G(n) # run L h = L(train_X, train_y) # evaluate using your classifier scoring procedure, on some new labeled data test_data = G(n) # draw new set of test data return eval_classifier(h, test_data) Check Yourself:What are G and n in the code above?
+`def eval_learning_alg(L, G, n):
+# draw a set of n training examples (points and labels)
+train_X, train_y = G(n)
+# run L
+h = L(train_X, train_y)
+# evaluate using your classifier scoring procedure, on some new labeled data
+test_data = G(n) # draw new set of test data
+return eval_classifier(h, test_data)`Check Yourself:What are G and n in the code above?
 Explain why Linnea's strategy might not be so good.
-C) Next, Linnea decides to generate one classifier h but evaluate that classifier with multiple (10) test sets in her eval_learning_alg. More specifically, Linnea changed her code above into:
-def eval_learning_alg(L, G, n): # draw a set of n training examples (points and labels) train_X, train_y = G(n) # run L h = L(train_X, train_y) # evaluate using your classifier scoring procedure, on some new labeled data score = 0 for i in range(10): test_data = G(n) # draw new set of test data score += eval_classifier(h, test_data) return score/10 Is Linnea's strategy good now? Explain why or why not. Check Yourself:How many classifiers is Linea generating and testing from the learning algorithm?
+C) Next, Linnea decides to generate one classifier h but evaluate that classifier with multiple (10) test sets in her `eval_learning_alg`. More specifically, Linnea changed her code above into:
+`def eval_learning_alg(L, G, n):
+# draw a set of n training examples (points and labels)
+train_X, train_y = G(n)
+# run L
+h = L(train_X, train_y)
+# evaluate using your classifier scoring procedure, on some new labeled data
+score = 0
+for i in range(10):
+test_data = G(n) # draw new set of test data
+score += eval_classifier(h, test_data)
+return score/10` Is Linnea's strategy good now? Explain why or why not. Check Yourself:How many classifiers is Linea generating and testing from the learning algorithm?
 D) Now design a better procedure for evaluating L. Write pseudocode for a procedure that takes L, $\mathcal{G}$ and n and returns a score. Say what the output score measures and what the best and worst values are.
-def better_eval_learning_alg(L, G, n): # your procedure E) Explain why your method might be more desirable than Linnea's.
+`def better_eval_learning_alg(L, G, n):
+# your procedure`E) Explain why your method might be more desirable than Linnea's.
 
 ## 3) Evaluating a learning algorithm with a small amount of data
 In reality, it's almost never possible to have a generator of all the data you want; in fact, in some domains data is very expensive to collect, and so you are given a fixed, small set of samples. Now assume that you only have 100 labeled data points to use for training and testing/evaluation.
-A) In the last section, you thought about how to evaluate a learning algorithm. Now that you are given only 100 labeled data points in total, how would you evaluate a learning algorithm? Specifically, how would you implement better_eval_learning_alg from 2C) without $\mathcal{G}$ but instead with your 100 labeled data? (You don't need to write out new pseudocode for better_eval_learning_alg but still think about how you would implement it.)
+A) In the last section, you thought about how to evaluate a learning algorithm. Now that you are given only 100 labeled data points in total, how would you evaluate a learning algorithm? Specifically, how would you implement `better_eval_learning_alg` from 2C) without $\mathcal{G}$ but instead with your 100 labeled data? (You don't need to write out new pseudocode for `better_eval_learning_alg` but still think about how you would implement it.)

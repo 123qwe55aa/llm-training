@@ -33,7 +33,7 @@ $$J_{\it emp}(\theta, \theta_0) = \frac{1}{n} \sum_{i = 1}^n L_s(x^{(i)}, y^{(i)
 
 Later, we will add in a regularization term.
 We will see later in this assignment that we can find a closed form matrix formula (requiring a matrix inverse) for the optimal $\theta$ in a linear regression formula. Being able to solve a machine-learning problem in closed form is very awesome! But inverting a matrix is computationally expensive (a bit less than $O(m^3)$ where m is the dimension of our matrix), and so, as our data sets get larger, we will need to find some more efficient or approximate ways to approach the problem.
-For your convenience, we have copied the hands-on section into a colab notebook, which may be found here. You can alternatively fill in these functions in code_for_hw5.py, which is part of this set of files (the other files will be useful for the last part of the homework).
+For your convenience, we have copied the hands-on section into a colab notebook, which may be found here. You can alternatively fill in these functions in `code_for_hw5.py`, which is part of this set of files (the other files will be useful for the last part of the homework).
 Let's start by thinking about gradient descent to attack this problem:
 1A) What is the gradient of the empirical risk with respect to $\theta?$ We can see that it is of the form:
 
@@ -41,7 +41,7 @@ Let's start by thinking about gradient descent to attack this problem:
 $$\nabla_\theta J_{\it emp}(\theta, \theta_0) = \frac{1}{n}\sum_{i=1}^n g(x^{(i)}, y^{(i)})$$
 
 where $x^{(i)}, y^{(i)}$ are the $i^{th}$ data point and its label.
-Write an expression for $g(x^{(i)},y^{(i)})$ using the symbols: x_i, y_i, theta and theta_0, where $g(x^{(i)},y^{(i)})$ is the derivative of the $L_s$ function described above with respect to $\theta$. Remember that you can use @ for matrix product, and you can use transpose(v) to transpose a vector. Note that this $g(\cdot)$ function is just the derivative with respect to a single data point $x^{(i)}, y^{(i)}$. We'll build up to the gradient of $J_{emp}$ in a moment.
+Write an expression for $g(x^{(i)},y^{(i)})$ using the symbols: `x_i`, `y_i`, `theta` and `theta_0`, where $g(x^{(i)},y^{(i)})$ is the derivative of the $L_s$ function described above with respect to $\theta$. Remember that you can use `@` for matrix product, and you can use `transpose(v)` to transpose a vector. Note that this $g(\cdot)$ function is just the derivative with respect to a single data point $x^{(i)}, y^{(i)}$. We'll build up to the gradient of $J_{emp}$ in a moment.
 START question gxy
 $g(x^{(i)},y^{(i)})=$Check Syntax
 Submit View AnswerAsk for Help
@@ -51,12 +51,12 @@ You have infinitely many submissions remaining.END question gxy 1B) What is the 
 $$\nabla_{\theta_0} J_{\it emp}(\theta, \theta_0) = \frac{1}{n}\sum_{i=1}^n g_0(x^{(i)}, y^{(i)})\;.$$
 
 
-Write an expression for $g_0(x^{(i)},y^{(i)})$ using the symbols: x_i, y_i, theta and theta_0.
+Write an expression for $g_0(x^{(i)},y^{(i)})$ using the symbols: `x_i`, `y_i`, `theta` and `theta_0`.
 START question g0xy
 $g_0(x^{(i)},y^{(i)})=$Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.END question g0xy 1C) Next we're interested in the gradient of the empirical loss with respect to $\theta$, $\nabla_\theta J_{\it emp}$, but now for a whole data set X (of dimensions d by n).
-Write an expression for $\nabla_\theta J_{\it emp}$ using the symbols: X and Y for the full set of data, theta, theta_0, and n. Here X has dimensions d by n, and Y has dimensions 1 by n. Remember that you can use @ for matrix product, and you can use transpose(a) to transpose a vector or array.
+Write an expression for $\nabla_\theta J_{\it emp}$ using the symbols: `X` and `Y` for the full set of data, `theta`, `theta_0`, and `n`. Here `X` has dimensions d by n, and `Y` has dimensions 1 by n. Remember that you can use `@` for matrix product, and you can use `transpose(a)` to transpose a vector or array.
 
 $\nabla_\theta J_{\it emp} =$Check Syntax
 Submit View AnswerAsk for Help
@@ -96,7 +96,7 @@ Later, we will add in a regularization term.
 For simplicity in this section, assume that we are handling the constant term, $\theta_0$, by adding a dimension to the input feature vector that always has the value 1. To review why this works, take a look at the introduction to problem 1 in HW2.
 Let data matrix $Z = X^T$ be n by d, let target output vector $T = Y^T$ be n by 1, and recall that $\theta$ is d by 1. Then we can write the whole linear regression prediction as $Z \theta$.
 <b>Note: this problem is usually formulated using a $n$ by $d$ matrix and an $n$ by 1 vector, which are our $Z$ and $T$ above. The notes call this matrix and vector $X$ and $Y$, but this usage is inconsistent with our previous definition of $X$; so we will stick with $X$ being $d$ by $n$.</b> 3A)T is the n by 1 vector of target output values. Write an equation expressing the mean squared loss of $\theta$ in terms of Z, T, n, and $\theta$. Hint: note that this loss $J(\theta)$ is a scalar, a sum of squared terms divided by n; we can write it as $(W^T W)/n$ for a column vector W.
-Enter your answer as a Python expression. You can use symbols Z, T, n and theta. Recall that our expression syntax includes transpose(x) for transpose of an array, inverse(x) for the inverse of an array, and x@y to indicate a matrix product of two arrays. START question analytic0
+Enter your answer as a Python expression. You can use symbols `Z`, `T`, `n` and `theta`. Recall that our expression syntax includes `transpose(x)` for transpose of an array, `inverse(x)` for the inverse of an array, and `x@y` to indicate a matrix product of two arrays. START question analytic0
 $J(\theta)=$Check Syntax
 Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.END question analytic0 Now, how can we find the minimizing $\theta$, given Z and T? Take the gradient (yes, even with a matrix expression), set it to zero(s) and solve for $\theta$.

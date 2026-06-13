@@ -25,7 +25,7 @@ Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.END question Q1
 ## 2) Simple Value Iteration Example
 We are going to look at a couple of two-dimensional "grid-world" examples, in which there is a robot that can move North, South, East, or West (N, S, E, W). It cannot move off the board. The transitions are somewhat noisy; when commanding a move there is a small chance that you will end up in one of the neighbor states of the desired state.
-We have defined a special subclass of MDP called GridWorld for representing these MDPs. One can specify a particular "floor plan" with a list of strings of characters. Consider this world:
+We have defined a special subclass of `MDP` called `GridWorld` for representing these MDPs. One can specify a particular "floor plan" with a list of strings of characters. Consider this world:
 ['..........', '........*.', '..........', '..........', '..........', '..........', '..........', '..........', '.$........', '..........'] Each character corresponds to a square in the grid. The meanings of the characters are:
 
 - '.' : a normally habitable square, from which the robot can move. <li> '#' : a wall, cannot be occupied<li> 'G' : reward of 0 ; a terminal state, every action leads to a zero-reward state that cannot be escaped

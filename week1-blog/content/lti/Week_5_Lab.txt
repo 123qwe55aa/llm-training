@@ -42,25 +42,25 @@ For the rest of this lab, we will be computing solutions by transforming our one
 $$\theta^T\phi(x) + \theta_0 = \theta_0 + \theta_1x + \theta_2x^2 + \ldots + \theta_kx^k$$
 
 
-To answer the next set of problems, you are given the function t1 to experiment with, which:
+To answer the next set of problems, you are given the function `t1` to experiment with, which:
 
-- Takes as input order, which is the order of the polynomial basis.
+- Takes as input `order`, which is the order of the polynomial basis.
 - Outputs $\theta$ and $\theta_0$ that minimizes the regression objective $J(\theta, \theta_0)$.
 - Finds $\theta$ and $\theta_0$analytically (we will explore the analytical solution in the homework).
-In the codebox below, experiment with t1 and try different values of order k to examine the effects of the order of the polynomial basis on the resulting solution. Based on your observations, answer the questions below the codebox.
-To answer 1A and 1B below, you should try to answer the questions first without running t1, and then run t1 to match with your expectations.
+In the codebox below, experiment with `t1` and try different values of order k to examine the effects of the order of the polynomial basis on the resulting solution. Based on your observations, answer the questions below the codebox.
+To answer 1A and 1B below, you should try to answer the questions first without running `t1`, and then run `t1` to match with your expectations.
 START question t1
 123defrun():returnt1(order=1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help
-You have infinitely many submissions remaining.END question t1 1A) Consider the solution with the 0th-order basis (the regression polynomial described by only $\theta_0$). What is the shape of the solution that you expect, and why? How does this solution depend on training data? Does this match what you observe in running t1 with order 0?
-1B) Polynomial order 9 is particularly interesting. What do you expect to be true about the solution, and why? (Hint: you are given 10 points in the training data). Does this match what you observe in running t1 with order 9?
+You have infinitely many submissions remaining.END question t1 1A) Consider the solution with the 0th-order basis (the regression polynomial described by only $\theta_0$). What is the shape of the solution that you expect, and why? How does this solution depend on training data? Does this match what you observe in running `t1` with order 0?
+1B) Polynomial order 9 is particularly interesting. What do you expect to be true about the solution, and why? (Hint: you are given 10 points in the training data). Does this match what you observe in running `t1` with order 9?
 To answer the questions below, you should run the codebox above with various orders from 1 to 9 and observe plots and values of $\theta$, $\theta_0$. Make sure to click "submit".
 1C) From your observation in the previous question, what is problematic if the polynomial order gets too big?
 1D) Look at the values of $\theta$ and $\theta_0$ you obtain, shown in the results. How does the magnitude of $\theta$ change with order? (You don't have to answer this quantitatively.)
 1E) What polynomial order do you feel represents the hypothesis that will be the most predictive for new data?
 1F) When we run 10-fold cross validation on this data set, varying the order from 0 to 8 (because we train on 9 training data points for each instance of 10-fold cross validation), we get the following mean squared error results:
 [0.69206670716618535, 0.53820006043438084, 0.73424762793041687, 0.2835495578961193, 0.74338564580774558, 0.61422551802155112, 6.156711267187811, 356.8873742619765, 408.34678081302491] What is the best order, based on this data? Does it agree with your previous answer? 1G) Abstractly, if we were to use a polynomial model with orders higher than 9 (e.g., 12), should it be possible for that polynomial to go through all the points?
-1H) Now, actually run t1 with orders higher than 9 (e.g., 12). Does the learned polynomial go through all the points? Remember that t1 is fitting the polynomial analytically (directly using matrix inversion) as discussed in the notes on regression. Would we expect matrix inversion to work well for models with orders higher than 9 for this data?
+1H) Now, actually run `t1` with orders higher than 9 (e.g., 12). Does the learned polynomial go through all the points? Remember that `t1` is fitting the polynomial analytically (directly using matrix inversion) as discussed in the notes on regression. Would we expect matrix inversion to work well for models with orders higher than 9 for this data?
 
 ## 2) Regularizing the parameter vector
 Recall that we can add a regularization term $R(\theta)$ to the empirical risk. If we use a squared-norm regularizer, we get the so-called ridge regression objective:
@@ -69,7 +69,7 @@ Recall that we can add a regularization term $R(\theta)$ to the empirical risk. 
 $$J_{\it ridge}(\theta, \theta_0) = \frac{1}{n} \sum_{i = 1}^n L_s(x^{(i)}, y^{(i)}, \theta, \theta_0) + \lambda \lVert \theta \rVert^2$$
 
 
-The procedure t2(order, lam) performs ridge regression on polynomial features of order order with regularization coefficient lam. In the resulting plots, t2 draws the original least-squares solution in orange, and raws the regularized version in green.
+The procedure `t2(order, lam)` performs ridge regression on polynomial features of order `order` with regularization coefficient `lam`. In the resulting plots, `t2` draws the original least-squares solution in orange, and raws the regularized version in green.
 Using a 9-th order polynomial feature function, experiment with $\lambda$. Look at the detailed results after submitting your code, paying attition to the visualization of the polynomial that was fit using your chosen $\lambda.$
 START question t2
 123defrun():returnt2(order=9, lam=1)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
@@ -82,7 +82,7 @@ What is the best value of $\lambda$, in terms of generalization performance, bas
 
 ## 3) Gradient descent
 Computing the analytic solution requires inverting a d by d matrix; as the size of the feature space increases, this becomes difficult. In addition, there are lots of other useful machine-learning models for which there is no closed-form analytic solution. So, we'll play with gradient descent here and see how it works. The procedure
-t3(order, lam, step_size, max_iter) performs gradient descent on the ridge regression objective using polynomial features of order order. You can specify the maximum number of iterations (we capped it at 10,000 to keep from killing the server) and the step size. It will print a convergence plot (objective value versus iteration number) and then show the solution it found in green and the analytic solution in orange for comparison. Keeping $\lambda = 0$, experiment with this method for solving regression problems. (Note the difference in the plots when the solution diverges and when the solution converges very quickly.) Click 'Show/Hide Detailed Results' after submitting your code to view the convergence plot generated.
+t3(order, lam, step_size, max_iter) performs gradient descent on the ridge regression objective using polynomial features of order `order`. You can specify the maximum number of iterations (we capped it at 10,000 to keep from killing the server) and the step size. It will print a convergence plot (objective value versus iteration number) and then show the solution it found in green and the analytic solution in orange for comparison. Keeping $\lambda = 0$, experiment with this method for solving regression problems. (Note the difference in the plots when the solution diverges and when the solution converges very quickly.) Click 'Show/Hide Detailed Results' after submitting your code to view the convergence plot generated.
 START question t3
 123defrun():returnt3(order=2, lam=0, step_size=0.3, max_iter=1000)XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help

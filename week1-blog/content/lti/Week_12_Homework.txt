@@ -30,7 +30,7 @@ We will stick with just one half of the problem for now: finding U and $b_u$ giv
 
 $$-B_a^T (Z_a - B_a u^{(a)} - b_v - b_u^{(a)}) + \lambda u^{(a)} = 0$$
 
-where $b_v$ is the $l_a$ by 1 vector of offsets for the movies and $b_u^{(a)}$ is the offset for user a. This is a linear regression problem in which the targets can be viewed as $Z_a - b_v$, and where there is an offset $b_u^{(a)}$ that is not regularized. This is, then, the standard ridge regression set-up. We have seen how to solve this problem via gradient descent before, but it can also be solved analytically by essentially turning it into a regular linear regression problem. Using this approach to computing the optimal $u^{(a)}$ requires first centering the data, then doing linear regression, then doing a little bit of work to recover the offset $b_u^{(a)}$. In the code, we have supplied a procedure (ridge_analytic) for doing exactly this.
+where $b_v$ is the $l_a$ by 1 vector of offsets for the movies and $b_u^{(a)}$ is the offset for user a. This is a linear regression problem in which the targets can be viewed as $Z_a - b_v$, and where there is an offset $b_u^{(a)}$ that is not regularized. This is, then, the standard ridge regression set-up. We have seen how to solve this problem via gradient descent before, but it can also be solved analytically by essentially turning it into a regular linear regression problem. Using this approach to computing the optimal $u^{(a)}$ requires first centering the data, then doing linear regression, then doing a little bit of work to recover the offset $b_u^{(a)}$. In the code, we have supplied a procedure (`ridge_analytic`) for doing exactly this.
 Let's see how it works out in our running example. For illustrative purposes, we'll add two more movies:
 8) 6.036 lecture videos
 9) The Zzzz files
@@ -63,7 +63,7 @@ Submit View AnswerAsk for Help
 You have infinitely many submissions remaining.
 ## 3) Implementing recommender systems
 Now we'll look in detail at two implementations of matrix factorization. One is the alternating least squares algorithm, and the other is the stochastic gradient descent algorithm.
-We will assume that the input data is made up of (a, i, r) triples, where a is a user index. i is an item index and r is a rating. Here is a small example:
+We will assume that the input data is made up of `(a, i, r)` triples, where `a` is a user index. `i` is an item index and `r` is a rating. Here is a small example:
 ratings_small = \ [(0, 0, 5), (0, 1, 3), (0, 3, 1), (1, 0, 4), (1, 3, 1), (2, 0, 1), (2, 1, 1), (2, 3, 5), (3, 0, 1), (3, 3, 4), (4, 1, 1), (4, 2, 5), (4, 3, 4)] We will assume that predictions are made using user and item offsets, that is,
 
 
@@ -77,27 +77,27 @@ In this expression $b_u$ is a vector of user offsets and $b_v$ is a vector of it
 Below is a function that provides the "outer loop" of the alternating least squares algorithm.
 
 - Define n and m from the data.
-- Initialize a list of lists us_from_v where us_from_v[i] contains the indices and ratings of users who rated item i.
-- Similarly, initialize a list of lists vs_from_u where vs_from_u[a] contains the indices and ratings of items rated by user a.
-- Initialize the set of parameters x (note that the u,v entries are set randomly while the user and item offsets are set to 0) where
-- x[0] = u, a list of column vectors (initialized randomly) such that u[a] corresponds to $u^{(a)}$ as defined above.
-- x[1] = b_u, a column vector (initialized with 0s) equal to $b_u$ as defined above.
-- x[2] = v, a list of column vectors (initialized randomly) such that v[i] corresponds to $v^{(i)}$ as defined above.
-- x[3] = b_v, a column vector (initialized with 0s) equal to $b_v$ as defined above.
+- Initialize a list of lists `us_from_v` where `us_from_v[i]` contains the indices and ratings of users who rated item `i`.
+- Similarly, initialize a list of lists `vs_from_u` where `vs_from_u[a]` contains the indices and ratings of items rated by user `a`.
+- Initialize the set of parameters `x` (note that the u,v entries are set randomly while the user and item offsets are set to 0) where
+- `x[0] = u`, a list of column vectors (initialized randomly) such that `u[a]` corresponds to $u^{(a)}$ as defined above.
+- `x[1] = b_u`, a column vector (initialized with 0s) equal to $b_u$ as defined above.
+- `x[2] = v`, a list of column vectors (initialized randomly) such that `v[i]` corresponds to $v^{(i)}$ as defined above.
+- `x[3] = b_v`, a column vector (initialized with 0s) equal to $b_v$ as defined above.
 - Then we alternate minimizations.
 - And report the results: the error between predicted scores and a held-out set of actual scores on the same users and items.
 
-def mf_als(data_train, data_validate, k=2, lam=0.02, max_iter=100, verbose=False): # size of the problem n = max(d[0] for d in data_train)+1 # users m = max(d[1] for d in data_train)+1 # items # which entries are set in each row and column and the rating us_from_v = [[] for i in range(m)] vs_from_u = [[] for a in range(n)] for (a, i, r) in data_train: us_from_v[i].append((a, r)) vs_from_u[a].append((i, r)) # Initial guess at u, b_u, v, b_v # Note that u and v are lists of column vectors (rows of U, V). x = ([np.random.normal(1/k, size=(k,1)) for a in range(n)], np.zeros(n), [np.random.normal(1/k, size=(k,1)) for i in range(m)], np.zeros(m)) # Alternation, modifies the contents of x for i in range(max_iter): update_U(data_train, vs_from_u, x, k, lam) update_V(data_train, us_from_v, x, k, lam) # The root mean square errors measured on validate set if data_validate != None: print('ALS result for k =', k, ': rmse =', rmse(data_validate, x)) return x Here is an example of vs_from_u for the small data set given above:
-vs_from_u = \ [[(0, 5), (1, 3), (3, 1)], [(0, 4), (3, 1)], [(0, 1), (1, 1), (3, 5)], [(0, 1), (3, 4)], [(1, 1), (2, 5), (3, 4)]] The only part that's missing are the update_U and update_V procedures. These are very similar, so we'll just do update_U, where we hold the $v^{(i)}$ constant and solve for the $u^{(a)}$. We have seen above that each of the steps is solving a ridge regression problem, that is, finding a set of coefficients for a linear function, $(\theta, \theta_0)$, so as to minimize the mean sum of squared errors on data given by $(X,Y)$ (with regularization on the magnitude of $\theta$).
-We have given you a function ridge_analytic(X,Y,lam) that solves the ridge regression problem and returns (th, th0) as usual, where th is a column vector and th0 is a float.
-3.1) Now, write the function update_U(data, vs_from_u, x, k, lam)
+def mf_als(data_train, data_validate, k=2, lam=0.02, max_iter=100, verbose=False): # size of the problem n = max(d[0] for d in data_train)+1 # users m = max(d[1] for d in data_train)+1 # items # which entries are set in each row and column and the rating us_from_v = [[] for i in range(m)] vs_from_u = [[] for a in range(n)] for (a, i, r) in data_train: us_from_v[i].append((a, r)) vs_from_u[a].append((i, r)) # Initial guess at u, b_u, v, b_v # Note that u and v are lists of column vectors (rows of U, V). x = ([np.random.normal(1/k, size=(k,1)) for a in range(n)], np.zeros(n), [np.random.normal(1/k, size=(k,1)) for i in range(m)], np.zeros(m)) # Alternation, modifies the contents of x for i in range(max_iter): update_U(data_train, vs_from_u, x, k, lam) update_V(data_train, us_from_v, x, k, lam) # The root mean square errors measured on validate set if data_validate != None: print('ALS result for k =', k, ': rmse =', rmse(data_validate, x)) return x Here is an example of `vs_from_u` for the small data set given above:
+vs_from_u = \ [[(0, 5), (1, 3), (3, 1)], [(0, 4), (3, 1)], [(0, 1), (1, 1), (3, 5)], [(0, 1), (3, 4)], [(1, 1), (2, 5), (3, 4)]] The only part that's missing are the `update_U` and `update_V` procedures. These are very similar, so we'll just do `update_U`, where we hold the $v^{(i)}$ constant and solve for the $u^{(a)}$. We have seen above that each of the steps is solving a ridge regression problem, that is, finding a set of coefficients for a linear function, $(\theta, \theta_0)$, so as to minimize the mean sum of squared errors on data given by $(X,Y)$ (with regularization on the magnitude of $\theta$).
+We have given you a function `ridge_analytic(X,Y,lam)` that solves the ridge regression problem and returns `(th, th0)` as usual, where `th` is a column vector and `th0` is a float.
+3.1) Now, write the function `update_U(data, vs_from_u, x, k, lam)`
 
-- data is a list of (a, i, r) triples
-- vs_from_u is a list of lists as defined above
-- x is a list of parameters as defined above
-- k is an integer indicating the length of the individual u and v vectors
-- lam is the regularization parameter
-The function should update the entries in x corresponding to the u vectors and the b_u entries. It should also return x, so the Tutor can check it. Note that if there are no ratings from a particular user, we don't want to update that user's entries.
+- `data` is a list of `(a, i, r)` triples
+- `vs_from_u` is a list of lists as defined above
+- `x` is a list of parameters as defined above
+- `k` is an integer indicating the length of the individual u and v vectors
+- `lam` is the regularization parameter
+The function should update the entries in `x` corresponding to the `u` vectors and the `b_u` entries. It should also return `x`, so the Tutor can check it. Note that if there are no ratings from a particular user, we don't want to update that user's entries.
 START question update_U
 12345defupdate_U(data, vs_from_u, x, k, lam):(u, b_u, v, b_v)=x# Your code herereturnxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXRun Code
 Submit View AnswerAsk for Help

@@ -23,7 +23,7 @@ Enter a number:
 Submit View Answer
 You have infinitely many submissions remaining.END question Q2A
 2B) Assume that the loss at a single time step is $\text{Loss}(p_t, y_t) = \frac{1}{2}(p_t - y_t)^2$. Recall $p_t$ is the actual output and $y_t$ is the target output. What is $\frac{d\text{Loss}}{dw}$ where $\text{Loss} = \sum_{t=1}^3\text{Loss}(p_t, y_t)$? Assume $s_0=0$.
-Enter an expression in terms of (only) w, x_1, x_2, x_3, y_1, y_2, y_3. Do not use any of the $p_t$. START question Q2B
+Enter an expression in terms of (only) `w`, `x_1`, `x_2`, `x_3`, `y_1`, `y_2`, `y_3`. Do not use any of the $p_t$. START question Q2B
 dLoss/dw = Check Syntax
 Submit View Answer
 You have infinitely many submissions remaining.END question Q2B
@@ -32,12 +32,12 @@ You have infinitely many submissions remaining.END question Q2B
 Here is the unrolled RNN from the previous problem. Let's call this the single-w model
 Consider in addition a related model where instead of a single weight w, at each time step we can use a different weight $w_t$; call this the multi-w model.
 Assume $s_0 = 0$ throughout.
-3A) Can the single-w model exactly represent a machine that takes $x=[1,1,1]$ and produces $y=[1,2,4]$? If so, what is the value of w? If not, enter 'None'. START question Q3A
-Enter a number or 'None': 
+3A) Can the single-w model exactly represent a machine that takes $x=[1,1,1]$ and produces $y=[1,2,4]$? If so, what is the value of w? If not, enter `'None'`. START question Q3A
+Enter a number or `'None'`: 
 Submit View Answer
 You have infinitely many submissions remaining.END question Q3A
-3B) Can the multi-w model exactly represent a machine that takes $x=[1,1,1]$ and produces $y=[1,2,4]$? If so, what are the values of $[w_1, w_2, w_3]$ as a Python list? If not, enter 'None'. START question Q3B
-Enter a list of 3 numbers or 'None': 
+3B) Can the multi-w model exactly represent a machine that takes $x=[1,1,1]$ and produces $y=[1,2,4]$? If so, what are the values of $[w_1, w_2, w_3]$ as a Python list? If not, enter `'None'`. START question Q3B
+Enter a list of 3 numbers or `'None'`: 
 Submit View Answer
 You have infinitely many submissions remaining.END question Q3B
 3C) Which of the following are reasons to prefer the single-w model (over the multi-w model)? Note when we say ``memorize a training sequence $[x_1, x_2, \dots, x_n]$" we mean that the model can potentially produce any output sequence $[y_1, y_2, \dots, y_n] \in \mathbb{R}^n$ given this input. START question Q3C
