@@ -387,12 +387,15 @@ const coursePromise = fetch("content/course.json").then((response) => {
           };
         }
         section.lti_blocks.forEach((block) => {
+          const blockArticle = section.article
+            ? section.article.replace(/\/\w+\.md$/, `/${block}.md`)
+            : null;
           articles[`activity-${block}`] = {
             title: `${section.title} (${block})`,
             kicker: `${chapter.title} · Exercise`,
-            deck: "",
-            url: `content/lti/${block}.txt`,
-            markdown: false,
+            deck: blockArticle ? "已清理" : "",
+            url: blockArticle || `content/lti/${block}.txt`,
+            markdown: !!blockArticle,
           };
         });
       } else if (section.article) {
