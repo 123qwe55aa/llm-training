@@ -141,61 +141,30 @@ const renderMarkdown = (markdown) => {
 };
 
 const activityToMarkdown = (text) => {
-  const cleaned = text
+  // Strip UI interaction elements
+  let cleaned = text
     .replaceAll("Submit View Answer Ask for Help", "")
     .replaceAll("Run Code Submit View Answer Ask for Help", "")
     .replaceAll("Check Syntax Submit View Answer Ask for Help", "")
     .replaceAll("Submit View Answer", "")
     .replaceAll("You have infinitely many submissions remaining.", "");
+  // Collapse excessive blank lines
+  cleaned = cleaned.replace(/\n{4,}/g, "\n\n\n");
 
   const lines = cleaned.split("\n");
   const out = [];
-  let inCodeBlock = false;
-  let codeLines = [];
-
-  const flushCode = () => {
-    if (codeLines.length) {
-      out.push("```");
-      codeLines.forEach((l) => out.push(l));
-      out.push("```");
-      codeLines = [];
-    }
-    inCodeBlock = false;
-  };
 
   lines.forEach((line) => {
     const val = line.trimEnd();
-    const trimmed = val.trim();
 
-    // Detect code-block regions: lines that are just digits (line numbers)
-    // followed by actual code lines
-    if (/^\d+$/.test(trimmed) || /^(import |from |def |return |class |>>> |pass|data )/.test(trimmed) || /^[A-Za-z_]+\s*=/.test(trimmed)) {
-      if (!inCodeBlock) { flushCode(); inCodeBlock = true; }
-      codeLines.push(val);
-      return;
-    }
-
-    // End of code block
-    if (inCodeBlock) {
-      // Check if this line looks like non-code
-      if (/^[A-Z][a-z]/.test(trimmed) || trimmed.startsWith("Ex") || trimmed.startsWith("//") || !trimmed) {
-        flushCode();
-        // Fall through to process this line
-      } else {
-        codeLines.push(val);
-        return;
-      }
-    }
-
-    flushCode();
-
+    // Section headings: "1) Title", "2.3) Title", "Ex2.3a"
     if (/^\d+\)\s+\S/.test(val)) { out.push(`## ${val}`); return; }
     if (/^\d+\.\d+\)\s+\S/.test(val)) { out.push(`### ${val}`); return; }
     if (/^\d+\.\d+[a-z]\)\s+\S/i.test(val)) { out.push(`#### ${val}`); return; }
+    if (/^Ex\d/i.test(val)) { out.push(`### ${val}`); return; }
     out.push(val);
   });
 
-  flushCode();
   return out.join("\n");
 };
 
@@ -209,10 +178,10 @@ const curatedSources = {
   },
   exercises: {
     title: "Hyperplanes 与 NumPy",
-    kicker: "WEEK 1 · 原版练习册（清理版）",
-    deck: "原始题目与代码模板，已清理为可读 Markdown。可线下用 Python 练习。",
-    url: "../downloads/MITx-6.036-Week1-exercises/week1_exercises.md",
-    markdown: true,
+    kicker: "WEEK 1 · 原版练习册",
+    deck: "保留原始题目与代码模板，不包含答案。",
+    url: "../downloads/MITx-6.036-Week1-exercises/week1_exercises_questions.txt",
+    markdown: false,
   },
   introduction: {
     title: "Introduction to Machine Learning",
@@ -336,7 +305,11 @@ if (articleContent) {
       }).then((text) => ({ article, text }));
     })
     .then(({ article, text }) => {
-      articleContent.innerHTML = renderMarkdown(article.markdown ? text : activityToMarkdown(text));
+      const rendered = article.markdown
+        ? renderMarkdown(text)
+        : renderMarkdown(activityToMarkdown(text));
+      if (!article.markdown) articleContent.classList.add("activity-view");
+      articleContent.innerHTML = rendered;
       const toc = document.querySelector("#toc");
       [...articleContent.querySelectorAll("h2, h3")].forEach((heading, index) => {
         heading.id = `section-${index + 1}`;
