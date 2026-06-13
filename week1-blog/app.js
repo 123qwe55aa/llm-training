@@ -18,13 +18,52 @@ const inline = (value) => escapeHtml(value)
   .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
   .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
-const renderMarkdown = (markdown) => {
-  const normalized = markdown
+const cleanContent = (markdown) => {
+  // 1. Strip video placeholder garbage
+  let cleaned = markdown
     .replaceAll("No playable video sources found.", "")
     .replaceAll("Your browser does not support this video format. Try using a different browser.", "")
-    .replaceAll("0:00 / 0:00", "")
-    .replace(/\[mathjaxinline\](.*?)\[\/mathjaxinline\]/gs, "$$$1$$")
-    .replace(/\[mathjax\](.*?)\[\/mathjax\]/gs, "$$$$$1$$$$");
+    .replaceAll("0:00 / 0:00", "");
+
+  // 2. Strip duplicate heading text: lines that exactly repeat a preceding heading
+  const lines = cleaned.replace(/\r/g, "").split("\n");
+  let prevHeading = null;
+  const filtered = lines.filter((line, i) => {
+    const headingMatch = line.match(/^(#{1,4})\s+(.+)$/);
+    if (headingMatch) {
+      prevHeading = headingMatch[2].trim();
+      return true;
+    }
+    // If this line is the heading text itself repeated verbatim as body text, skip it
+    if (prevHeading && line.trim() === prevHeading) {
+      // Also skip the second copy that sometimes follows
+      prevHeading = "USED";
+      return false;
+    }
+    if (line.trim()) prevHeading = null;
+    return true;
+  });
+
+  // 3. Convert mathjax tags to proper LaTeX delimiters
+  return filtered.join("\n")
+    .replace(/\[mathjaxinline\](.*?)\[\/mathjaxinline\]/gs, (_, inner) => {
+      inner = inner.trim();
+      if (/^\$.+\$$/.test(inner)) return inner;
+      return `$${inner}$`;
+    })
+    .replace(/\[mathjax\](.*?)\[\/mathjax\]/gs, (_, inner) => {
+      inner = inner.trim();
+      if (/^\$\$.+\$\$$/.test(inner)) return inner;
+      return `$$${inner}$$`;
+    })
+    // 4. Handle kramdown-style bold terms: **term:** but not as markdown bold
+    .replace(/\*\*([^*]+?):\*\*\s*/g, "<strong>$1:</strong> ")
+    // 5. Clean up excessive blank lines (collapse 3+ to 2)
+    .replace(/\n{4,}/g, "\n\n\n");
+};
+
+const renderMarkdown = (markdown) => {
+  const normalized = cleanContent(markdown);
   const lines = normalized.replace(/\r/g, "").split("\n");
   const html = [];
   let paragraph = [];
@@ -34,14 +73,7 @@ const renderMarkdown = (markdown) => {
   let inTable = false;
 
   const closeParagraph = () => {
-    if (paragraph.length) {
-      const text = paragraph.join(" ");
-      if (text.startsWith("**Example:**")) {
-        html.push(`<div class="example-block"><p>${inline(text)}</p></div>`);
-      } else {
-        html.push(`<p>${inline(text)}</p>`);
-      }
-    }
+    if (paragraph.length) html.push(`<p>${inline(paragraph.join(" "))}</p>`);
     paragraph = [];
   };
   const closeList = () => {
@@ -58,7 +90,7 @@ const renderMarkdown = (markdown) => {
     if (line.startsWith("```")) {
       closeAll();
       if (inCode) {
-        html.push(`<pre class="algorithm-box"><code>${escapeHtml(code.join("\n"))}</code></pre>`);
+        html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
         code = [];
       }
       inCode = !inCode;
@@ -76,12 +108,7 @@ const renderMarkdown = (markdown) => {
     }
     if (line.startsWith("> ")) {
       closeAll();
-      const content = line.slice(2);
-      if (content.startsWith("**Study Question:**")) {
-        html.push(`<blockquote class="study-question">${inline(content.replace("**Study Question:**", "").trim())}</blockquote>`);
-      } else {
-        html.push(`<blockquote>${inline(content)}</blockquote>`);
-      }
+      html.push(`<blockquote>${inline(line.slice(2))}</blockquote>`);
       return;
     }
     const bullet = line.match(/^[-*]\s+(.+)$/);
@@ -109,7 +136,7 @@ const renderMarkdown = (markdown) => {
     paragraph.push(line.trim());
   });
   closeAll();
-  if (inCode) html.push(`<pre class="algorithm-box"><code>${escapeHtml(code.join("\n"))}</code></pre>`);
+  if (inCode) html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
   return html.join("\n");
 };
 
