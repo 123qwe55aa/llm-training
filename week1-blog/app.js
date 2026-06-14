@@ -593,6 +593,7 @@ if (articleContent) {
   /* ── Highlighter (sentence-level) ── */
   const hlToggle = document.getElementById("highlight-toggle");
   const HIGHLIGHT_KEY = "llm-training:highlights";
+  const HL_MODE_KEY = "llm-training:highlight-mode";
 
   function getHighlights() {
     try { return JSON.parse(localStorage.getItem(HIGHLIGHT_KEY)) || {}; } catch { return {}; }
@@ -679,14 +680,21 @@ if (articleContent) {
     }
   }
 
-  let hlActive = false;
+  let hlActive = (() => {
+    try { return localStorage.getItem(HL_MODE_KEY) === "true"; } catch { return false; }
+  })();
   let hlFloat = null;
 
   if (hlToggle) {
+    // Apply initial state
+    document.body.classList.toggle("highlight-mode", hlActive);
+    hlToggle.classList.toggle("active", hlActive);
+
     hlToggle.addEventListener("click", () => {
       hlActive = !hlActive;
       document.body.classList.toggle("highlight-mode", hlActive);
       hlToggle.classList.toggle("active", hlActive);
+      try { localStorage.setItem(HL_MODE_KEY, hlActive); } catch {}
       if (!hlActive && hlFloat) { hlFloat.remove(); hlFloat = null; }
     });
 
