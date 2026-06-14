@@ -569,6 +569,8 @@ if (articleContent) {
           throwOnError: false
         });
       }
+      // Restore user highlights after content is fully rendered
+      applyHighlights(requested);
     })
     .catch(() => {
       articleContent.innerHTML = '<div class="loading-error">内容读取失败。请确认本地课程资料与服务器均已启动。</div>';
@@ -735,7 +737,8 @@ if (articleContent) {
       }
     });
 
-    applyHighlights(requested);
+    // Apply on load — after content is rendered and KaTeX is done
+    // (moved inside the .then() chain, see above)
   }
 } else {
   coursePromise.then(renderCatalog).catch(() => {
