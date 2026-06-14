@@ -570,7 +570,8 @@ if (articleContent) {
         });
       }
       // Restore user highlights after content is fully rendered
-      applyHighlights(requested);
+      // (wrapped in try-catch so highlight errors don't kill the page)
+      try { applyHighlights(requested); } catch (e) { console.warn("highlight restore error", e); }
     })
     .catch(() => {
       articleContent.innerHTML = '<div class="loading-error">内容读取失败。请确认本地课程资料与服务器均已启动。</div>';
